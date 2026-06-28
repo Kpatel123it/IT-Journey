@@ -1,0 +1,23 @@
+# Linux Cheat Sheet
+
+pwd → Current directory
+
+ls → List files
+
+cd → Change directory
+
+mkdir → Create directory
+
+touch → Create file
+
+cp → Copy
+
+mv → Move/Rename
+
+rm → Delete
+
+find → Search
+
+cat → Read file
+
+history → Command history
