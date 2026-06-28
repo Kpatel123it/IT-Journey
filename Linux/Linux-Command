@@ -1,0 +1,62 @@
+# Linux Commands
+
+## pwd
+
+Purpose:
+Displays the current working directory.
+
+Example:
+
+pwd
+
+Output:
+
+/home/kp
+
+---
+
+## ls
+
+Purpose:
+Lists files and directories.
+
+Examples:
+
+ls
+
+ls -l
+
+ls -la
+
+---
+
+## cd
+
+Purpose:
+Changes the current directory.
+
+Example:
+
+cd Documents
+
+---
+
+## mkdir
+
+Purpose:
+Creates a new directory.
+
+Example:
+
+mkdir Practice
+
+---
+
+## touch
+
+Purpose:
+Creates an empty file.
+
+Example:
+
+touch notes.txt
