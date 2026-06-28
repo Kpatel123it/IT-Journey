@@ -1,0 +1,189 @@
+# Day 3 - Linux File Management & Networking Basics
+
+**Date:** (Add Date)
+
+## Objective
+
+Practice Linux file management and begin networking fundamentals.
+
+---
+
+# Linux Commands Learned
+
+cp
+
+mv
+
+rm
+
+find
+
+man
+
+help
+
+---
+
+## cp
+
+Copies files.
+
+```bash
+cp notes.txt backup.txt
+```
+
+---
+
+## mv
+
+Moves or renames files.
+
+```bash
+mv linux.txt linux-basics.txt
+```
+
+---
+
+## rm
+
+Deletes files.
+
+```bash
+rm backup.txt
+```
+
+---
+
+## find
+
+Searches files.
+
+```bash
+find . -name "*.txt"
+```
+
+---
+
+## man
+
+Displays command manual.
+
+```bash
+man ls
+```
+
+---
+
+## Practical Work
+
+Created practice folders
+
+Created text files
+
+Copied files
+
+Renamed files
+
+Deleted files
+
+Searched files
+
+Viewed command manuals
+
+---
+
+# Networking Topics Covered
+
+## What is a Network?
+
+A network connects two or more devices to share data and resources.
+
+---
+
+## IP Address
+
+An IP address uniquely identifies a device on a network.
+
+Example:
+
+192.168.1.10
+
+---
+
+## Public IP
+
+Assigned by an Internet Service Provider (ISP).
+
+Used to communicate over the Internet.
+
+---
+
+## Private IP
+
+Used inside local networks.
+
+Examples:
+
+10.0.0.0/8
+
+172.16.0.0–172.31.255.255
+
+192.168.0.0/16
+
+---
+
+## DNS
+
+Converts domain names into IP addresses.
+
+Example:
+
+google.com
+
+↓
+
+142.250.xxx.xxx
+
+---
+
+## DHCP
+
+Automatically assigns IP addresses to devices.
+
+---
+
+## Common Ports
+
+| Protocol | Port |
+|----------|------|
+| FTP | 20/21 |
+| SSH | 22 |
+| SMTP | 25 |
+| DNS | 53 |
+| HTTP | 80 |
+| HTTPS | 443 |
+| RDP | 3389 |
+
+---
+
+## Challenges Faced
+
+Discovered the difference between VMware and VirtualBox.
+
+Learned why choosing one virtualization platform is important.
+
+---
+
+## Time Spent
+
+Approximately 3 Hours
+
+---
+
+## Skills Learned
+
+Linux File Management
+
+Networking Fundamentals
+
+Virtualization Concepts
