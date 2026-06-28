@@ -1,0 +1,27 @@
+# IP Addressing
+
+## What is an IP Address?
+
+An IP address uniquely identifies a device on a network.
+
+Example
+
+192.168.1.10
+
+## Public IP
+
+Assigned by an ISP.
+
+Used on the Internet.
+
+## Private IP
+
+Used inside local networks.
+
+Ranges
+
+10.0.0.0/8
+
+172.16.0.0 – 172.31.255.255
+
+192.168.0.0/16
