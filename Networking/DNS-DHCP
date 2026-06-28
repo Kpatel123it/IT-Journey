@@ -1,0 +1,22 @@
+# DNS
+
+Domain Name System converts domain names into IP addresses.
+
+Example
+
+google.com
+
+↓
+
+142.250.xxx.xxx
+
+---
+
+# DHCP
+
+Dynamic Host Configuration Protocol automatically assigns IP addresses.
+
+Benefits
+
+- No manual configuration
+- Prevents duplicate IP addresses
