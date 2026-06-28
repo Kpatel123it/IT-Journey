@@ -1,0 +1,90 @@
+# Day 1 - Home Lab Setup
+
+**Date:** (Add Today's Date)
+
+## Objective
+
+Set up the virtualization environment to begin my IT, Networking, and Cybersecurity learning journey.
+
+---
+
+## Tasks Completed
+
+- Installed Oracle VirtualBox.
+- Learned the purpose of virtual machines.
+- Downloaded Ubuntu Desktop ISO.
+- Created my first Ubuntu Virtual Machine.
+- Learned the difference between:
+  - Virtual Machine
+  - ISO File
+  - Virtual Hard Disk
+- Created my first VM Snapshot.
+
+---
+
+## Concepts Learned
+
+### What is a Virtual Machine?
+
+A Virtual Machine (VM) is software that allows one computer to run another operating system inside it without affecting the host operating system.
+
+Example:
+
+Windows 11 (Host)
+
+↓
+
+Ubuntu Linux (Guest)
+
+---
+
+### What is an ISO File?
+
+An ISO file is a digital copy of an operating system installation disk.
+
+Example:
+
+- Ubuntu Desktop ISO
+- Kali Linux ISO
+- Windows Server ISO
+
+---
+
+### What is a Snapshot?
+
+A snapshot saves the current state of a virtual machine.
+
+If something goes wrong later, I can restore the VM back to this point.
+
+---
+
+## Practical Work
+
+✔ Installed VirtualBox
+
+✔ Created Ubuntu VM
+
+✔ Learned VM components
+
+✔ Created Snapshot
+
+---
+
+## Challenges Faced
+
+- Confusion between VMware and VirtualBox.
+- Learned that snapshots should be created after a successful installation.
+
+---
+
+## Time Spent
+
+Approximately 2 Hours
+
+---
+
+## Skills Learned
+
+- Virtualization Basics
+- VM Creation
+- Snapshot Management
