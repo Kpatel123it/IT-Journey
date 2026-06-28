@@ -1,0 +1,31 @@
+# Common Protocols
+
+HTTP
+
+HTTPS
+
+FTP
+
+SSH
+
+SMTP
+
+DNS
+
+---
+
+# Common Ports
+
+FTP      20/21
+
+SSH      22
+
+SMTP     25
+
+DNS      53
+
+HTTP     80
+
+HTTPS    443
+
+RDP      3389
