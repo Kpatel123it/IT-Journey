@@ -1,0 +1,143 @@
+# Day 2 - Linux Basics
+
+**Date:** (Add Date)
+
+## Objective
+
+Learn basic Linux terminal commands.
+
+---
+
+## Commands Learned
+
+pwd
+
+ls
+
+cd
+
+mkdir
+
+touch
+
+cat
+
+history
+
+---
+
+## What I Learned
+
+### pwd
+
+Displays the current working directory.
+
+Example:
+
+```bash
+pwd
+```
+
+---
+
+### ls
+
+Lists files and directories.
+
+```bash
+ls
+```
+
+```bash
+ls -l
+```
+
+```bash
+ls -la
+```
+
+---
+
+### cd
+
+Changes the current directory.
+
+```bash
+cd Documents
+```
+
+---
+
+### mkdir
+
+Creates a directory.
+
+```bash
+mkdir LinuxPractice
+```
+
+---
+
+### touch
+
+Creates an empty file.
+
+```bash
+touch notes.txt
+```
+
+---
+
+### cat
+
+Displays file contents.
+
+```bash
+cat notes.txt
+```
+
+---
+
+### history
+
+Displays previously executed commands.
+
+```bash
+history
+```
+
+---
+
+## Practical Work
+
+Created folders
+
+Created files
+
+Moved between directories
+
+Viewed file contents
+
+Checked command history
+
+---
+
+## Challenges Faced
+
+Learning Linux directory navigation.
+
+---
+
+## Time Spent
+
+Approximately 3 Hours
+
+---
+
+## Skills Learned
+
+Linux Navigation
+
+Linux Terminal
+
+Basic File Management
