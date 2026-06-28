@@ -1,0 +1,32 @@
+# Linux Practice Labs
+
+## Lab 1
+
+Objective
+
+Practice file management commands.
+
+Commands Used
+
+mkdir LinuxPractice
+
+cd LinuxPractice
+
+touch notes.txt
+
+cp notes.txt backup.txt
+
+mv backup.txt notes_backup.txt
+
+rm notes_backup.txt
+
+find . -name "*.txt"
+
+Skills Learned
+
+- Creating directories
+- Creating files
+- Copying files
+- Renaming files
+- Deleting files
+- Searching files
