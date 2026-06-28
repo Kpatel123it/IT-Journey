@@ -1,0 +1,36 @@
+# Linux Basics
+
+## What is Linux?
+
+Linux is an open-source operating system widely used in servers, cloud computing, networking, and cybersecurity.
+
+## Why Learn Linux?
+
+- Used by most web servers
+- Popular in cloud platforms
+- Essential for cybersecurity
+- Common in networking devices
+
+## Linux File Structure
+
+/
+├── home
+├── etc
+├── var
+├── usr
+├── tmp
+└── boot
+
+## Important Directories
+
+/home  - User files
+
+/etc   - Configuration files
+
+/var   - Logs
+
+/usr   - Applications
+
+/tmp   - Temporary files
+
+/boot  - Boot files
