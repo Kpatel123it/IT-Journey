@@ -1,0 +1,324 @@
+# Day 04 - Ubuntu Installation & Linux Terminal Basics
+
+**Date:** (07/01/26)
+
+## 🎯 Objective
+
+Successfully install Ubuntu Linux in VMware Workstation and learn basic Linux terminal commands used in system administration.
+
+---
+
+# 🖥️ Home Lab Setup
+
+## Tasks Completed
+
+- Successfully installed Ubuntu Desktop in VMware Workstation.
+- Completed Ubuntu initial setup.
+- Configured user account.
+- Logged into Ubuntu Desktop.
+- Verified terminal access.
+- Created first Linux practice folder.
+- Successfully executed 23 Linux terminal commands.
+
+---
+
+# 📚 Linux Commands Practiced
+
+## 1. whoami
+
+**Purpose**
+
+Displays the currently logged-in user.
+
+```bash
+whoami
+```
+
+Example Output
+
+```text
+kp
+```
+
+---
+
+## 2. pwd
+
+**Purpose**
+
+Displays the current working directory.
+
+```bash
+pwd
+```
+
+Example Output
+
+```text
+/home/kp
+```
+
+---
+
+## 3. ls
+
+**Purpose**
+
+Lists files and directories.
+
+```bash
+ls
+```
+
+---
+
+## 4. ls -la
+
+**Purpose**
+
+Displays all files, including hidden files, with detailed information.
+
+```bash
+ls -la
+```
+
+---
+
+## 5. mkdir
+
+**Purpose**
+
+Creates a new directory.
+
+```bash
+mkdir IT-Bootcamp
+```
+
+---
+
+## 6. cd
+
+**Purpose**
+
+Changes the current directory.
+
+```bash
+cd IT-Bootcamp
+```
+
+---
+
+## 7. touch
+
+**Purpose**
+
+Creates an empty file.
+
+```bash
+touch notes.txt
+```
+
+---
+
+## 8. cp
+
+**Purpose**
+
+Copies a file.
+
+```bash
+cp notes.txt backup.txt
+```
+
+---
+
+## 9. mv
+
+**Purpose**
+
+Moves or renames a file.
+
+```bash
+mv backup.txt notes_backup.txt
+```
+
+---
+
+## 10. rm
+
+**Purpose**
+
+Deletes a file.
+
+```bash
+rm notes_backup.txt
+```
+
+---
+
+## 11. find
+
+**Purpose**
+
+Searches for files and directories.
+
+```bash
+find . -name "*.txt"
+```
+
+---
+
+## 12. history
+
+**Purpose**
+
+Displays previously executed commands.
+
+```bash
+history
+```
+
+---
+
+## 13. sudo apt update
+
+**Purpose**
+
+Updates the package list from Ubuntu repositories.
+
+```bash
+sudo apt update
+```
+
+---
+
+## 14. sudo apt upgrade -y
+
+**Purpose**
+
+Installs the latest available package updates.
+
+```bash
+sudo apt upgrade -y
+```
+
+---
+
+## 15. lsb_release -a
+
+**Purpose**
+
+Displays Ubuntu version information.
+
+```bash
+lsb_release -a
+```
+
+---
+
+# 💻 Practical Lab
+
+Completed the following tasks:
+
+- Installed Ubuntu Desktop inside VMware.
+- Logged into Ubuntu successfully.
+- Opened the Terminal.
+- Updated Ubuntu packages.
+- Created a practice directory.
+- Created files.
+- Copied files.
+- Renamed files.
+- Deleted files.
+- Searched for files.
+- Viewed command history.
+- Practiced Linux directory navigation.
+
+---
+
+# 🧠 Concepts Learned
+
+## Virtual Machine
+
+A Virtual Machine (VM) is software that allows multiple operating systems to run on a single physical computer.
+
+---
+
+## Ubuntu
+
+Ubuntu is a Linux distribution widely used for servers, cloud computing, networking, and cybersecurity.
+
+---
+
+## Terminal
+
+The Terminal is a command-line interface (CLI) that allows users to interact with the Linux operating system using commands.
+
+---
+
+## sudo
+
+`sudo` allows a user to execute commands with administrator (root) privileges.
+
+---
+
+## apt
+
+`apt` is Ubuntu's package manager used to install, update, and remove software packages.
+
+---
+
+# ⚠️ Challenges Faced
+
+- Initially confused between VMware and VirtualBox.
+- Needed clarification about the "Erase Disk" option during Ubuntu installation.
+- Learned that "Erase Disk" only affects the virtual hard disk (VMDK), not the physical computer.
+
+---
+
+# ✅ Solutions
+
+- Chose VMware Workstation as the primary virtualization platform.
+- Successfully installed Ubuntu.
+- Confirmed virtual machine settings before installation.
+- Completed Ubuntu setup without affecting the host operating system.
+
+---
+
+# 🚀 Skills Gained
+
+- Virtualization Basics
+- Ubuntu Installation
+- VMware Workstation
+- Linux Terminal
+- Linux File Management
+- Package Management
+- Command-Line Navigation
+
+---
+
+# 📊 Progress Summary
+
+| Task | Status |
+|-------|--------|
+| VMware Setup | ✅ Completed |
+| Ubuntu Installation | ✅ Completed |
+| Terminal Basics | ✅ Completed |
+| Linux Commands Practice | ✅ Completed |
+| Ubuntu Update | ✅ Completed |
+| File Management Practice | ✅ Completed |
+
+---
+
+# 📅 Next Day Goals
+
+- Learn Linux file permissions (`chmod`)
+- Understand file ownership (`chown`)
+- Learn users and groups
+- Practice file permission commands
+- Continue documenting the IT learning journey on GitHub
+
+---
+
+## 💬 Reflection
+
+Today I successfully completed the installation of Ubuntu Linux in VMware Workstation and started working with the Linux Terminal. I practiced essential Linux commands for navigating directories, managing files, and updating the system. This marks the beginning of my hands-on Linux administration journey as I work toward becoming an IT Support professional with future goals in Networking and Cybersecurity.
