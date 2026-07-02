@@ -25,6 +25,105 @@ Linux is an open-source operating system widely used in servers, cloud computing
 
 /home  - User files
 
+# 📚 Theory Learned
+
+## 1. What is Ubuntu?
+
+Ubuntu is a free and open-source Linux operating system based on Debian. It is widely used for servers, cloud computing, software development, networking, and cybersecurity because of its stability, security, and large community support.
+
+---
+
+## 2. What is VMware Workstation?
+
+VMware Workstation is a virtualization software that allows multiple operating systems to run as virtual machines on a single physical computer. It enables users to safely create, test, and practice in isolated environments without affecting the host operating system.
+
+---
+
+## 3. What is a Virtual Machine (VM)?
+
+A Virtual Machine (VM) is a software-based computer that runs inside another computer. It has its own operating system, CPU, memory, storage, and network configuration, just like a physical computer.
+
+### Benefits of Virtual Machines
+- Safe environment for learning and testing
+- Run multiple operating systems on one computer
+- Easy backup and recovery using snapshots
+- Commonly used in IT, cloud computing, and cybersecurity
+
+---
+
+## 4. What is the Linux Terminal?
+
+The Linux Terminal is a command-line interface (CLI) that allows users to interact with the operating system by typing commands. It provides greater control over the system and is widely used by Linux administrators and IT professionals.
+
+---
+
+## 5. What is a Shell?
+
+A shell is a program that interprets commands entered into the terminal and communicates with the Linux operating system. Ubuntu uses the Bash (Bourne Again Shell) by default.
+
+---
+
+## 6. What is Bash?
+
+Bash (Bourne Again Shell) is the default command-line shell in Ubuntu. It executes commands, runs scripts, and helps automate repetitive administrative tasks.
+
+---
+
+## 7. What is sudo?
+
+The `sudo` command allows a regular user to temporarily perform administrative (root) tasks. It helps improve security by avoiding the need to log in as the root user for everyday work.
+
+Example:
+
+```bash
+sudo apt update
+```
+
+---
+
+## 8. What is APT?
+
+APT (Advanced Package Tool) is Ubuntu's package management system. It is used to install, update, upgrade, and remove software packages from official Ubuntu repositories.
+
+Common Commands:
+
+```bash
+sudo apt update
+sudo apt upgrade
+sudo apt install <package-name>
+```
+
+---
+
+## 9. Why Update Ubuntu?
+
+Updating Ubuntu ensures that:
+- The latest security patches are installed.
+- Software bugs are fixed.
+- System stability is improved.
+- New features become available.
+
+Keeping systems updated is an essential responsibility of IT administrators.
+
+---
+
+## 10. Basic Linux Commands Learned
+
+| Command | Purpose |
+|----------|---------|
+| `whoami` | Displays the current logged-in user |
+| `pwd` | Shows the current working directory |
+| `ls` | Lists files and directories |
+| `ls -la` | Lists all files, including hidden files |
+| `mkdir` | Creates a new directory |
+| `cd` | Changes the current directory |
+| `touch` | Creates an empty file |
+| `cp` | Copies files |
+| `mv` | Moves or renames files |
+| `rm` | Deletes files |
+| `find` | Searches for files and directories |
+| `history` | Displays previously executed commands |
+
 /etc   - Configuration files
 
 /var   - Logs
