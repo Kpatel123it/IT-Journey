@@ -14,6 +14,30 @@ Topics Covered
 Outcome
 
 Understood how devices communicate over a network.
+# Lab 2 - Basic Network Information in Ubuntu
+
+## Objective
+
+Learn how to view network information using Linux commands.
+
+## Commands Used
+
+```bash
+hostname
+hostname -I
+ip addr
+ip route
+ping 8.8.8.8
+ping google.com
+```
+
+## What I Learned
+
+- Every computer has a hostname.
+- My Ubuntu VM received an IP address.
+- The routing table shows the default gateway.
+- `ping` tests network connectivity.
+- DNS translates domain names into IP addresses.
  # Lab 3 - Basic Network Diagnostics in Ubuntu
 
 ## Objective
