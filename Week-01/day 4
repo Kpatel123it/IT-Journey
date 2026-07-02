@@ -317,7 +317,21 @@ The Terminal is a command-line interface (CLI) that allows users to interact wit
 - Practice file permission commands
 - Continue documenting the IT learning journey on GitHub
 
----
+---# 🌍 Real-World Application
+
+The tasks completed today reflect common responsibilities performed by IT Support and System Administrators in real-world environments.
+
+- Installed and configured Ubuntu Linux in a virtual machine using VMware Workstation.
+- Used the Linux terminal to navigate directories and manage files.
+- Updated the operating system using the APT package manager.
+- Practiced essential Linux commands used for troubleshooting and system administration.
+- Built a virtual home lab that provides a safe environment to practice IT, Networking, and Cybersecurity skills without affecting the host computer.
+
+These foundational skills are valuable for entry-level IT Support, Help Desk, System Administration, Networking, and Cybersecurity roles.
+
+# 💬 Reflection
+
+Today I successfully installed Ubuntu Linux in VMware Workstation and completed the initial system configuration. I became familiar with the Linux terminal by practicing essential commands for file management, directory navigation, and system updates. Completing these hands-on exercises increased my confidence in working with Linux and strengthened the foundation for my future learning in Networking, System Administration, and Cybersecurity.
 
 ## 💬 Reflection
 
