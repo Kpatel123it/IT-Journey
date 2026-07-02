@@ -14,3 +14,34 @@ Topics Covered
 Outcome
 
 Understood how devices communicate over a network.
+ # Lab 3 - Basic Network Diagnostics in Ubuntu
+
+## Objective
+Learn how to inspect network configuration and test connectivity.
+
+## Commands Used
+
+```bash
+hostname
+hostname -I
+ip addr
+ip route
+ping google.com
+ping 8.8.8.8
+nslookup google.com
+traceroute google.com
+```
+
+## Results
+- Verified hostname.
+- Identified the VM's IP address.
+- Found the default gateway.
+- Confirmed Internet connectivity.
+- Verified DNS name resolution.
+- Observed the route to a remote server.
+
+## Skills Gained
+- Basic network troubleshooting
+- Reading network configuration
+- Testing DNS
+- Verifying connectivity
