@@ -1,0 +1,153 @@
+# Day 06 – Linux File Permissions & TCP vs UDP
+
+## 🎯 Objective
+
+Learn Linux file permissions and understand the differences between TCP and UDP.
+
+---
+
+# 📚 Theory Learned
+
+## Linux File Permissions
+
+Permission Types:
+
+- Read (r)
+- Write (w)
+- Execute (x)
+
+Permission Categories:
+
+- Owner
+- Group
+- Others
+
+Common Permission Values:
+
+| Numeric | Permission |
+|---------|------------|
+| 755 | rwxr-xr-x |
+| 644 | rw-r--r-- |
+| 600 | rw------- |
+| 700 | rwx------ |
+
+---
+
+## TCP
+
+Features:
+
+- Reliable
+- Connection-oriented
+- Error checking
+- Ordered delivery
+
+Examples:
+
+- HTTP
+- HTTPS
+- SSH
+- FTP
+
+---
+
+## UDP
+
+Features:
+
+- Faster
+- Connectionless
+- No acknowledgement
+
+Examples:
+
+- DNS
+- Streaming
+- VoIP
+- Gaming
+
+---
+
+# 💻 Practical Lab
+
+Linux:
+
+```bash
+mkdir PermissionLab
+touch notes.txt
+touch script.sh
+touch secret.txt
+ls -l
+chmod +x script.sh
+chmod -w notes.txt
+chmod 755 script.sh
+chmod 644 notes.txt
+chmod 600 secret.txt
+stat notes.txt
+```
+
+Networking:
+
+```bash
+ss -tuln
+netstat -tuln
+hostname -I
+ip addr
+ping google.com
+```
+
+---
+
+# 🧠 Concepts Learned
+
+- File permissions
+- chmod
+- Numeric permissions
+- TCP vs UDP
+- Open ports
+
+---
+
+# 🚀 Skills Gained
+
+- Managing Linux permissions
+- Viewing open network ports
+- Understanding reliable vs connectionless communication
+
+---
+
+# 🌍 Real-World Application
+
+Linux administrators manage file permissions to secure systems. Network administrators use TCP and UDP knowledge to troubleshoot application and connectivity issues.
+
+---
+
+# 📝 Key Takeaways
+
+- File permissions protect system resources.
+- `chmod` modifies file permissions.
+- TCP ensures reliable communication.
+- UDP provides faster communication for real-time applications.
+
+---
+
+# 🎤 Interview Questions
+
+1. What is the difference between TCP and UDP?
+2. What does `chmod` do?
+3. What is the meaning of permission `755`?
+4. Why is UDP used for streaming?
+
+---
+
+# 📅 Next Day Goals
+
+- Learn the OSI Model in detail.
+- Understand Linux users and groups.
+- Practice user management commands.
+
+---
+
+# 💬 Reflection
+
+Today I learned how Linux controls file access through permissions and how TCP and UDP differ in network communication. I also practiced modifying file permissions and inspecting open network ports.
