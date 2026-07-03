@@ -1,0 +1,88 @@
+# TCP vs UDP
+
+## Objective
+
+Understand the differences between TCP and UDP and when each protocol is used.
+
+---
+
+# What is TCP?
+
+TCP (Transmission Control Protocol) is a connection-oriented protocol that provides reliable communication between devices.
+
+## Features
+
+- Reliable
+- Connection-oriented
+- Error checking
+- Acknowledgements
+- Packet retransmission
+- Ordered delivery
+
+## Common Uses
+
+- HTTP
+- HTTPS
+- SSH
+- FTP
+- Email
+
+---
+
+# What is UDP?
+
+UDP (User Datagram Protocol) is a connectionless protocol that prioritizes speed over reliability.
+
+## Features
+
+- Faster than TCP
+- No acknowledgements
+- No retransmission
+- No connection setup
+
+## Common Uses
+
+- DNS
+- VoIP
+- Video Streaming
+- Online Gaming
+
+---
+
+# TCP vs UDP
+
+| Feature | TCP | UDP |
+|----------|-----|-----|
+| Reliable | Yes | No |
+| Connection | Yes | No |
+| Speed | Slower | Faster |
+| Error Checking | Yes | Limited |
+| Packet Order | Maintained | Not Guaranteed |
+
+---
+
+# TCP Three-Way Handshake
+
+1. SYN
+2. SYN-ACK
+3. ACK
+
+This process establishes a reliable connection before data transmission begins.
+
+---
+
+# Real-World Applications
+
+TCP is used when data accuracy is important, such as web browsing, file transfers, and email.
+
+UDP is used when speed is more important than reliability, such as online gaming, video streaming, and voice calls.
+
+---
+
+# Interview Questions
+
+1. What is the difference between TCP and UDP?
+2. Why is TCP considered reliable?
+3. Why is UDP faster?
+4. Give three examples of TCP applications.
+5. Give three examples of UDP applications.
