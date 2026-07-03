@@ -131,5 +131,263 @@ Keeping systems updated is an essential responsibility of IT administrators.
 /usr   - Applications
 
 /tmp   - Temporary files
+# Linux File System Hierarchy
+
+## What is the Linux File System?
+
+The Linux file system is a hierarchical structure that organizes all files and directories starting from a single root directory (`/`). Unlike Windows, Linux does not use drive letters (such as C: or D:). Everything in Linux is organized under the root directory.
+
+---
+
+# Linux Directory Structure
+
+```
+/
+├── bin
+├── boot
+├── dev
+├── etc
+├── home
+├── lib
+├── media
+├── mnt
+├── opt
+├── proc
+├── root
+├── run
+├── sbin
+├── srv
+├── sys
+├── tmp
+├── usr
+└── var
+```
+
+---
+
+# Important Linux Directories
+
+## /
+
+The root directory is the top-level directory in Linux. Every file and folder exists under this directory.
+
+Example:
+
+```bash
+cd /
+```
+
+---
+
+## /home
+
+Stores personal files and folders for normal users.
+
+Example:
+
+```text
+/home/kp
+```
+
+Typical contents:
+
+- Documents
+- Downloads
+- Pictures
+- Desktop
+
+---
+
+## /root
+
+The home directory of the root (administrator) user.
+
+Example:
+
+```text
+/ root
+```
+
+Only the root user has full access.
+
+---
+
+## /etc
+
+Stores system configuration files.
+
+Examples:
+
+- Network configuration
+- User account configuration
+- System services
+
+Example file:
+
+```text
+/etc/hosts
+```
+
+---
+
+## /usr
+
+Contains installed applications, user programs, libraries, and documentation.
+
+Examples:
+
+- Installed software
+- Commands
+- Shared libraries
+
+---
+
+## /var
+
+Stores files that change frequently.
+
+Examples:
+
+- Log files
+- Cache
+- Mail
+- Databases
+
+Common log location:
+
+```text
+/var/log
+```
+
+---
+
+## /tmp
+
+Stores temporary files.
+
+Files in this directory may be automatically deleted after a reboot.
+
+---
+
+## /boot
+
+Contains files required to start the operating system.
+
+Examples:
+
+- Linux kernel
+- Boot loader files
+
+---
+
+## /dev
+
+Contains device files representing hardware such as:
+
+- Hard drives
+- USB devices
+- Keyboard
+- Mouse
+
+---
+
+## /proc
+
+A virtual file system containing information about running processes and system resources.
+
+---
+
+# Absolute Path
+
+An absolute path always starts from the root directory (`/`).
+
+Example:
+
+```text
+/home/kp/Documents
+```
+
+No matter where you are, this path always points to the same location.
+
+---
+
+# Relative Path
+
+A relative path starts from your current working directory.
+
+Example:
+
+If you are currently in:
+
+```text
+/home/kp
+```
+
+then
+
+```text
+Documents
+```
+
+is a relative path.
+
+---
+
+# Absolute Path vs Relative Path
+
+| Absolute Path | Relative Path |
+|---------------|---------------|
+| Starts with `/` | Does not start with `/` |
+| Always points to the same location | Depends on your current directory |
+| Longer | Shorter |
+
+---
+
+# Root User
+
+The root user is the administrator account in Linux with complete control over the operating system.
+
+The root user can:
+
+- Install software
+- Delete system files
+- Create users
+- Change system settings
+
+Because the root account has unrestricted access, it should be used carefully.
+
+---
+
+# sudo Command
+
+The `sudo` command allows a normal user to temporarily perform administrative tasks without logging in as the root user.
+
+Example:
+
+```bash
+sudo apt update
+```
+
+Using `sudo` is more secure than working as the root user all the time.
+
+---
+
+# Real-World Application
+
+Understanding the Linux file system is essential for IT professionals because system files, user data, applications, logs, and configuration files are stored in different directories. Knowing where these files are located helps in troubleshooting, system administration, software installation, and server management.
+
+---
+
+# Key Takeaways
+
+- Linux uses a hierarchical file system starting from the root directory (`/`).
+- Every directory has a specific purpose.
+- The `/home` directory stores user files.
+- The `/etc` directory stores configuration files.
+- The `/var` directory contains logs and frequently changing data.
+- Absolute paths always begin with `/`.
+- Relative paths depend on the current working directory.
+- The root user has full administrative privileges.
+- `sudo` allows temporary administrative access while improving security.
 
 /boot  - Boot files
