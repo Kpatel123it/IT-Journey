@@ -391,3 +391,87 @@ Understanding the Linux file system is essential for IT professionals because sy
 - `sudo` allows temporary administrative access while improving security.
 
 /boot  - Boot files
+# Linux File Permissions
+
+## What are File Permissions?
+
+Linux file permissions determine who can read, write, or execute a file or directory.
+
+There are three permission types:
+
+- Read (r)
+- Write (w)
+- Execute (x)
+
+These permissions apply to three categories of users:
+
+- Owner
+- Group
+- Others
+
+Example:
+
+```text
+-rwxr-xr--
+```
+
+---
+
+## Understanding Permission Symbols
+
+- **r (Read):** Allows viewing the contents of a file.
+- **w (Write):** Allows modifying or deleting a file.
+- **x (Execute):** Allows running a file as a program or script.
+
+---
+
+## Numeric Permissions
+
+Linux also represents permissions using numbers.
+
+| Number | Permission |
+|--------:|------------|
+| 7 | Read + Write + Execute (rwx) |
+| 6 | Read + Write (rw-) |
+| 5 | Read + Execute (r-x) |
+| 4 | Read Only (r--) |
+| 0 | No Permission (---) |
+
+### Common Examples
+
+| Permission | Numeric |
+|------------|---------|
+| rwxr-xr-x | 755 |
+| rw-r--r-- | 644 |
+| rw------- | 600 |
+| rwx------ | 700 |
+| rwxrwxrwx | 777 |
+
+---
+
+## chmod Command
+
+The `chmod` command changes file or directory permissions.
+
+Examples:
+
+```bash
+chmod 755 script.sh
+chmod 644 notes.txt
+chmod +x script.sh
+chmod -w notes.txt
+```
+
+---
+
+## Best Practices
+
+- Avoid using `777` unless absolutely necessary.
+- Use the principle of least privilege by granting only the permissions required.
+- Regularly review file permissions on important system files.
+
+---
+
+## Real-World Application
+
+Managing file permissions is a daily responsibility for Linux administrators. Correct permissions help protect sensitive data, prevent unauthorized access, and improve overall system security.
