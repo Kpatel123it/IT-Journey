@@ -67,5 +67,98 @@ traceroute google.com
 ## Skills Gained
 - Basic network troubleshooting
 - Reading network configuration
+# Networking Hands-on Labs
+
+---
+
+# Lab 1 - Network Information
+
+## Objective
+
+Learn basic networking commands in Ubuntu.
+
+## Commands
+
+```bash
+hostname
+hostname -I
+ip addr
+ip route
+```
+
+## Skills Learned
+
+- Viewing hostname
+- Finding IP address
+- Viewing routing table
+
+---
+
+# Lab 2 - Connectivity Testing
+
+## Commands
+
+```bash
+ping google.com
+ping 8.8.8.8
+```
+
+## Skills Learned
+
+- Testing Internet connectivity
+- Measuring packet loss
+- Verifying network communication
+
+---
+
+# Lab 3 - DNS Testing
+
+## Commands
+
+```bash
+nslookup google.com
+```
+
+## Skills Learned
+
+- DNS resolution
+- Querying DNS servers
+
+---
+
+# Lab 4 - Route Tracing
+
+## Commands
+
+```bash
+traceroute google.com
+```
+
+## Skills Learned
+
+- Viewing packet paths
+- Understanding network hops
+
+---
+
+# Lab 5 - Open Ports
+
+## Commands
+
+```bash
+ss -tuln
+netstat -tuln
+```
+
+## Skills Learned
+
+- Viewing listening ports
+- Comparing modern and legacy networking tools
+
+---
+
+## Key Learning
+
+Linux provides powerful built-in networking tools that help IT professionals troubleshoot connectivity, routing, DNS, and network services.
 - Testing DNS
 - Verifying connectivity
