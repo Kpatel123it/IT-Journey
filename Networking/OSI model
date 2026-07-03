@@ -1,0 +1,67 @@
+# OSI Model
+
+## Layer 7 - Application
+Provides network services to end-user applications.
+
+Examples:
+- HTTP
+- HTTPS
+- DNS
+- FTP
+
+---
+
+## Layer 6 - Presentation
+Responsible for data formatting, encryption, and compression.
+
+Examples:
+- SSL/TLS
+- JPEG
+- PNG
+
+---
+
+## Layer 5 - Session
+Creates, manages, and terminates communication sessions.
+
+Examples:
+- NetBIOS
+- RPC
+
+---
+
+## Layer 4 - Transport
+Provides reliable communication.
+
+Protocols:
+- TCP
+- UDP
+
+---
+
+## Layer 3 - Network
+Responsible for routing.
+
+Device:
+Router
+
+Protocol:
+IP
+
+---
+
+## Layer 2 - Data Link
+Uses MAC addresses.
+
+Device:
+Switch
+
+---
+
+## Layer 1 - Physical
+Transmits electrical or optical signals.
+
+Devices:
+Hub
+Repeater
+Cable
