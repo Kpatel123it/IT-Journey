@@ -72,5 +72,216 @@ touch notes.txt
 | `cp` | Copies files |
 | `mv` | Moves or renames files |
 | `rm` | Deletes files |
+# Linux Commands Reference
+
+---
+
+## whoami
+
+Displays the currently logged-in user.
+
+```bash
+whoami
+```
+
+---
+
+## pwd
+
+Displays the current working directory.
+
+```bash
+pwd
+```
+
+---
+
+## ls
+
+Lists files and folders.
+
+```bash
+ls
+```
+
+---
+
+## ls -la
+
+Lists all files including hidden files.
+
+```bash
+ls -la
+```
+
+---
+
+## mkdir
+
+Creates a directory.
+
+```bash
+mkdir FolderName
+```
+
+---
+
+## cd
+
+Changes the current directory.
+
+```bash
+cd FolderName
+```
+
+---
+
+## touch
+
+Creates an empty file.
+
+```bash
+touch notes.txt
+```
+
+---
+
+## cp
+
+Copies a file.
+
+```bash
+cp file1.txt file2.txt
+```
+
+---
+
+## mv
+
+Moves or renames a file.
+
+```bash
+mv file1.txt file2.txt
+```
+
+---
+
+## rm
+
+Deletes a file.
+
+```bash
+rm notes.txt
+```
+
+---
+
+## find
+
+Searches for files and folders.
+
+```bash
+find . -name "*.txt"
+```
+
+---
+
+## history
+
+Displays previously executed commands.
+
+```bash
+history
+```
+
+---
+
+## hostname
+
+Displays the computer hostname.
+
+```bash
+hostname
+```
+
+---
+
+## hostname -I
+
+Displays the IP address.
+
+```bash
+hostname -I
+```
+
+---
+
+## ip addr
+
+Displays network interfaces.
+
+```bash
+ip addr
+```
+
+---
+
+## ip route
+
+Displays the routing table.
+
+```bash
+ip route
+```
+
+---
+
+## ping
+
+Tests network connectivity.
+
+```bash
+ping google.com
+```
+
+---
+
+## nslookup
+
+Queries DNS information.
+
+```bash
+nslookup google.com
+```
+
+---
+
+## traceroute
+
+Shows the route packets take.
+
+```bash
+traceroute google.com
+```
+
+---
+
+## chmod
+
+Changes file permissions.
+
+```bash
+chmod 755 script.sh
+```
+
+---
+
+## stat
+
+Displays detailed file information.
+
+```bash
+stat notes.txt
+```
 | `find` | Searches for files and directories |
 | `history` | Displays previously executed commands |
