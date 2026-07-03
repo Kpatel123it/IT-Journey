@@ -1,0 +1,122 @@
+# Day 05 – Linux File System Hierarchy & Basic Networking Diagnostics
+
+## 🎯 Objective
+
+Understand the Linux file system structure and practice basic network troubleshooting commands.
+
+---
+
+# 📚 Theory Learned
+
+## Linux File System Hierarchy
+
+Important directories:
+
+- /
+- /home
+- /etc
+- /usr
+- /var
+- /tmp
+- /boot
+- /root
+
+---
+
+## Absolute Path
+
+Always starts from the root directory.
+
+Example:
+
+/home/kp/Documents
+
+---
+
+## Relative Path
+
+Starts from the current directory.
+
+Example:
+
+Documents
+
+---
+
+## Root User
+
+The root user has full administrative privileges.
+
+---
+
+## sudo
+
+Allows normal users to perform administrative tasks securely.
+
+---
+
+# 💻 Practical Lab
+
+Commands used:
+
+```bash
+hostname
+hostname -I
+ip addr
+ip route
+ping google.com
+ping 8.8.8.8
+nslookup google.com
+traceroute google.com
+```
+
+---
+
+# 🧠 Concepts Learned
+
+- Linux directory structure
+- Absolute vs relative paths
+- Root user
+- DNS testing
+- Routing table
+- Internet connectivity
+
+---
+
+# 🚀 Skills Gained
+
+- Reading IP configuration
+- Testing connectivity
+- DNS troubleshooting
+- Understanding Linux directories
+
+---
+
+# 🌍 Real-World Application
+
+IT Support technicians frequently use networking commands to troubleshoot Internet connectivity and DNS-related issues.
+
+---
+
+# 📝 Key Takeaways
+
+- Linux stores files in a structured hierarchy.
+- The root directory is the top-level directory.
+- `sudo` provides temporary administrative privileges.
+- Networking commands help diagnose connectivity issues.
+
+---
+
+# 🎤 Interview Questions
+
+1. What is the root directory?
+2. What is the purpose of `/etc`?
+3. What is the difference between an absolute and a relative path?
+4. What does `ip route` display?
+5. Why do we use `ping`?
+
+---
+
+# 💬 Reflection
+
+Today I learned how Linux organizes files and how to inspect network settings using Linux commands. I also practiced troubleshooting network connectivity.
