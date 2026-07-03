@@ -28,5 +28,77 @@ Skills Learned
 - Creating files
 - Copying files
 - Renaming files
+# Lab 2 - Linux Networking Basics
+
+## Objective
+
+Learn how to inspect network configuration and test connectivity.
+
+## Commands Used
+
+```bash
+hostname
+hostname -I
+ip addr
+ip route
+ping google.com
+ping 8.8.8.8
+nslookup google.com
+traceroute google.com
+```
+
+## Skills Practiced
+
+- Viewing hostname
+- Finding IP address
+- Viewing routing table
+- Testing Internet connectivity
+- Testing DNS resolution
+- Tracing packet routes
+
+---
+
+# Lab 3 - Linux File Permissions
+
+## Objective
+
+Learn Linux file permissions using symbolic and numeric methods.
+
+## Commands Used
+
+```bash
+mkdir PermissionLab
+cd PermissionLab
+
+touch notes.txt
+touch script.sh
+touch secret.txt
+
+ls -l
+
+chmod +x script.sh
+chmod -w notes.txt
+chmod 777 secret.txt
+chmod 755 script.sh
+chmod 644 notes.txt
+chmod 600 secret.txt
+
+ls -l
+stat notes.txt
+```
+
+## Skills Practiced
+
+- Viewing permissions
+- Changing permissions
+- Numeric permissions
+- Symbolic permissions
+- Viewing file metadata
+
+---
+
+## Key Learning
+
+Linux permissions are essential for protecting files and controlling access to system resources.
 - Deleting files
 - Searching files
