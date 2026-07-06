@@ -475,3 +475,116 @@ chmod -w notes.txt
 ## Real-World Application
 
 Managing file permissions is a daily responsibility for Linux administrators. Correct permissions help protect sensitive data, prevent unauthorized access, and improve overall system security.
+# Linux Users and Groups
+
+## What is a User?
+
+A user is an account that can access a Linux system. Every user has a unique User ID (UID) and belongs to one or more groups.
+
+### Types of Users
+
+- Root User
+- Regular User
+- System User
+
+---
+
+## Root User
+
+The root user is the administrator of Linux and has unrestricted access to the system.
+
+Characteristics:
+
+- UID = 0
+- Full control
+- Can install software
+- Can modify system files
+
+---
+
+## Regular User
+
+A standard account used for daily tasks.
+
+Regular users have limited permissions and can use `sudo` for administrative actions.
+
+---
+
+## System Users
+
+System users run background services and applications.
+
+Examples:
+
+- daemon
+- mysql
+- www-data
+
+---
+
+# What is a Group?
+
+A group is a collection of users used to simplify permission management.
+
+Examples:
+
+- sudo
+- adm
+- users
+
+---
+
+# Important Files
+
+## /etc/passwd
+
+Contains:
+
+- Username
+- UID
+- GID
+- Home Directory
+- Default Shell
+
+---
+
+## /etc/group
+
+Contains:
+
+- Group Name
+- Group ID
+- Group Members
+
+---
+
+## /etc/shadow
+
+Stores encrypted passwords and is accessible only by the root user.
+
+---
+
+# Common Commands
+
+```bash
+whoami
+who
+id
+groups
+cat /etc/passwd
+cat /etc/group
+echo $USER
+echo $HOME
+echo $SHELL
+```
+
+---
+
+# Key Takeaways
+
+- Every user has a unique UID.
+- Groups help manage permissions.
+- `/etc/passwd` stores user account information.
+- `/etc/group` stores group information.
+- `/etc/shadow` stores encrypted passwords.
+- Root users have unrestricted access, while regular users use `sudo` for administrative tasks.
