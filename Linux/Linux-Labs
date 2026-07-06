@@ -102,3 +102,36 @@ stat notes.txt
 Linux permissions are essential for protecting files and controlling access to system resources.
 - Deleting files
 - Searching files
+# Lab 4 – Linux Users and Groups
+
+## Objective
+
+Learn how Linux manages user accounts, groups, and user-related system files.
+
+## Commands Used
+
+```bash
+whoami
+who
+id
+groups
+cat /etc/passwd
+cat /etc/group
+echo $USER
+echo $HOME
+echo $SHELL
+```
+
+## Skills Practiced
+
+- Identifying the current user
+- Viewing logged-in users
+- Checking UID and GID
+- Viewing group memberships
+- Reading user account information
+- Reading group information
+- Viewing environment variables
+
+## Result
+
+Successfully explored Linux user management and understood how user and group information is stored on the system.
