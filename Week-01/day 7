@@ -1,0 +1,314 @@
+# Day 07 – Linux Users & Groups and OSI Model
+
+## 🎯 Objective
+
+Today's goal was to understand how Linux manages users and groups, learn important user-related files and commands, and study the OSI Model used in computer networking.
+
+---
+
+# 📚 Linux Theory
+
+## Linux Users
+
+A user is an account that can log in to a Linux system. Every user has a unique User ID (UID) and belongs to one or more groups.
+
+### Types of Users
+
+### 1. Root User
+
+- Superuser of Linux
+- Has unrestricted access to the entire system
+- User ID (UID) = 0
+- Can install software, create users, delete files, and modify system settings
+
+---
+
+### 2. Regular User
+
+A standard user account used for daily work.
+
+Example:
+
+kp
+
+Regular users have limited permissions and use `sudo` to perform administrative tasks.
+
+---
+
+### 3. System Users
+
+These accounts are created automatically by Linux to run system services.
+
+Examples:
+
+- daemon
+- www-data
+- mysql
+- nobody
+
+These users usually cannot log in.
+
+---
+
+# Linux Groups
+
+A group is a collection of users.
+
+Groups simplify permission management by allowing multiple users to share access to files and directories.
+
+Examples:
+
+- sudo
+- adm
+- users
+
+---
+
+# Important Linux Files
+
+## /etc/passwd
+
+Stores basic information about all user accounts.
+
+Information includes:
+
+- Username
+- UID
+- GID
+- Home Directory
+- Default Shell
+
+---
+
+## /etc/group
+
+Stores all groups available on the system.
+
+Contains:
+
+- Group Name
+- Group ID
+- Group Members
+
+---
+
+## /etc/shadow
+
+Stores encrypted user passwords.
+
+Only the root user can access this file.
+
+---
+
+# Commands Learned
+
+| Command | Purpose |
+|----------|---------|
+| whoami | Displays current user |
+| who | Displays logged-in users |
+| id | Displays UID, GID and groups |
+| groups | Displays user groups |
+| cat /etc/passwd | Lists user accounts |
+| cat /etc/group | Lists system groups |
+| echo $USER | Displays current username |
+| echo $HOME | Displays home directory |
+| echo $SHELL | Displays default shell |
+
+---
+
+# 🌐 Networking Theory
+
+## OSI Model
+
+The Open Systems Interconnection (OSI) Model is a conceptual framework used to understand how data travels between devices over a network.
+
+---
+
+### Layer 7 – Application
+
+Provides network services directly to end-user applications.
+
+Examples:
+
+- HTTP
+- HTTPS
+- DNS
+- FTP
+
+---
+
+### Layer 6 – Presentation
+
+Responsible for:
+
+- Data formatting
+- Encryption
+- Compression
+
+Examples:
+
+- SSL
+- TLS
+- JPEG
+- PNG
+
+---
+
+### Layer 5 – Session
+
+Creates, maintains and terminates communication sessions.
+
+Examples:
+
+- NetBIOS
+- RPC
+
+---
+
+### Layer 4 – Transport
+
+Responsible for reliable communication.
+
+Protocols:
+
+- TCP
+- UDP
+
+---
+
+### Layer 3 – Network
+
+Responsible for routing data between networks.
+
+Uses:
+
+- IP Address
+
+Device:
+
+- Router
+
+---
+
+### Layer 2 – Data Link
+
+Responsible for communication within the same network.
+
+Uses:
+
+- MAC Address
+
+Device:
+
+- Switch
+
+---
+
+### Layer 1 – Physical
+
+Responsible for transmitting electrical or optical signals.
+
+Examples:
+
+- Ethernet Cable
+- Fiber Cable
+- Hub
+- Repeater
+
+---
+
+# 🖥️ Practical Work Completed
+
+## Linux Commands
+
+Executed:
+
+```bash
+whoami
+who
+id
+groups
+cat /etc/passwd
+cat /etc/group
+echo $USER
+echo $HOME
+echo $SHELL
+```
+
+---
+
+## Networking Commands
+
+Executed:
+
+```bash
+hostname
+hostname -I
+ip addr
+ip route
+ping google.com
+ss -tuln
+```
+
+---
+
+# 🚀 Skills Gained
+
+- Identified Linux users and groups
+- Understood Linux account management
+- Explored important Linux configuration files
+- Learned the seven layers of the OSI Model
+- Identified IP addresses and network interfaces
+- Viewed listening TCP and UDP ports
+
+---
+
+# 🌍 Real-World Application
+
+Linux administrators create and manage user accounts, assign permissions, and secure systems using users and groups.
+
+Network administrators use the OSI Model to troubleshoot communication problems by identifying the layer where an issue occurs.
+
+---
+
+# 📝 Key Takeaways
+
+- Every Linux user has a unique UID.
+- Groups simplify permission management.
+- `/etc/passwd` stores user information.
+- `/etc/group` stores group information.
+- `/etc/shadow` stores encrypted passwords.
+- The OSI Model contains seven layers.
+- Each OSI layer has a specific responsibility in network communication.
+
+---
+
+# 📸 Evidence
+
+Screenshots captured:
+
+- whoami
+- id
+- groups
+- cat /etc/passwd
+- cat /etc/group
+- ip addr
+- ss -tuln
+
+---
+
+# 🎤 Interview Questions
+
+1. What is the difference between a root user and a regular user?
+2. What information is stored in `/etc/passwd`?
+3. What is the purpose of `/etc/group`?
+4. Which OSI layer is responsible for routing?
+5. Which layer uses MAC addresses?
+6. What protocols operate at the Transport layer?
+7. What is the purpose of the Presentation layer?
+
+---
+
+# 💬 Reflection
+
+Today I learned how Linux manages users and groups and explored important system files related to user accounts. I also studied the OSI Model and understood the role of each layer in network communication. Through practical commands, I gained hands-on experience inspecting user information and basic network configuration.
