@@ -1,0 +1,93 @@
+# TCP/IP Model
+
+## What is TCP/IP?
+
+The TCP/IP (Transmission Control Protocol/Internet Protocol) model is the practical networking model used for communication on the Internet.
+
+---
+
+## Layers of the TCP/IP Model
+
+### 1. Application Layer
+
+Provides services directly to user applications.
+
+Examples:
+
+- HTTP
+- HTTPS
+- FTP
+- DNS
+- SMTP
+
+---
+
+### 2. Transport Layer
+
+Responsible for reliable communication between devices.
+
+Protocols:
+
+- TCP
+- UDP
+
+---
+
+### 3. Internet Layer
+
+Responsible for logical addressing and routing.
+
+Protocol:
+
+- IP
+
+Device:
+
+- Router
+
+---
+
+### 4. Network Access Layer
+
+Responsible for transmitting data across the physical network.
+
+Examples:
+
+- Ethernet
+- Wi-Fi
+
+Devices:
+
+- Switch
+- Network Interface Card (NIC)
+
+---
+
+## Encapsulation
+
+Data is wrapped with protocol headers as it travels down the TCP/IP layers before transmission.
+
+---
+
+## Decapsulation
+
+Protocol headers are removed layer by layer when data reaches the receiving device.
+
+---
+
+## OSI vs TCP/IP
+
+| OSI | TCP/IP |
+|------|---------|
+| 7 Layers | 4 Layers |
+| Reference Model | Practical Model |
+| Used for learning | Used in real-world networking |
+
+---
+
+## Key Takeaways
+
+- TCP/IP is the networking model used on the Internet.
+- It consists of four layers.
+- Encapsulation prepares data for transmission.
+- Decapsulation restores the original data at the destination.
