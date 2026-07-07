@@ -31,13 +31,6 @@ ping 8.8.8.8
 ping google.com
 ```
 
-## What I Learned
-
-- Every computer has a hostname.
-- My Ubuntu VM received an IP address.
-- The routing table shows the default gateway.
-- `ping` tests network connectivity.
-- DNS translates domain names into IP addresses.
  # Lab 3 - Basic Network Diagnostics in Ubuntu
 
 ## Objective
@@ -160,5 +153,48 @@ netstat -tuln
 ## Key Learning
 
 Linux provides powerful built-in networking tools that help IT professionals troubleshoot connectivity, routing, DNS, and network services.
+
+# Lab 4 – Basic Network Configuration
+
+## Objective
+
+Explore the local network configuration using Linux networking commands.
+
+---
+
+## Commands Used
+
+```bash
+hostname
+hostname -I
+ip addr
+ip route
+ping 8.8.8.8
+ping google.com
+```
+
+---
+
+## Skills Practiced
+
+- Viewing hostname
+- Identifying IP address
+- Viewing network interfaces
+- Checking routing information
+- Testing Internet connectivity
+- Testing DNS name resolution
+
+---
+
+## Result
+
+Successfully identified the system hostname, IP address, routing information, and confirmed network connectivity using ICMP ping tests.
+## What I Learned
+
+- Every computer has a hostname.
+- My Ubuntu VM received an IP address.
+- The routing table shows the default gateway.
+- `ping` tests network connectivity.
+- DNS translates domain names into IP addresses.
 - Testing DNS
 - Verifying connectivity
