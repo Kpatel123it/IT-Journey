@@ -587,4 +587,67 @@ echo $SHELL
 - `/etc/passwd` stores user account information.
 - `/etc/group` stores group information.
 - `/etc/shadow` stores encrypted passwords.
+# Linux User Management
+
+## What is User Management?
+
+User management is the process of creating, modifying, and deleting user accounts in Linux.
+
+Every user has:
+
+- Username
+- User ID (UID)
+- Group ID (GID)
+- Home Directory
+- Login Shell
+
+---
+
+## adduser vs useradd
+
+### adduser
+
+- Interactive command
+- Creates home directory automatically
+- Recommended for beginners
+
+### useradd
+
+- Low-level command
+- Requires manual configuration
+- Commonly used in scripts
+
+---
+
+## Sudo
+
+The `sudo` command allows a regular user to execute administrative commands temporarily without logging in as the root user.
+
+Example:
+
+```bash
+sudo apt update
+```
+
+---
+
+## Common User Management Commands
+
+```bash
+sudo adduser username
+sudo passwd username
+id username
+groups username
+sudo usermod -aG sudo username
+sudo deluser username
+```
+
+---
+
+## Key Takeaways
+
+- Each user has a unique UID.
+- Administrative tasks should be performed using `sudo`.
+- Groups simplify permission management.
+- User accounts improve security and accountability.
 - Root users have unrestricted access, while regular users use `sudo` for administrative tasks.
