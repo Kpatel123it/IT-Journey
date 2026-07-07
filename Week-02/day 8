@@ -1,0 +1,258 @@
+# Day 08 – Linux User Management & TCP/IP Model
+
+## 🎯 Objective
+
+Today's objective was to learn how Linux administrators create and manage user accounts, understand the purpose of the `sudo` command, and study the TCP/IP model used in modern computer networks. Practical exercises included creating a temporary user, managing group membership, and reviewing basic network configuration.
+
+---
+
+# 🐧 Linux Theory
+
+## User Management
+
+User management is the process of creating, modifying, and deleting user accounts in a Linux operating system. Every user has a unique User ID (UID) and belongs to one or more groups.
+
+Benefits of user management:
+
+- Improves system security
+- Provides accountability
+- Controls access to files and directories
+- Allows multiple users to safely share one system
+
+---
+
+## adduser vs useradd
+
+### adduser
+
+- User-friendly command
+- Interactive
+- Automatically creates a home directory
+- Creates default configuration files
+
+### useradd
+
+- Low-level command
+- Requires manual configuration
+- Mostly used in scripts
+
+---
+
+## Sudo
+
+The `sudo` command allows a regular user to temporarily execute commands with administrator (root) privileges.
+
+Example:
+
+```bash
+sudo apt update
+```
+
+Using `sudo` is safer than logging in directly as the root user because it limits administrative access to only the commands that require it.
+
+---
+
+## User Management Commands
+
+| Command | Description |
+|----------|-------------|
+| sudo adduser testuser | Creates a new user |
+| sudo passwd testuser | Changes user password |
+| id testuser | Displays user information |
+| groups testuser | Displays user groups |
+| sudo usermod -aG sudo testuser | Adds user to sudo group |
+| sudo deluser testuser | Deletes user |
+
+---
+
+# 🌐 Networking Theory
+
+## TCP/IP Model
+
+The TCP/IP Model is the networking model used by the Internet. It explains how data is transmitted between devices.
+
+---
+
+### TCP/IP Layers
+
+### 1. Application Layer
+
+Provides network services to user applications.
+
+Examples:
+
+- HTTP
+- HTTPS
+- FTP
+- SMTP
+- DNS
+
+---
+
+### 2. Transport Layer
+
+Responsible for end-to-end communication.
+
+Protocols:
+
+- TCP
+- UDP
+
+Responsibilities:
+
+- Reliability
+- Error checking
+- Flow control
+
+---
+
+### 3. Internet Layer
+
+Responsible for routing packets between networks.
+
+Protocol:
+
+- IP
+
+Device:
+
+- Router
+
+---
+
+### 4. Network Access Layer
+
+Responsible for sending data over the physical network.
+
+Examples:
+
+- Ethernet
+- Wi-Fi
+
+Devices:
+
+- Switch
+- Network Interface Card (NIC)
+
+---
+
+# OSI vs TCP/IP
+
+| OSI Model | TCP/IP Model |
+|------------|--------------|
+| 7 Layers | 4 Layers |
+| Conceptual Model | Practical Model |
+| Used for learning | Used on the Internet |
+
+---
+
+# Encapsulation
+
+Encapsulation is the process of adding protocol headers to data as it moves down the TCP/IP layers before being transmitted across the network.
+
+---
+
+# Decapsulation
+
+Decapsulation is the reverse process where each layer removes its corresponding header until the original application data is received.
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+whoami
+id
+groups
+sudo adduser testuser
+id testuser
+groups testuser
+sudo usermod -aG sudo testuser
+groups testuser
+sudo deluser testuser
+```
+
+---
+
+## Networking Commands
+
+```bash
+hostname
+hostname -I
+ip addr
+ip route
+ping 8.8.8.8
+ping google.com
+```
+
+---
+
+# 🚀 Skills Gained
+
+- Created a new Linux user
+- Verified user information
+- Viewed user groups
+- Added a user to the sudo group
+- Deleted a temporary user
+- Learned how Linux manages user accounts
+- Compared the TCP/IP model with the OSI model
+- Understood encapsulation and decapsulation
+- Reviewed network configuration commands
+
+---
+
+# 🌍 Real-World Application
+
+System administrators create user accounts for new employees, assign appropriate permissions, and manage access using groups.
+
+Network administrators use the TCP/IP model to understand how information travels between computers and to troubleshoot network communication issues.
+
+---
+
+# 📝 Key Takeaways
+
+- Every Linux user has a unique UID.
+- `sudo` provides temporary administrative privileges.
+- `adduser` is easier to use than `useradd`.
+- The TCP/IP model has four layers.
+- The Internet uses the TCP/IP model for communication.
+- Encapsulation adds protocol headers before transmission.
+- Decapsulation removes headers when data is received.
+
+---
+
+# 📸 Evidence
+
+Screenshots captured:
+
+- whoami
+- id
+- sudo adduser testuser
+- id testuser
+- groups testuser
+- sudo usermod -aG sudo testuser
+- hostname -I
+- ip addr
+- ip route
+- ping google.com
+
+---
+
+# 🎤 Interview Questions
+
+1. What is the purpose of the `sudo` command?
+2. What is the difference between `adduser` and `useradd`?
+3. How do you check a user's UID?
+4. How do you add a user to the sudo group?
+5. What are the four layers of the TCP/IP model?
+6. What is encapsulation?
+7. What is decapsulation?
+8. What is the difference between the OSI model and the TCP/IP model?
+
+---
+
+# 💬 Reflection
+
+Today I learned how Linux administrators manage user accounts and assign administrative privileges using the sudo group. I also studied the TCP/IP model and understood how data travels across networks through encapsulation and decapsulation. The practical exercises improved my confidence in basic Linux administration and networking concepts.
