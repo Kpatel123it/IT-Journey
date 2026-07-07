@@ -135,3 +135,41 @@ echo $SHELL
 ## Result
 
 Successfully explored Linux user management and understood how user and group information is stored on the system.
+# Lab 5 – Linux User Management
+
+## Objective
+
+Practice creating, modifying, and deleting Linux user accounts.
+
+---
+
+## Commands Used
+
+```bash
+whoami
+id
+groups
+sudo adduser testuser
+id testuser
+groups testuser
+sudo usermod -aG sudo testuser
+groups testuser
+sudo deluser testuser
+```
+
+---
+
+## Skills Practiced
+
+- Viewing current user information
+- Creating a new user
+- Viewing user details
+- Viewing user groups
+- Adding a user to the sudo group
+- Removing a temporary user
+
+---
+
+## Result
+
+Successfully created a temporary user account, verified user information, assigned administrative privileges, and removed the user after completing the lab.
