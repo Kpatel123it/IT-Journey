@@ -1,0 +1,37 @@
+# MAC Address
+
+## What is a MAC Address?
+
+A MAC (Media Access Control) address is a unique physical address assigned to every Network Interface Card (NIC).
+
+Example:
+
+08:00:27:2B:5A:91
+
+---
+
+## Characteristics
+
+- Unique identifier
+- Layer 2 address
+- Used inside Local Area Networks (LAN)
+- Usually permanent
+
+---
+
+## IP Address vs MAC Address
+
+| IP Address | MAC Address |
+|-------------|-------------|
+| Logical Address | Physical Address |
+| Layer 3 | Layer 2 |
+| Can change | Usually fixed |
+| Used for routing | Used for local communication |
+
+---
+
+## Key Takeaways
+
+- Every network interface has a MAC address.
+- MAC addresses enable communication within a LAN.
+- Routers use IP addresses; switches use MAC addresses.
