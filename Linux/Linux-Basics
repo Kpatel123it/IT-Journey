@@ -651,3 +651,81 @@ sudo deluser username
 - Groups simplify permission management.
 - User accounts improve security and accountability.
 - Root users have unrestricted access, while regular users use `sudo` for administrative tasks.
+# Linux File Ownership
+
+## What is File Ownership?
+
+Every file and directory in Linux belongs to:
+
+- Owner (User)
+- Group
+
+Ownership controls who can access or modify a file.
+
+---
+
+## Viewing Ownership
+
+```bash
+ls -l
+```
+
+Example:
+
+```text
+-rw-r--r-- 1 kp kp file1.txt
+```
+
+- First **kp** = Owner
+- Second **kp** = Group
+
+---
+
+## Changing Owner
+
+```bash
+sudo chown username filename
+```
+
+Example:
+
+```bash
+sudo chown testuser file1.txt
+```
+
+---
+
+## Changing Group
+
+```bash
+sudo chgrp groupname filename
+```
+
+Example:
+
+```bash
+sudo chgrp sudo file1.txt
+```
+
+---
+
+## Changing Owner and Group Together
+
+```bash
+sudo chown user:group filename
+```
+
+Example:
+
+```bash
+sudo chown testuser:sudo file1.txt
+```
+
+---
+
+## Key Takeaways
+
+- Every file has an owner and group.
+- Ownership improves security.
+- `chown` changes ownership.
+- `chgrp` changes group ownership.
