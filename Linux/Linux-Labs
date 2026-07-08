@@ -173,3 +173,43 @@ sudo deluser testuser
 ## Result
 
 Successfully created a temporary user account, verified user information, assigned administrative privileges, and removed the user after completing the lab.
+# Lab 6 – Linux File Ownership
+
+## Objective
+
+Practice viewing and changing Linux file ownership and group ownership.
+
+---
+
+## Commands Used
+
+```bash
+pwd
+mkdir ownership-lab
+cd ownership-lab
+touch file1.txt
+touch file2.txt
+touch file3.txt
+ls -l
+whoami
+sudo chown testuser file1.txt
+sudo chgrp sudo file1.txt
+sudo chown testuser:sudo file2.txt
+ls -l
+```
+
+---
+
+## Skills Practiced
+
+- Viewing ownership
+- Creating files
+- Changing owner
+- Changing group
+- Verifying ownership
+
+---
+
+## Result
+
+Successfully viewed file ownership, changed file owners, modified group ownership, and verified changes using `ls -l`.
