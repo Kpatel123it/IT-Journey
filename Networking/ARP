@@ -1,0 +1,40 @@
+# Address Resolution Protocol (ARP)
+
+## What is ARP?
+
+ARP (Address Resolution Protocol) maps an IPv4 address to a MAC address on a local network.
+
+---
+
+## How ARP Works
+
+1. Device knows the destination IP address.
+2. It checks the ARP cache.
+3. If no entry exists, it sends an ARP Request:
+   - "Who has 192.168.1.1?"
+4. The destination device replies with its MAC address.
+5. Communication begins.
+
+---
+
+## Commands
+
+```bash
+ip neigh
+ip addr
+ip link
+```
+
+---
+
+## Why ARP is Important
+
+ARP allows devices on the same network to discover each other's physical addresses, enabling Ethernet communication.
+
+---
+
+## Key Takeaways
+
+- ARP works only within a local network.
+- ARP resolves IP addresses to MAC addresses.
+- Without ARP, local communication would fail.
