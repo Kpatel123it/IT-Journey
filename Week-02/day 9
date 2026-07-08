@@ -1,0 +1,242 @@
+# Day 09 – Linux File Ownership, Groups & ARP (Address Resolution Protocol)
+
+## 🎯 Objective
+
+Today's objective was to understand Linux file ownership and group ownership, learn how to change ownership using `chown` and `chgrp`, and study how devices communicate on a Local Area Network (LAN) using MAC addresses and the Address Resolution Protocol (ARP).
+
+---
+
+# 🐧 Linux Theory
+
+## What is File Ownership?
+
+Every file and directory in Linux has an owner and an associated group.
+
+Ownership helps Linux determine who can read, write, or execute a file.
+
+Every file contains three permission categories:
+
+- Owner (User)
+- Group
+- Others
+
+Example:
+
+-rw-r--r-- 1 kp kp file1.txt
+
+The first **kp** represents the owner, and the second **kp** represents the group.
+
+---
+
+## Why File Ownership is Important
+
+File ownership improves security by ensuring that only authorized users can modify important files.
+
+Examples:
+
+- Employee documents
+- Company databases
+- System configuration files
+
+---
+
+## Commands Learned
+
+| Command | Purpose |
+|----------|---------|
+| ls -l | View file ownership and permissions |
+| whoami | Display current user |
+| pwd | Display current working directory |
+| sudo chown user file | Change file owner |
+| sudo chgrp group file | Change file group |
+| sudo chown user:group file | Change owner and group together |
+
+---
+
+## chown
+
+The `chown` command changes the owner of a file or directory.
+
+Example:
+
+```bash
+sudo chown testuser file1.txt
+```
+
+---
+
+## chgrp
+
+The `chgrp` command changes the group ownership of a file.
+
+Example:
+
+```bash
+sudo chgrp sudo file1.txt
+```
+
+---
+
+## Changing Both Owner and Group
+
+Example:
+
+```bash
+sudo chown testuser:sudo file2.txt
+```
+
+---
+
+# 🌐 Networking Theory
+
+## MAC Address
+
+A MAC (Media Access Control) address is a unique physical address assigned to every Network Interface Card (NIC).
+
+Example:
+
+08:00:27:2B:5A:91
+
+Characteristics:
+
+- Unique for each device
+- Used inside the local network
+- Operates at Layer 2 of the OSI Model
+
+---
+
+## IP Address vs MAC Address
+
+| IP Address | MAC Address |
+|-------------|-------------|
+| Logical Address | Physical Address |
+| Can change | Usually permanent |
+| Used between networks | Used inside local network |
+| Layer 3 | Layer 2 |
+
+---
+
+## ARP (Address Resolution Protocol)
+
+ARP is used to find the MAC address of a device when its IP address is already known.
+
+Example:
+
+Computer wants to communicate with:
+
+192.168.1.1
+
+The computer sends an ARP request:
+
+"Who has 192.168.1.1?"
+
+The router replies with its MAC address.
+
+Communication can then begin.
+
+---
+
+## Why ARP is Important
+
+Without ARP, devices on the same LAN would not know the destination MAC address required to deliver Ethernet frames.
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+pwd
+mkdir ownership-lab
+cd ownership-lab
+touch file1.txt
+touch file2.txt
+touch file3.txt
+ls -l
+whoami
+sudo adduser testuser
+sudo chown testuser file1.txt
+sudo chgrp sudo file1.txt
+sudo chown testuser:sudo file2.txt
+ls -l
+sudo deluser testuser
+```
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+ip link
+ip neigh
+ping 8.8.8.8
+ping google.com
+```
+
+---
+
+# 🚀 Skills Gained
+
+- Understood Linux file ownership
+- Changed file owner using `chown`
+- Changed file group using `chgrp`
+- Compared IP and MAC addresses
+- Learned how ARP works
+- Explored network interface information
+- Viewed ARP neighbor table
+
+---
+
+# 🌍 Real-World Application
+
+Linux administrators frequently change ownership of files when onboarding or offboarding employees.
+
+Network administrators rely on ARP to troubleshoot communication issues within local area networks.
+
+---
+
+# 📝 Key Takeaways
+
+- Every Linux file has an owner and a group.
+- `chown` changes ownership.
+- `chgrp` changes group ownership.
+- MAC addresses identify devices on a LAN.
+- IP addresses identify devices across networks.
+- ARP resolves an IP address to a MAC address.
+
+---
+
+# 📸 Evidence
+
+Screenshots captured:
+
+- pwd
+- ls -l
+- whoami
+- chown command
+- chgrp command
+- ip addr
+- ip link
+- ip neigh
+- ping 8.8.8.8
+
+---
+
+# 🎤 Interview Questions
+
+1. What is file ownership in Linux?
+2. What is the difference between Owner and Group?
+3. What does `chown` do?
+4. What does `chgrp` do?
+5. What is a MAC address?
+6. What is the difference between a MAC address and an IP address?
+7. What is ARP?
+8. Which OSI layer uses MAC addresses?
+
+---
+
+# 💬 Reflection
+
+Today I learned how Linux uses ownership and groups to secure files and directories. I also understood the role of MAC addresses in local network communication and how ARP translates an IP address into a MAC address before data is transmitted. These concepts are essential for Linux administration and network troubleshooting.
