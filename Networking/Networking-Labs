@@ -198,3 +198,36 @@ Successfully identified the system hostname, IP address, routing information, an
 - DNS translates domain names into IP addresses.
 - Testing DNS
 - Verifying connectivity
+# Lab 5 – MAC Address and ARP
+
+## Objective
+
+Explore MAC addresses, network interfaces, and ARP entries using Linux networking commands.
+
+---
+
+## Commands Used
+
+```bash
+ip addr
+ip link
+ip neigh
+ping 8.8.8.8
+ping google.com
+```
+
+---
+
+## Skills Practiced
+
+- Viewing MAC addresses
+- Viewing IP addresses
+- Viewing neighbor table
+- Testing network connectivity
+- Understanding ARP
+
+---
+
+## Result
+
+Successfully viewed the MAC address of the network interface, inspected the ARP neighbor table, and verified network connectivity using ping.
