@@ -213,3 +213,40 @@ ls -l
 ## Result
 
 Successfully viewed file ownership, changed file owners, modified group ownership, and verified changes using `ls -l`.
+# Lab 7 – Linux Process Management
+
+## Objective
+
+Learn how to view, monitor, and terminate Linux processes.
+
+---
+
+## Commands Used
+
+```bash
+ps
+ps aux
+top
+htop
+sleep 300 &
+jobs
+ps aux | grep sleep
+kill PID
+jobs
+```
+
+---
+
+## Skills Practiced
+
+- Viewing running processes
+- Monitoring CPU and memory
+- Running background jobs
+- Finding Process IDs
+- Stopping processes
+
+---
+
+## Result
+
+Successfully viewed and managed Linux processes using multiple command-line tools.
