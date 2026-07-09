@@ -1,0 +1,46 @@
+# Network Switches
+
+## What is a Switch?
+
+A network switch connects devices within the same Local Area Network (LAN).
+
+It forwards Ethernet frames based on MAC addresses.
+
+---
+
+## CAM Table
+
+A switch builds a CAM (Content Addressable Memory) table to map MAC addresses to switch ports.
+
+Example:
+
+MAC Address -> Port
+
+AA:BB:CC:11:22:33 -> Port 1
+
+---
+
+## Advantages
+
+- Faster communication
+- Fewer collisions
+- Better bandwidth utilization
+- Improved security compared to hubs
+
+---
+
+## Hub vs Switch
+
+| Hub | Switch |
+|------|---------|
+| Sends data to every device | Sends only to the destination |
+| No CAM table | Uses CAM table |
+| Slower | Faster |
+
+---
+
+## Key Takeaways
+
+- Switches operate at Layer 2.
+- Switches use MAC addresses.
+- CAM tables improve network efficiency.
