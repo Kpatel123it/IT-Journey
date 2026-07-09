@@ -231,3 +231,40 @@ ping google.com
 ## Result
 
 Successfully viewed the MAC address of the network interface, inspected the ARP neighbor table, and verified network connectivity using ping.
+# Lab 6 – Linux Process Monitoring & Basic Network Interface Inspection
+
+## Objective
+
+Practice Linux process management and inspect local network interfaces.
+
+---
+
+## Commands Used
+
+```bash
+ps
+ps aux
+top
+htop
+jobs
+kill PID
+ip addr
+ip link
+ping google.com
+```
+
+---
+
+## Skills Practiced
+
+- Monitoring processes
+- Viewing CPU and memory usage
+- Managing background jobs
+- Inspecting network interfaces
+- Testing network connectivity
+
+---
+
+## Result
+
+Successfully monitored running processes, terminated a background process, and verified network interface information.
