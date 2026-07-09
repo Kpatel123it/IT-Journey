@@ -1,0 +1,51 @@
+# Routers
+
+## What is a Router?
+
+A router is a Layer 3 networking device that connects different networks and forwards packets using IP addresses.
+
+---
+
+## Main Functions
+
+- Connect different networks
+- Forward packets
+- Select the best route
+- Provide Internet access
+- Act as the default gateway
+
+---
+
+## Default Gateway
+
+The default gateway is the router used when sending traffic outside the local network.
+
+---
+
+## Routing Table
+
+Linux command:
+
+```bash
+ip route
+```
+
+The routing table determines where packets should be sent.
+
+---
+
+## Router vs Switch
+
+| Router | Switch |
+|---------|---------|
+| Layer 3 | Layer 2 |
+| Uses IP addresses | Uses MAC addresses |
+| Connects different networks | Connects devices in one LAN |
+
+---
+
+## Key Takeaways
+
+- Routers forward packets between networks.
+- Routers use routing tables.
+- Every LAN typically has a default gateway.
