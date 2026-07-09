@@ -729,3 +729,49 @@ sudo chown testuser:sudo file1.txt
 - Ownership improves security.
 - `chown` changes ownership.
 - `chgrp` changes group ownership.
+# Linux Process Management
+
+## What is a Process?
+
+A process is a program currently running in memory.
+
+Each process has a unique Process ID (PID).
+
+---
+
+## Common Commands
+
+```bash
+ps
+ps aux
+top
+htop
+jobs
+kill PID
+kill -9 PID
+```
+
+---
+
+## Foreground vs Background
+
+Foreground:
+- Runs in the current terminal.
+
+Background:
+- Runs independently using `&`.
+
+Example:
+
+```bash
+sleep 300 &
+```
+
+---
+
+## Key Takeaways
+
+- Every process has a PID.
+- `ps` displays process information.
+- `top` and `htop` monitor system resources.
+- `kill` terminates running processes.
