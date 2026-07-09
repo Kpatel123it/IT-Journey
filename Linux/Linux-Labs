@@ -250,3 +250,41 @@ jobs
 ## Result
 
 Successfully viewed and managed Linux processes using multiple command-line tools.
+# Lab 8 – Ubuntu Package Management
+
+## Objective
+
+Learn how to manage software packages using APT.
+
+---
+
+## Commands Used
+
+```bash
+sudo apt update
+sudo apt upgrade
+apt search tree
+apt show tree
+sudo apt install tree
+tree
+sudo apt remove tree
+sudo apt autoremove
+apt list --installed
+```
+
+---
+
+## Skills Practiced
+
+- Updating repositories
+- Upgrading packages
+- Installing software
+- Searching packages
+- Removing software
+- Cleaning unused packages
+
+---
+
+## Result
+
+Successfully managed Ubuntu software packages using the APT package manager.
