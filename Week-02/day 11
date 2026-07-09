@@ -1,0 +1,226 @@
+# Day 11 – Linux Package Management & Networking Routers
+
+## 🎯 Objective
+
+Today's objective was to learn how Ubuntu manages software packages using the APT package manager and to understand the role of routers in computer networks.
+
+---
+
+# 🐧 Linux Theory
+
+## What is Package Management?
+
+Package management is the process of installing, updating, upgrading, and removing software from a Linux system.
+
+Ubuntu uses **APT (Advanced Package Tool)** to manage software packages from trusted online repositories.
+
+---
+
+## What is a Repository?
+
+A repository is a collection of software packages maintained by Ubuntu.
+
+Instead of downloading applications from random websites, Ubuntu downloads verified packages directly from official repositories.
+
+Examples of packages:
+
+- Git
+- Tree
+- Curl
+- Nmap
+- Wireshark
+- Firefox
+
+---
+
+## Difference Between `apt update` and `apt upgrade`
+
+| Command | Purpose |
+|----------|----------|
+| `sudo apt update` | Downloads the latest package information from repositories. |
+| `sudo apt upgrade` | Installs newer versions of already installed packages. |
+
+---
+
+## Common APT Commands
+
+| Command | Description |
+|----------|-------------|
+| `sudo apt update` | Update package list |
+| `sudo apt upgrade` | Upgrade installed packages |
+| `apt search package` | Search for a package |
+| `apt show package` | Display package information |
+| `sudo apt install package` | Install a package |
+| `sudo apt remove package` | Remove a package |
+| `sudo apt autoremove` | Remove unused dependencies |
+| `apt list --installed` | List installed packages |
+
+---
+
+# 🌐 Networking Theory
+
+## What is a Router?
+
+A router is a Layer 3 networking device that connects different networks together.
+
+Its primary job is to forward IP packets between networks using routing tables.
+
+Example:
+
+Laptop
+↓
+
+Home Router
+↓
+
+Internet
+↓
+
+Google Server
+
+---
+
+## Default Gateway
+
+A default gateway is the router that a computer sends packets to when the destination is outside the local network.
+
+Example:
+
+Computer IP:
+
+192.168.1.25
+
+Gateway:
+
+192.168.1.1
+
+---
+
+## Routing Table
+
+A routing table tells the operating system where packets should be sent.
+
+Linux command:
+
+```bash
+ip route
+```
+
+---
+
+## Router vs Switch
+
+| Router | Switch |
+|---------|---------|
+| Layer 3 | Layer 2 |
+| Uses IP addresses | Uses MAC addresses |
+| Connects different networks | Connects devices in one LAN |
+| Routes packets | Switches Ethernet frames |
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+sudo apt update
+sudo apt upgrade
+apt search tree
+apt show tree
+sudo apt install tree
+tree --version
+tree
+mkdir testtree
+cd testtree
+mkdir folder1 folder2
+touch file1.txt
+tree
+sudo apt remove tree
+sudo apt autoremove
+apt list --installed
+```
+
+---
+
+## Networking Commands
+
+```bash
+ip route
+ip addr
+hostname -I
+ping google.com
+sudo apt install traceroute
+traceroute google.com
+```
+
+---
+
+# 🚀 Skills Gained
+
+- Updated Ubuntu package lists.
+- Upgraded installed software.
+- Searched for software packages.
+- Installed and removed packages.
+- Learned how Ubuntu repositories work.
+- Understood the role of routers in networking.
+- Viewed the system routing table.
+- Identified the default gateway.
+- Traced the route to an external server.
+
+---
+
+# 🌍 Real-World Application
+
+IT Support professionals regularly use APT to install troubleshooting tools, apply system updates, and manage software.
+
+Network administrators use routing tables and default gateways to troubleshoot connectivity issues and understand how traffic flows between networks.
+
+---
+
+# 📝 Key Takeaways
+
+- Ubuntu uses APT for package management.
+- Repositories contain trusted software packages.
+- `apt update` refreshes package information.
+- `apt upgrade` installs available updates.
+- Routers connect different networks.
+- The default gateway forwards traffic outside the local network.
+- Routing tables determine where packets are sent.
+
+---
+
+# 📸 Evidence
+
+Screenshots captured:
+
+- sudo apt update
+- apt search tree
+- apt show tree
+- sudo apt install tree
+- tree command
+- ip route
+- hostname -I
+- ping google.com
+- traceroute google.com
+
+---
+
+# 🎤 Interview Questions
+
+1. What is APT?
+2. What is a repository?
+3. What is the difference between `apt update` and `apt upgrade`?
+4. How do you install software in Ubuntu?
+5. What does `apt autoremove` do?
+6. What is a router?
+7. What is a default gateway?
+8. What is a routing table?
+9. What is the difference between a router and a switch?
+10. What happens when you open a website in your browser?
+
+---
+
+# 💬 Reflection
+
+Today I learned how Ubuntu manages software packages using APT and official repositories. I practiced updating the system, installing and removing software, and explored how routers forward packets between networks using routing tables and default gateways. These are essential skills for Linux administration and IT support.
