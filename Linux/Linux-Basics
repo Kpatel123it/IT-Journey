@@ -775,3 +775,46 @@ sleep 300 &
 - `ps` displays process information.
 - `top` and `htop` monitor system resources.
 - `kill` terminates running processes.
+# Linux Package Management
+
+## What is APT?
+
+APT (Advanced Package Tool) is Ubuntu's package management system.
+
+It is used to:
+
+- Install software
+- Update software
+- Remove software
+- Search software packages
+
+---
+
+## Common Commands
+
+```bash
+sudo apt update
+sudo apt upgrade
+apt search package
+apt show package
+sudo apt install package
+sudo apt remove package
+sudo apt autoremove
+apt list --installed
+```
+
+---
+
+## Repositories
+
+Repositories are trusted servers that store software packages.
+
+Ubuntu downloads software from repositories instead of random websites.
+
+---
+
+## Key Takeaways
+
+- Always run `sudo apt update` before installing packages.
+- Use `apt upgrade` to install available updates.
+- Remove unused dependencies with `sudo apt autoremove`.
