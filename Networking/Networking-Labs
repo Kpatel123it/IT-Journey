@@ -268,3 +268,36 @@ ping google.com
 ## Result
 
 Successfully monitored running processes, terminated a background process, and verified network interface information.
+# Lab 7 – Router Basics and Network Path
+
+## Objective
+
+Understand routing, inspect the routing table, identify the default gateway, and verify network connectivity.
+
+---
+
+## Commands Used
+
+```bash
+ip route
+ip addr
+hostname -I
+ping google.com
+traceroute google.com
+```
+
+---
+
+## Skills Practiced
+
+- Viewing the routing table
+- Identifying the default gateway
+- Checking IP address configuration
+- Testing Internet connectivity
+- Tracing the path packets take to a remote server
+
+---
+
+## Result
+
+Successfully explored routing information and verified network connectivity using Linux networking commands.
