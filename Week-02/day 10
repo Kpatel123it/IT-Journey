@@ -1,0 +1,240 @@
+# Day 10 – Linux Process Management & Network Switches
+
+## 🎯 Objective
+
+Today's objective was to understand Linux processes, learn how to monitor and manage running processes using command-line tools, and study how network switches forward Ethernet frames using MAC addresses.
+
+---
+
+# 🐧 Linux Theory
+
+## What is a Process?
+
+A process is a program that is currently running on a Linux system.
+
+Examples of processes include:
+
+- Terminal
+- Firefox
+- File Manager
+- VS Code
+- htop
+
+Every running process has a unique Process ID (PID).
+
+---
+
+## Process ID (PID)
+
+A PID is a unique number assigned to every running process.
+
+Linux uses the PID to identify and manage processes.
+
+Example:
+
+PID 1250 → Firefox
+
+PID 2135 → Terminal
+
+---
+
+## Foreground vs Background Processes
+
+### Foreground Process
+
+Runs directly in the terminal and blocks it until the process finishes.
+
+Example:
+
+```bash
+ping google.com
+```
+
+---
+
+### Background Process
+
+Runs without blocking the terminal.
+
+Example:
+
+```bash
+sleep 300 &
+```
+
+The `&` symbol starts the command in the background.
+
+---
+
+## Process Management Commands
+
+| Command | Purpose |
+|----------|---------|
+| ps | View current processes |
+| ps aux | View all running processes |
+| top | Live process monitoring |
+| htop | Interactive process monitor |
+| jobs | View background jobs |
+| kill PID | Stop a process |
+| kill -9 PID | Forcefully terminate a process |
+
+---
+
+## Difference Between `top` and `htop`
+
+| top | htop |
+|-----|------|
+| Basic interface | Interactive interface |
+| Keyboard navigation limited | Easy navigation |
+| Installed by default | Usually installed manually |
+
+---
+
+# 🌐 Networking Theory
+
+## What is a Network Switch?
+
+A switch is a networking device that connects multiple devices within the same Local Area Network (LAN).
+
+Unlike a hub, a switch sends data only to the intended destination device.
+
+---
+
+## How a Switch Works
+
+A switch learns the MAC address connected to each port.
+
+When a frame arrives, the switch checks its MAC Address Table (CAM Table) and forwards the frame only to the correct port.
+
+---
+
+## MAC Address Table (CAM Table)
+
+Example:
+
+| MAC Address | Port |
+|--------------|------|
+| AA:BB:CC:11:22:33 | Port 1 |
+| DD:EE:FF:44:55:66 | Port 2 |
+
+This improves efficiency and reduces unnecessary network traffic.
+
+---
+
+## Hub vs Switch
+
+| Hub | Switch |
+|------|---------|
+| Broadcasts data to all devices | Sends data only to the destination |
+| Slower | Faster |
+| More collisions | Fewer collisions |
+| No MAC table | Uses CAM table |
+
+---
+
+## Broadcast Domain
+
+A broadcast domain is a group of devices that receive broadcast traffic.
+
+By default, all devices connected to the same switch are in the same broadcast domain unless VLANs are configured.
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+ps
+ps aux
+top
+sudo apt update
+sudo apt install htop
+htop
+sleep 300 &
+jobs
+ps aux | grep sleep
+kill PID
+jobs
+```
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+ip link
+ping google.com
+```
+
+---
+
+# 🚀 Skills Gained
+
+- Viewed running processes
+- Identified Process IDs (PID)
+- Used `top` and `htop` to monitor system resources
+- Started a background process
+- Managed background jobs
+- Terminated a running process
+- Understood how a network switch forwards traffic
+- Learned about MAC Address Tables (CAM Tables)
+- Compared hubs and switches
+
+---
+
+# 🌍 Real-World Application
+
+IT Support technicians frequently use process management tools to identify applications consuming excessive CPU or memory.
+
+Network administrators configure and troubleshoot switches to ensure efficient communication between devices on a local network.
+
+---
+
+# 📝 Key Takeaways
+
+- Every running program is a process.
+- Every process has a unique PID.
+- `ps`, `top`, and `htop` help monitor processes.
+- Background jobs allow commands to run without blocking the terminal.
+- Switches forward Ethernet frames using MAC addresses.
+- Switches are more efficient than hubs.
+
+---
+
+# 📸 Evidence
+
+Screenshots captured:
+
+- ps
+- ps aux
+- top
+- htop
+- jobs
+- ps aux | grep sleep
+- kill
+- ip addr
+- ip link
+- ping google.com
+
+---
+
+# 🎤 Interview Questions
+
+1. What is a process in Linux?
+2. What is a PID?
+3. What is the difference between `ps` and `top`?
+4. What is `htop`?
+5. What is a background process?
+6. What does the `kill` command do?
+7. What is a network switch?
+8. How does a switch know where to send a frame?
+9. What is a CAM table?
+10. What is the difference between a hub and a switch?
+
+---
+
+# 💬 Reflection
+
+Today I learned how Linux manages running processes using PIDs and how to monitor them with tools such as `ps`, `top`, and `htop`. I also explored background jobs and process termination. In networking, I learned how switches use MAC addresses and CAM tables to forward traffic efficiently within a LAN.
