@@ -1,0 +1,231 @@
+# Day 12 – Linux Services, System Logs & ICMP Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to understand Linux services, learn how to monitor services using `systemctl`, explore Linux system logs using `journalctl`, and understand how ICMP is used for network troubleshooting.
+
+---
+
+# 🐧 Linux Theory
+
+## What is a Service?
+
+A service is a background program that starts automatically or manually to provide system functionality.
+
+Examples:
+
+- SSH
+- NetworkManager
+- Cron
+- Bluetooth
+- Printing Service
+
+Unlike normal programs, services continue running even when no user is actively using them.
+
+---
+
+## What is systemctl?
+
+`systemctl` is the command-line utility used to manage Linux services.
+
+It allows administrators to:
+
+- View service status
+- Start services
+- Stop services
+- Restart services
+- Enable services during boot
+- Disable services
+
+---
+
+## Common systemctl Commands
+
+| Command | Description |
+|----------|-------------|
+| systemctl status service | View service status |
+| systemctl list-units --type=service --state=running | View running services |
+| systemctl --failed | View failed services |
+| sudo systemctl start service | Start service |
+| sudo systemctl stop service | Stop service |
+| sudo systemctl restart service | Restart service |
+| sudo systemctl enable service | Enable at boot |
+| sudo systemctl disable service | Disable at boot |
+
+---
+
+## What is journalctl?
+
+Linux stores system logs inside the systemd journal.
+
+The `journalctl` command allows administrators to view these logs for troubleshooting.
+
+---
+
+## Common journalctl Commands
+
+| Command | Description |
+|----------|-------------|
+| journalctl | View all logs |
+| journalctl -n 20 | Last 20 log entries |
+| journalctl -b | Logs since current boot |
+| journalctl -f | Follow logs in real time |
+
+---
+
+# 🌐 Networking Theory
+
+## What is ICMP?
+
+ICMP (Internet Control Message Protocol) is used for diagnostics and error reporting.
+
+It does not transport application data like TCP or UDP.
+
+Instead, it helps devices determine whether communication is working.
+
+---
+
+## ICMP Echo Request & Echo Reply
+
+When running:
+
+```bash
+ping google.com
+```
+
+The computer sends an **ICMP Echo Request**.
+
+If the destination is reachable, it replies with an **ICMP Echo Reply**.
+
+---
+
+## What is Ping?
+
+`ping` is a troubleshooting tool used to verify network connectivity.
+
+It measures:
+
+- Connectivity
+- Response time (latency)
+- Packet loss
+
+---
+
+## What is Traceroute?
+
+`traceroute` displays every router (hop) that packets travel through to reach the destination.
+
+Example:
+
+Computer
+
+↓
+
+Home Router
+
+↓
+
+ISP Router
+
+↓
+
+Regional Router
+
+↓
+
+Destination Server
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+systemctl list-units --type=service --state=running
+systemctl --failed
+journalctl -n 20
+journalctl -b
+journalctl | grep error
+```
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+ip route
+ping 8.8.8.8
+ping google.com
+traceroute google.com
+```
+
+---
+
+# 🚀 Skills Gained
+
+- Understood Linux services.
+- Viewed running services.
+- Checked failed services.
+- Explored Linux system logs.
+- Learned how ICMP works.
+- Tested connectivity using ping.
+- Traced packet routes using traceroute.
+- Practiced network troubleshooting.
+
+---
+
+# 🌍 Real-World Application
+
+Linux administrators use `systemctl` to manage system services and `journalctl` to investigate system issues.
+
+IT Support professionals use `ping` and `traceroute` daily to diagnose connectivity problems and identify where communication failures occur.
+
+---
+
+# 📝 Key Takeaways
+
+- Services run in the background.
+- `systemctl` manages Linux services.
+- `journalctl` reads system logs.
+- ICMP is used for diagnostics.
+- Ping verifies connectivity.
+- Traceroute identifies the path packets follow across networks.
+
+---
+
+# 📸 Evidence
+
+Screenshots captured:
+
+- systemctl list-units
+- systemctl --failed
+- journalctl -n 20
+- journalctl -b
+- ip addr
+- ip route
+- ping 8.8.8.8
+- ping google.com
+- traceroute google.com
+
+---
+
+# 🎤 Interview Questions
+
+1. What is a Linux service?
+2. What is systemctl?
+3. What is journalctl?
+4. Why are Linux logs important?
+5. What is ICMP?
+6. What is the difference between TCP and ICMP?
+7. What is ping?
+8. What is traceroute?
+9. How would you troubleshoot a user with no internet?
+10. Why is ICMP useful?
+
+---
+
+# 💬 Reflection
+
+Today I learned how Linux manages background services using systemctl and how system logs are stored and accessed with journalctl. I also understood how ICMP supports network diagnostics and practiced using ping and traceroute to troubleshoot connectivity.
