@@ -1,0 +1,48 @@
+# ICMP (Internet Control Message Protocol)
+
+## What is ICMP?
+
+ICMP is a network protocol used for diagnostics and error reporting.
+
+Unlike TCP and UDP, ICMP does not transport application data.
+
+---
+
+## Common ICMP Messages
+
+- Echo Request
+- Echo Reply
+- Destination Unreachable
+- Time Exceeded
+
+---
+
+## Ping
+
+The `ping` command sends ICMP Echo Requests to verify connectivity.
+
+Example:
+
+```bash
+ping google.com
+```
+
+---
+
+## Traceroute
+
+Traceroute discovers each router (hop) between the source and destination.
+
+Example:
+
+```bash
+traceroute google.com
+```
+
+---
+
+## Key Takeaways
+
+- ICMP is used for troubleshooting.
+- Ping uses ICMP Echo Request and Echo Reply.
+- Traceroute helps identify the network path and locate connectivity issues.
