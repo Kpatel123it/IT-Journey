@@ -288,3 +288,35 @@ apt list --installed
 ## Result
 
 Successfully managed Ubuntu software packages using the APT package manager.
+# Lab 9 – Linux Services & System Logs
+
+## Objective
+
+Practice monitoring Linux services and reading system logs.
+
+---
+
+## Commands Used
+
+```bash
+systemctl list-units --type=service --state=running
+systemctl --failed
+journalctl -n 20
+journalctl -b
+journalctl | grep error
+```
+
+---
+
+## Skills Practiced
+
+- Viewing running services
+- Viewing failed services
+- Reading system logs
+- Searching log entries
+
+---
+
+## Result
+
+Successfully explored Linux services and reviewed system logs using systemctl and journalctl.
