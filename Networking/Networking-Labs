@@ -301,3 +301,36 @@ traceroute google.com
 ## Result
 
 Successfully explored routing information and verified network connectivity using Linux networking commands.
+# Lab 8 – ICMP and Network Troubleshooting
+
+## Objective
+
+Practice basic network troubleshooting using Linux networking tools.
+
+---
+
+## Commands Used
+
+```bash
+ip addr
+ip route
+ping 8.8.8.8
+ping google.com
+traceroute google.com
+```
+
+---
+
+## Skills Practiced
+
+- Viewing IP configuration
+- Viewing routing table
+- Testing network connectivity
+- Measuring latency
+- Tracing packet routes
+
+---
+
+## Result
+
+Successfully verified network connectivity and understood how ICMP tools help diagnose communication problems.
