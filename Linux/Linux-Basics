@@ -818,3 +818,53 @@ Ubuntu downloads software from repositories instead of random websites.
 - Always run `sudo apt update` before installing packages.
 - Use `apt upgrade` to install available updates.
 - Remove unused dependencies with `sudo apt autoremove`.
+# Linux Services
+
+## What is a Service?
+
+A service is a background process that provides system functionality.
+
+Examples:
+
+- SSH
+- NetworkManager
+- Cron
+- Bluetooth
+
+---
+
+## systemctl Commands
+
+```bash
+systemctl status service
+systemctl list-units --type=service --state=running
+systemctl --failed
+sudo systemctl start service
+sudo systemctl stop service
+sudo systemctl restart service
+sudo systemctl enable service
+sudo systemctl disable service
+```
+
+---
+
+# Linux Logs
+
+Linux stores logs inside the systemd journal.
+
+Useful commands:
+
+```bash
+journalctl
+journalctl -n 20
+journalctl -b
+journalctl -f
+```
+
+---
+
+## Key Takeaways
+
+- Services provide background functionality.
+- systemctl manages services.
+- journalctl displays system logs.
