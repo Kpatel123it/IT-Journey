@@ -868,3 +868,49 @@ journalctl -f
 - Services provide background functionality.
 - systemctl manages services.
 - journalctl displays system logs.
+# SSH (Secure Shell)
+
+## What is SSH?
+
+SSH is a secure protocol used to remotely access Linux systems over a network.
+
+SSH encrypts communication, making it much safer than Telnet.
+
+---
+
+## Why SSH is Used
+
+- Remote administration
+- Execute commands
+- Secure file transfer
+- Server management
+
+---
+
+## OpenSSH
+
+Ubuntu uses OpenSSH.
+
+Package:
+
+openssh-server
+
+---
+
+## Common Commands
+
+```bash
+which ssh
+systemctl status ssh
+systemctl is-enabled ssh
+sudo apt install openssh-server
+ssh localhost
+```
+
+---
+
+## Key Takeaways
+
+- SSH is encrypted.
+- SSH is the standard for Linux remote administration.
+- OpenSSH is widely used on Ubuntu.
