@@ -320,3 +320,36 @@ journalctl | grep error
 ## Result
 
 Successfully explored Linux services and reviewed system logs using systemctl and journalctl.
+# Lab 10 – SSH Installation and Verification
+
+## Objective
+
+Install and verify the SSH service on Ubuntu.
+
+---
+
+## Commands Used
+
+```bash
+which ssh
+systemctl status ssh
+sudo apt update
+sudo apt install openssh-server
+systemctl status ssh
+systemctl is-enabled ssh
+```
+
+---
+
+## Skills Practiced
+
+- Checking SSH installation
+- Installing OpenSSH Server
+- Managing Linux services
+- Verifying automatic startup
+
+---
+
+## Result
+
+Successfully installed OpenSSH Server and confirmed the SSH service is active and enabled.
