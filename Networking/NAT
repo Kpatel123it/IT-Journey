@@ -1,0 +1,44 @@
+# Network Address Translation (NAT)
+
+## What is NAT?
+
+NAT translates private IP addresses into a public IP address.
+
+It allows multiple devices to share one Internet connection.
+
+---
+
+## Benefits
+
+- Conserves public IP addresses
+- Improves security
+- Enables Internet access for private networks
+
+---
+
+## Private IP Ranges
+
+- 10.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
+
+---
+
+## Public IP
+
+Assigned by an Internet Service Provider (ISP).
+
+Accessible from anywhere on the Internet.
+
+---
+
+## PAT
+
+Port Address Translation uses TCP/UDP port numbers so multiple devices can share one public IP simultaneously.
+
+---
+
+## Key Takeaways
+
+- NAT connects private networks to the Internet.
+- PAT is the most common type of NAT used in homes and businesses.
