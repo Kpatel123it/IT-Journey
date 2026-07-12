@@ -1,0 +1,309 @@
+# Day 13 – Secure Remote Access (SSH) & Network Address Translation (NAT)
+
+## 🎯 Objective
+
+Today's objective was to understand Secure Shell (SSH), learn how remote administration works in Linux, and study Network Address Translation (NAT), including the difference between public and private IP addresses.
+
+---
+
+# 🐧 Linux Theory
+
+## What is SSH?
+
+SSH (Secure Shell) is a secure network protocol used to remotely access and manage Linux systems over a network.
+
+Unlike Telnet, SSH encrypts all communication between the client and the server, protecting usernames, passwords, and transferred data.
+
+---
+
+## Why is SSH Important?
+
+SSH allows administrators to:
+
+- Manage Linux servers remotely
+- Execute commands securely
+- Transfer files securely (SCP/SFTP)
+- Configure systems without physical access
+- Troubleshoot remote servers
+
+SSH is one of the most commonly used tools by Linux administrators and IT Support professionals.
+
+---
+
+## SSH Client vs SSH Server
+
+### SSH Client
+
+The device that initiates the connection.
+
+Example:
+
+Your Ubuntu VM connecting to another Linux server.
+
+---
+
+### SSH Server
+
+The device that accepts incoming SSH connections.
+
+The SSH server must be installed and running before remote users can connect.
+
+---
+
+## OpenSSH
+
+Ubuntu uses **OpenSSH** as the default SSH implementation.
+
+Package:
+
+openssh-server
+
+---
+
+## Common SSH Commands
+
+```bash
+which ssh
+ssh localhost
+systemctl status ssh
+systemctl is-enabled ssh
+sudo apt install openssh-server
+```
+
+---
+
+# 🌐 Networking Theory
+
+## What is NAT?
+
+Network Address Translation (NAT) allows multiple devices inside a private network to share a single public IP address.
+
+Without NAT, every device would require its own public IP address.
+
+---
+
+## Why NAT is Needed
+
+Example:
+
+Home Network
+
+- Laptop
+- Smartphone
+- Tablet
+- Smart TV
+
+All devices use private IP addresses.
+
+The router translates these private addresses into one public IP address when communicating with the Internet.
+
+---
+
+## Public IP Address
+
+A public IP address is:
+
+- Assigned by an ISP
+- Globally unique
+- Accessible from the Internet
+
+---
+
+## Private IP Address
+
+Private IP addresses are only used inside local networks.
+
+Private IP ranges:
+
+10.0.0.0 – 10.255.255.255
+
+172.16.0.0 – 172.31.255.255
+
+192.168.0.0 – 192.168.255.255
+
+These addresses cannot be routed directly on the Internet.
+
+---
+
+## What is PAT?
+
+Port Address Translation (PAT) is a form of NAT that allows many devices to share a single public IP by using different TCP/UDP port numbers.
+
+PAT is commonly used in home and office routers.
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+which ssh
+systemctl status ssh
+sudo apt update
+sudo apt install openssh-server
+systemctl status ssh
+systemctl is-enabled ssh
+ip addr
+```
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+ip route
+```
+
+Observed:
+
+- Identified private IP address
+- Identified default gateway
+- Verified IP belongs to a private address range
+
+---
+
+# 🛠 Skills Gained
+
+- Understood SSH architecture
+- Learned SSH client vs SSH server
+- Installed OpenSSH Server
+- Verified SSH service status
+- Checked whether SSH starts automatically
+- Identified private IP address
+- Identified default gateway
+- Understood NAT and PAT
+
+---
+
+# 🏢 Real-World Scenario
+
+## Situation
+
+An employee working from home needs to connect securely to the company's Linux server.
+
+### Solution
+
+Install and verify the SSH server on the Linux machine.
+
+Ensure the SSH service is running and listening for incoming connections.
+
+The user can then securely connect using an SSH client.
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Issue
+
+User cannot remotely connect to the Linux server.
+
+### Investigation
+
+Checked SSH service status.
+
+Result:
+
+ssh.service not found.
+
+### Root Cause
+
+OpenSSH Server was not installed.
+
+### Resolution
+
+Installed OpenSSH Server.
+
+Verified SSH service is active and enabled.
+
+Issue resolved.
+
+---
+
+# 🎤 Interview Questions
+
+### 1. What is SSH?
+
+SSH is a secure protocol used to remotely access and manage systems over a network using encrypted communication.
+
+---
+
+### 2. What is the difference between SSH Client and SSH Server?
+
+SSH Client initiates the connection.
+
+SSH Server accepts incoming connections.
+
+---
+
+### 3. What is NAT?
+
+NAT translates private IP addresses into a public IP address, allowing multiple devices to share one Internet connection.
+
+---
+
+### 4. Why are private IP addresses used?
+
+They conserve public IP addresses and provide internal addressing within private networks.
+
+---
+
+### 5. What is PAT?
+
+PAT allows multiple devices to use one public IP address by assigning different port numbers.
+
+---
+
+# 😊 Soft Skills
+
+## Scenario
+
+User:
+
+"I don't know anything about computers."
+
+Professional Response:
+
+"I'll take care of the technical steps for you. I'll explain each step in simple terms and let you know if I need any input from you."
+
+---
+
+# 📝 Key Takeaways
+
+- SSH provides secure remote administration.
+- OpenSSH is the default SSH implementation on Ubuntu.
+- SSH Client starts the connection.
+- SSH Server accepts the connection.
+- NAT allows many private devices to share one public IP.
+- PAT uses port numbers to distinguish multiple network connections.
+
+---
+
+# 🌍 Real-World Application
+
+System administrators use SSH daily to manage Linux servers.
+
+Network administrators use NAT and PAT to allow multiple devices in homes and businesses to access the Internet efficiently.
+
+Understanding these concepts is essential for IT Support, System Administration, Networking, and Cybersecurity roles.
+
+---
+
+# 📸 Evidence
+
+Screenshots Captured:
+
+- which ssh
+- systemctl status ssh (before installation)
+- apt install openssh-server
+- systemctl status ssh (after installation)
+- systemctl is-enabled ssh
+- ip addr
+- ip route
+
+---
+
+# 💬 Reflection
+
+Today I learned how secure remote administration works using SSH and understood the role of NAT in modern networks. I practiced installing and verifying the SSH service, identified my private IP address, and learned how home routers use NAT and PAT to provide Internet access to multiple devices.
