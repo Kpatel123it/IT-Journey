@@ -334,3 +334,32 @@ traceroute google.com
 ## Result
 
 Successfully verified network connectivity and understood how ICMP tools help diagnose communication problems.
+# Lab 9 – NAT and IP Address Identification
+
+## Objective
+
+Identify the system's private IP address and default gateway, and understand how NAT allows Internet access.
+
+---
+
+## Commands Used
+
+```bash
+ip addr
+ip route
+```
+
+---
+
+## Skills Practiced
+
+- Identifying private IP addresses
+- Identifying the default gateway
+- Recognizing private IP ranges
+- Understanding NAT and PAT concepts
+
+---
+
+## Result
+
+Successfully identified the local IP configuration and understood how the router translates private IP addresses to a public IP for Internet communication.
