@@ -1,0 +1,42 @@
+# SSH (Secure Shell)
+
+## Overview
+
+SSH is a secure protocol used for remote administration of Linux systems.
+
+It encrypts all communication between the client and server.
+
+---
+
+## Components
+
+- SSH Client
+- SSH Server
+
+---
+
+## Common Commands
+
+```bash
+which ssh
+systemctl status ssh
+systemctl is-enabled ssh
+ssh localhost
+```
+
+---
+
+## Common Uses
+
+- Remote login
+- Server management
+- Secure command execution
+- Secure file transfer
+
+---
+
+## Key Takeaways
+
+- SSH replaces Telnet.
+- SSH uses encryption.
+- OpenSSH is the default implementation on Ubuntu.
