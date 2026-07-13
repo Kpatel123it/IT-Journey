@@ -1,0 +1,465 @@
+# Day 14 – Linux File Compression & Archiving | Networking Ports
+
+## 🎯 Objective
+
+Today's objective was to understand how Linux archives and compresses files, learn the purpose of common networking ports, and understand how applications communicate over a network.
+
+---
+
+# 🐧 Linux Theory
+
+## What is Archiving?
+
+Archiving is the process of combining multiple files and directories into a single file.
+
+An archive helps organize files and simplifies backups and file transfers.
+
+The most common Linux archiving tool is **tar (Tape Archive)**.
+
+Example:
+
+Documents/
+
+Photos/
+
+Logs/
+
+↓
+
+backup.tar
+
+---
+
+## What is Compression?
+
+Compression reduces the size of a file to save storage space and reduce transfer time.
+
+Unlike archiving, compression focuses on reducing file size.
+
+Common compression formats include:
+
+- gzip (.gz)
+- zip (.zip)
+- bzip2 (.bz2)
+
+---
+
+## Difference Between Archiving and Compression
+
+| Archiving | Compression |
+|------------|-------------|
+| Combines multiple files | Reduces file size |
+| Uses tar | Uses gzip, zip |
+| Does not reduce size | Reduces size |
+
+These processes are commonly used together.
+
+Example:
+
+Project Folder
+
+↓
+
+project.tar
+
+↓
+
+project.tar.gz
+
+---
+
+## Why Administrators Compress Files
+
+System administrators compress files because:
+
+- Saves disk space
+- Faster file transfers
+- Easier backups
+- Simplifies sharing multiple files
+- Preserves directory structure
+
+---
+
+## Common Linux Commands
+
+Create archive
+
+```bash
+tar -cvf backup.tar folder/
+```
+
+View archive
+
+```bash
+tar -tvf backup.tar
+```
+
+Extract archive
+
+```bash
+tar -xvf backup.tar
+```
+
+Compress archive
+
+```bash
+gzip backup.tar
+```
+
+Extract compressed archive
+
+```bash
+gunzip backup.tar.gz
+```
+
+Create ZIP archive
+
+```bash
+zip backup.zip *.txt
+```
+
+Extract ZIP archive
+
+```bash
+unzip backup.zip
+```
+
+---
+
+# 🌐 Networking Theory
+
+## What is a Port?
+
+A port is a logical communication endpoint used by applications to send and receive network traffic.
+
+An IP address identifies a device.
+
+A port identifies the application running on that device.
+
+Example
+
+Computer IP
+
+192.168.1.20
+
+Applications
+
+- Web Browser
+- Email Client
+- SSH
+- DNS
+
+Each application communicates using different ports.
+
+---
+
+## Why Ports are Required
+
+Without ports, a computer would not know which application should receive incoming network traffic.
+
+Ports allow multiple applications to use the network simultaneously.
+
+---
+
+## Common Port Numbers
+
+| Port | Protocol | Service |
+|-------|----------|----------|
+|20|TCP|FTP Data|
+|21|TCP|FTP Control|
+|22|TCP|SSH|
+|23|TCP|Telnet|
+|25|TCP|SMTP|
+|53|TCP/UDP|DNS|
+|67|UDP|DHCP Server|
+|68|UDP|DHCP Client|
+|80|TCP|HTTP|
+|110|TCP|POP3|
+|143|TCP|IMAP|
+|443|TCP|HTTPS|
+|3389|TCP|Remote Desktop|
+
+---
+
+## TCP vs UDP Review
+
+TCP
+
+- Connection-oriented
+- Reliable
+- Error checking
+- Slower
+
+Examples
+
+SSH
+
+HTTP
+
+HTTPS
+
+FTP
+
+---
+
+UDP
+
+- Connectionless
+- Faster
+- No error checking
+- Lower overhead
+
+Examples
+
+DNS
+
+DHCP
+
+VoIP
+
+Streaming
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+mkdir Day14Lab
+cd Day14Lab
+
+touch file1.txt
+touch file2.txt
+touch notes.txt
+
+tar -cvf backup.tar *.txt
+
+tar -tvf backup.tar
+
+mkdir Extracted
+
+tar -xvf backup.tar -C Extracted
+
+gzip backup.tar
+
+gunzip backup.tar.gz
+
+zip backup.zip *.txt
+
+unzip backup.zip
+
+ls -lh
+```
+
+---
+
+## Networking Commands
+
+```bash
+ss -tuln
+```
+
+Alternative
+
+```bash
+netstat -tuln
+```
+
+Observed
+
+- Listening TCP ports
+- Listening UDP ports
+- Local Address
+- Port Numbers
+
+---
+
+# 🛠 Skills Learned
+
+- Created TAR archives
+- Extracted TAR archives
+- Compressed files using Gzip
+- Extracted compressed archives
+- Created ZIP archives
+- Extracted ZIP archives
+- Checked listening ports
+- Identified common network services
+- Understood application communication
+
+---
+
+# 🏢 Real World Scenario
+
+## Situation
+
+A Linux administrator needs to send a project folder containing hundreds of files to another administrator.
+
+### Solution
+
+Instead of sending every file individually:
+
+Create one archive
+
+Compress the archive
+
+Transfer a single compressed file
+
+This reduces transfer time and preserves the folder structure.
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Issue
+
+Employee cannot open a backup file received from another office.
+
+File Name
+
+backup.tar.gz
+
+### Investigation
+
+Verified the file extension.
+
+Identified that the file was archived and compressed.
+
+### Resolution
+
+Step 1
+
+```bash
+gunzip backup.tar.gz
+```
+
+Step 2
+
+```bash
+tar -xvf backup.tar
+```
+
+Or
+
+```bash
+tar -xzvf backup.tar.gz
+```
+
+Issue resolved successfully.
+
+---
+
+# 🎤 Interview Questions
+
+## 1. What is the difference between tar and gzip?
+
+Answer
+
+tar combines multiple files into a single archive.
+
+gzip compresses a file to reduce its size.
+
+They are commonly used together.
+
+---
+
+## 2. Why do Linux administrators use archives?
+
+Answer
+
+Archives make backups easier, preserve directory structures, and simplify file transfers.
+
+---
+
+## 3. What is a network port?
+
+Answer
+
+A network port is a logical communication endpoint that allows applications to send and receive network traffic.
+
+---
+
+## 4. Why is Port 22 important?
+
+Answer
+
+Port 22 is used by SSH for secure remote administration.
+
+---
+
+## 5. Which protocol uses Port 443?
+
+Answer
+
+HTTPS.
+
+---
+
+# 😊 Soft Skills
+
+Scenario
+
+User
+
+"I don't understand why I can't just email the folder."
+
+Professional Response
+
+"The folder contains many files. I'll combine them into a single compressed archive so it's easier to send and nothing gets left behind."
+
+---
+
+# 💬 Customer Communication
+
+User
+
+"What is a network port?"
+
+Professional Response
+
+"Think of your computer as an apartment building. The IP address identifies the building, while the port identifies the specific apartment where the application is running. This allows multiple applications to communicate over the same network connection."
+
+---
+
+# 📝 Key Takeaways
+
+- tar creates archives.
+- gzip compresses files.
+- zip both archives and compresses.
+- Ports identify applications.
+- Port numbers are essential for network communication.
+- SSH uses Port 22.
+- HTTPS uses Port 443.
+- DNS uses Port 53.
+
+---
+
+# 🌍 Real World Application
+
+System administrators regularly compress log files before sharing them.
+
+Backups are commonly stored as .tar.gz files.
+
+Network engineers verify listening ports when troubleshooting servers.
+
+IT Support professionals check whether required services are listening on the correct ports before escalating incidents.
+
+---
+
+# 📸 Screenshots Captured
+
+- tar archive creation
+- tar archive contents
+- archive extraction
+- gzip compression
+- gunzip extraction
+- zip archive
+- unzip extraction
+- ss -tuln output
+- ls -lh output
+
+---
+
+# 💬 Reflection
+
+Today I learned how Linux archives and compresses files using tar, gzip, and zip. I also studied network ports and understood how applications communicate using specific TCP and UDP port numbers. These skills are essential for Linux administration, troubleshooting, and IT Support.
