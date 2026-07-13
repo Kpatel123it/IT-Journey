@@ -1,0 +1,25 @@
+# Common Network Ports
+
+| Port | Protocol | Service |
+|-------|----------|----------|
+|20|TCP|FTP Data|
+|21|TCP|FTP Control|
+|22|TCP|SSH|
+|23|TCP|Telnet|
+|25|TCP|SMTP|
+|53|TCP/UDP|DNS|
+|67|UDP|DHCP|
+|68|UDP|DHCP Client|
+|80|TCP|HTTP|
+|110|TCP|POP3|
+|143|TCP|IMAP|
+|443|TCP|HTTPS|
+|3389|TCP|RDP|
+
+---
+
+## Key Takeaways
+
+Ports identify applications running on a device.
+
+Multiple applications can communicate simultaneously because each uses different port numbers.
