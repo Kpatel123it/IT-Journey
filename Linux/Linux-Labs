@@ -353,3 +353,49 @@ systemctl is-enabled ssh
 ## Result
 
 Successfully installed OpenSSH Server and confirmed the SSH service is active and enabled.
+# Lab 11 – Linux File Compression and Archiving
+
+## Objective
+
+Practice creating archives and compressing files.
+
+---
+
+## Commands
+
+```bash
+mkdir Day14Lab
+cd Day14Lab
+
+touch file1.txt
+touch file2.txt
+touch notes.txt
+
+tar -cvf backup.tar *.txt
+tar -tvf backup.tar
+
+mkdir Extracted
+tar -xvf backup.tar -C Extracted
+
+gzip backup.tar
+gunzip backup.tar.gz
+
+zip backup.zip *.txt
+unzip backup.zip
+```
+
+---
+
+## Skills Practiced
+
+- Archive creation
+- Archive extraction
+- Compression
+- Decompression
+- ZIP management
+
+---
+
+## Result
+
+Successfully created, compressed, extracted, and verified Linux archive files.
