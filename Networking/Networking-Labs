@@ -363,3 +363,37 @@ ip route
 ## Result
 
 Successfully identified the local IP configuration and understood how the router translates private IP addresses to a public IP for Internet communication.
+# Lab 10 – Identifying Listening Network Ports
+
+## Objective
+
+Identify active listening ports and understand the services using them.
+
+---
+
+## Commands
+
+```bash
+ss -tuln
+```
+
+Alternative
+
+```bash
+netstat -tuln
+```
+
+---
+
+## Skills Practiced
+
+- Viewing listening services
+- Identifying TCP ports
+- Identifying UDP ports
+- Understanding application communication
+
+---
+
+## Result
+
+Successfully identified active listening ports and learned how Linux services communicate using TCP and UDP.
