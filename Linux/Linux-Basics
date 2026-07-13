@@ -914,3 +914,51 @@ ssh localhost
 - SSH is encrypted.
 - SSH is the standard for Linux remote administration.
 - OpenSSH is widely used on Ubuntu.
+# File Compression & Archiving
+
+## tar
+
+Creates archives containing multiple files.
+
+Common commands
+
+```bash
+tar -cvf archive.tar folder/
+tar -tvf archive.tar
+tar -xvf archive.tar
+```
+
+---
+
+## gzip
+
+Compresses files.
+
+Commands
+
+```bash
+gzip file
+gunzip file.gz
+```
+
+---
+
+## zip
+
+Archives and compresses simultaneously.
+
+Commands
+
+```bash
+zip backup.zip *.txt
+unzip backup.zip
+```
+
+---
+
+## Why Compression is Used
+
+- Saves storage
+- Faster transfers
+- Easier backups
+- Maintains directory structure
