@@ -1,0 +1,39 @@
+# Linux File Compression & Archiving
+
+## Tools Covered
+
+- tar
+- gzip
+- zip
+- unzip
+
+---
+
+## Purpose
+
+- Backups
+- File transfer
+- Storage optimization
+
+---
+
+## Common Commands
+
+```bash
+tar -cvf
+tar -tvf
+tar -xvf
+gzip
+gunzip
+zip
+unzip
+```
+
+---
+
+## Key Takeaways
+
+- tar archives files.
+- gzip compresses files.
+- zip archives and compresses.
+- .tar.gz is widely used for Linux backups.
