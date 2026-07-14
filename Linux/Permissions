@@ -1,0 +1,38 @@
+# Linux Special Permissions
+
+## SUID
+
+Runs programs with the owner's privileges.
+
+Example:
+
+```bash
+ls -l /usr/bin/passwd
+```
+
+---
+
+## SGID
+
+Allows files to inherit group ownership and programs to run with group privileges.
+
+---
+
+## Sticky Bit
+
+Protects files in shared directories by allowing only the owner to delete their files.
+
+Example:
+
+```bash
+ls -ld /tmp
+```
+
+---
+
+## Why These Permissions Matter
+
+- Improve security
+- Enable controlled privilege escalation
+- Support secure collaboration
+- Protect shared directories
