@@ -397,3 +397,35 @@ netstat -tuln
 ## Result
 
 Successfully identified active listening ports and learned how Linux services communicate using TCP and UDP.
+# Lab 11 – Ubuntu Firewall (UFW)
+
+## Objective
+
+Learn to manage the Ubuntu firewall using UFW.
+
+---
+
+## Commands
+
+```bash
+sudo ufw status
+sudo ufw enable
+sudo ufw status verbose
+sudo ufw allow ssh
+sudo ufw status numbered
+```
+
+---
+
+## Skills Practiced
+
+- Checking firewall status
+- Enabling UFW
+- Allowing SSH
+- Viewing active firewall rules
+
+---
+
+## Result
+
+Successfully configured the Ubuntu firewall and allowed secure SSH access while maintaining system protection.
