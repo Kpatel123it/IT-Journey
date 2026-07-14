@@ -1,0 +1,417 @@
+# Day 15 – Linux Special Permissions & Firewall (UFW)
+
+## 🎯 Objective
+
+Today's objective was to understand Linux special permissions (SUID, SGID, and Sticky Bit), review file ownership and permissions, and learn how firewalls protect Linux systems using UFW (Uncomplicated Firewall).
+
+---
+
+# 🐧 Linux Theory
+
+## Linux File Permissions Review
+
+Every file and directory in Linux has three permission categories:
+
+- Owner
+- Group
+- Others
+
+Permission Types:
+
+- Read (r)
+- Write (w)
+- Execute (x)
+
+Example:
+
+-rwxr-xr--
+
+Owner has full access.
+
+Group has read and execute.
+
+Others have read only.
+
+---
+
+## chmod
+
+Used to change file permissions.
+
+Examples
+
+```bash
+chmod 755 file1
+chmod 644 file2
+chmod 777 file3
+```
+
+---
+
+## chown
+
+Changes file ownership.
+
+Example
+
+```bash
+sudo chown user:user filename
+```
+
+---
+
+# Special Permissions
+
+## 1. SUID (Set User ID)
+
+Symbol:
+
+```text
+s
+```
+
+Purpose:
+
+When a user executes a file with SUID enabled, the program runs with the permissions of the file owner instead of the current user.
+
+Example
+
+```bash
+ls -l /usr/bin/passwd
+```
+
+Output
+
+```text
+-rwsr-xr-x
+```
+
+The `passwd` command runs with root privileges so users can securely change their passwords.
+
+---
+
+## 2. SGID (Set Group ID)
+
+Purpose
+
+Files:
+
+Runs with the permissions of the file's group.
+
+Directories:
+
+New files inherit the directory's group ownership.
+
+Useful for shared project directories.
+
+---
+
+## 3. Sticky Bit
+
+Symbol
+
+```text
+t
+```
+
+Purpose
+
+Users can delete only their own files inside a shared directory.
+
+Example
+
+```bash
+ls -ld /tmp
+```
+
+Output
+
+```text
+drwxrwxrwt
+```
+
+The `/tmp` directory allows everyone to create files but prevents users from deleting files created by others.
+
+---
+
+# 🌐 Networking Theory
+
+## What is a Firewall?
+
+A firewall is a security system that controls incoming and outgoing network traffic based on predefined rules.
+
+Its purpose is to protect systems from unauthorized access.
+
+---
+
+## Types of Firewalls
+
+### Host Firewall
+
+Protects an individual computer.
+
+Example
+
+Ubuntu UFW
+
+Windows Defender Firewall
+
+---
+
+### Network Firewall
+
+Protects an entire network.
+
+Usually installed on routers or dedicated firewall appliances.
+
+---
+
+## UFW (Uncomplicated Firewall)
+
+Ubuntu's default firewall management tool.
+
+Common commands:
+
+```bash
+sudo ufw status
+sudo ufw enable
+sudo ufw disable
+sudo ufw allow ssh
+sudo ufw status verbose
+sudo ufw status numbered
+```
+
+---
+
+## Why Firewalls Matter
+
+Firewalls:
+
+- Block unauthorized access
+- Allow trusted services
+- Protect servers from attacks
+- Reduce security risks
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+mkdir PermissionsLab
+cd PermissionsLab
+
+touch file1
+touch file2
+touch file3
+
+ls -l
+
+chmod 777 file1
+chmod 755 file2
+chmod 644 file3
+
+ls -l
+
+ls -l /usr/bin/passwd
+
+ls -ld /tmp
+```
+
+---
+
+## Firewall Commands
+
+```bash
+sudo ufw status
+
+sudo ufw enable
+
+sudo ufw status verbose
+
+sudo ufw allow ssh
+
+sudo ufw status numbered
+```
+
+---
+
+# 🛠 Skills Learned
+
+- Reviewed Linux permissions
+- Modified permissions using chmod
+- Understood SUID
+- Understood SGID
+- Understood Sticky Bit
+- Identified special permissions
+- Managed Ubuntu Firewall
+- Allowed SSH through UFW
+- Viewed firewall rules
+
+---
+
+# 🏢 Real World Scenario
+
+## Situation
+
+An administrator enables UFW on a Linux server.
+
+Users immediately report they cannot connect through SSH.
+
+### Investigation
+
+- Server online ✅
+- SSH service running ✅
+- Ping successful ✅
+
+### Root Cause
+
+Firewall blocked SSH connections.
+
+### Resolution
+
+Allowed SSH traffic.
+
+```bash
+sudo ufw allow ssh
+```
+
+Verified firewall rules.
+
+Connection restored.
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Issue
+
+Employee cannot remotely access the Linux server.
+
+### Investigation
+
+- Verified network connectivity.
+- Confirmed SSH service was active.
+- Reviewed firewall configuration.
+
+### Root Cause
+
+Port 22 was not permitted through the firewall.
+
+### Resolution
+
+Allowed SSH service.
+
+Verified successful connection.
+
+Issue resolved.
+
+---
+
+# 🎤 Interview Questions
+
+## 1. What is SUID?
+
+Answer
+
+SUID allows a program to run with the permissions of the file owner rather than the user executing it.
+
+---
+
+## 2. What is SGID?
+
+Answer
+
+SGID allows files to inherit the group's ownership and enables programs to run with the group's permissions.
+
+---
+
+## 3. What is Sticky Bit?
+
+Answer
+
+Sticky Bit prevents users from deleting files owned by other users in shared directories.
+
+---
+
+## 4. What is UFW?
+
+Answer
+
+UFW (Uncomplicated Firewall) is Ubuntu's firewall management tool used to configure firewall rules.
+
+---
+
+## 5. Why is Port 22 important?
+
+Answer
+
+Port 22 is used by SSH for secure remote administration.
+
+---
+
+# 😊 Soft Skills
+
+## Scenario
+
+User:
+
+"Can you just turn off the firewall?"
+
+Professional Response:
+
+"The firewall protects the system from unauthorized access. Instead of disabling it, I'll allow only the specific service you need while keeping the rest of the system protected."
+
+---
+
+# 💬 Customer Communication
+
+User:
+
+"I don't understand what a firewall does."
+
+Professional Response:
+
+"A firewall works like a security guard. It checks every network connection and decides whether to allow or block it based on security rules."
+
+---
+
+# 📝 Key Takeaways
+
+- chmod changes permissions.
+- chown changes ownership.
+- SUID allows programs to run as the file owner.
+- SGID helps manage shared group access.
+- Sticky Bit protects files in shared directories.
+- UFW is Ubuntu's firewall management tool.
+- Firewalls improve system security.
+- SSH requires Port 22 to be allowed for remote access.
+
+---
+
+# 🌍 Real World Application
+
+Linux administrators use special permissions to securely manage access to critical system utilities.
+
+IT Support professionals frequently troubleshoot firewall-related connectivity issues by checking services, listening ports, and firewall rules before making configuration changes.
+
+---
+
+# 📸 Screenshots Captured
+
+- ls -l (before chmod)
+- ls -l (after chmod)
+- /usr/bin/passwd permissions
+- /tmp directory permissions
+- sudo ufw status
+- sudo ufw enable
+- sudo ufw status verbose
+- sudo ufw allow ssh
+- sudo ufw status numbered
+
+---
+
+# 💬 Reflection
+
+Today I learned how Linux uses special permissions such as SUID, SGID, and Sticky Bit to provide secure access to system resources. I also learned how UFW protects a Linux system by controlling network traffic and how to safely allow required services like SSH without disabling the firewall.
