@@ -399,3 +399,46 @@ unzip backup.zip
 ## Result
 
 Successfully created, compressed, extracted, and verified Linux archive files.
+# Lab 12 – Linux Special Permissions
+
+## Objective
+
+Practice Linux permission management and explore SUID, SGID, and Sticky Bit.
+
+---
+
+## Commands
+
+```bash
+mkdir PermissionsLab
+cd PermissionsLab
+
+touch file1 file2 file3
+
+ls -l
+
+chmod 777 file1
+chmod 755 file2
+chmod 644 file3
+
+ls -l
+
+ls -l /usr/bin/passwd
+ls -ld /tmp
+```
+
+---
+
+## Skills Practiced
+
+- Viewing permissions
+- Modifying permissions
+- Understanding SUID
+- Understanding SGID
+- Understanding Sticky Bit
+
+---
+
+## Result
+
+Successfully reviewed Linux permissions and understood the purpose of special permissions.
