@@ -962,3 +962,45 @@ unzip backup.zip
 - Faster transfers
 - Easier backups
 - Maintains directory structure
+# Linux Special Permissions
+
+## SUID
+
+Runs a program with the file owner's permissions.
+
+Example:
+
+```bash
+ls -l /usr/bin/passwd
+```
+
+---
+
+## SGID
+
+Files inherit group ownership.
+
+Useful for collaborative directories.
+
+---
+
+## Sticky Bit
+
+Users can delete only their own files inside shared directories.
+
+Example:
+
+```bash
+ls -ld /tmp
+```
+
+---
+
+## Common Commands
+
+```bash
+chmod
+chown
+ls -l
+ls -ld /tmp
+```
