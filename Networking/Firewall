@@ -1,0 +1,43 @@
+# Firewall Fundamentals
+
+## What is a Firewall?
+
+A firewall monitors and controls incoming and outgoing network traffic based on security rules.
+
+---
+
+## Types
+
+### Host Firewall
+
+- UFW
+- Windows Defender Firewall
+
+### Network Firewall
+
+- Cisco ASA
+- pfSense
+- Fortinet
+- Palo Alto
+
+---
+
+## UFW Commands
+
+```bash
+sudo ufw status
+sudo ufw enable
+sudo ufw disable
+sudo ufw allow ssh
+sudo ufw status verbose
+sudo ufw status numbered
+```
+
+---
+
+## Benefits
+
+- Blocks unauthorized traffic
+- Allows trusted services
+- Protects systems from attacks
+- Improves network security
