@@ -1004,3 +1004,55 @@ chown
 ls -l
 ls -ld /tmp
 ```
+# Linux Disk Management
+
+## Commands
+
+```bash
+df -h
+du -sh
+lsblk
+mount
+```
+
+---
+
+## df
+
+Displays filesystem disk usage.
+
+---
+
+## du
+
+Displays directory and file usage.
+
+---
+
+## lsblk
+
+Lists disks and partitions.
+
+---
+
+## mount
+
+Shows mounted filesystems.
+
+---
+
+## Safe Cleanup Commands
+
+```bash
+sudo apt clean
+sudo apt autoclean
+sudo apt autoremove
+```
+
+---
+
+## Key Points
+
+- Monitor storage regularly.
+- Investigate before deleting files.
+- Remove only unnecessary files.
