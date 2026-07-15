@@ -1,0 +1,32 @@
+# Linux Disk Management
+
+## Commands Covered
+
+- df
+- du
+- lsblk
+- mount
+
+---
+
+## Purpose
+
+Monitor storage usage and identify directories consuming disk space.
+
+---
+
+## Safe Cleanup
+
+```bash
+sudo apt clean
+sudo apt autoclean
+sudo apt autoremove
+```
+
+---
+
+## Best Practices
+
+- Check disk usage before deleting files.
+- Remove only unnecessary data.
+- Verify free space after cleanup.
