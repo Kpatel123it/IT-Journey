@@ -429,3 +429,41 @@ sudo ufw status numbered
 ## Result
 
 Successfully configured the Ubuntu firewall and allowed secure SSH access while maintaining system protection.
+# Lab 12 – Network Troubleshooting Tools
+
+## Objective
+
+Practice common Linux networking commands used for troubleshooting.
+
+---
+
+## Commands
+
+```bash
+hostname
+
+hostnamectl
+
+ping google.com
+
+tracepath google.com
+
+nslookup google.com
+
+dig google.com
+```
+
+---
+
+## Skills Practiced
+
+- Checking hostname
+- Testing connectivity
+- Tracing network routes
+- Verifying DNS resolution
+
+---
+
+## Result
+
+Successfully used Linux networking tools to troubleshoot connectivity and DNS issues.
