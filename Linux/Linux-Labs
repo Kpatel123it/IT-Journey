@@ -442,3 +442,46 @@ ls -ld /tmp
 ## Result
 
 Successfully reviewed Linux permissions and understood the purpose of special permissions.
+# Lab 13 – Linux Disk Management
+
+## Objective
+
+Practice monitoring filesystem usage and identifying storage consumption.
+
+---
+
+## Commands
+
+```bash
+df -h
+
+du -sh ~
+
+du -sh *
+
+lsblk
+
+mount
+
+sudo apt clean
+
+sudo apt autoclean
+
+sudo apt autoremove
+```
+
+---
+
+## Skills Practiced
+
+- Checking filesystem usage
+- Measuring directory size
+- Viewing block devices
+- Viewing mount points
+- Cleaning package cache
+
+---
+
+## Result
+
+Successfully monitored disk usage and safely removed unnecessary package cache.
