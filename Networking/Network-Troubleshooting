@@ -1,0 +1,45 @@
+# Network Troubleshooting Tools
+
+## Commands
+
+```bash
+hostname
+hostnamectl
+ping
+traceroute
+tracepath
+nslookup
+dig
+```
+
+---
+
+## Purpose
+
+### ping
+
+Tests connectivity.
+
+### traceroute
+
+Shows packet path.
+
+### tracepath
+
+Alternative to traceroute.
+
+### nslookup
+
+Checks DNS resolution.
+
+### dig
+
+Provides detailed DNS information.
+
+---
+
+## Troubleshooting Order
+
+1. Verify connectivity using ping.
+2. Check routing using traceroute or tracepath.
+3. Verify DNS using nslookup or dig.
