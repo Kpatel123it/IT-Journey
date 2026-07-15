@@ -1,0 +1,446 @@
+# Day 16 – Linux Disk Management & Network Troubleshooting Tools
+
+## 🎯 Objective
+
+Today's objective was to understand Linux disk management, monitor disk usage, identify storage-consuming directories, and learn essential networking troubleshooting commands used by IT Support professionals.
+
+---
+
+# 🐧 Linux Theory
+
+## Why Disk Management is Important
+
+Every Linux system has limited storage space. If a partition becomes full, applications may stop working, users may be unable to save files, and system services may fail.
+
+Linux administrators regularly monitor disk usage to prevent outages.
+
+---
+
+## What is a Filesystem?
+
+A filesystem organizes how data is stored and retrieved on a storage device.
+
+Common Linux filesystems include:
+
+- ext4
+- xfs
+- btrfs
+
+Every filesystem is mounted to a directory called a mount point.
+
+---
+
+## Mount Point
+
+A mount point is the directory where a filesystem becomes accessible.
+
+Examples:
+
+- /
+- /home
+- /boot
+- /media
+
+---
+
+## Important Commands
+
+### df
+
+Displays filesystem disk usage.
+
+```bash
+df -h
+```
+
+Options:
+
+- -h → Human-readable format
+
+Shows:
+
+- Total Size
+- Used Space
+- Available Space
+- Usage Percentage
+- Mounted Filesystem
+
+---
+
+### du
+
+Displays disk usage for files and directories.
+
+Examples
+
+```bash
+du -sh ~
+
+du -sh *
+
+du -sh /var/*
+```
+
+Useful for identifying which folders consume the most storage.
+
+---
+
+### lsblk
+
+Displays block devices.
+
+```bash
+lsblk
+```
+
+Shows:
+
+- Disks
+- Partitions
+- Mount points
+
+---
+
+### mount
+
+Displays mounted filesystems.
+
+```bash
+mount
+```
+
+---
+
+## Difference Between df and du
+
+| df | du |
+|----|----|
+| Shows filesystem usage | Shows folder/file usage |
+| Used to check available storage | Used to locate large directories |
+
+---
+
+## Safe Disk Cleanup
+
+Commands learned:
+
+```bash
+sudo apt clean
+
+sudo apt autoclean
+
+sudo apt autoremove
+```
+
+These commands remove unnecessary package cache and unused packages.
+
+---
+
+# 🌐 Networking Theory
+
+## Network Troubleshooting Tools
+
+Network troubleshooting follows a logical process.
+
+Instead of guessing, administrators verify each layer of communication.
+
+---
+
+## hostname
+
+Displays the system hostname.
+
+```bash
+hostname
+```
+
+---
+
+## hostnamectl
+
+Displays detailed system information.
+
+```bash
+hostnamectl
+```
+
+---
+
+## ping
+
+Tests network connectivity.
+
+```bash
+ping google.com
+```
+
+Stop:
+
+Ctrl + C
+
+---
+
+## traceroute
+
+Displays every router between the source and destination.
+
+```bash
+traceroute google.com
+```
+
+Useful for identifying where communication fails.
+
+---
+
+## tracepath
+
+Alternative to traceroute.
+
+```bash
+tracepath google.com
+```
+
+---
+
+## nslookup
+
+Queries DNS servers.
+
+```bash
+nslookup google.com
+```
+
+---
+
+## dig
+
+Advanced DNS troubleshooting tool.
+
+```bash
+dig google.com
+```
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+df -h
+
+du -sh ~
+
+du -sh *
+
+lsblk
+
+mount
+
+sudo apt clean
+
+sudo apt autoclean
+
+sudo apt autoremove
+```
+
+---
+
+## Networking Commands
+
+```bash
+hostname
+
+hostnamectl
+
+ping google.com
+
+tracepath google.com
+
+nslookup google.com
+
+dig google.com
+```
+
+---
+
+# 🛠 Skills Learned
+
+- Checked filesystem usage
+- Identified directory sizes
+- Viewed mounted filesystems
+- Identified storage devices
+- Cleaned unnecessary package cache
+- Used hostname commands
+- Tested connectivity
+- Traced network paths
+- Performed DNS lookups
+
+---
+
+# 🏢 Real World Scenario
+
+## Situation
+
+A Linux server suddenly stops accepting new files.
+
+### Investigation
+
+```bash
+df -h
+```
+
+Output
+
+Filesystem is 100% full.
+
+Administrator identifies the largest directory.
+
+```bash
+sudo du -sh /*
+```
+
+Old backup files are consuming storage.
+
+Unused backups are removed.
+
+Disk space returns to normal.
+
+Application starts working again.
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Issue
+
+Employee reports:
+
+"My application cannot save files."
+
+### Investigation
+
+- Checked disk usage.
+- Filesystem was full.
+- Located large backup directory.
+- Removed unnecessary files.
+
+### Resolution
+
+Freed disk space.
+
+Verified application functionality.
+
+Issue resolved.
+
+---
+
+# 🎤 Interview Questions
+
+## 1. What is the difference between df and du?
+
+Answer
+
+df displays filesystem disk usage.
+
+du displays the size of files and directories.
+
+---
+
+## 2. What does lsblk show?
+
+Answer
+
+It displays disks, partitions, and mount points.
+
+---
+
+## 3. Why is disk monitoring important?
+
+Answer
+
+To prevent storage-related failures and maintain system performance.
+
+---
+
+## 4. What is traceroute used for?
+
+Answer
+
+To identify the path packets take through the network and locate where communication fails.
+
+---
+
+## 5. What is nslookup used for?
+
+Answer
+
+To verify DNS name resolution.
+
+---
+
+# 😊 Soft Skills
+
+## Scenario
+
+User:
+
+"My computer says the disk is full."
+
+Professional Response
+
+"I'll identify which drive is full and determine what is using the storage before removing any unnecessary files."
+
+---
+
+# 💬 Customer Communication
+
+User:
+
+"Can you just restart the server?"
+
+Professional Response
+
+"A restart may temporarily restore service, but I'd like to determine the root cause first so we can prevent the issue from happening again."
+
+---
+
+# 📝 Key Takeaways
+
+- df checks filesystem usage.
+- du checks directory usage.
+- lsblk displays disks and partitions.
+- mount lists mounted filesystems.
+- traceroute identifies network paths.
+- nslookup verifies DNS.
+- dig provides detailed DNS information.
+- Disk cleanup should always begin by identifying what is consuming space.
+
+---
+
+# 🌍 Real World Application
+
+IT Support engineers frequently investigate full disks before escalating incidents.
+
+Network technicians use ping, traceroute, and DNS tools daily to isolate connectivity issues and determine whether the problem lies with the network, routing, or DNS.
+
+---
+
+# 📸 Screenshots Captured
+
+- df -h
+- du -sh ~
+- du -sh *
+- lsblk
+- mount
+- hostname
+- hostnamectl
+- tracepath google.com
+- nslookup google.com
+- dig google.com
+
+---
+
+# 💬 Reflection
+
+Today I learned how to monitor Linux storage, identify large directories, clean unnecessary package files safely, and use network troubleshooting tools to diagnose connectivity and DNS issues. These are fundamental skills required in Linux administration and IT Support.
