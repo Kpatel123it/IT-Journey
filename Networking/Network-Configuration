@@ -1,0 +1,41 @@
+# Linux Network Configuration
+
+## Commands
+
+```bash
+ip addr
+ip route
+ip link
+hostnamectl
+cat /etc/resolv.conf
+```
+
+## Purpose
+
+### ip addr
+
+Displays network interfaces and IP addresses.
+
+### ip route
+
+Displays routing table and default gateway.
+
+### ip link
+
+Displays interface status and MAC addresses.
+
+### hostnamectl
+
+Displays hostname and system information.
+
+### /etc/resolv.conf
+
+Contains DNS server configuration.
+
+## Troubleshooting Steps
+
+1. Verify interface status.
+2. Check IP address.
+3. Verify default gateway.
+4. Confirm DNS configuration.
+5. Test connectivity.
