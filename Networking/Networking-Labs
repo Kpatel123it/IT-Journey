@@ -467,3 +467,39 @@ dig google.com
 ## Result
 
 Successfully used Linux networking tools to troubleshoot connectivity and DNS issues.
+# Lab 13 – Linux Network Configuration
+
+## Objective
+
+Practice checking Linux network configuration and troubleshooting connectivity.
+
+---
+
+## Commands
+
+```bash
+ip addr
+
+ip route
+
+ip link
+
+hostnamectl
+
+cat /etc/resolv.conf
+```
+
+---
+
+## Skills Practiced
+
+- Viewing IP configuration
+- Checking routing table
+- Viewing network interfaces
+- Verifying DNS configuration
+
+---
+
+## Result
+
+Successfully verified Linux network configuration using built-in networking tools.
