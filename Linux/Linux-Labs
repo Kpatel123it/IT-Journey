@@ -485,3 +485,45 @@ sudo apt autoremove
 ## Result
 
 Successfully monitored disk usage and safely removed unnecessary package cache.
+# Lab 14 – File Search & Log Files
+
+## Objective
+
+Practice searching for files, viewing file contents, and exploring Linux log files.
+
+---
+
+## Commands
+
+```bash
+find . -name "*.txt"
+
+which bash
+
+whereis bash
+
+head /etc/passwd
+
+tail /etc/passwd
+
+less /etc/passwd
+
+ls /var/log
+
+tail /var/log/syslog
+```
+
+---
+
+## Skills Practiced
+
+- Searching files
+- Finding executables
+- Reading large files
+- Exploring Linux logs
+
+---
+
+## Result
+
+Successfully located files and examined Linux log files for troubleshooting.
