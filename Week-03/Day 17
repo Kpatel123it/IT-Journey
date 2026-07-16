@@ -1,0 +1,468 @@
+# Day 17 – Linux File Search, Log Files & Network Configuration
+
+## 🎯 Objective
+
+Today's objective was to learn how to search for files in Linux, read log files efficiently, understand network configuration, and practice troubleshooting using common Linux networking commands.
+
+---
+
+# 🐧 Linux Theory
+
+## Why File Search is Important
+
+Linux servers may contain thousands or even millions of files. Searching manually is inefficient, so administrators use built-in commands to quickly locate files and executables.
+
+---
+
+## find Command
+
+The `find` command searches the live filesystem based on different criteria.
+
+Examples:
+
+```bash
+find . -name "*.txt"
+find /home -name "*.log"
+sudo find / -name sshd_config
+```
+
+Useful options:
+
+- `-name` → Search by filename
+- `-type f` → Files only
+- `-type d` → Directories only
+
+---
+
+## locate Command
+
+The `locate` command searches a database instead of scanning the filesystem.
+
+Update the database:
+
+```bash
+sudo updatedb
+```
+
+Search:
+
+```bash
+locate passwd
+```
+
+Advantages:
+
+- Very fast
+- Uses indexed database
+
+Limitation:
+
+- Database must be updated regularly.
+
+---
+
+## which Command
+
+Shows the location of an executable.
+
+Example:
+
+```bash
+which bash
+```
+
+---
+
+## whereis Command
+
+Displays executable, source files and manual pages.
+
+Example:
+
+```bash
+whereis bash
+```
+
+---
+
+# Viewing File Contents
+
+## cat
+
+Displays an entire file.
+
+```bash
+cat file.txt
+```
+
+---
+
+## less
+
+Views large files one page at a time.
+
+```bash
+less /etc/passwd
+```
+
+Navigation:
+
+- Space → Next page
+- b → Previous page
+- q → Quit
+
+---
+
+## head
+
+Displays the beginning of a file.
+
+```bash
+head /etc/passwd
+```
+
+---
+
+## tail
+
+Displays the end of a file.
+
+```bash
+tail /etc/passwd
+```
+
+Monitor logs continuously:
+
+```bash
+tail -f /var/log/syslog
+```
+
+Stop monitoring:
+
+Ctrl + C
+
+---
+
+# Linux Log Files
+
+Linux stores system logs inside:
+
+```text
+/var/log
+```
+
+Important logs:
+
+- syslog
+- auth.log
+- kern.log
+- dpkg.log
+
+Logs are the first place administrators investigate during troubleshooting.
+
+---
+
+# 🌐 Networking Theory
+
+## Network Configuration
+
+Every Linux device requires:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+- Network Interface
+
+---
+
+## ip addr
+
+Displays network interfaces and IP addresses.
+
+```bash
+ip addr
+```
+
+---
+
+## ip route
+
+Displays the routing table.
+
+```bash
+ip route
+```
+
+Shows:
+
+- Default Gateway
+- Network routes
+
+---
+
+## ip link
+
+Displays network interface information and MAC addresses.
+
+```bash
+ip link
+```
+
+---
+
+## hostnamectl
+
+Displays hostname and operating system information.
+
+```bash
+hostnamectl
+```
+
+---
+
+## DNS Configuration
+
+Linux DNS servers are configured in:
+
+```bash
+cat /etc/resolv.conf
+```
+
+---
+
+# 💻 Practical Work Completed
+
+## Linux Commands
+
+```bash
+mkdir SearchLab
+cd SearchLab
+
+touch notes.txt
+touch report.txt
+touch test.log
+
+mkdir Project
+touch Project/project.txt
+
+find . -name "*.txt"
+
+which bash
+
+whereis bash
+
+cat notes.txt
+
+head /etc/passwd
+
+tail /etc/passwd
+
+less /etc/passwd
+
+ls /var/log
+
+tail /var/log/syslog
+```
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+
+ip route
+
+ip link
+
+hostnamectl
+
+cat /etc/resolv.conf
+```
+
+---
+
+# 🛠 Skills Learned
+
+- Located files using find
+- Used locate for indexed searches
+- Found executable locations
+- Read files with cat
+- Navigated large files using less
+- Viewed beginning and end of files
+- Explored Linux log files
+- Viewed IP configuration
+- Checked routing table
+- Identified network interfaces
+- Verified DNS configuration
+
+---
+
+# 🏢 Real World Scenario
+
+## Situation
+
+A user reports that websites cannot be accessed, but local network resources are available.
+
+### Investigation
+
+Verified:
+
+- Network Interface ✔
+- IP Address ✔
+- Gateway ✔
+
+DNS configuration was incorrect.
+
+### Resolution
+
+Verified DNS server configuration.
+
+Tested DNS resolution.
+
+Connectivity restored.
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Issue
+
+Employee cannot access company websites.
+
+### Investigation
+
+Checked:
+
+- IP configuration
+- Gateway
+- DNS server
+- Network interface
+
+### Root Cause
+
+Incorrect DNS configuration.
+
+### Resolution
+
+Updated DNS settings and confirmed successful name resolution.
+
+Issue resolved.
+
+---
+
+# 🎤 Interview Questions
+
+## 1. Difference between find and locate?
+
+Answer
+
+find searches the live filesystem.
+
+locate searches an indexed database and is much faster.
+
+---
+
+## 2. What does which do?
+
+Answer
+
+Shows the location of an executable command.
+
+---
+
+## 3. What is the purpose of less?
+
+Answer
+
+To read large files one page at a time without loading the entire file into memory.
+
+---
+
+## 4. What does ip route display?
+
+Answer
+
+The routing table including the default gateway and network routes.
+
+---
+
+## 5. Where is DNS configuration stored in Linux?
+
+Answer
+
+/etc/resolv.conf
+
+---
+
+# 😊 Soft Skills
+
+## Scenario
+
+Customer:
+
+"I can't access any websites."
+
+Professional Response
+
+"I'll first verify your network connection, then check your IP configuration, gateway, and DNS settings to identify where the problem is occurring."
+
+---
+
+# 💬 Customer Communication
+
+Customer:
+
+"Can you just reinstall everything?"
+
+Professional Response
+
+"I'd like to identify the root cause before making major changes. That helps resolve the issue faster and prevents unnecessary downtime."
+
+---
+
+# 📝 Key Takeaways
+
+- find searches the filesystem.
+- locate searches an indexed database.
+- which locates executables.
+- whereis locates executables, source files and manuals.
+- less is useful for large files.
+- Linux logs are stored in /var/log.
+- ip addr displays IP addresses.
+- ip route displays routing information.
+- ip link displays network interfaces.
+- DNS settings are stored in /etc/resolv.conf.
+
+---
+
+# 🌍 Real World Application
+
+Linux administrators frequently use find, less, and log files when troubleshooting server issues.
+
+IT Support engineers regularly verify IP configuration, routing, and DNS settings before escalating connectivity problems.
+
+---
+
+# 📸 Screenshots Captured
+
+- find . -name "*.txt"
+- which bash
+- whereis bash
+- head /etc/passwd
+- tail /etc/passwd
+- less /etc/passwd
+- ls /var/log
+- tail /var/log/syslog
+- ip addr
+- ip route
+- ip link
+- hostnamectl
+- cat /etc/resolv.conf
+
+---
+
+# 💬 Reflection
+
+Today I learned how to efficiently search for files in Linux, examine log files, and verify network configuration using essential troubleshooting commands. These skills are fundamental for diagnosing Linux and network-related issues in IT Support environments.
