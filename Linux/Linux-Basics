@@ -1056,3 +1056,59 @@ sudo apt autoremove
 - Monitor storage regularly.
 - Investigate before deleting files.
 - Remove only unnecessary files.
+# Linux File Search & Log Files
+
+## File Search Commands
+
+```bash
+find
+locate
+which
+whereis
+```
+
+### find
+
+Searches the live filesystem.
+
+### locate
+
+Searches an indexed database.
+
+### which
+
+Finds executable location.
+
+### whereis
+
+Displays executable, source, and manual pages.
+
+---
+
+## Viewing Files
+
+```bash
+cat
+less
+head
+tail
+```
+
+---
+
+## Linux Log Files
+
+Location:
+
+```text
+/var/log
+```
+
+Important Logs:
+
+- syslog
+- auth.log
+- kern.log
+- dpkg.log
+
+Administrators review logs before making changes.
