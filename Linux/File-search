@@ -1,0 +1,23 @@
+# Linux File Search
+
+## Commands
+
+```bash
+find
+locate
+which
+whereis
+```
+
+## Purpose
+
+- find → Live filesystem search
+- locate → Database search
+- which → Executable path
+- whereis → Executable, source, and man page locations
+
+## Best Practices
+
+- Use find for accurate searches.
+- Use locate for speed.
+- Update the locate database with `sudo updatedb`.
