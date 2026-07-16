@@ -1,0 +1,27 @@
+# Linux Log Files
+
+## Common Log Directory
+
+```text
+/var/log
+```
+
+## Important Logs
+
+- syslog
+- auth.log
+- kern.log
+- dpkg.log
+
+## Useful Commands
+
+```bash
+ls /var/log
+tail /var/log/syslog
+tail -f /var/log/syslog
+less /var/log/syslog
+```
+
+## Best Practice
+
+Always review log files before changing system configurations.
