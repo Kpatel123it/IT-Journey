@@ -1,0 +1,31 @@
+# Linux Text Processing
+
+## Commands Covered
+
+- grep
+- wc
+- sort
+- uniq
+- cut
+
+## Purpose
+
+These commands help administrators search logs, filter information, count entries, and extract useful data.
+
+## Common Usage
+
+```bash
+grep error logfile
+
+wc -l file
+
+sort file
+
+sort file | uniq
+
+cut -d ":" -f1 /etc/passwd
+```
+
+## Best Practice
+
+Combine commands using pipes (`|`) to perform efficient text processing.
