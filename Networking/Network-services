@@ -1,0 +1,31 @@
+# Network Services
+
+## Common Services
+
+| Service | Port |
+|----------|------|
+| HTTP | 80 |
+| HTTPS | 443 |
+| DNS | 53 |
+| DHCP | 67/68 |
+| SSH | 22 |
+| FTP | 21 |
+| SMB | 445 |
+| RDP | 3389 |
+| NTP | 123 |
+
+---
+
+## Command
+
+```bash
+ss -tuln
+```
+
+Displays listening TCP and UDP ports.
+
+---
+
+## Importance
+
+Understanding common network services helps IT Support engineers diagnose connectivity and application issues.
