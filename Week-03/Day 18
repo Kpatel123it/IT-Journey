@@ -1,0 +1,461 @@
+# Day 18 – Linux Text Processing & Network Services
+
+## 🎯 Objective
+
+Today's objective was to learn Linux text processing commands, understand how administrators search log files efficiently, and study common network services and their default ports used in enterprise environments.
+
+---
+
+# 🐧 Linux Theory
+
+## Why Text Processing is Important
+
+Linux servers generate thousands of log entries every day. Reading log files manually is inefficient. Linux provides powerful text-processing commands that allow administrators to search, filter, count, and extract information quickly.
+
+---
+
+# grep Command
+
+The `grep` command searches for text or patterns inside files.
+
+Examples:
+
+```bash
+grep root /etc/passwd
+grep John users.txt
+grep -i error /var/log/syslog
+```
+
+Useful options:
+
+- `-i` → Ignore case
+- `-c` → Count matching lines
+- `-n` → Show line numbers
+
+---
+
+# wc Command
+
+The `wc` command counts lines, words, and characters.
+
+Examples:
+
+```bash
+wc users.txt
+wc -l users.txt
+wc -w users.txt
+wc -c users.txt
+```
+
+Options:
+
+- `-l` → Number of lines
+- `-w` → Number of words
+- `-c` → Number of characters
+
+---
+
+# sort Command
+
+Sorts file contents alphabetically or numerically.
+
+Example:
+
+```bash
+sort users.txt
+```
+
+Useful options:
+
+```bash
+sort -r users.txt
+sort -n numbers.txt
+```
+
+---
+
+# uniq Command
+
+Removes duplicate consecutive lines.
+
+Example:
+
+```bash
+sort users.txt | uniq
+```
+
+---
+
+# cut Command
+
+Extracts selected fields from a file.
+
+Example:
+
+```bash
+cut -d ":" -f1 /etc/passwd
+```
+
+Explanation:
+
+- `-d ":"` → Field delimiter
+- `-f1` → First field
+
+Useful for displaying usernames from `/etc/passwd`.
+
+---
+
+# Linux Text Processing Workflow
+
+A common administrator workflow:
+
+1. Search log entries with `grep`.
+2. Count occurrences using `wc`.
+3. Sort results using `sort`.
+4. Remove duplicates using `uniq`.
+5. Extract required information using `cut`.
+
+---
+
+# 🌐 Networking Theory
+
+## Common Network Services
+
+### DNS
+
+Converts domain names into IP addresses.
+
+Default Port:
+
+53
+
+---
+
+### DHCP
+
+Automatically assigns IP addresses.
+
+Ports:
+
+67
+
+68
+
+---
+
+### HTTP
+
+Transfers web pages.
+
+Port:
+
+80
+
+---
+
+### HTTPS
+
+Secure web communication.
+
+Port:
+
+443
+
+---
+
+### SSH
+
+Secure remote login.
+
+Port:
+
+22
+
+---
+
+### FTP
+
+File Transfer Protocol.
+
+Port:
+
+21
+
+---
+
+### SMB
+
+Windows File Sharing.
+
+Port:
+
+445
+
+---
+
+### RDP
+
+Remote Desktop Protocol.
+
+Port:
+
+3389
+
+---
+
+### NTP
+
+Synchronizes system time.
+
+Port:
+
+123
+
+---
+
+# Checking Listening Ports
+
+Linux provides the `ss` command to display active network connections and listening ports.
+
+Example:
+
+```bash
+ss -tuln
+```
+
+Explanation:
+
+- `-t` → TCP
+- `-u` → UDP
+- `-l` → Listening
+- `-n` → Numeric output
+
+---
+
+# Practical Work Completed
+
+## Linux Commands
+
+```bash
+mkdir TextLab
+
+cd TextLab
+
+touch users.txt
+
+cat users.txt
+
+sort users.txt
+
+sort users.txt | uniq
+
+grep John users.txt
+
+grep Alice users.txt
+
+wc users.txt
+
+wc -l users.txt
+
+cut -d ":" -f1 /etc/passwd
+```
+
+---
+
+## Networking Commands
+
+```bash
+ss -tuln
+
+systemctl status ssh
+
+hostnamectl
+
+cat /etc/resolv.conf
+```
+
+---
+
+# Skills Learned
+
+- Searching text using grep
+- Counting file contents
+- Sorting data
+- Removing duplicate entries
+- Extracting fields from files
+- Viewing listening network ports
+- Understanding network services
+- Reviewing DNS configuration
+- Checking SSH service status
+
+---
+
+# Real World Scenario
+
+## Situation
+
+A Linux administrator receives a complaint that users cannot access company websites.
+
+Investigation shows:
+
+- Internet connectivity is available.
+- DNS resolution fails.
+
+Administrator verifies:
+
+```bash
+cat /etc/resolv.conf
+```
+
+Tests DNS:
+
+```bash
+nslookup google.com
+```
+
+Incorrect DNS server configuration is identified and corrected.
+
+Service restored.
+
+---
+
+# Help Desk Ticket
+
+## Issue
+
+Employee reports:
+
+"I can ping 8.8.8.8 but websites do not open."
+
+### Investigation
+
+Verified:
+
+- Network connectivity
+- Gateway
+- DNS configuration
+
+### Root Cause
+
+Incorrect DNS configuration.
+
+### Resolution
+
+Corrected DNS server settings.
+
+Verified successful name resolution.
+
+Issue resolved.
+
+---
+
+# Interview Questions
+
+## What does grep do?
+
+Answer
+
+Searches files for matching text or patterns.
+
+---
+
+## Difference between grep and find?
+
+Answer
+
+grep searches inside files.
+
+find searches for files and directories.
+
+---
+
+## What does cut do?
+
+Answer
+
+Extracts selected fields from a file.
+
+---
+
+## What is DNS?
+
+Answer
+
+DNS converts domain names into IP addresses.
+
+---
+
+## Why is SSH important?
+
+Answer
+
+Provides secure remote administration of Linux servers.
+
+---
+
+# Soft Skills
+
+Customer
+
+"My internet is not working."
+
+Professional Response
+
+"I'll first determine whether this is a network connectivity issue or a DNS issue before making any configuration changes."
+
+---
+
+# Customer Communication
+
+Customer
+
+"Can you just restart the computer?"
+
+Professional Response
+
+"I'd like to identify the root cause first so we can solve the actual problem instead of temporarily masking it."
+
+---
+
+# Key Takeaways
+
+- grep searches inside files.
+- wc counts file contents.
+- sort organizes data.
+- uniq removes duplicate lines.
+- cut extracts fields.
+- DNS translates domain names.
+- SSH provides secure remote access.
+- ss displays listening ports.
+- Troubleshooting should follow a logical process.
+
+---
+
+# Real World Application
+
+Linux administrators use grep daily to search log files.
+
+IT Support engineers verify DNS before escalating internet-related incidents.
+
+Network administrators monitor listening ports using ss.
+
+---
+
+# Screenshots Captured
+
+- cat users.txt
+- grep John users.txt
+- sort users.txt
+- sort users.txt | uniq
+- wc users.txt
+- cut command
+- ss -tuln
+- systemctl status ssh
+- hostnamectl
+- cat /etc/resolv.conf
+
+---
+
+# Reflection
+
+Today I learned how Linux administrators efficiently process text files and troubleshoot systems using grep, wc, sort, uniq, and cut. I also learned about common network services, their default ports, and how to distinguish DNS problems from general network connectivity issues.
