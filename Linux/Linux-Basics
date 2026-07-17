@@ -1112,3 +1112,66 @@ Important Logs:
 - dpkg.log
 
 Administrators review logs before making changes.
+# Linux Text Processing
+
+## Commands
+
+```bash
+grep
+wc
+sort
+uniq
+cut
+```
+
+---
+
+## grep
+
+Searches text inside files.
+
+Example
+
+```bash
+grep root /etc/passwd
+```
+
+---
+
+## wc
+
+Counts:
+
+- Lines
+- Words
+- Characters
+
+---
+
+## sort
+
+Sorts file contents alphabetically or numerically.
+
+---
+
+## uniq
+
+Removes duplicate consecutive lines.
+
+---
+
+## cut
+
+Extracts fields from structured text.
+
+Example
+
+```bash
+cut -d ":" -f1 /etc/passwd
+```
+
+---
+
+## Best Practice
+
+Use grep to search logs instead of manually reading large files.
