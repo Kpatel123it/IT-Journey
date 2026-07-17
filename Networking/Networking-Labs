@@ -503,3 +503,37 @@ cat /etc/resolv.conf
 ## Result
 
 Successfully verified Linux network configuration using built-in networking tools.
+# Lab 14 – Network Services
+
+## Objective
+
+Explore common network services and identify listening ports.
+
+---
+
+## Commands
+
+```bash
+ss -tuln
+
+systemctl status ssh
+
+hostnamectl
+
+cat /etc/resolv.conf
+```
+
+---
+
+## Skills Practiced
+
+- Viewing listening ports
+- Checking SSH service
+- Reviewing hostname information
+- Verifying DNS configuration
+
+---
+
+## Result
+
+Successfully identified network services and verified Linux network configuration.
