@@ -527,3 +527,58 @@ tail /var/log/syslog
 ## Result
 
 Successfully located files and examined Linux log files for troubleshooting.
+# Lab 15 – Linux Text Processing
+
+## Objective
+
+Practice searching, sorting, counting, and extracting data using Linux text-processing commands.
+
+---
+
+## Commands
+
+```bash
+grep
+
+wc
+
+sort
+
+uniq
+
+cut
+```
+
+---
+
+## Practical Commands
+
+```bash
+grep John users.txt
+
+sort users.txt
+
+sort users.txt | uniq
+
+wc users.txt
+
+wc -l users.txt
+
+cut -d ":" -f1 /etc/passwd
+```
+
+---
+
+## Skills Practiced
+
+- Searching text
+- Counting lines
+- Sorting files
+- Removing duplicates
+- Extracting fields
+
+---
+
+## Result
+
+Successfully processed text files using standard Linux administration tools.
