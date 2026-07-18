@@ -1,0 +1,27 @@
+# Linux System Monitoring
+
+## Commands
+
+- uptime
+- free
+- top
+- ps
+- df
+- du
+
+## Purpose
+
+System monitoring helps administrators identify performance bottlenecks before users are affected.
+
+## Common Workflow
+
+1. Check uptime.
+2. Review memory.
+3. Review CPU.
+4. Identify heavy processes.
+5. Check disk usage.
+6. Investigate before restarting services.
+
+## Best Practice
+
+Always collect evidence before making configuration changes.
