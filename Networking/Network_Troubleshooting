@@ -1,0 +1,43 @@
+# Network Troubleshooting Methodology
+
+## Troubleshooting Steps
+
+1. Verify network interface.
+
+```bash
+ip addr
+```
+
+2. Verify routing table.
+
+```bash
+ip route
+```
+
+3. Test gateway.
+
+```bash
+ping <gateway-ip>
+```
+
+4. Test Internet connectivity.
+
+```bash
+ping 8.8.8.8
+```
+
+5. Verify DNS.
+
+```bash
+nslookup google.com
+```
+
+6. Trace the network path.
+
+```bash
+tracepath google.com
+```
+
+## Best Practice
+
+Follow a structured process rather than guessing. Record each observation before moving to the next step.
