@@ -582,3 +582,38 @@ cut -d ":" -f1 /etc/passwd
 ## Result
 
 Successfully processed text files using standard Linux administration tools.
+# Lab 16 – Linux System Monitoring
+
+## Objective
+
+Practice monitoring Linux system performance and identifying resource usage.
+
+## Commands
+
+```bash
+uptime
+
+free -h
+
+top
+
+ps
+
+ps aux
+
+df -h
+
+du -sh ~
+```
+
+## Skills Practiced
+
+- Checking uptime
+- Monitoring RAM
+- Viewing CPU usage
+- Reviewing running processes
+- Checking disk usage
+
+## Result
+
+Successfully monitored Linux system resources using standard administration tools.
