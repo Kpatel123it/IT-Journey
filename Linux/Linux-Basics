@@ -1175,3 +1175,45 @@ cut -d ":" -f1 /etc/passwd
 ## Best Practice
 
 Use grep to search logs instead of manually reading large files.
+# Linux System Monitoring
+
+## Commands Covered
+
+```bash
+uptime
+free
+top
+ps
+df
+du
+```
+
+## Purpose
+
+### uptime
+
+Displays system uptime and load average.
+
+### free
+
+Displays RAM and swap usage.
+
+### top
+
+Displays live system performance.
+
+### ps
+
+Lists running processes.
+
+### df
+
+Displays filesystem disk usage.
+
+### du
+
+Displays directory size.
+
+## Best Practice
+
+Always check CPU, memory, and disk usage before restarting services or servers.
