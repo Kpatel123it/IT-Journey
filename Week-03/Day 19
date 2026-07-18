@@ -1,0 +1,448 @@
+# Day 19 – Linux System Monitoring & Network Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to learn how to monitor the health of a Linux system, analyze CPU, memory, disk usage, and running processes, while following a structured network troubleshooting methodology.
+
+---
+
+# 🐧 Linux Theory
+
+## Why System Monitoring is Important
+
+Linux administrators continuously monitor system resources to identify performance issues before they affect users. Slow systems are commonly caused by high CPU usage, memory exhaustion, or resource-intensive processes.
+
+---
+
+# uptime Command
+
+Displays:
+
+- Current system time
+- System uptime
+- Number of logged-in users
+- Load average
+
+Example:
+
+```bash
+uptime
+```
+
+---
+
+# free Command
+
+Displays RAM and swap memory usage.
+
+Example:
+
+```bash
+free -h
+```
+
+Options:
+
+- -h → Human-readable format
+
+---
+
+# top Command
+
+Displays live system performance information.
+
+Example:
+
+```bash
+top
+```
+
+Information displayed:
+
+- CPU usage
+- Memory usage
+- Running processes
+- Process IDs
+- Load average
+
+Exit:
+
+```text
+q
+```
+
+---
+
+# ps Command
+
+Displays running processes.
+
+Example:
+
+```bash
+ps
+```
+
+Show all running processes:
+
+```bash
+ps aux
+```
+
+Useful columns:
+
+- USER
+- PID
+- CPU%
+- MEM%
+- COMMAND
+
+---
+
+# df Command
+
+Displays filesystem disk usage.
+
+Example:
+
+```bash
+df -h
+```
+
+Useful columns:
+
+- Filesystem
+- Size
+- Used
+- Available
+- Mounted On
+
+---
+
+# du Command
+
+Displays directory size.
+
+Example:
+
+```bash
+du -sh ~
+```
+
+Useful option:
+
+- -s → Summary
+- -h → Human-readable
+
+---
+
+# Understanding Load Average
+
+Example:
+
+```text
+Load Average
+
+0.20
+0.35
+0.50
+```
+
+Represents average system load over:
+
+- Last 1 minute
+- Last 5 minutes
+- Last 15 minutes
+
+Higher values indicate heavier CPU demand.
+
+---
+
+# 🌐 Networking Theory
+
+## Structured Network Troubleshooting
+
+Professional troubleshooting follows a logical sequence instead of guessing.
+
+### Step 1
+
+Verify Network Interface
+
+```bash
+ip addr
+```
+
+---
+
+### Step 2
+
+Verify Routing Table
+
+```bash
+ip route
+```
+
+---
+
+### Step 3
+
+Test Gateway Connectivity
+
+```bash
+ping <gateway-ip>
+```
+
+---
+
+### Step 4
+
+Test Internet Connectivity
+
+```bash
+ping 8.8.8.8
+```
+
+---
+
+### Step 5
+
+Test DNS Resolution
+
+```bash
+nslookup google.com
+```
+
+---
+
+### Step 6
+
+Trace Network Path
+
+```bash
+tracepath google.com
+```
+
+---
+
+# Practical Work Completed
+
+## Linux Commands
+
+```bash
+uptime
+
+free -h
+
+top
+
+ps
+
+ps aux
+
+df -h
+
+du -sh ~
+```
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+
+ip route
+
+ping 8.8.8.8
+
+nslookup google.com
+
+tracepath google.com
+```
+
+---
+
+# Skills Learned
+
+- Monitoring CPU usage
+- Monitoring RAM usage
+- Viewing running processes
+- Understanding load average
+- Reviewing disk usage
+- Measuring directory size
+- Following structured troubleshooting
+- Testing network connectivity
+- Verifying DNS resolution
+
+---
+
+# Real World Scenario
+
+## Situation
+
+A user reports that the company application is running very slowly.
+
+Investigation:
+
+CPU usage is consistently above 95%.
+
+Memory usage remains below 40%.
+
+Disk usage is normal.
+
+Using:
+
+```bash
+top
+```
+
+the administrator identifies a process consuming excessive CPU resources.
+
+After further investigation, the problematic application is restarted.
+
+System performance returns to normal.
+
+---
+
+# Help Desk Ticket
+
+## Issue
+
+Employee reports:
+
+"The server is extremely slow."
+
+### Investigation
+
+Checked:
+
+- CPU usage
+- Memory usage
+- Disk usage
+- Running processes
+
+### Root Cause
+
+A single application was consuming excessive CPU resources.
+
+### Resolution
+
+Identified the process using top and ps aux.
+
+Application was restarted after confirming the cause.
+
+Issue resolved.
+
+---
+
+# Interview Questions
+
+## What does uptime display?
+
+Answer
+
+Current system time, uptime, logged-in users, and load average.
+
+---
+
+## What does free -h display?
+
+Answer
+
+Human-readable memory usage including RAM and swap.
+
+---
+
+## What does ps aux display?
+
+Answer
+
+A detailed list of all running processes.
+
+---
+
+## What is load average?
+
+Answer
+
+The average number of runnable processes over the previous 1, 5, and 15 minutes.
+
+---
+
+## Which command displays disk usage?
+
+Answer
+
+```bash
+df -h
+```
+
+---
+
+# Soft Skills
+
+Customer
+
+"The server is very slow."
+
+Professional Response
+
+"I'll first review the server's CPU, memory, and running processes to identify the cause before making any changes."
+
+---
+
+# Customer Communication
+
+Customer
+
+"Should we restart the server?"
+
+Professional Response
+
+"I'd like to determine the root cause first. Restarting may temporarily hide the issue without solving it."
+
+---
+
+# Key Takeaways
+
+- uptime displays system uptime.
+- free displays memory usage.
+- top monitors system resources in real time.
+- ps displays running processes.
+- df displays filesystem usage.
+- du measures directory size.
+- Network troubleshooting should follow a logical sequence.
+- Evidence should always be collected before taking corrective action.
+
+---
+
+# Real World Application
+
+Linux administrators use top and ps daily to identify resource-intensive applications.
+
+IT Support engineers verify network connectivity and DNS before escalating incidents.
+
+Following a structured troubleshooting process reduces downtime and improves resolution time.
+
+---
+
+# Screenshots Captured
+
+- uptime
+- free -h
+- top
+- ps
+- ps aux
+- df -h
+- du -sh ~
+- ip addr
+- ip route
+- ping 8.8.8.8
+- nslookup google.com
+- tracepath google.com
+
+---
+
+# Reflection
+
+Today I learned how to monitor Linux system performance using uptime, free, top, ps, df, and du. I also practiced following a structured troubleshooting methodology to identify CPU, memory, disk, and network issues before attempting any fixes.
