@@ -537,3 +537,34 @@ cat /etc/resolv.conf
 ## Result
 
 Successfully identified network services and verified Linux network configuration.
+# Lab 15 – Network Troubleshooting
+
+## Objective
+
+Practice a structured troubleshooting workflow for Linux networking.
+
+## Commands
+
+```bash
+ip addr
+
+ip route
+
+ping 8.8.8.8
+
+nslookup google.com
+
+tracepath google.com
+```
+
+## Skills Practiced
+
+- Verifying IP configuration
+- Reviewing routing information
+- Testing Internet connectivity
+- Verifying DNS resolution
+- Tracing network paths
+
+## Result
+
+Successfully followed a structured troubleshooting methodology to diagnose connectivity issues.
