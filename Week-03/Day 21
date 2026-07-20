@@ -1,0 +1,486 @@
+# Week 03 - Day 21
+
+## Topics Covered
+
+- Linux Process Management
+- DNS Resolution Process
+- Basic Incident Response
+- Troubleshooting Methodology
+- Professional IT Ticket Documentation
+- Customer Communication
+- Root Cause Analysis
+
+---
+
+# Linux Process Management
+
+## What is a Process?
+
+A process is an instance of a running program.
+
+Examples:
+
+- Firefox
+- Chrome
+- SSH
+- Apache
+- VS Code
+
+Every process has:
+
+- PID (Process ID)
+- Owner
+- CPU Usage
+- Memory Usage
+- Status
+
+---
+
+## Commands Practiced
+
+### Display running processes
+
+```bash
+ps aux
+```
+
+Displays all running processes.
+
+---
+
+### Find process ID
+
+```bash
+pgrep sleep
+```
+
+Returns the Process ID.
+
+---
+
+### Create background process
+
+```bash
+sleep 300 &
+```
+
+Creates a background process.
+
+---
+
+### Kill process
+
+```bash
+kill PID
+```
+
+Terminates a process gracefully.
+
+---
+
+### Force kill
+
+```bash
+kill -9 PID
+```
+
+Forcefully terminates a process.
+
+---
+
+### Kill by process name
+
+```bash
+pkill firefox
+```
+
+Terminates processes using the process name.
+
+---
+
+## Practical Lab
+
+Created a background process
+
+```bash
+sleep 300 &
+```
+
+Verified the process
+
+```bash
+ps aux | grep sleep
+```
+
+Found PID
+
+```bash
+pgrep sleep
+```
+
+Terminated process
+
+```bash
+kill PID
+```
+
+Verified process no longer existed.
+
+---
+
+# DNS Resolution
+
+## DNS Flow
+
+User enters
+
+www.google.com
+
+↓
+
+Computer checks local DNS cache
+
+↓
+
+Queries configured DNS server
+
+↓
+
+Receives IP address
+
+↓
+
+Connects to destination
+
+---
+
+## Commands Practiced
+
+Check configured DNS
+
+```bash
+cat /etc/resolv.conf
+```
+
+---
+
+DNS lookup
+
+```bash
+nslookup google.com
+```
+
+---
+
+Verify hostname resolution
+
+```bash
+ping google.com
+```
+
+---
+
+# DNS Troubleshooting Workflow
+
+Problem
+
+User cannot open websites
+
+↓
+
+Check IP Address
+
+```bash
+ip addr
+```
+
+↓
+
+Check Default Gateway
+
+```bash
+ip route
+```
+
+↓
+
+Ping Gateway
+
+↓
+
+Ping Public IP
+
+```bash
+ping 8.8.8.8
+```
+
+↓
+
+Ping Hostname
+
+```bash
+ping google.com
+```
+
+↓
+
+If IP works but hostname fails
+
+↓
+
+Suspect DNS
+
+↓
+
+Check
+
+```bash
+cat /etc/resolv.conf
+```
+
+↓
+
+Verify DNS service
+
+↓
+
+Update DNS configuration (according to company policy)
+
+↓
+
+Verify issue resolved
+
+---
+
+# Incident Ticket Practice
+
+## Ticket Number
+
+INC-2102
+
+---
+
+### User
+
+David Miller
+
+---
+
+### Department
+
+Sales
+
+---
+
+### Reported Issue
+
+Computer running extremely slow.
+
+---
+
+## Investigation
+
+Questions asked
+
+- When did the issue begin?
+- Is every application slow?
+- Did anything change recently?
+
+Commands used
+
+```bash
+free -h
+top
+df -h
+journalctl
+```
+
+---
+
+## Possible Causes
+
+- High memory usage
+- High CPU usage
+- Full disk
+- Background process consuming resources
+- Software bug
+
+---
+
+## Resolution
+
+Identify root cause.
+
+Resolve based on findings.
+
+Examples
+
+- Close unnecessary applications.
+- Stop unnecessary processes.
+- Free disk space.
+- Restart affected application if appropriate.
+
+---
+
+## Verification
+
+Verify
+
+```bash
+free -h
+```
+
+```bash
+top
+```
+
+Confirm user can use applications normally.
+
+---
+
+## Ticket Documentation Format
+
+Issue
+
+↓
+
+Investigation
+
+↓
+
+Root Cause
+
+↓
+
+Resolution
+
+↓
+
+Verification
+
+↓
+
+Status
+
+---
+
+# Interview Questions
+
+## Technical
+
+Difference between
+
+kill
+
+and
+
+kill -9
+
+Answer:
+
+kill sends a termination signal allowing the process to exit gracefully.
+
+kill -9 forcefully terminates the process immediately.
+
+---
+
+## Scenario
+
+A process is consuming 100% CPU.
+
+Steps
+
+- Identify process.
+- Determine whether it is critical.
+- Investigate logs.
+- Resolve safely.
+- Verify system performance.
+
+---
+
+# Customer Communication
+
+Instead of saying
+
+"I restarted it."
+
+Use
+
+"I investigated the issue, identified the cause, applied the appropriate resolution, and verified the system is functioning correctly."
+
+---
+
+# Key Learning
+
+Today I learned that troubleshooting is not just about identifying the problem.
+
+The complete workflow is:
+
+Problem
+
+↓
+
+Collect Information
+
+↓
+
+Investigate
+
+↓
+
+Identify Root Cause
+
+↓
+
+Choose Safe Resolution
+
+↓
+
+Verify Resolution
+
+↓
+
+Document Ticket
+
+↓
+
+Close Incident
+
+This structured process is how professional IT Support Engineers handle incidents.
+
+---
+
+# Commands Learned
+
+```bash
+ps aux
+pgrep
+kill
+kill -9
+pkill
+sleep
+nslookup
+cat /etc/resolv.conf
+```
+
+---
+
+# Screenshots Added
+
+- sleep 300 &
+- ps aux | grep sleep
+- pgrep sleep
+- kill PID
+- nslookup google.com
+- cat /etc/resolv.conf
+- ping google.com
+
+---
+
+# Reflection
+
+Today was one of the most valuable learning days.
+
+I moved beyond memorizing Linux commands and began practicing the mindset of an IT Support Engineer.
+
+I learned to investigate problems, identify root causes, apply safe resolutions, verify the solution, and document the entire process professionally.
