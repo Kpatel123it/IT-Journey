@@ -568,3 +568,33 @@ tracepath google.com
 ## Result
 
 Successfully followed a structured troubleshooting methodology to diagnose connectivity issues.
+# Lab 16 – OSI Troubleshooting
+
+## Objective
+
+Practice troubleshooting network connectivity using a structured OSI-based approach.
+
+## Commands
+
+```bash
+ip addr
+
+ip route
+
+ping 8.8.8.8
+
+ping google.com
+
+tracepath google.com
+```
+
+## Skills Practiced
+
+- Verifying IP configuration
+- Testing Internet connectivity
+- Identifying DNS issues
+- Following OSI troubleshooting methodology
+
+## Result
+
+Successfully diagnosed network connectivity using a structured troubleshooting process.
