@@ -1,0 +1,28 @@
+# Linux Pipes and Redirection
+
+## Commands
+
+- |
+- >
+- >>
+- tee
+
+## Purpose
+
+These commands allow administrators to combine commands, redirect output, and save results to files.
+
+## Examples
+
+```bash
+ps aux | grep ssh
+
+ls > files.txt
+
+echo "Linux" >> notes.txt
+
+ls | tee output.txt
+```
+
+## Best Practice
+
+Use pipes to filter information instead of manually searching through command output.
