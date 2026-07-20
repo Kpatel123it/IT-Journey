@@ -617,3 +617,40 @@ du -sh ~
 ## Result
 
 Successfully monitored Linux system resources using standard administration tools.
+# Lab 17 – Linux Pipes and Redirection
+
+## Objective
+
+Practice combining Linux commands using pipes and redirection.
+
+## Commands
+
+```bash
+cat notes.txt
+
+cat notes.txt | wc -l
+
+cat notes.txt | grep Linux
+
+ls > files.txt
+
+cat files.txt
+
+ls | tee output.txt
+
+ps aux | grep bash
+
+df -h | grep "/"
+```
+
+## Skills Practiced
+
+- Pipes
+- Output redirection
+- Append redirection
+- tee command
+- Filtering command output
+
+## Result
+
+Successfully combined Linux commands to process information efficiently.
