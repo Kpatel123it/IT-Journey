@@ -1217,3 +1217,39 @@ Displays directory size.
 ## Best Practice
 
 Always check CPU, memory, and disk usage before restarting services or servers.
+# Linux Pipes and Redirection
+
+## Commands Covered
+
+```bash
+|
+>
+>>
+tee
+```
+
+### Pipe ( | )
+
+Passes output from one command to another.
+
+Example:
+
+```bash
+ps aux | grep ssh
+```
+
+### Output Redirection ( > )
+
+Writes output to a file and overwrites existing content.
+
+### Append ( >> )
+
+Adds output to an existing file.
+
+### tee
+
+Displays output and saves it to a file simultaneously.
+
+## Best Practice
+
+Combine commands using pipes to filter and process information efficiently.
