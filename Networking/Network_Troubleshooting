@@ -1,7 +1,50 @@
 # Network Troubleshooting Methodology
 
 ## Troubleshooting Steps
+# OSI Troubleshooting
 
+## Layer 1
+
+Physical connection
+
+## Layer 2
+
+Switch and MAC Address
+
+## Layer 3
+
+IP Address
+
+Gateway
+
+Routing
+
+## Layer 4
+
+TCP
+
+UDP
+
+Ports
+
+## Layer 7
+
+DNS
+
+HTTP
+
+HTTPS
+
+## Troubleshooting Process
+
+1. Check interface
+2. Check IP
+3. Check Gateway
+4. Ping Gateway
+5. Ping Internet
+6. Verify DNS
+7. Trace Route
+8. Identify Root Cause
 1. Verify network interface.
 
 ```bash
