@@ -1,0 +1,428 @@
+# Day 20 – Linux Pipes, Redirection & OSI Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to learn how to combine Linux commands using pipes, redirect command output to files, use the tee command, and understand how network engineers troubleshoot problems using the OSI model.
+
+---
+
+# 🐧 Linux Theory
+
+## Why Pipes are Important
+
+Linux administrators rarely use commands individually. Instead, they combine multiple commands to process information efficiently.
+
+A pipe (`|`) sends the output of one command directly to another command.
+
+Example:
+
+```bash
+ps aux | grep ssh
+```
+
+Instead of displaying every running process, only SSH-related processes are shown.
+
+---
+
+# Pipe Operator ( | )
+
+Syntax:
+
+```bash
+command1 | command2
+```
+
+Example:
+
+```bash
+cat /etc/passwd | wc -l
+```
+
+Explanation:
+
+- `cat` displays file contents.
+- `wc -l` counts the number of lines.
+
+---
+
+# Output Redirection (>)
+
+Redirects command output to a file.
+
+Example:
+
+```bash
+ls > files.txt
+```
+
+If the file already exists, it will be overwritten.
+
+---
+
+# Append Redirection (>>)
+
+Adds new output to the end of an existing file.
+
+Example:
+
+```bash
+echo "Linux" >> notes.txt
+```
+
+Unlike `>`, it does not remove previous content.
+
+---
+
+# Input Redirection (<)
+
+Reads input from a file instead of the keyboard.
+
+Example:
+
+```bash
+sort < users.txt
+```
+
+---
+
+# tee Command
+
+The `tee` command displays output on the screen while simultaneously saving it to a file.
+
+Example:
+
+```bash
+ls | tee output.txt
+```
+
+Useful for creating logs while viewing command output.
+
+---
+
+# Combining Multiple Commands
+
+Examples:
+
+```bash
+ps aux | grep bash
+```
+
+```bash
+df -h | grep "/"
+```
+
+```bash
+cat notes.txt | grep Linux
+```
+
+```bash
+cat /etc/passwd | wc -l
+```
+
+---
+
+# 🌐 Networking Theory
+
+## OSI Troubleshooting Method
+
+Professional troubleshooting follows the OSI model from the bottom layer upward.
+
+### Layer 1 – Physical
+
+Check:
+
+- Power
+- Cable
+- Wi-Fi
+
+---
+
+### Layer 2 – Data Link
+
+Check:
+
+- MAC Address
+- Switch
+- Network Adapter
+
+---
+
+### Layer 3 – Network
+
+Check:
+
+- IP Address
+- Default Gateway
+- Routing
+
+Commands:
+
+```bash
+ip addr
+
+ip route
+```
+
+---
+
+### Layer 4 – Transport
+
+Check:
+
+- TCP
+- UDP
+- Port Numbers
+
+---
+
+### Layer 7 – Application
+
+Check:
+
+- DNS
+- HTTP
+- HTTPS
+
+Example:
+
+```bash
+nslookup google.com
+```
+
+---
+
+# Practical Work Completed
+
+## Linux Commands
+
+```bash
+mkdir PipeLab
+
+cd PipeLab
+
+echo "Linux" > notes.txt
+
+echo "Networking" >> notes.txt
+
+echo "Cybersecurity" >> notes.txt
+
+cat notes.txt
+
+cat notes.txt | wc -l
+
+cat notes.txt | grep Linux
+
+ls > files.txt
+
+cat files.txt
+
+ls | tee output.txt
+
+ps aux | grep bash
+
+df -h | grep "/"
+```
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+
+ip route
+
+ping 8.8.8.8
+
+ping google.com
+
+tracepath google.com
+```
+
+---
+
+# Skills Learned
+
+- Combining Linux commands
+- Using pipes
+- Redirecting output
+- Appending output
+- Saving command results
+- Using tee
+- Filtering command output
+- Understanding OSI troubleshooting
+- Identifying DNS issues
+
+---
+
+# Real World Scenario
+
+## Situation
+
+A Linux administrator needs to identify whether the SSH service is running.
+
+Instead of reviewing hundreds of processes manually:
+
+```bash
+ps aux | grep ssh
+```
+
+The administrator quickly identifies the required process.
+
+This reduces troubleshooting time significantly.
+
+---
+
+# Help Desk Ticket
+
+## Issue
+
+Employee reports:
+
+"I can access websites by IP address but not by website name."
+
+### Investigation
+
+Verified:
+
+```bash
+ping 8.8.8.8
+```
+
+Successful.
+
+Verified:
+
+```bash
+ping google.com
+```
+
+Failed.
+
+### Root Cause
+
+DNS resolution failure.
+
+### Resolution
+
+Reviewed:
+
+```bash
+cat /etc/resolv.conf
+```
+
+Corrected DNS configuration.
+
+Issue resolved.
+
+---
+
+# Interview Questions
+
+## What is a Linux pipe?
+
+Answer
+
+A pipe sends the output of one command directly to another command.
+
+---
+
+## Difference between > and >> ?
+
+Answer
+
+`>` overwrites a file.
+
+`>>` appends data to an existing file.
+
+---
+
+## What does tee do?
+
+Answer
+
+Displays output on the terminal while writing the same output to a file.
+
+---
+
+## Why are pipes useful?
+
+Answer
+
+They allow multiple commands to work together efficiently.
+
+---
+
+## Which OSI layer is responsible for IP addressing?
+
+Answer
+
+Layer 3 (Network Layer)
+
+---
+
+# Soft Skills
+
+Customer
+
+"My internet stopped working."
+
+Professional Response
+
+"I'll verify your network connection step by step to determine whether the issue is with connectivity, routing, or DNS."
+
+---
+
+# Customer Communication
+
+Customer
+
+"Can you restart everything?"
+
+Professional Response
+
+"I'd like to identify the root cause first. This helps prevent the issue from happening again."
+
+---
+
+# Key Takeaways
+
+- Pipes combine commands.
+- > overwrites files.
+- >> appends to files.
+- tee writes to both screen and file.
+- Linux commands become more powerful when combined.
+- OSI troubleshooting helps isolate problems logically.
+- DNS issues can often be identified when IP addresses work but hostnames do not.
+
+---
+
+# Real World Application
+
+Linux administrators frequently combine commands using pipes to search logs, identify processes, and filter system information.
+
+Network engineers troubleshoot problems layer by layer instead of guessing.
+
+---
+
+# Screenshots Captured
+
+- cat notes.txt
+- cat notes.txt | wc -l
+- cat notes.txt | grep Linux
+- ls > files.txt
+- cat files.txt
+- ls | tee output.txt
+- ps aux | grep bash
+- df -h | grep "/"
+- ip addr
+- ip route
+- ping 8.8.8.8
+- ping google.com
+- tracepath google.com
+
+---
+
+# Reflection
+
+Today I learned how to combine Linux commands using pipes and redirection, making command-line operations much more efficient. I also practiced structured network troubleshooting using the OSI model, which helps identify issues systematically rather than relying on guesswork.
