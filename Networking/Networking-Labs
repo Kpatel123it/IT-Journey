@@ -598,3 +598,14 @@ tracepath google.com
 ## Result
 
 Successfully diagnosed network connectivity using a structured troubleshooting process.
+```bash
+nslookup google.com
+
+ip addr
+
+ping google.com
+```
+
+Observed DNS resolution and verified network connectivity.
+
+---
