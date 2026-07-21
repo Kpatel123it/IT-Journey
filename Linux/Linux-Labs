@@ -654,3 +654,19 @@ df -h | grep "/"
 ## Result
 
 Successfully combined Linux commands to process information efficiently.
+ Linux Commands
+
+```bash
+systemctl status ssh
+
+systemctl list-units --type=service
+
+systemctl status NetworkManager
+```
+
+Observed:
+
+- Active services
+- Service status
+- Loaded state
+- Running state
