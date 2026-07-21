@@ -1,0 +1,136 @@
+ What is a Linux Service?
+
+A Linux service is a background program (daemon) that performs a specific function for the operating system or users.
+
+Examples:
+
+- SSH
+- Apache Web Server
+- MySQL
+- Docker
+- NetworkManager
+
+Services can start automatically during system boot and continue running in the background.
+
+---
+
+# systemctl Command
+
+The `systemctl` command is used to manage Linux services.
+
+It allows administrators to:
+
+- Check service status
+- Start services
+- Stop services
+- Restart services
+- Enable services at boot
+- Disable services at boot
+
+---
+
+# Check Service Status
+
+Syntax:
+
+```bash
+systemctl status service-name
+```
+
+Example:
+
+```bash
+systemctl status ssh
+```
+
+Purpose:
+
+Displays:
+
+- Service status
+- Process ID
+- Service logs
+- Active or inactive state
+
+---
+
+# List Running Services
+
+Command:
+
+```bash
+systemctl list-units --type=service
+```
+
+Purpose:
+
+Displays all currently active services running on the system.
+
+---
+
+# Start a Service
+
+```bash
+sudo systemctl start ssh
+```
+
+Starts a stopped service.
+
+---
+
+# Stop a Service
+
+```bash
+sudo systemctl stop ssh
+```
+
+Stops a running service.
+
+---
+
+# Restart a Service
+
+```bash
+sudo systemctl restart ssh
+```
+
+Stops and immediately starts the service again.
+
+Useful after configuration changes.
+
+---
+
+# Enable Service at Boot
+
+```bash
+sudo systemctl enable ssh
+```
+
+Automatically starts the service every time Linux boots.
+
+---
+
+# Disable Service at Boot
+
+```bash
+sudo systemctl disable ssh
+```
+
+Prevents the service from starting automatically after reboot.
+
+---
+
+# Difference Between Start and Restart
+
+Start
+
+- Starts a stopped service.
+- Has no effect if the service is already running.
+
+Restart
+
+- Stops the running service.
+- Starts it again.
+- Used after configuration updates or troubleshooting.
+
+---
