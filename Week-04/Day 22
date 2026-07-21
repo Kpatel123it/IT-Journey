@@ -1,0 +1,546 @@
+# Day 22 – Linux Services (systemctl) & DNS Records
+
+## 🎯 Objective
+
+Today's objective was to understand Linux services, learn how to manage services using the `systemctl` command, understand common DNS records, and practice troubleshooting an SSH connectivity issue using a structured IT support approach.
+
+---
+
+# 🐧 Linux Theory
+
+## What is a Linux Service?
+
+A Linux service is a background program (daemon) that performs a specific function for the operating system or users.
+
+Examples:
+
+- SSH
+- Apache Web Server
+- MySQL
+- Docker
+- NetworkManager
+
+Services can start automatically during system boot and continue running in the background.
+
+---
+
+# systemctl Command
+
+The `systemctl` command is used to manage Linux services.
+
+It allows administrators to:
+
+- Check service status
+- Start services
+- Stop services
+- Restart services
+- Enable services at boot
+- Disable services at boot
+
+---
+
+# Check Service Status
+
+Syntax:
+
+```bash
+systemctl status service-name
+```
+
+Example:
+
+```bash
+systemctl status ssh
+```
+
+Purpose:
+
+Displays:
+
+- Service status
+- Process ID
+- Service logs
+- Active or inactive state
+
+---
+
+# List Running Services
+
+Command:
+
+```bash
+systemctl list-units --type=service
+```
+
+Purpose:
+
+Displays all currently active services running on the system.
+
+---
+
+# Start a Service
+
+```bash
+sudo systemctl start ssh
+```
+
+Starts a stopped service.
+
+---
+
+# Stop a Service
+
+```bash
+sudo systemctl stop ssh
+```
+
+Stops a running service.
+
+---
+
+# Restart a Service
+
+```bash
+sudo systemctl restart ssh
+```
+
+Stops and immediately starts the service again.
+
+Useful after configuration changes.
+
+---
+
+# Enable Service at Boot
+
+```bash
+sudo systemctl enable ssh
+```
+
+Automatically starts the service every time Linux boots.
+
+---
+
+# Disable Service at Boot
+
+```bash
+sudo systemctl disable ssh
+```
+
+Prevents the service from starting automatically after reboot.
+
+---
+
+# Difference Between Start and Restart
+
+Start
+
+- Starts a stopped service.
+- Has no effect if the service is already running.
+
+Restart
+
+- Stops the running service.
+- Starts it again.
+- Used after configuration updates or troubleshooting.
+
+---
+
+# 🌐 Networking Theory
+
+## DNS Records
+
+DNS stores different types of records to provide network services.
+
+---
+
+# A Record
+
+Maps:
+
+```
+Domain Name → IPv4 Address
+```
+
+Example:
+
+```
+google.com → 142.x.x.x
+```
+
+---
+
+# AAAA Record
+
+Maps:
+
+```
+Domain Name → IPv6 Address
+```
+
+---
+
+# CNAME Record
+
+Creates an alias for another domain.
+
+Example:
+
+```
+www.company.com
+
+↓
+
+company.com
+```
+
+---
+
+# MX Record
+
+Specifies the mail server responsible for receiving emails.
+
+Example:
+
+```
+gmail.com
+```
+
+uses MX records.
+
+---
+
+# Commands Practiced
+
+```bash
+nslookup google.com
+```
+
+If available:
+
+```bash
+dig google.com
+```
+
+---
+
+# Practical Work Completed
+
+## Linux Commands
+
+```bash
+systemctl status ssh
+
+systemctl list-units --type=service
+
+systemctl status NetworkManager
+```
+
+Observed:
+
+- Active services
+- Service status
+- Loaded state
+- Running state
+
+---
+
+## Networking Commands
+
+```bash
+nslookup google.com
+
+ip addr
+
+ping google.com
+```
+
+Observed DNS resolution and verified network connectivity.
+
+---
+
+# Skills Learned
+
+- Understanding Linux services
+- Managing services using systemctl
+- Viewing service status
+- Starting and restarting services
+- Enabling services during boot
+- Understanding DNS records
+- Identifying SSH service problems
+- Basic service troubleshooting
+
+---
+
+# Real World Scenario
+
+## Situation
+
+A user cannot connect to a Linux server using SSH.
+
+Instead of immediately restarting the server:
+
+The administrator first checks:
+
+```bash
+systemctl status ssh
+```
+
+If the SSH service is stopped:
+
+```bash
+sudo systemctl start ssh
+```
+
+The administrator verifies that the service is running before asking the user to reconnect.
+
+This minimizes downtime and avoids unnecessary server restarts.
+
+---
+
+# Help Desk Ticket
+
+## Issue
+
+Employee reports:
+
+"I cannot connect to the Linux server using SSH."
+
+### Investigation
+
+Verified:
+
+```bash
+systemctl status ssh
+```
+
+Checked:
+
+```bash
+ip addr
+```
+
+Verified connectivity:
+
+```bash
+ping server-ip
+```
+
+Reviewed active listening ports (if available):
+
+```bash
+ss -tuln
+```
+
+---
+
+### Possible Root Causes
+
+- SSH service stopped
+- Incorrect IP address
+- Firewall blocking port 22
+- Network connectivity issue
+- SSH configuration problem
+
+---
+
+### Resolution
+
+Started the SSH service using:
+
+```bash
+sudo systemctl start ssh
+```
+
+Verified:
+
+```bash
+systemctl status ssh
+```
+
+Confirmed the service was active.
+
+---
+
+### Verification
+
+- Confirmed SSH service was running.
+- Asked the user to reconnect.
+- User successfully accessed the server.
+
+Issue resolved.
+
+---
+
+# Troubleshooting Workflow
+
+```
+User reports SSH issue
+
+↓
+
+Ask questions
+
+↓
+
+Check network connectivity
+
+↓
+
+Check SSH service status
+
+↓
+
+Identify root cause
+
+↓
+
+Apply appropriate resolution
+
+↓
+
+Verify service
+
+↓
+
+Ask user to test
+
+↓
+
+Close ticket
+```
+
+---
+
+# Decision Making
+
+## Situation
+
+SSH service is stopped.
+
+Should you:
+
+- Restart the server?
+- Reinstall Linux?
+- Start the SSH service?
+
+### Correct Decision
+
+Start the SSH service first.
+
+Reason:
+
+Restarting the server is unnecessary if only one service has stopped.
+
+Always choose the least disruptive solution.
+
+---
+
+# Interview Questions
+
+## What is a Linux Service?
+
+Answer
+
+A Linux service is a background program that performs specific functions for the operating system or users.
+
+---
+
+## What is systemctl?
+
+Answer
+
+systemctl is a command used to manage Linux services.
+
+---
+
+## Difference between Start and Restart?
+
+Answer
+
+Start launches a stopped service.
+
+Restart stops the running service and starts it again.
+
+---
+
+## Why use systemctl status?
+
+Answer
+
+To check whether a service is running and view its current status.
+
+---
+
+## What is an A Record?
+
+Answer
+
+Maps a domain name to an IPv4 address.
+
+---
+
+## What is an MX Record?
+
+Answer
+
+Specifies the mail server responsible for receiving email.
+
+---
+
+# Soft Skills
+
+Customer
+
+"I've tried connecting several times."
+
+Professional Response
+
+"I understand the inconvenience. I'll verify whether the SSH service and network connectivity are working before making any changes."
+
+---
+
+# Customer Communication
+
+Customer
+
+"Can you just restart the server?"
+
+Professional Response
+
+"I'd like to identify the root cause first. Restarting the entire server may interrupt other users, so I'll check whether the issue is limited to the SSH service."
+
+---
+
+# Key Takeaways
+
+- Linux services run in the background.
+- systemctl manages services.
+- Services can be started, stopped, restarted, enabled, or disabled.
+- DNS uses different record types for different purposes.
+- Always investigate before restarting services or servers.
+- Verification and user confirmation are essential before closing a ticket.
+
+---
+
+# Real World Application
+
+Linux administrators frequently use `systemctl` to monitor and manage services such as SSH, Apache, and databases.
+
+IT Support Engineers often troubleshoot SSH connectivity by checking the service status before performing larger changes.
+
+---
+
+# Screenshots Captured
+
+- systemctl status ssh
+- systemctl list-units --type=service
+- systemctl status NetworkManager
+- nslookup google.com
+- ip addr
+- ping google.com
+
+---
+
+# Reflection
+
+Today I learned how Linux services are managed using the `systemctl` command and understood why checking a service is often the first step before restarting an entire server. I also learned the purpose of common DNS records and practiced troubleshooting an SSH connectivity issue using a structured IT support workflow. This reinforced the importance of investigating, identifying the root cause, applying the safest resolution, and verifying the solution before closing an incident.
