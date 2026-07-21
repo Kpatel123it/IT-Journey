@@ -1,0 +1,61 @@
+## DNS Records
+
+DNS stores different types of records to provide network services.
+
+---
+
+# A Record
+
+Maps:
+
+```
+Domain Name → IPv4 Address
+```
+
+Example:
+
+```
+google.com → 142.x.x.x
+```
+
+---
+
+# AAAA Record
+
+Maps:
+
+```
+Domain Name → IPv6 Address
+```
+
+---
+
+# CNAME Record
+
+Creates an alias for another domain.
+
+Example:
+
+```
+www.company.com
+
+↓
+
+company.com
+```
+
+---
+
+# MX Record
+
+Specifies the mail server responsible for receiving emails.
+
+Example:
+
+```
+gmail.com
+```
+
+uses MX records.
+
+---
