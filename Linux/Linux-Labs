@@ -654,7 +654,7 @@ df -h | grep "/"
 ## Result
 
 Successfully combined Linux commands to process information efficiently.
- Linux Commands
+Day 22  Linux Commands
 
 ```bash
 systemctl status ssh
@@ -670,3 +670,35 @@ Observed:
 - Service status
 - Loaded state
 - Running state
+Day 23 # Linux Commands
+
+```bash
+journalctl
+
+journalctl -n 20
+
+journalctl --since today
+
+journalctl -u ssh
+
+journalctl -f
+
+cat /var/log/auth.log
+```
+
+Observed:
+
+- Recent log entries
+- SSH service logs
+- Boot messages
+- Authentication logs
+- Real-time log monitoring
+
+---# Skills Learned
+
+- Understanding Linux logs
+- Using journalctl
+- Reading service logs
+- Viewing recent logs
+- Investigating SSH issues using logs
+- Using logs instead of guessing
