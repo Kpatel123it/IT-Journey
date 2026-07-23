@@ -1,0 +1,110 @@
+# What is File Ownership?
+
+Every file and directory in Linux has three important attributes:
+
+- Owner
+- Group
+- Permissions
+
+These attributes determine who can access, modify, or execute a file.
+
+File ownership is an important security feature because it prevents unauthorized users from accessing sensitive data.
+
+---
+
+# Viewing File Ownership
+
+Command:
+
+```bash
+ls -l
+```
+
+Example Output:
+
+```text
+-rw-r--r-- 1 kp kp 1024 Jun 24 report.txt
+```
+
+Explanation:
+
+- Owner: kp
+- Group: kp
+- Permissions: rw-r--r--
+
+The first **kp** represents the file owner.
+
+The second **kp** represents the group assigned to the file.
+
+---
+
+# Change File Owner
+
+Command:
+
+```bash
+sudo chown username filename
+```
+
+Example:
+
+```bash
+sudo chown kp report.txt
+```
+
+Purpose:
+
+Changes the owner of the file.
+
+---
+
+# Change File Group
+
+Command:
+
+```bash
+sudo chgrp groupname filename
+```
+
+Example:
+
+```bash
+sudo chgrp developers report.txt
+```
+
+Purpose:
+
+Changes the group associated with the file.
+
+---
+
+# Change Owner and Group Together
+
+Command:
+
+```bash
+sudo chown username:groupname filename
+```
+
+Example:
+
+```bash
+sudo chown kp:developers report.txt
+```
+
+Purpose:
+
+Changes both the owner and the group in one command.
+
+---
+
+# Why File Ownership Matters
+
+Incorrect ownership may result in:
+
+- Permission denied errors
+- Applications failing to read files
+- Services failing to start
+- Security risks
+
+Linux administrators regularly verify ownership while troubleshooting access-related issues.
