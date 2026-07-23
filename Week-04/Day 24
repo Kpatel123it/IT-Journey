@@ -1,0 +1,477 @@
+# Day 24 – Linux File Ownership & DHCP (Dynamic Host Configuration Protocol)
+
+## 🎯 Objective
+
+Today's objective was to understand Linux file ownership, learn how ownership affects file access, practice using ownership-related commands, and understand how DHCP automatically assigns IP addresses to devices using the DORA process.
+
+---
+
+# 🐧 Linux Theory
+
+## What is File Ownership?
+
+Every file and directory in Linux has three important attributes:
+
+- Owner
+- Group
+- Permissions
+
+These attributes determine who can access, modify, or execute a file.
+
+File ownership is an important security feature because it prevents unauthorized users from accessing sensitive data.
+
+---
+
+# Viewing File Ownership
+
+Command:
+
+```bash
+ls -l
+```
+
+Example Output:
+
+```text
+-rw-r--r-- 1 kp kp 1024 Jun 24 report.txt
+```
+
+Explanation:
+
+- Owner: kp
+- Group: kp
+- Permissions: rw-r--r--
+
+The first **kp** represents the file owner.
+
+The second **kp** represents the group assigned to the file.
+
+---
+
+# Change File Owner
+
+Command:
+
+```bash
+sudo chown username filename
+```
+
+Example:
+
+```bash
+sudo chown kp report.txt
+```
+
+Purpose:
+
+Changes the owner of the file.
+
+---
+
+# Change File Group
+
+Command:
+
+```bash
+sudo chgrp groupname filename
+```
+
+Example:
+
+```bash
+sudo chgrp developers report.txt
+```
+
+Purpose:
+
+Changes the group associated with the file.
+
+---
+
+# Change Owner and Group Together
+
+Command:
+
+```bash
+sudo chown username:groupname filename
+```
+
+Example:
+
+```bash
+sudo chown kp:developers report.txt
+```
+
+Purpose:
+
+Changes both the owner and the group in one command.
+
+---
+
+# Why File Ownership Matters
+
+Incorrect ownership may result in:
+
+- Permission denied errors
+- Applications failing to read files
+- Services failing to start
+- Security risks
+
+Linux administrators regularly verify ownership while troubleshooting access-related issues.
+
+---
+
+# 🌐 Networking Theory
+
+# DHCP (Dynamic Host Configuration Protocol)
+
+DHCP automatically assigns IP addresses to devices joining a network.
+
+Without DHCP, every device would require manual IP configuration.
+
+---
+
+# DHCP DORA Process
+
+## D – Discover
+
+The client broadcasts a request asking if any DHCP server is available.
+
+---
+
+## O – Offer
+
+The DHCP server responds by offering an available IP address.
+
+---
+
+## R – Request
+
+The client requests to use the offered IP address.
+
+---
+
+## A – Acknowledge
+
+The DHCP server confirms the assignment and provides network configuration such as:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+
+This completes the DHCP process.
+
+---
+
+# Commands Practiced
+
+## Linux Commands
+
+```bash
+mkdir OwnershipLab
+
+cd OwnershipLab
+
+touch report.txt
+
+touch backup.txt
+
+ls -l
+
+sudo chown username report.txt
+
+sudo chgrp groupname report.txt
+
+sudo chown username:groupname report.txt
+```
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+
+ip route
+```
+
+Observed:
+
+- Assigned IP Address
+- Default Gateway
+- Network Interface
+
+---
+
+# Skills Learned
+
+- Understanding Linux file ownership
+- Viewing ownership using ls -l
+- Changing file owner
+- Changing file group
+- Understanding owner and group relationships
+- Understanding DHCP
+- Learning the DHCP DORA process
+- Identifying automatically assigned IP addresses
+
+---
+
+# Real World Scenario
+
+## Situation
+
+A marketing employee reports:
+
+> "Whenever I try to save my report, I receive a 'Permission Denied' error."
+
+Instead of immediately changing permissions, the administrator investigates.
+
+First, the administrator checks file ownership.
+
+```bash
+ls -l
+```
+
+The administrator discovers that the file belongs to another user.
+
+After confirming ownership requirements, the administrator updates the ownership appropriately.
+
+The employee successfully saves the report.
+
+This prevents unnecessary permission changes while maintaining system security.
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-2401
+
+---
+
+### Reported Issue
+
+User receives:
+
+> "Permission Denied"
+
+while saving a report.
+
+---
+
+### Investigation
+
+Collected information from the user.
+
+Verified:
+
+```bash
+ls -l
+```
+
+Reviewed:
+
+- File owner
+- Group ownership
+- File permissions
+
+---
+
+### Root Cause
+
+Incorrect file ownership prevented the user from modifying the file.
+
+---
+
+### Resolution
+
+Updated ownership using:
+
+```bash
+sudo chown
+```
+
+Verified that ownership matched the intended user.
+
+---
+
+### Verification
+
+User successfully saved the file.
+
+Issue resolved.
+
+Ticket closed.
+
+---
+
+# Escalation Decision
+
+## Situation
+
+A file belongs to another department.
+
+Changing ownership may affect multiple users.
+
+### Decision
+
+Escalate the issue to the System Administrator.
+
+Reason:
+
+Changing ownership without authorization may interrupt business operations or violate company policies.
+
+---
+
+# Troubleshooting Workflow
+
+```
+User reports Permission Denied
+
+↓
+
+Gather information
+
+↓
+
+Check file ownership
+
+↓
+
+Check group
+
+↓
+
+Check permissions
+
+↓
+
+Identify root cause
+
+↓
+
+Apply appropriate solution
+
+↓
+
+Verify user access
+
+↓
+
+Document findings
+
+↓
+
+Close ticket
+```
+
+---
+
+# Interview Questions
+
+## What is Linux file ownership?
+
+Answer
+
+File ownership determines which user and group control access to a file or directory.
+
+---
+
+## What does chown do?
+
+Answer
+
+The chown command changes the owner of a file or directory.
+
+---
+
+## Why is file ownership important?
+
+Answer
+
+It helps secure files by ensuring only authorized users can access or modify them.
+
+---
+
+## What is DHCP?
+
+Answer
+
+DHCP automatically assigns IP addresses and network configuration to devices joining a network.
+
+---
+
+## Explain the DHCP DORA process.
+
+Answer
+
+- Discover
+- Offer
+- Request
+- Acknowledge
+
+These four steps allow a client to obtain an IP address automatically.
+
+---
+
+# Soft Skills
+
+Customer
+
+"I need this report immediately."
+
+Professional Response
+
+"I understand this is urgent. I'll verify whether the issue is related to file ownership or permissions so I can resolve it as quickly and safely as possible."
+
+---
+
+# Customer Communication
+
+Customer
+
+"Can you just give everyone full access?"
+
+Professional Response
+
+"I'd like to identify the exact cause first. Granting unnecessary permissions could create security risks, so I'll apply the safest solution for your access issue."
+
+---
+
+# Key Takeaways
+
+- Every Linux file has an owner and a group.
+- File ownership controls access.
+- chown changes ownership.
+- chgrp changes group ownership.
+- DHCP automatically assigns IP addresses.
+- DORA is the DHCP communication process.
+- Always investigate ownership before changing permissions.
+- Escalate ownership changes when business impact is possible.
+
+---
+
+# Real World Application
+
+Linux administrators frequently troubleshoot file access issues by verifying ownership before modifying permissions.
+
+IT Support Engineers rely on DHCP to ensure client devices receive valid IP addresses and network settings automatically.
+
+---
+
+# Screenshots Captured
+
+- ls -l
+- OwnershipLab directory
+- report.txt
+- backup.txt
+- ip addr
+- ip route
+
+---
+
+# Reflection
+
+Today I learned how Linux file ownership affects access to files and why ownership should always be verified before changing permissions. I also learned how DHCP automatically assigns IP addresses through the DORA process, making network configuration easier and more efficient. These concepts are essential for troubleshooting file access and network connectivity issues in a real IT support environment.
