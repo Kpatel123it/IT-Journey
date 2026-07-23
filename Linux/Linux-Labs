@@ -702,3 +702,30 @@ Observed:
 - Viewing recent logs
 - Investigating SSH issues using logs
 - Using logs instead of guessing
+Day 24 # Linux Commands
+
+```bash
+mkdir OwnershipLab
+
+cd OwnershipLab
+
+touch report.txt
+
+touch backup.txt
+
+ls -l
+
+sudo chown username report.txt
+
+sudo chgrp groupname report.txt
+
+sudo chown username:groupname report.txt
+```
+# Skills Learned
+
+- Understanding Linux file ownership
+- Viewing ownership using ls -l
+- Changing file owner
+- Changing file group
+- Understanding owner and group relationships
+---
