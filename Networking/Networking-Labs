@@ -622,4 +622,20 @@ Observed:
 - TCP ports
 - UDP ports
 
----
+---Day 24 ```bash
+ip addr
+
+ip route
+```
+
+Observed:
+
+- Assigned IP Address
+- Default Gateway
+- Network Interface
+
+# Skills Learned
+- Understanding DHCP
+- Learning the DHCP DORA process
+- Identifying automatically assigned IP addresses
+
