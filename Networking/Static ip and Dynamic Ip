@@ -1,0 +1,51 @@
+# Static IP Address
+
+A Static IP Address is manually assigned.
+
+It does not change unless an administrator modifies it.
+
+Used for:
+
+- Servers
+- Network Printers
+- Routers
+- Firewalls
+- NAS Storage
+
+Advantages:
+
+- Reliable
+- Easy to locate devices
+- Required for many network services
+
+Disadvantages:
+
+- Requires manual configuration
+- Risk of duplicate IP addresses if not managed properly
+
+---
+
+# Dynamic IP Address
+
+A Dynamic IP Address is automatically assigned by a DHCP server.
+
+Advantages:
+
+- Automatic configuration
+- Easy management
+- Prevents duplicate IP assignments
+
+Disadvantages:
+
+- IP address may change after lease renewal.
+
+---
+
+# Comparison
+
+| Static IP | Dynamic IP |
+|------------|------------|
+| Manual configuration | Automatic configuration |
+| Permanent until changed | May change |
+| Used for servers | Used for client devices |
+| Managed manually | Managed by DHCP |
