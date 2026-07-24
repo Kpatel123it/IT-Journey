@@ -1,0 +1,175 @@
+# Linux File Permissions
+
+Every file and directory in Linux has permissions that determine who can read, modify, or execute it.
+
+Permissions work together with ownership to protect files from unauthorized access.
+
+A permission is assigned to three categories:
+
+- Owner
+- Group
+- Others
+
+---
+
+# Viewing File Permissions
+
+Command:
+
+```bash
+ls -l
+```
+
+Example Output:
+
+```text
+-rwxr-xr-- 1 kp kp 1024 Jun 25 report.txt
+```
+
+Permission Breakdown:
+
+```
+Owner    Group    Others
+rwx      r-x      r--
+```
+
+Meaning:
+
+- Owner can Read, Write and Execute.
+- Group can Read and Execute.
+- Others can only Read.
+
+---
+
+# Permission Symbols
+
+| Symbol | Meaning |
+|---------|---------|
+| r | Read |
+| w | Write |
+| x | Execute |
+
+---
+
+# Numeric Permission Values
+
+| Permission | Value |
+|------------|------:|
+| Read | 4 |
+| Write | 2 |
+| Execute | 1 |
+
+Examples:
+
+```
+7 = rwx
+
+6 = rw-
+
+5 = r-x
+
+4 = r--
+
+0 = ---
+```
+
+---
+
+# chmod Command
+
+The chmod command changes file or directory permissions.
+
+Syntax:
+
+```bash
+chmod permission filename
+```
+
+Example:
+
+```bash
+chmod 755 script.sh
+```
+
+Meaning:
+
+Owner
+
+```
+rwx
+```
+
+Group
+
+```
+r-x
+```
+
+Others
+
+```
+r-x
+```
+
+---
+
+Another Example
+
+```bash
+chmod 644 report.txt
+```
+
+Meaning:
+
+Owner
+
+```
+rw-
+```
+
+Group
+
+```
+r--
+```
+
+Others
+
+```
+r--
+```
+
+---
+
+# Difference Between chmod, chown and chgrp
+
+## chmod
+
+Changes file permissions.
+
+---
+
+## chown
+
+Changes the owner of a file or directory.
+
+---
+
+## chgrp
+
+Changes the group ownership of a file or directory.
+
+---
+
+# Why File Permissions Matter
+
+Incorrect permissions can result in:
+
+- Users unable to edit files.
+- Services failing to start.
+- Unauthorized users accessing confidential data.
+- Security vulnerabilities.
+
+Linux administrators always verify permissions before making changes.
+
+---
