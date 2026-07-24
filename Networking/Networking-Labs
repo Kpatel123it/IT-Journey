@@ -638,4 +638,21 @@ Observed:
 - Understanding DHCP
 - Learning the DHCP DORA process
 - Identifying automatically assigned IP addresses
+Day 25  # Networking Commands
 
+```bash
+ip addr
+
+ip route
+```
+
+Observed:
+
+- Current IP Address
+- Default Gateway
+- Network Interface
+----
+# Skills Learned
+- Static IP Address
+- Dynamic IP Address
+- DHCP vs Static configuration
