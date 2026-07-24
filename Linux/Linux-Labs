@@ -729,3 +729,36 @@ sudo chown username:groupname report.txt
 - Changing file group
 - Understanding owner and group relationships
 ---
+Day 25--- # Linux Commands
+
+```bash
+mkdir PermissionLab
+
+cd PermissionLab
+
+touch file1.txt
+
+touch file2.txt
+
+ls -l
+
+chmod 644 file1.txt
+
+chmod 755 file2.txt
+
+ls -l
+```
+
+Observed:
+
+- Permission changes after running chmod.
+- Difference between executable and non-executable files.
+
+---# Skills Learned
+
+- Understanding Linux permissions
+- Reading permission strings
+- Using chmod
+- Numeric permission values
+- Difference between ownership and permissions
+- Difference between chmod, chown and chgrp
