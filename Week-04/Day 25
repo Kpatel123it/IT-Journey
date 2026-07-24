@@ -1,0 +1,632 @@
+# Day 25 – Linux File Permissions (chmod) & Static vs Dynamic IP
+
+## 🎯 Objective
+
+Today's objective was to understand Linux file permissions, learn how the `chmod` command modifies access rights, understand the difference between file ownership and permissions, and learn the differences between Static IP and Dynamic IP addressing in networking.
+
+---
+
+# 🐧 Linux Theory
+
+# Linux File Permissions
+
+Every file and directory in Linux has permissions that determine who can read, modify, or execute it.
+
+Permissions work together with ownership to protect files from unauthorized access.
+
+A permission is assigned to three categories:
+
+- Owner
+- Group
+- Others
+
+---
+
+# Viewing File Permissions
+
+Command:
+
+```bash
+ls -l
+```
+
+Example Output:
+
+```text
+-rwxr-xr-- 1 kp kp 1024 Jun 25 report.txt
+```
+
+Permission Breakdown:
+
+```
+Owner    Group    Others
+rwx      r-x      r--
+```
+
+Meaning:
+
+- Owner can Read, Write and Execute.
+- Group can Read and Execute.
+- Others can only Read.
+
+---
+
+# Permission Symbols
+
+| Symbol | Meaning |
+|---------|---------|
+| r | Read |
+| w | Write |
+| x | Execute |
+
+---
+
+# Numeric Permission Values
+
+| Permission | Value |
+|------------|------:|
+| Read | 4 |
+| Write | 2 |
+| Execute | 1 |
+
+Examples:
+
+```
+7 = rwx
+
+6 = rw-
+
+5 = r-x
+
+4 = r--
+
+0 = ---
+```
+
+---
+
+# chmod Command
+
+The chmod command changes file or directory permissions.
+
+Syntax:
+
+```bash
+chmod permission filename
+```
+
+Example:
+
+```bash
+chmod 755 script.sh
+```
+
+Meaning:
+
+Owner
+
+```
+rwx
+```
+
+Group
+
+```
+r-x
+```
+
+Others
+
+```
+r-x
+```
+
+---
+
+Another Example
+
+```bash
+chmod 644 report.txt
+```
+
+Meaning:
+
+Owner
+
+```
+rw-
+```
+
+Group
+
+```
+r--
+```
+
+Others
+
+```
+r--
+```
+
+---
+
+# Difference Between chmod, chown and chgrp
+
+## chmod
+
+Changes file permissions.
+
+---
+
+## chown
+
+Changes the owner of a file or directory.
+
+---
+
+## chgrp
+
+Changes the group ownership of a file or directory.
+
+---
+
+# Why File Permissions Matter
+
+Incorrect permissions can result in:
+
+- Users unable to edit files.
+- Services failing to start.
+- Unauthorized users accessing confidential data.
+- Security vulnerabilities.
+
+Linux administrators always verify permissions before making changes.
+
+---
+
+# 🌐 Networking Theory
+
+# Static IP Address
+
+A Static IP Address is manually assigned.
+
+It does not change unless an administrator modifies it.
+
+Used for:
+
+- Servers
+- Network Printers
+- Routers
+- Firewalls
+- NAS Storage
+
+Advantages:
+
+- Reliable
+- Easy to locate devices
+- Required for many network services
+
+Disadvantages:
+
+- Requires manual configuration
+- Risk of duplicate IP addresses if not managed properly
+
+---
+
+# Dynamic IP Address
+
+A Dynamic IP Address is automatically assigned by a DHCP server.
+
+Advantages:
+
+- Automatic configuration
+- Easy management
+- Prevents duplicate IP assignments
+
+Disadvantages:
+
+- IP address may change after lease renewal.
+
+---
+
+# Comparison
+
+| Static IP | Dynamic IP |
+|------------|------------|
+| Manual configuration | Automatic configuration |
+| Permanent until changed | May change |
+| Used for servers | Used for client devices |
+| Managed manually | Managed by DHCP |
+
+---
+
+# Practical Work Completed
+
+## Linux Commands
+
+```bash
+mkdir PermissionLab
+
+cd PermissionLab
+
+touch file1.txt
+
+touch file2.txt
+
+ls -l
+
+chmod 644 file1.txt
+
+chmod 755 file2.txt
+
+ls -l
+```
+
+Observed:
+
+- Permission changes after running chmod.
+- Difference between executable and non-executable files.
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+
+ip route
+```
+
+Observed:
+
+- Current IP Address
+- Default Gateway
+- Network Interface
+
+---
+
+# Skills Learned
+
+- Understanding Linux permissions
+- Reading permission strings
+- Using chmod
+- Numeric permission values
+- Difference between ownership and permissions
+- Difference between chmod, chown and chgrp
+- Static IP Address
+- Dynamic IP Address
+- DHCP vs Static configuration
+
+---
+
+# Real World Scenario
+
+## Situation
+
+A Finance employee reports:
+
+> "I can open the Excel file but I cannot save any changes."
+
+Instead of immediately modifying permissions, the administrator follows a structured troubleshooting process.
+
+---
+
+### Investigation
+
+Gather information:
+
+- Is the issue affecting only one user?
+- Is the file stored locally or on a shared drive?
+- Has the user edited the file previously?
+- When did the issue start?
+
+Verify file ownership and permissions:
+
+```bash
+ls -l
+```
+
+Review:
+
+- Owner
+- Group
+- Write permission
+
+---
+
+### Root Cause
+
+The file permissions allowed the user to read the file but not write to it.
+
+---
+
+### Resolution
+
+Verified that the user was authorized to modify the file.
+
+Updated permissions using:
+
+```bash
+chmod
+```
+
+No unnecessary permissions were granted.
+
+---
+
+### Verification
+
+Confirmed permission changes using:
+
+```bash
+ls -l
+```
+
+Asked the user to edit and save the file.
+
+Issue resolved successfully.
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-2501
+
+---
+
+### Reported Issue
+
+User can open a document but cannot edit or save changes.
+
+---
+
+### Investigation
+
+Collected information from the user.
+
+Verified:
+
+```bash
+ls -l
+```
+
+Checked:
+
+- File Owner
+- Group Ownership
+- Write Permission
+
+---
+
+### Root Cause
+
+Insufficient write permission.
+
+---
+
+### Resolution
+
+Confirmed the user was authorized.
+
+Modified permissions using:
+
+```bash
+chmod
+```
+
+---
+
+### Verification
+
+User successfully edited and saved the document.
+
+Issue resolved.
+
+Ticket closed.
+
+---
+
+# Escalation Decision
+
+## Situation
+
+The file belongs to another department.
+
+Changing permissions could expose confidential information.
+
+### Decision
+
+Escalate the issue.
+
+Reason:
+
+Changing permissions without proper authorization may violate company security policies and create security risks.
+
+---
+
+# Troubleshooting Workflow
+
+```
+User reports cannot edit file
+
+↓
+
+Gather Information
+
+↓
+
+Determine whether issue affects one user or multiple users
+
+↓
+
+Check ownership
+
+↓
+
+Check permissions
+
+↓
+
+Identify root cause
+
+↓
+
+Verify user authorization
+
+↓
+
+Apply appropriate solution
+
+↓
+
+Verify solution
+
+↓
+
+Document work
+
+↓
+
+Close ticket
+```
+
+---
+
+# Interview Questions
+
+## What is chmod?
+
+Answer
+
+chmod changes the permissions of a file or directory.
+
+---
+
+## Difference between chmod and chown?
+
+Answer
+
+chmod changes permissions.
+
+chown changes ownership.
+
+---
+
+## Difference between chmod and chgrp?
+
+Answer
+
+chmod changes permissions.
+
+chgrp changes group ownership.
+
+---
+
+## What does permission 755 mean?
+
+Answer
+
+Owner:
+
+Read, Write and Execute
+
+Group:
+
+Read and Execute
+
+Others:
+
+Read and Execute
+
+---
+
+## What does permission 644 mean?
+
+Answer
+
+Owner:
+
+Read and Write
+
+Group:
+
+Read
+
+Others:
+
+Read
+
+---
+
+## Difference between Static IP and Dynamic IP?
+
+Answer
+
+A Static IP is manually configured and remains unchanged until modified.
+
+A Dynamic IP is automatically assigned by a DHCP server and may change over time.
+
+---
+
+# Soft Skills
+
+Customer
+
+"I've been trying to edit this file all morning."
+
+Professional Response
+
+"I understand the frustration. I'll first verify whether the issue is related to file ownership or permissions, then I'll apply the safest solution to restore your access."
+
+---
+
+# Customer Communication
+
+Customer
+
+"Can you just give everyone full access?"
+
+Professional Response
+
+"I'd like to avoid granting unnecessary permissions because that could create security risks. I'll verify the appropriate level of access for your role and make only the required changes."
+
+---
+
+# Key Takeaways
+
+- File ownership and file permissions are different concepts.
+- chmod changes permissions.
+- chown changes ownership.
+- chgrp changes group ownership.
+- Always verify user authorization before changing permissions.
+- Static IPs are manually configured.
+- Dynamic IPs are assigned automatically by DHCP.
+- Verification is an essential step before closing a ticket.
+
+---
+
+# Real World Application
+
+Linux administrators regularly troubleshoot file access issues by checking ownership and permissions before making changes.
+
+IT Support Engineers frequently determine whether a user's inability to edit a file is caused by incorrect permissions, ownership, or business access restrictions while following the principle of least privilege.
+
+---
+
+# Screenshots Captured
+
+- PermissionLab directory
+- ls -l before chmod
+- ls -l after chmod
+- chmod 644
+- chmod 755
+- ip addr
+- ip route
+
+---
+
+# Reflection
+
+Today I learned the difference between Linux file ownership and file permissions and how the `chmod` command controls access to files and directories. I also learned the differences between Static IP and Dynamic IP addressing and when each is used in real-world IT environments. Most importantly, I practiced troubleshooting a file permission issue by gathering information, verifying ownership and permissions, confirming user authorization, applying the safest solution, verifying the fix, and documenting the entire process.
