@@ -656,3 +656,26 @@ Observed:
 - Static IP Address
 - Dynamic IP Address
 - DHCP vs Static configuration
+Day 26 # Networking Commands
+
+```bash
+ip addr
+
+ip route
+
+ping <gateway-ip>
+
+ip neigh
+```
+
+Observed:
+
+- Current IP address
+- Default gateway
+- ARP table entries
+- IP to MAC address mapping
+---
+# Skills Learned
+- Understanding ARP
+- IP to MAC address mapping
+- Viewing ARP cache
