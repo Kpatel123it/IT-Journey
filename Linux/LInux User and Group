@@ -1,0 +1,198 @@
+# Linux Users
+
+A user is an individual account that can log into the Linux operating system.
+
+Every user has:
+
+- Username
+- User ID (UID)
+- Primary Group
+- Home Directory
+- Login Shell
+
+Linux uses users to identify who is performing actions on the system.
+
+---
+
+# Linux Groups
+
+A group is a collection of users.
+
+Instead of assigning permissions individually to every user, Linux administrators assign permissions to groups.
+
+Example:
+
+```
+Finance Group
+
+├── John
+├── Sarah
+├── David
+```
+
+All members of the Finance group receive the permissions assigned to that group.
+
+This simplifies administration.
+
+---
+
+# Why Groups are Important
+
+Without groups:
+
+Administrator must assign permissions to every individual user.
+
+With groups:
+
+Administrator only assigns permissions once to the group.
+
+Any authorized user added to that group automatically receives the appropriate access.
+
+---
+
+# Linux Commands Learned
+
+## Current Logged-in User
+
+```bash
+whoami
+```
+
+Displays the username of the currently logged-in user.
+
+---
+
+## User Information
+
+```bash
+id
+```
+
+Displays:
+
+- Username
+- User ID (UID)
+- Group ID (GID)
+- Supplementary Groups
+
+---
+
+## View User Groups
+
+```bash
+groups
+```
+
+Displays all groups that the current user belongs to.
+
+---
+
+## View Local Users
+
+```bash
+cat /etc/passwd
+```
+
+Displays information about local user accounts.
+
+---
+
+## Create a Group
+
+```bash
+sudo groupadd it-support
+```
+
+Creates a new group.
+
+---
+
+## Create a User
+
+```bash
+sudo useradd -m supportuser
+```
+
+Creates a new user with a home directory.
+
+---
+
+## Set Password
+
+```bash
+sudo passwd supportuser
+```
+
+Assigns a password to the user.
+
+---
+
+## Add User to Group
+
+```bash
+sudo usermod -aG it-support supportuser
+```
+
+Adds the user to the specified supplementary group without removing existing group memberships.
+
+---
+
+## Verify Group Membership
+
+```bash
+id supportuser
+```
+
+or
+
+```bash
+groups supportuser
+```
+
+Confirms that the user belongs to the required group.
+
+---
+
+## Remove Practice User
+
+```bash
+sudo userdel -r supportuser
+```
+
+Removes the user and home directory.
+
+---
+
+## Remove Practice Group
+
+```bash
+sudo groupdel it-support
+```
+
+Deletes the group.
+
+---
+
+# Relationship Between Users, Groups, Ownership and Permissions
+
+```
+User
+
+↓
+
+Group
+
+↓
+
+Ownership
+
+↓
+
+Permissions
+
+↓
+
+Access
+```
+
+Linux uses all four components together to determine whether a user can access a file or directory.
