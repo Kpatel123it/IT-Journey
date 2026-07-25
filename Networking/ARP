@@ -38,3 +38,70 @@ ARP allows devices on the same network to discover each other's physical address
 - ARP works only within a local network.
 - ARP resolves IP addresses to MAC addresses.
 - Without ARP, local communication would fail.
+# Address Resolution Protocol (ARP)
+
+ARP stands for Address Resolution Protocol.
+
+ARP maps an IPv4 address to its corresponding MAC address on the local network.
+
+IP addresses operate at Layer 3 (Network Layer), while Ethernet communication requires MAC addresses at Layer 2 (Data Link Layer).
+
+ARP connects these two layers.
+
+---
+
+# Why ARP is Needed
+
+Suppose a computer wants to send data to:
+
+```
+192.168.1.1
+```
+
+The computer knows the destination IP address but cannot send Ethernet frames until it knows the destination MAC address.
+
+ARP broadcasts a request asking:
+
+> "Who has IP address 192.168.1.1?"
+
+The destination device replies with its MAC address.
+
+The computer stores this mapping temporarily in the ARP cache.
+
+---
+
+# ARP Flow
+
+```
+IP Address
+
+↓
+
+ARP Request
+
+↓
+
+MAC Address
+
+↓
+
+Ethernet Communication
+```
+
+---
+
+# View ARP Cache
+
+```bash
+ip neigh
+```
+
+Displays IP-to-MAC address mappings stored on the system.
+
+Example:
+
+```text
+192.168.1.1 dev eth0 lladdr aa:bb:cc:dd:ee:ff REACHABLE
+```
+
+---
