@@ -762,3 +762,45 @@ Observed:
 - Numeric permission values
 - Difference between ownership and permissions
 - Difference between chmod, chown and chgrp
+Day 26  # Linux Commands
+
+```bash
+whoami
+
+id
+
+groups
+
+cat /etc/passwd
+
+sudo groupadd it-support
+
+sudo useradd -m supportuser
+
+sudo passwd supportuser
+
+sudo usermod -aG it-support supportuser
+
+id supportuser
+
+groups supportuser
+```
+
+Observed:
+
+- Current user information
+- User ID
+- Group ID
+- Supplementary groups
+- New group creation
+- New user creation
+- User successfully added to the group
+# Skills Learned
+
+- Understanding Linux users
+- Understanding Linux groups
+- Viewing user information
+- Creating users
+- Creating groups
+- Assigning users to groups
+- Verifying group membership
