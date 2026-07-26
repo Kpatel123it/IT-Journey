@@ -804,3 +804,44 @@ Observed:
 - Creating groups
 - Assigning users to groups
 - Verifying group membership
+Day 27 # Linux Commands
+
+```bash
+mkdir SearchLab
+
+cd SearchLab
+
+touch report.txt
+
+touch notes.txt
+
+mkdir Documents
+
+pwd
+
+find . -name "report.txt"
+
+find . -name "notes.txt"
+
+find . -type f
+
+find . -type d
+
+locate report.txt
+```
+
+Observed:
+
+- Current working directory
+- Located files
+- Listed files only
+- Listed directories only
+- Compared find and locate results
+
+# Skills Learned
+
+- Using pwd
+- Searching files with find
+- Searching files with locate
+- Difference between find and locate
+- Updating locate database
