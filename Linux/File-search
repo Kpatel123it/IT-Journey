@@ -21,3 +21,126 @@ whereis
 - Use find for accurate searches.
 - Use locate for speed.
 - Update the locate database with `sudo updatedb`.
+# File Searching in Linux
+
+Linux administrators frequently need to locate files, configuration files, log files, and directories.
+
+Instead of manually browsing folders, Linux provides powerful search utilities.
+
+The two most commonly used commands are:
+
+- `find`
+- `locate`
+
+---
+
+# Present Working Directory (pwd)
+
+The `pwd` command displays the current working directory.
+
+Command:
+
+```bash
+pwd
+```
+
+Example Output:
+
+```text
+/home/kp/SearchLab
+```
+
+This helps identify the current location before performing file operations.
+
+---
+
+# Find Command
+
+The `find` command searches the live filesystem.
+
+Syntax:
+
+```bash
+find [location] -name "filename"
+```
+
+Example:
+
+```bash
+find . -name "report.txt"
+```
+
+Searches for `report.txt` starting from the current directory.
+
+---
+
+## Search Only Files
+
+```bash
+find . -type f
+```
+
+Displays only files.
+
+---
+
+## Search Only Directories
+
+```bash
+find . -type d
+```
+
+Displays only directories.
+
+---
+
+# Locate Command
+
+The `locate` command searches an indexed database instead of scanning the filesystem.
+
+Because it uses a database, searches are much faster.
+
+Example:
+
+```bash
+locate report.txt
+```
+
+---
+
+## Update Locate Database
+
+```bash
+sudo updatedb
+```
+
+Updates the locate database with the latest file information.
+
+---
+
+# Difference Between find and locate
+
+| find | locate |
+|------|--------|
+| Searches live filesystem | Searches indexed database |
+| Slower | Faster |
+| Always up to date | Database must be updated |
+| Better for accurate searches | Better for quick searches |
+
+---
+
+# When Should You Use Each?
+
+### Use find when:
+
+- Searching for recently created files
+- Searching the live filesystem
+- Accuracy is required
+
+### Use locate when:
+
+- Quickly locating known files
+- Searching a large system
+- Database is already updated
+
+---
