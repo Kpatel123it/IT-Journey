@@ -679,3 +679,27 @@ Observed:
 - Understanding ARP
 - IP to MAC address mapping
 - Viewing ARP cache
+Day 27   # Networking Commands
+
+```bash
+nslookup google.com
+
+dig google.com
+```
+
+Observed:
+
+- Domain name resolution
+- DNS server response
+- Returned IP address
+- DNS query information
+
+# Skills Learned
+- Understanding DNS
+- DNS resolution process
+- A Record
+- AAAA Record
+- MX Record
+- CNAME Record
+- Using nslookup
+- Using dig
