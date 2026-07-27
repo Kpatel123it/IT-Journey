@@ -703,3 +703,31 @@ Observed:
 - CNAME Record
 - Using nslookup
 - Using dig
+Day 28 # Networking Commands
+
+```bash
+ip addr
+
+ip route
+
+ping <gateway-ip>
+
+ping 8.8.8.8
+
+ping google.com
+```
+
+Observed:
+
+- IP configuration
+- Default gateway
+- Internet connectivity
+- DNS resolution
+
+---
+
+# Skills Learned
+- Understanding the purpose of a default gateway
+- Reading the routing table
+- Troubleshooting Internet connectivity
+- Differentiating gateway and DNS issues
