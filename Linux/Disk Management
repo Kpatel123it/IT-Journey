@@ -30,3 +30,88 @@ sudo apt autoremove
 - Check disk usage before deleting files.
 - Remove only unnecessary data.
 - Verify free space after cleanup.
+# Understanding Disk Usage
+
+One of the most common responsibilities of an IT Support Technician is identifying storage issues when users report that their computer is running out of space or has become slow.
+
+Linux provides several commands to investigate storage usage.
+
+---
+
+# df Command
+
+The `df` (Disk Filesystem) command displays information about disk space usage for mounted filesystems.
+
+Command:
+
+```bash
+df -h
+```
+
+### Information Displayed
+
+- Filesystem
+- Total Size
+- Used Space
+- Available Space
+- Usage Percentage
+- Mounted On
+
+The `-h` option displays the output in a human-readable format (MB/GB).
+
+---
+
+# du Command
+
+The `du` (Disk Usage) command displays how much disk space is used by directories and files.
+
+Command:
+
+```bash
+du -sh .
+```
+
+Displays the total size of the current directory.
+
+---
+
+## Display Directory Sizes
+
+```bash
+du -h --max-depth=1
+```
+
+Shows the size of each directory inside the current location.
+
+This command is useful for identifying which folders consume the most storage.
+
+---
+
+# lsblk Command
+
+The `lsblk` command lists all storage devices connected to the system.
+
+Command:
+
+```bash
+lsblk
+```
+
+Displays:
+
+- Disk names
+- Partitions
+- Mount points
+- Storage hierarchy
+
+---
+
+# Difference Between df and du
+
+| df | du |
+|----|----|
+| Displays filesystem usage | Displays directory/file usage |
+| Shows total, used, and available disk space | Shows how much space a specific directory or file consumes |
+| Useful for checking overall storage | Useful for identifying large folders |
+
+---
