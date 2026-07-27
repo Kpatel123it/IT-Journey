@@ -1,0 +1,625 @@
+# Day 28 – Linux Disk Usage & Default Gateway
+
+## 🎯 Objective
+
+Today's objective was to learn how Linux manages disk storage, understand how to identify storage usage using commands such as `df`, `du`, and `lsblk`, and understand the role of the Default Gateway in network communication. I also practiced troubleshooting disk space issues and Internet connectivity problems using a structured IT Support approach.
+
+---
+
+# 🐧 Linux Theory
+
+# Understanding Disk Usage
+
+One of the most common responsibilities of an IT Support Technician is identifying storage issues when users report that their computer is running out of space or has become slow.
+
+Linux provides several commands to investigate storage usage.
+
+---
+
+# df Command
+
+The `df` (Disk Filesystem) command displays information about disk space usage for mounted filesystems.
+
+Command:
+
+```bash
+df -h
+```
+
+### Information Displayed
+
+- Filesystem
+- Total Size
+- Used Space
+- Available Space
+- Usage Percentage
+- Mounted On
+
+The `-h` option displays the output in a human-readable format (MB/GB).
+
+---
+
+# du Command
+
+The `du` (Disk Usage) command displays how much disk space is used by directories and files.
+
+Command:
+
+```bash
+du -sh .
+```
+
+Displays the total size of the current directory.
+
+---
+
+## Display Directory Sizes
+
+```bash
+du -h --max-depth=1
+```
+
+Shows the size of each directory inside the current location.
+
+This command is useful for identifying which folders consume the most storage.
+
+---
+
+# lsblk Command
+
+The `lsblk` command lists all storage devices connected to the system.
+
+Command:
+
+```bash
+lsblk
+```
+
+Displays:
+
+- Disk names
+- Partitions
+- Mount points
+- Storage hierarchy
+
+---
+
+# Difference Between df and du
+
+| df | du |
+|----|----|
+| Displays filesystem usage | Displays directory/file usage |
+| Shows total, used, and available disk space | Shows how much space a specific directory or file consumes |
+| Useful for checking overall storage | Useful for identifying large folders |
+
+---
+
+# 🌐 Networking Theory
+
+# Default Gateway
+
+A Default Gateway is the router that forwards network traffic from the local network to other networks, such as the Internet.
+
+Example:
+
+```
+Computer
+
+↓
+
+Default Gateway (Router)
+
+↓
+
+Internet
+```
+
+Without a correctly configured default gateway, devices can communicate within the local network but cannot access external networks.
+
+---
+
+# View Routing Table
+
+Command:
+
+```bash
+ip route
+```
+
+Example Output:
+
+```text
+default via 192.168.1.1 dev eth0
+```
+
+This indicates that all traffic destined for external networks is forwarded through the router at `192.168.1.1`.
+
+---
+
+# Why is the Default Gateway Important?
+
+The default gateway enables communication between different networks.
+
+If it is missing or incorrectly configured:
+
+- Local devices may still communicate.
+- Internet access will fail.
+
+---
+
+# Basic Gateway Troubleshooting
+
+Step 1
+
+Check IP configuration:
+
+```bash
+ip addr
+```
+
+Step 2
+
+Check routing table:
+
+```bash
+ip route
+```
+
+Step 3
+
+Verify gateway connectivity:
+
+```bash
+ping <gateway-ip>
+```
+
+Step 4
+
+Verify Internet connectivity:
+
+```bash
+ping 8.8.8.8
+```
+
+Step 5
+
+Verify DNS resolution:
+
+```bash
+ping google.com
+```
+
+---
+
+# Practical Work Completed
+
+## Linux Commands
+
+```bash
+pwd
+
+df -h
+
+du -sh .
+
+du -h --max-depth=1
+
+lsblk
+```
+
+Observed:
+
+- Current directory
+- Filesystem usage
+- Directory storage usage
+- Mounted storage devices
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+
+ip route
+
+ping <gateway-ip>
+
+ping 8.8.8.8
+
+ping google.com
+```
+
+Observed:
+
+- IP configuration
+- Default gateway
+- Internet connectivity
+- DNS resolution
+
+---
+
+# Skills Learned
+
+- Checking available disk space
+- Understanding filesystem usage
+- Measuring directory size
+- Viewing mounted storage devices
+- Understanding the purpose of a default gateway
+- Reading the routing table
+- Troubleshooting Internet connectivity
+- Differentiating gateway and DNS issues
+
+---
+
+# Real World Scenario 1
+
+## Situation
+
+A user reports:
+
+> "My computer says the disk is almost full, and everything has become very slow."
+
+---
+
+## Investigation
+
+Gather information:
+
+- When did the issue begin?
+- Have you installed any new software recently?
+- Are you receiving any error messages?
+- Have you recently downloaded large files?
+
+---
+
+## Technical Investigation
+
+Check overall disk usage:
+
+```bash
+df -h
+```
+
+Check current directory usage:
+
+```bash
+du -sh .
+```
+
+Identify directories consuming the most storage:
+
+```bash
+du -h --max-depth=1
+```
+
+---
+
+## Root Cause
+
+The disk is running low on available storage due to large files or directories consuming excessive space.
+
+---
+
+## Resolution
+
+Identify the folders consuming storage.
+
+If cleanup requires deleting important files or changing storage allocation, obtain authorization or escalate according to company policy.
+
+---
+
+## Verification
+
+Confirm that sufficient storage has been recovered.
+
+Ask the user to verify that the computer is operating normally.
+
+---
+
+# Real World Scenario 2
+
+## Situation
+
+A user reports:
+
+> "I can access shared folders and printers, but I cannot browse the Internet."
+
+---
+
+## Investigation
+
+Gather information:
+
+- When did the issue begin?
+- Does it affect only your computer?
+- Have there been any recent network changes?
+
+---
+
+## Technical Investigation
+
+Verify IP configuration:
+
+```bash
+ip addr
+```
+
+Check routing table:
+
+```bash
+ip route
+```
+
+Test Internet connectivity:
+
+```bash
+ping 8.8.8.8
+```
+
+Test DNS resolution:
+
+```bash
+ping google.com
+```
+
+---
+
+## Root Cause
+
+If `ping 8.8.8.8` succeeds but `ping google.com` fails, the likely cause is a DNS configuration issue.
+
+---
+
+## Resolution
+
+Review and correct the DNS server configuration if necessary.
+
+---
+
+## Verification
+
+Confirm successful DNS resolution.
+
+Ask the user to access the website.
+
+Issue resolved.
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-2801
+
+---
+
+### Reported Issue
+
+User reports slow system performance and receives a "Disk Almost Full" warning.
+
+---
+
+### Investigation
+
+Collected user information.
+
+Verified filesystem usage using:
+
+```bash
+df -h
+```
+
+Measured directory usage using:
+
+```bash
+du -h --max-depth=1
+```
+
+---
+
+### Root Cause
+
+Insufficient available disk space caused by large directories.
+
+---
+
+### Resolution
+
+Identified storage-consuming directories.
+
+Recommended cleanup following company policy.
+
+Escalated if administrative action was required.
+
+---
+
+### Verification
+
+Confirmed available storage increased.
+
+User confirmed improved system performance.
+
+Ticket closed.
+
+---
+
+# Troubleshooting Workflow
+
+```
+User reports issue
+
+↓
+
+Gather Information
+
+↓
+
+Understand symptoms
+
+↓
+
+Form hypothesis
+
+↓
+
+Run appropriate commands
+
+↓
+
+Identify root cause
+
+↓
+
+Apply solution
+
+↓
+
+Verify with user
+
+↓
+
+Document
+
+↓
+
+Close Ticket
+```
+
+---
+
+# Interview Questions
+
+## What does `df -h` display?
+
+**Answer**
+
+Displays filesystem usage, including total, used, and available disk space, along with mount points.
+
+---
+
+## What is the difference between `df` and `du`?
+
+**Answer**
+
+`df` displays overall filesystem usage, while `du` displays the amount of storage used by files and directories.
+
+---
+
+## Which command displays storage devices?
+
+**Answer**
+
+```bash
+lsblk
+```
+
+---
+
+## Which command identifies large directories?
+
+**Answer**
+
+```bash
+du -h --max-depth=1
+```
+
+---
+
+## What is a Default Gateway?
+
+**Answer**
+
+A router that forwards traffic from the local network to other networks, such as the Internet.
+
+---
+
+## Why is the Default Gateway important?
+
+**Answer**
+
+It enables communication with devices outside the local network.
+
+---
+
+## Which command displays the routing table?
+
+**Answer**
+
+```bash
+ip route
+```
+
+---
+
+## What happens if the Default Gateway is incorrect?
+
+**Answer**
+
+Devices may communicate within the local network but will not be able to access external networks or the Internet.
+
+---
+
+# Soft Skills
+
+## Customer Communication
+
+Customer:
+
+"My computer is very slow."
+
+Professional Response:
+
+"I understand. I'll first check your system's storage usage to determine whether low disk space is affecting performance. After identifying the cause, I'll explain the available solutions before making any changes."
+
+---
+
+## Customer Communication
+
+Customer:
+
+"My Internet isn't working."
+
+Professional Response:
+
+"I'll verify your network configuration step by step to determine whether the issue is related to connectivity, routing, or DNS before making any configuration changes."
+
+---
+
+# Key Takeaways
+
+- `df -h` displays overall filesystem usage.
+- `du` identifies which directories consume storage.
+- `lsblk` lists disks and partitions.
+- The Default Gateway connects local networks to external networks.
+- `ip route` displays routing information.
+- Structured troubleshooting should always begin with gathering information before running commands.
+- Always verify the solution with the user before closing the ticket.
+
+---
+
+# Real World Application
+
+IT Support professionals regularly use `df`, `du`, and `lsblk` to investigate storage-related performance issues. They also troubleshoot network connectivity by checking IP configuration, routing, default gateways, and DNS before making changes. Following a structured troubleshooting process minimizes downtime and ensures issues are resolved efficiently and safely.
+
+---
+
+# Screenshots Captured
+
+- `pwd`
+- `df -h`
+- `du -sh .`
+- `du -h --max-depth=1`
+- `lsblk`
+- `ip addr`
+- `ip route`
+- `ping <gateway-ip>`
+- `ping 8.8.8.8`
+- `ping google.com`
+
+---
+
+# Reflection
+
+Today I learned how to investigate storage-related issues using `df`, `du`, and `lsblk` to identify available disk space and locate storage-consuming directories. I also learned how the Default Gateway enables communication between different networks and practiced troubleshooting Internet connectivity by verifying IP configuration, routing, gateway connectivity, and DNS resolution. I reinforced the importance of following a structured troubleshooting methodology: gather information, identify the root cause, apply the appropriate solution, verify with the user, and document the incident.
