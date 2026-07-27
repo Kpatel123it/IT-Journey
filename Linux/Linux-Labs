@@ -845,3 +845,29 @@ Observed:
 - Searching files with locate
 - Difference between find and locate
 - Updating locate database
+Day 28 # Linux Commands
+
+```bash
+pwd
+
+df -h
+
+du -sh .
+
+du -h --max-depth=1
+
+lsblk
+```
+
+Observed:
+
+- Current directory
+- Filesystem usage
+- Directory storage usage
+- Mounted storage devices
+
+# Skills Learned
+- Checking available disk space
+- Understanding filesystem usage
+- Measuring directory size
+- Viewing mounted storage devices
