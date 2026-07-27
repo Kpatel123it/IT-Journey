@@ -1,0 +1,91 @@
+# Default Gateway
+
+A Default Gateway is the router that forwards network traffic from the local network to other networks, such as the Internet.
+
+Example:
+
+```
+Computer
+
+↓
+
+Default Gateway (Router)
+
+↓
+
+Internet
+```
+
+Without a correctly configured default gateway, devices can communicate within the local network but cannot access external networks.
+
+---
+
+# View Routing Table
+
+Command:
+
+```bash
+ip route
+```
+
+Example Output:
+
+```text
+default via 192.168.1.1 dev eth0
+```
+
+This indicates that all traffic destined for external networks is forwarded through the router at `192.168.1.1`.
+
+---
+
+# Why is the Default Gateway Important?
+
+The default gateway enables communication between different networks.
+
+If it is missing or incorrectly configured:
+
+- Local devices may still communicate.
+- Internet access will fail.
+
+---
+
+# Basic Gateway Troubleshooting
+
+Step 1
+
+Check IP configuration:
+
+```bash
+ip addr
+```
+
+Step 2
+
+Check routing table:
+
+```bash
+ip route
+```
+
+Step 3
+
+Verify gateway connectivity:
+
+```bash
+ping <gateway-ip>
+```
+
+Step 4
+
+Verify Internet connectivity:
+
+```bash
+ping 8.8.8.8
+```
+
+Step 5
+
+Verify DNS resolution:
+
+```bash
+ping google.com
