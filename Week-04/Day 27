@@ -1,0 +1,673 @@
+# Day 27 – File Searching in Linux & DNS Fundamentals
+
+## 🎯 Objective
+
+Today's objective was to learn how to search files and directories efficiently in Linux using `find` and `locate`, understand the differences between these commands, and gain a deeper understanding of DNS (Domain Name System), including common DNS record types and the DNS resolution process.
+
+---
+
+# 🐧 Linux Theory
+
+# File Searching in Linux
+
+Linux administrators frequently need to locate files, configuration files, log files, and directories.
+
+Instead of manually browsing folders, Linux provides powerful search utilities.
+
+The two most commonly used commands are:
+
+- `find`
+- `locate`
+
+---
+
+# Present Working Directory (pwd)
+
+The `pwd` command displays the current working directory.
+
+Command:
+
+```bash
+pwd
+```
+
+Example Output:
+
+```text
+/home/kp/SearchLab
+```
+
+This helps identify the current location before performing file operations.
+
+---
+
+# Find Command
+
+The `find` command searches the live filesystem.
+
+Syntax:
+
+```bash
+find [location] -name "filename"
+```
+
+Example:
+
+```bash
+find . -name "report.txt"
+```
+
+Searches for `report.txt` starting from the current directory.
+
+---
+
+## Search Only Files
+
+```bash
+find . -type f
+```
+
+Displays only files.
+
+---
+
+## Search Only Directories
+
+```bash
+find . -type d
+```
+
+Displays only directories.
+
+---
+
+# Locate Command
+
+The `locate` command searches an indexed database instead of scanning the filesystem.
+
+Because it uses a database, searches are much faster.
+
+Example:
+
+```bash
+locate report.txt
+```
+
+---
+
+## Update Locate Database
+
+```bash
+sudo updatedb
+```
+
+Updates the locate database with the latest file information.
+
+---
+
+# Difference Between find and locate
+
+| find | locate |
+|------|--------|
+| Searches live filesystem | Searches indexed database |
+| Slower | Faster |
+| Always up to date | Database must be updated |
+| Better for accurate searches | Better for quick searches |
+
+---
+
+# When Should You Use Each?
+
+### Use find when:
+
+- Searching for recently created files
+- Searching the live filesystem
+- Accuracy is required
+
+### Use locate when:
+
+- Quickly locating known files
+- Searching a large system
+- Database is already updated
+
+---
+
+# 🌐 Networking Theory
+
+# Domain Name System (DNS)
+
+DNS stands for Domain Name System.
+
+DNS translates human-readable domain names into IP addresses.
+
+Without DNS, users would need to remember IP addresses instead of website names.
+
+Example:
+
+```
+www.google.com
+
+↓
+
+142.x.x.x
+```
+
+---
+
+# DNS Resolution Process
+
+When a user enters:
+
+```
+www.google.com
+```
+
+The computer performs the following steps:
+
+1. Checks local DNS cache.
+2. Queries the configured DNS server.
+3. DNS server returns the IP address.
+4. Browser connects to the destination IP address.
+
+---
+
+# Common DNS Records
+
+## A Record
+
+Maps:
+
+```
+Domain Name
+
+↓
+
+IPv4 Address
+```
+
+Example:
+
+```
+google.com
+
+↓
+
+142.x.x.x
+```
+
+---
+
+## AAAA Record
+
+Maps:
+
+```
+Domain Name
+
+↓
+
+IPv6 Address
+```
+
+---
+
+## MX Record
+
+MX (Mail Exchange) records specify the mail server responsible for receiving email for a domain.
+
+Example:
+
+```
+company.com
+
+↓
+
+mail.company.com
+```
+
+---
+
+## CNAME Record
+
+Creates an alias for another domain.
+
+Example:
+
+```
+mail.company.com
+
+↓
+
+server.company.com
+```
+
+---
+
+# DNS Commands
+
+## nslookup
+
+```bash
+nslookup google.com
+```
+
+Displays:
+
+- IP Address
+- DNS Server
+- Query Result
+
+---
+
+## dig (if installed)
+
+```bash
+dig google.com
+```
+
+Provides detailed DNS query information.
+
+---
+
+# Practical Work Completed
+
+## Linux Commands
+
+```bash
+mkdir SearchLab
+
+cd SearchLab
+
+touch report.txt
+
+touch notes.txt
+
+mkdir Documents
+
+pwd
+
+find . -name "report.txt"
+
+find . -name "notes.txt"
+
+find . -type f
+
+find . -type d
+
+locate report.txt
+```
+
+Observed:
+
+- Current working directory
+- Located files
+- Listed files only
+- Listed directories only
+- Compared find and locate results
+
+---
+
+## Networking Commands
+
+```bash
+nslookup google.com
+
+dig google.com
+```
+
+Observed:
+
+- Domain name resolution
+- DNS server response
+- Returned IP address
+- DNS query information
+
+---
+
+# Skills Learned
+
+- Using pwd
+- Searching files with find
+- Searching files with locate
+- Difference between find and locate
+- Updating locate database
+- Understanding DNS
+- DNS resolution process
+- A Record
+- AAAA Record
+- MX Record
+- CNAME Record
+- Using nslookup
+- Using dig
+
+---
+
+# Real World Scenario
+
+## Situation
+
+A Marketing employee reports:
+
+> "I worked on a presentation yesterday, but I can't find it today."
+
+Instead of assuming the file is deleted, the IT Support technician performs a structured investigation.
+
+---
+
+## Investigation
+
+Gather information:
+
+- Where was the file saved?
+- Do you remember the filename?
+- Was it saved locally or on a shared drive?
+- Has anyone else used this computer?
+- Were any changes made recently?
+
+---
+
+## Technical Investigation
+
+Determine the current location:
+
+```bash
+pwd
+```
+
+Search using:
+
+```bash
+find
+```
+
+If available:
+
+```bash
+locate
+```
+
+---
+
+## Root Cause
+
+The file was saved in a different directory than expected.
+
+---
+
+## Resolution
+
+Locate the file.
+
+Inform the user of its location.
+
+If the file cannot be located after verifying search locations, escalate for backup or recovery investigation.
+
+---
+
+## Verification
+
+Ask the user to open the presentation.
+
+Confirm the file opens successfully.
+
+Document the final location of the file.
+
+Close the ticket.
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-2701
+
+---
+
+### Reported Issue
+
+User cannot locate yesterday's presentation.
+
+---
+
+### Investigation
+
+Collected information from the user.
+
+Verified current directory.
+
+Searched using:
+
+```bash
+find
+
+locate
+```
+
+---
+
+### Root Cause
+
+Presentation was saved in another directory.
+
+---
+
+### Resolution
+
+Recovered the file location.
+
+Guided the user to the correct folder.
+
+---
+
+### Verification
+
+User successfully opened the presentation.
+
+Issue resolved.
+
+Ticket closed.
+
+---
+
+# Escalation Decision
+
+## Situation
+
+File cannot be located after searching the system.
+
+### Decision
+
+Escalate for backup or recovery investigation.
+
+Reason:
+
+The file may have been deleted, moved to another storage location, or require restoration from backup.
+
+---
+
+# Troubleshooting Workflow
+
+```
+User cannot find file
+
+↓
+
+Gather Information
+
+↓
+
+Identify probable filename
+
+↓
+
+Determine expected location
+
+↓
+
+Search using pwd
+
+↓
+
+Search using find
+
+↓
+
+Search using locate
+
+↓
+
+Identify file location
+
+↓
+
+Verify with user
+
+↓
+
+Document
+
+↓
+
+Close Ticket
+```
+
+---
+
+# Interview Questions
+
+## What is the difference between find and locate?
+
+Answer
+
+The `find` command searches the live filesystem in real time, while `locate` searches an indexed database, making it much faster.
+
+---
+
+## What does pwd display?
+
+Answer
+
+The current working directory.
+
+---
+
+## Why is locate faster than find?
+
+Answer
+
+Because it searches an indexed database instead of scanning the filesystem.
+
+---
+
+## When would you use find instead of locate?
+
+Answer
+
+When an accurate, real-time search of the filesystem is required.
+
+---
+
+## What is DNS?
+
+Answer
+
+DNS translates domain names into IP addresses so users can access resources using easy-to-remember names.
+
+---
+
+## What is an A Record?
+
+Answer
+
+An A Record maps a domain name to an IPv4 address.
+
+---
+
+## What is an MX Record?
+
+Answer
+
+An MX Record identifies the mail server responsible for receiving email for a domain.
+
+---
+
+## Which command can query DNS?
+
+Answer
+
+```bash
+nslookup
+```
+
+or
+
+```bash
+dig
+```
+
+---
+
+# Soft Skills
+
+Customer
+
+"I know I saved my presentation yesterday, but I can't find it."
+
+Professional Response
+
+"I'll help you locate it. First, I'd like to gather a little information about where you last saved it and what the filename might be before searching the system."
+
+---
+
+# Customer Communication
+
+Customer
+
+"Can you just recover it?"
+
+Professional Response
+
+"I'll first search the system thoroughly. If the file isn't present, I'll escalate the issue for backup or recovery investigation."
+
+---
+
+# Key Takeaways
+
+- `pwd` displays the current working directory.
+- `find` searches the live filesystem.
+- `locate` searches an indexed database.
+- `locate` requires an updated database.
+- DNS converts domain names into IP addresses.
+- A Records map domains to IPv4 addresses.
+- MX Records identify mail servers.
+- Always verify the recovered file with the user before closing a ticket.
+
+---
+
+# Real World Application
+
+Linux administrators use `find` and `locate` daily to locate configuration files, log files, application data, and user documents.
+
+IT Support professionals frequently troubleshoot missing-file incidents by gathering information, performing structured searches, verifying results with users, and documenting the resolution.
+
+DNS knowledge is essential for diagnosing website access issues, email delivery problems, and network connectivity issues.
+
+---
+
+# Screenshots Captured
+
+- pwd
+- find . -name "report.txt"
+- find . -name "notes.txt"
+- find . -type f
+- find . -type d
+- locate report.txt
+- nslookup google.com
+- dig google.com (if installed)
+
+---
+
+# Reflection
+
+Today I learned how to efficiently search for files and directories in Linux using `find` and `locate`, and I understood when each command is most appropriate. I also gained a deeper understanding of DNS, including how domain names are translated into IP addresses and the purpose of common DNS records such as A, AAAA, MX, and CNAME. Most importantly, I practiced approaching a missing-file issue using a structured troubleshooting process by gathering information, searching systematically, verifying the solution with the user, and documenting the entire incident.
