@@ -731,3 +731,22 @@ Observed:
 - Reading the routing table
 - Troubleshooting Internet connectivity
 - Differentiating gateway and DNS issues
+Day 29  # Networking Commands
+
+```bash
+ip addr
+```
+
+Observed:
+
+- IP Address
+- CIDR notation
+- Network interface
+- Subnet information
+
+# Skills Learned
+- Understanding subnet masks
+- Understanding CIDR notation
+- Viewing IP configuration
+
+---
