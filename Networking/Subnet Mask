@@ -1,0 +1,83 @@
+# Subnet Mask
+
+A subnet mask divides an IP address into:
+
+- Network portion
+- Host portion
+
+Example:
+
+```
+IP Address
+
+192.168.1.10
+
+Subnet Mask
+
+255.255.255.0
+```
+
+Network Portion:
+
+```
+192.168.1
+```
+
+Host Portion:
+
+```
+10
+```
+
+---
+
+# Why is a Subnet Mask Important?
+
+A subnet mask helps devices determine:
+
+- Whether another device is on the same network.
+- Whether traffic should be sent directly or forwarded to the default gateway.
+
+---
+
+# Common Subnet Masks
+
+| Subnet Mask | CIDR |
+|--------------|------|
+|255.0.0.0|/8|
+|255.255.0.0|/16|
+|255.255.255.0|/24|
+
+---
+
+# CIDR Notation
+
+Example:
+
+```text
+192.168.1.15/24
+```
+
+`/24` represents the subnet mask:
+
+```text
+255.255.255.0
+```
+
+---
+
+# View IP Address and Subnet
+
+Command:
+
+```bash
+ip addr
+```
+
+Displays:
+
+- IP Address
+- Subnet Prefix
+- Network Interface
+
+---
