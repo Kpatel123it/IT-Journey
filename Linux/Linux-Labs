@@ -871,3 +871,45 @@ Observed:
 - Understanding filesystem usage
 - Measuring directory size
 - Viewing mounted storage devices
+Day 29 # Linux Commands
+
+```bash
+mkdir ArchiveLab
+
+cd ArchiveLab
+
+touch file1.txt
+
+touch file2.txt
+
+mkdir Documents
+
+tar -cvf backup.tar Documents
+
+tar -xvf backup.tar
+
+gzip backup.tar
+
+gunzip backup.tar.gz
+
+zip files.zip file1.txt file2.txt
+
+unzip files.zip
+```
+
+Observed:
+
+- Archive creation
+- Archive extraction
+- File compression
+- File decompression
+- ZIP archive creation
+- ZIP archive extraction
+
+# Skills Learned
+
+- Creating archive files
+- Extracting archives
+- Compressing files
+- Decompressing files
+- Difference between archiving and compression
