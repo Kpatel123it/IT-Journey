@@ -37,3 +37,117 @@ unzip
 - gzip compresses files.
 - zip archives and compresses.
 - .tar.gz is widely used for Linux backups.
+# File Archiving
+
+Linux administrators often archive files before:
+
+- Creating backups
+- Sending multiple files
+- Storing old project data
+- Collecting log files
+
+Archiving combines multiple files and directories into a single file.
+
+The most common command used for archiving is:
+
+```bash
+tar
+```
+
+---
+
+# tar Command
+
+The `tar` command combines multiple files or directories into one archive file.
+
+Example:
+
+```bash
+tar -cvf backup.tar Documents
+```
+
+### Options
+
+- `c` = Create archive
+- `v` = Verbose output
+- `f` = Archive filename
+
+---
+
+# Extract tar Archive
+
+```bash
+tar -xvf backup.tar
+```
+
+Options:
+
+- `x` = Extract archive
+- `v` = Verbose
+- `f` = Archive filename
+
+---
+
+# File Compression
+
+Compression reduces the file size, making it easier to transfer and store.
+
+Unlike archiving, compression minimizes storage space.
+
+---
+
+# gzip Command
+
+Compress a file:
+
+```bash
+gzip backup.tar
+```
+
+Creates:
+
+```text
+backup.tar.gz
+```
+
+---
+
+# gunzip Command
+
+Extract compressed file:
+
+```bash
+gunzip backup.tar.gz
+```
+
+---
+
+# zip Command
+
+Creates a compressed ZIP archive.
+
+Example:
+
+```bash
+zip files.zip file1.txt file2.txt
+```
+
+---
+
+# unzip Command
+
+Extract ZIP archive:
+
+```bash
+unzip files.zip
+```
+
+---
+
+# Difference Between Archiving and Compression
+
+| Archiving | Compression |
+|------------|-------------|
+| Combines multiple files | Reduces file size |
+| Does not reduce size by itself | Saves storage space |
+| Uses `tar` | Uses `gzip` or `zip` |
