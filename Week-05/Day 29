@@ -1,0 +1,632 @@
+# Day 29 – Linux File Compression & Subnet Mask Fundamentals
+
+## 🎯 Objective
+
+Today's objective was to learn how Linux archives and compresses files using `tar`, `gzip`, `zip`, and `unzip`. I also learned the purpose of subnet masks, how they separate network and host portions of an IP address, and how they help devices determine whether another device is on the same network or a different network.
+
+---
+
+# 🐧 Linux Theory
+
+# File Archiving
+
+Linux administrators often archive files before:
+
+- Creating backups
+- Sending multiple files
+- Storing old project data
+- Collecting log files
+
+Archiving combines multiple files and directories into a single file.
+
+The most common command used for archiving is:
+
+```bash
+tar
+```
+
+---
+
+# tar Command
+
+The `tar` command combines multiple files or directories into one archive file.
+
+Example:
+
+```bash
+tar -cvf backup.tar Documents
+```
+
+### Options
+
+- `c` = Create archive
+- `v` = Verbose output
+- `f` = Archive filename
+
+---
+
+# Extract tar Archive
+
+```bash
+tar -xvf backup.tar
+```
+
+Options:
+
+- `x` = Extract archive
+- `v` = Verbose
+- `f` = Archive filename
+
+---
+
+# File Compression
+
+Compression reduces the file size, making it easier to transfer and store.
+
+Unlike archiving, compression minimizes storage space.
+
+---
+
+# gzip Command
+
+Compress a file:
+
+```bash
+gzip backup.tar
+```
+
+Creates:
+
+```text
+backup.tar.gz
+```
+
+---
+
+# gunzip Command
+
+Extract compressed file:
+
+```bash
+gunzip backup.tar.gz
+```
+
+---
+
+# zip Command
+
+Creates a compressed ZIP archive.
+
+Example:
+
+```bash
+zip files.zip file1.txt file2.txt
+```
+
+---
+
+# unzip Command
+
+Extract ZIP archive:
+
+```bash
+unzip files.zip
+```
+
+---
+
+# Difference Between Archiving and Compression
+
+| Archiving | Compression |
+|------------|-------------|
+| Combines multiple files | Reduces file size |
+| Does not reduce size by itself | Saves storage space |
+| Uses `tar` | Uses `gzip` or `zip` |
+
+---
+
+# 🌐 Networking Theory
+
+# Subnet Mask
+
+A subnet mask divides an IP address into:
+
+- Network portion
+- Host portion
+
+Example:
+
+```
+IP Address
+
+192.168.1.10
+
+Subnet Mask
+
+255.255.255.0
+```
+
+Network Portion:
+
+```
+192.168.1
+```
+
+Host Portion:
+
+```
+10
+```
+
+---
+
+# Why is a Subnet Mask Important?
+
+A subnet mask helps devices determine:
+
+- Whether another device is on the same network.
+- Whether traffic should be sent directly or forwarded to the default gateway.
+
+---
+
+# Common Subnet Masks
+
+| Subnet Mask | CIDR |
+|--------------|------|
+|255.0.0.0|/8|
+|255.255.0.0|/16|
+|255.255.255.0|/24|
+
+---
+
+# CIDR Notation
+
+Example:
+
+```text
+192.168.1.15/24
+```
+
+`/24` represents the subnet mask:
+
+```text
+255.255.255.0
+```
+
+---
+
+# View IP Address and Subnet
+
+Command:
+
+```bash
+ip addr
+```
+
+Displays:
+
+- IP Address
+- Subnet Prefix
+- Network Interface
+
+---
+
+# Practical Work Completed
+
+## Linux Commands
+
+```bash
+mkdir ArchiveLab
+
+cd ArchiveLab
+
+touch file1.txt
+
+touch file2.txt
+
+mkdir Documents
+
+tar -cvf backup.tar Documents
+
+tar -xvf backup.tar
+
+gzip backup.tar
+
+gunzip backup.tar.gz
+
+zip files.zip file1.txt file2.txt
+
+unzip files.zip
+```
+
+Observed:
+
+- Archive creation
+- Archive extraction
+- File compression
+- File decompression
+- ZIP archive creation
+- ZIP archive extraction
+
+---
+
+## Networking Commands
+
+```bash
+ip addr
+```
+
+Observed:
+
+- IP Address
+- CIDR notation
+- Network interface
+- Subnet information
+
+---
+
+# Skills Learned
+
+- Creating archive files
+- Extracting archives
+- Compressing files
+- Decompressing files
+- Difference between archiving and compression
+- Understanding subnet masks
+- Understanding CIDR notation
+- Viewing IP configuration
+
+---
+
+# Real World Scenario 1
+
+## Situation
+
+A Human Resources employee reports:
+
+> "I received a file from another department, but I can't open it."
+
+---
+
+## Investigation
+
+Gather information:
+
+- When did the problem start?
+- Is it only this file?
+- What is the file extension?
+- Was the file downloaded successfully?
+
+---
+
+## Technical Investigation
+
+Identify whether the file is:
+
+- `.zip`
+- `.tar`
+- `.tar.gz`
+
+Choose the appropriate extraction command.
+
+Example:
+
+```bash
+unzip files.zip
+```
+
+or
+
+```bash
+tar -xvf backup.tar
+```
+
+---
+
+## Root Cause
+
+The user attempted to open an archived file without extracting it.
+
+---
+
+## Resolution
+
+Extract the archive using the appropriate command.
+
+Explain to the user that archive files must be extracted before the contents can be accessed.
+
+---
+
+## Verification
+
+Ask the user to open the extracted files.
+
+Confirm they can access the contents successfully.
+
+---
+
+# Real World Scenario 2
+
+## Situation
+
+A user reports:
+
+> "I can communicate with one computer on my network, but I can't reach another computer in the office."
+
+---
+
+## Investigation
+
+Gather information:
+
+- When did the issue begin?
+- Can other users access the computer?
+- Is the affected computer powered on?
+- Has anything changed recently?
+
+---
+
+## Technical Investigation
+
+Check IP configuration:
+
+```bash
+ip addr
+```
+
+Check routing information:
+
+```bash
+ip route
+```
+
+Verify connectivity by pinging the other computer's IP address.
+
+Confirm that both computers are connected to the same network and using the correct subnet mask.
+
+---
+
+## Possible Root Causes
+
+- Incorrect subnet mask
+- Device disconnected from the network
+- Firewall blocking communication
+- Incorrect IP configuration
+
+---
+
+## Resolution
+
+Correct the network configuration or escalate if the issue requires administrative access.
+
+---
+
+## Verification
+
+Confirm successful communication with the other computer.
+
+Ask the user to verify access.
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-2901
+
+---
+
+### Reported Issue
+
+User cannot open an archive received from another department.
+
+---
+
+### Investigation
+
+Verified the file extension.
+
+Confirmed the file was an archive.
+
+Determined the correct extraction method.
+
+---
+
+### Root Cause
+
+The archive had not been extracted.
+
+---
+
+### Resolution
+
+Used the correct extraction command.
+
+Explained the archive process to the user.
+
+---
+
+### Verification
+
+User successfully opened the extracted files.
+
+Issue resolved.
+
+Ticket closed.
+
+---
+
+# Troubleshooting Workflow
+
+```
+User reports issue
+
+↓
+
+Gather Information
+
+↓
+
+Identify file type
+
+↓
+
+Determine correct extraction method
+
+↓
+
+Extract archive
+
+↓
+
+Verify access
+
+↓
+
+Document
+
+↓
+
+Close Ticket
+```
+
+---
+
+# Interview Questions
+
+## What is the purpose of the `tar` command?
+
+**Answer**
+
+The `tar` command combines multiple files and directories into a single archive file.
+
+---
+
+## What is the difference between archiving and compression?
+
+**Answer**
+
+Archiving combines files into one package, while compression reduces the file size.
+
+---
+
+## Which command extracts a `.tar` archive?
+
+**Answer**
+
+```bash
+tar -xvf backup.tar
+```
+
+---
+
+## Which command creates a ZIP archive?
+
+**Answer**
+
+```bash
+zip files.zip file1.txt file2.txt
+```
+
+---
+
+## What is a subnet mask?
+
+**Answer**
+
+A subnet mask separates the network portion and host portion of an IP address.
+
+---
+
+## Why is a subnet mask important?
+
+**Answer**
+
+It helps determine whether communication should occur directly on the local network or be sent to the default gateway.
+
+---
+
+## What does `/24` represent?
+
+**Answer**
+
+Subnet mask:
+
+```text
+255.255.255.0
+```
+
+---
+
+## Which command displays IP address and subnet information?
+
+**Answer**
+
+```bash
+ip addr
+```
+
+---
+
+# Soft Skills
+
+## Customer Communication
+
+Customer:
+
+"I can't open the file that was sent to me."
+
+Professional Response:
+
+"I'll first identify the type of file you received. If it's an archive such as a ZIP or TAR file, I'll extract it using the appropriate tool and then verify that you can access the contents."
+
+---
+
+## Customer Communication
+
+Customer:
+
+"I can't connect to another computer in the office."
+
+Professional Response:
+
+"I'll check your network configuration and verify that both computers are on the same network before identifying whether the issue is related to connectivity, subnet configuration, or another network setting."
+
+---
+
+# Key Takeaways
+
+- `tar` creates archive files.
+- `gzip` compresses files.
+- `gunzip` extracts `.gz` files.
+- `zip` creates ZIP archives.
+- `unzip` extracts ZIP archives.
+- Archiving and compression are different processes.
+- Subnet masks separate network and host portions of an IP address.
+- `/24` represents the subnet mask `255.255.255.0`.
+- Structured troubleshooting begins with gathering information before running commands.
+
+---
+
+# Real World Application
+
+Linux administrators frequently archive and compress files before creating backups or transferring data. IT Support professionals regularly help users extract archive files received by email or shared folders. Understanding subnet masks is essential for diagnosing communication problems between devices on the same network and identifying incorrect network configurations.
+
+---
+
+# Screenshots Captured
+
+- `tar -cvf backup.tar Documents`
+- `tar -xvf backup.tar`
+- `gzip backup.tar`
+- `gunzip backup.tar.gz`
+- `zip files.zip file1.txt file2.txt`
+- `unzip files.zip`
+- `ip addr`
+
+---
+
+# Reflection
+
+Today I learned the difference between archiving and compression and practiced creating and extracting archive files using `tar`, `gzip`, `zip`, and `unzip`. I also learned how subnet masks divide network and host portions of an IP address and how they help devices determine whether another device is on the same network. Through troubleshooting scenarios, I reinforced the importance of identifying the problem, choosing the correct tool, verifying the solution with the user, and documenting the resolution.
