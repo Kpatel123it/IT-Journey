@@ -913,3 +913,42 @@ Observed:
 - Compressing files
 - Decompressing files
 - Difference between archiving and compression
+Day 30  # Linux Commands
+
+Practiced:
+
+```bash
+mkdir SSHLab
+
+cd SSHLab
+
+touch report.txt
+```
+
+SSH example:
+
+```bash
+ssh admin@192.168.1.100
+```
+
+SCP examples:
+
+```bash
+scp report.txt admin@192.168.1.100:/home/admin/
+```
+
+```bash
+scp admin@192.168.1.100:/home/admin/report.txt .
+```
+
+Observed:
+
+- Remote login syntax
+- Secure file transfer syntax
+- Difference between remote access and file transfer
+
+---# Skills Learned
+
+- Secure remote access using SSH
+- Secure file transfer using SCP
+- Difference between SSH and SCP
