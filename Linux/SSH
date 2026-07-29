@@ -40,3 +40,79 @@ ssh localhost
 - SSH replaces Telnet.
 - SSH uses encryption.
 - OpenSSH is the default implementation on Ubuntu.
+
+# Secure Shell (SSH)
+
+SSH (Secure Shell) is a secure network protocol used to remotely connect to another Linux system over a network.
+
+Unlike Telnet, SSH encrypts all communication, making remote administration secure.
+
+Example:
+
+```bash
+ssh username@192.168.1.100
+```
+
+Example:
+
+```bash
+ssh admin@192.168.1.100
+```
+
+Purpose:
+
+- Remote server administration
+- Troubleshooting remote systems
+- Secure command execution
+- Remote configuration
+
+---
+
+# Why SSH is More Secure than Telnet
+
+SSH
+
+- Encrypts all communication
+- Protects usernames and passwords
+- Protects transferred data
+
+Telnet
+
+- Sends data in plain text
+- Easily intercepted
+- Not recommended for production environments
+
+---
+
+# Secure Copy Protocol (SCP)
+
+SCP is used to securely transfer files between Linux systems using SSH.
+
+Copy a file to a remote server:
+
+```bash
+scp report.txt admin@192.168.1.100:/home/admin/
+```
+
+Copy a file from a remote server:
+
+```bash
+scp admin@192.168.1.100:/home/admin/report.txt .
+```
+
+Advantages:
+
+- Secure
+- Encrypted
+- Reliable
+- Uses SSH authentication
+
+---
+
+# Difference Between SSH and SCP
+
+| SSH | SCP |
+|------|-----|
+| Remote login | File transfer |
+| Execute commands | Copy files |
+| Opens remote session | Transfers data securely |
