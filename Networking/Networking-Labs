@@ -749,4 +749,21 @@ Observed:
 - Understanding CIDR notation
 - Viewing IP configuration
 
+Day 30 # Networking Review
+
+Reviewed:
+
+- Public IP
+- Private IP
+- NAT
+- Router responsibilities
+
+---
+
+# Skills Learned
+- Difference between Public and Private IP addresses
+- Purpose of NAT
+- Secure remote administration
+- Structured troubleshooting process
+
 ---
