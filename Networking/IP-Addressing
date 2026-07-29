@@ -25,3 +25,63 @@ Ranges
 172.16.0.0 – 172.31.255.255
 
 192.168.0.0/16
+# Private IP Address
+
+Private IP addresses are used inside local networks.
+
+Examples:
+
+- 192.168.x.x
+- 10.x.x.x
+- 172.16.x.x – 172.31.x.x
+
+Characteristics:
+
+- Used within private networks
+- Cannot be accessed directly from the Internet
+- Assigned by local routers or DHCP servers
+
+---
+
+# Public IP Address
+
+A Public IP address is assigned by an Internet Service Provider (ISP).
+
+Characteristics:
+
+- Accessible over the Internet
+- Uniquely identifies a network
+- Used for Internet communication
+
+---
+
+# Network Address Translation (NAT)
+
+NAT allows multiple private IP addresses to share one public IP address.
+
+Example:
+
+```
+Laptop
+192.168.1.10
+
+↓
+
+Router (NAT)
+
+↓
+
+Public IP
+
+↓
+
+Internet
+```
+
+Benefits:
+
+- Conserves public IP addresses
+- Provides an additional layer of security
+- Allows multiple devices to access the Internet
+
+---
