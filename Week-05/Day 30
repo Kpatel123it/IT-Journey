@@ -1,0 +1,556 @@
+# Day 30 – Secure Remote Access (SSH & SCP) and Public vs Private IP Addresses
+
+## 🎯 Objective
+
+Today's objective was to learn how Linux administrators securely access remote systems using SSH and transfer files using SCP. I also learned the difference between Public and Private IP addresses, how Network Address Translation (NAT) works, and how to troubleshoot secure remote access and network connectivity issues.
+
+---
+
+# 🐧 Linux Theory
+
+# Secure Shell (SSH)
+
+SSH (Secure Shell) is a secure network protocol used to remotely connect to another Linux system over a network.
+
+Unlike Telnet, SSH encrypts all communication, making remote administration secure.
+
+Example:
+
+```bash
+ssh username@192.168.1.100
+```
+
+Example:
+
+```bash
+ssh admin@192.168.1.100
+```
+
+Purpose:
+
+- Remote server administration
+- Troubleshooting remote systems
+- Secure command execution
+- Remote configuration
+
+---
+
+# Why SSH is More Secure than Telnet
+
+SSH
+
+- Encrypts all communication
+- Protects usernames and passwords
+- Protects transferred data
+
+Telnet
+
+- Sends data in plain text
+- Easily intercepted
+- Not recommended for production environments
+
+---
+
+# Secure Copy Protocol (SCP)
+
+SCP is used to securely transfer files between Linux systems using SSH.
+
+Copy a file to a remote server:
+
+```bash
+scp report.txt admin@192.168.1.100:/home/admin/
+```
+
+Copy a file from a remote server:
+
+```bash
+scp admin@192.168.1.100:/home/admin/report.txt .
+```
+
+Advantages:
+
+- Secure
+- Encrypted
+- Reliable
+- Uses SSH authentication
+
+---
+
+# Difference Between SSH and SCP
+
+| SSH | SCP |
+|------|-----|
+| Remote login | File transfer |
+| Execute commands | Copy files |
+| Opens remote session | Transfers data securely |
+
+---
+
+# 🌐 Networking Theory
+
+# Private IP Address
+
+Private IP addresses are used inside local networks.
+
+Examples:
+
+- 192.168.x.x
+- 10.x.x.x
+- 172.16.x.x – 172.31.x.x
+
+Characteristics:
+
+- Used within private networks
+- Cannot be accessed directly from the Internet
+- Assigned by local routers or DHCP servers
+
+---
+
+# Public IP Address
+
+A Public IP address is assigned by an Internet Service Provider (ISP).
+
+Characteristics:
+
+- Accessible over the Internet
+- Uniquely identifies a network
+- Used for Internet communication
+
+---
+
+# Network Address Translation (NAT)
+
+NAT allows multiple private IP addresses to share one public IP address.
+
+Example:
+
+```
+Laptop
+192.168.1.10
+
+↓
+
+Router (NAT)
+
+↓
+
+Public IP
+
+↓
+
+Internet
+```
+
+Benefits:
+
+- Conserves public IP addresses
+- Provides an additional layer of security
+- Allows multiple devices to access the Internet
+
+---
+
+# Practical Work Completed
+
+## Linux Commands
+
+Practiced:
+
+```bash
+mkdir SSHLab
+
+cd SSHLab
+
+touch report.txt
+```
+
+SSH example:
+
+```bash
+ssh admin@192.168.1.100
+```
+
+SCP examples:
+
+```bash
+scp report.txt admin@192.168.1.100:/home/admin/
+```
+
+```bash
+scp admin@192.168.1.100:/home/admin/report.txt .
+```
+
+Observed:
+
+- Remote login syntax
+- Secure file transfer syntax
+- Difference between remote access and file transfer
+
+---
+
+## Networking Review
+
+Reviewed:
+
+- Public IP
+- Private IP
+- NAT
+- Router responsibilities
+
+---
+
+# Skills Learned
+
+- Secure remote access using SSH
+- Secure file transfer using SCP
+- Difference between SSH and SCP
+- Difference between Public and Private IP addresses
+- Purpose of NAT
+- Secure remote administration
+- Structured troubleshooting process
+
+---
+
+# Real World Scenario 1
+
+## Situation
+
+A system administrator requests:
+
+> "Please send today's Linux log file to another administrator."
+
+---
+
+## Investigation
+
+Gather information by asking:
+
+- What is the file name?
+- Where is the file stored?
+- Which server should receive the file?
+- Do you have permission to access the destination server?
+- Has this process worked before?
+
+---
+
+## Technical Investigation
+
+Determine that secure file transfer is required.
+
+Use SCP for transferring the file.
+
+Example:
+
+```bash
+scp /home/admin/logs/error.log admin@192.168.1.100:/home/admin/
+```
+
+---
+
+## Verification
+
+Confirm the administrator received the file.
+
+If remote access is available:
+
+```bash
+ssh admin@192.168.1.100
+```
+
+Verify:
+
+```bash
+ls -l /home/admin/
+```
+
+---
+
+## Resolution
+
+Successfully transferred the file using SCP.
+
+---
+
+## Documentation
+
+Document:
+
+- File transferred
+- Destination server
+- Verification completed
+- Ticket resolved
+
+---
+
+# Real World Scenario 2
+
+## Situation
+
+A user reports:
+
+> "I can access devices inside my office network, but I cannot open a website hosted by another company."
+
+---
+
+## Investigation
+
+Gather information:
+
+- When did the issue begin?
+- Can anyone else access the website?
+- Are you connected to VPN if required?
+- What error message appears?
+
+---
+
+## Technical Investigation
+
+Check IP configuration:
+
+```bash
+ip addr
+```
+
+Check routing:
+
+```bash
+ip route
+```
+
+Test Internet connectivity:
+
+```bash
+ping 8.8.8.8
+```
+
+If successful:
+
+Test DNS:
+
+```bash
+ping companywebsite.com
+```
+
+Verify DNS:
+
+```bash
+nslookup companywebsite.com
+```
+
+If DNS is functioning correctly:
+
+Investigate:
+
+- Website availability
+- Firewall
+- VPN
+- Proxy configuration
+- Remote server availability
+
+---
+
+## Possible Root Causes
+
+- DNS configuration issue
+- VPN disconnected
+- Firewall restriction
+- Website unavailable
+- Proxy configuration issue
+
+---
+
+## Resolution
+
+Apply the appropriate solution based on the identified root cause.
+
+---
+
+## Verification
+
+Ask the user to access the website again.
+
+Confirm successful access.
+
+---
+
+## Documentation
+
+Record:
+
+- Investigation performed
+- Root cause identified
+- Resolution applied
+- User verification completed
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-3001
+
+---
+
+### Issue
+
+User needs to securely transfer a Linux log file to another administrator.
+
+---
+
+### Investigation
+
+Confirmed:
+
+- File location
+- Destination server
+- Required permissions
+
+---
+
+### Root Cause
+
+User was unfamiliar with secure Linux file transfer methods.
+
+---
+
+### Resolution
+
+Transferred the file securely using SCP over SSH.
+
+---
+
+### Verification
+
+Destination administrator confirmed successful receipt.
+
+---
+
+### Status
+
+Resolved
+
+---
+
+# Interview Questions
+
+## What is SSH?
+
+**Answer**
+
+SSH (Secure Shell) is a secure protocol used to remotely access and manage Linux systems over a network.
+
+---
+
+## Why is SSH more secure than Telnet?
+
+**Answer**
+
+SSH encrypts all communication, while Telnet sends information in plain text.
+
+---
+
+## What does SCP do?
+
+**Answer**
+
+SCP securely transfers files between local and remote systems using SSH.
+
+---
+
+## Which command copies a file to a remote Linux server?
+
+**Answer**
+
+```bash
+scp report.txt admin@192.168.1.100:/home/admin/
+```
+
+---
+
+## What is a Private IP address?
+
+**Answer**
+
+A Private IP address is used within a local network and cannot be accessed directly from the Internet.
+
+---
+
+## What is a Public IP address?
+
+**Answer**
+
+A Public IP address is assigned by an ISP and allows communication over the Internet.
+
+---
+
+## Why can't Private IP addresses access the Internet directly?
+
+**Answer**
+
+Private IP addresses require Network Address Translation (NAT) to communicate over the Internet.
+
+---
+
+## Which device commonly performs NAT?
+
+**Answer**
+
+Router
+
+---
+
+# Soft Skills
+
+## Customer Communication
+
+Customer:
+
+"I need to send a log file to another administrator."
+
+Professional Response:
+
+"I'll first confirm the destination server and verify that you have the appropriate access. I'll then securely transfer the file using SCP and confirm that it has been received."
+
+---
+
+## Customer Communication
+
+Customer:
+
+"I can't access another company's website."
+
+Professional Response:
+
+"I'll first determine whether this is a local network, DNS, VPN, or connectivity issue before making any changes. Once I identify the root cause, I'll apply the appropriate solution and verify the result with you."
+
+---
+
+# Key Takeaways
+
+- SSH provides secure remote access.
+- SCP securely transfers files using SSH.
+- SSH encrypts communication.
+- Public IP addresses are Internet accessible.
+- Private IP addresses are used inside local networks.
+- NAT allows private IP addresses to communicate over the Internet.
+- Professional troubleshooting always begins with gathering information before selecting a solution.
+
+---
+
+# Real World Application
+
+IT Support professionals frequently use SSH to remotely administer Linux servers and SCP to securely transfer logs, configuration files, and backups between systems. Understanding Public and Private IP addressing and NAT is essential for diagnosing Internet connectivity and remote access issues in enterprise environments.
+
+---
+
+# Screenshots Captured
+
+- `ssh admin@192.168.1.100`
+- `scp report.txt admin@192.168.1.100:/home/admin/`
+- `scp admin@192.168.1.100:/home/admin/report.txt .`
+
+---
+
+# Reflection
+
+Today I learned how Linux administrators securely access remote systems using SSH and transfer files using SCP. I also learned the difference between Public and Private IP addresses and how NAT allows private devices to communicate over the Internet. Through troubleshooting scenarios, I practiced gathering information, identifying the root cause, verifying the solution, and documenting the issue before closing the ticket.
