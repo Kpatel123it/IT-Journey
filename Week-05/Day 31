@@ -1,0 +1,633 @@
+# Day 31 – Windows Fundamentals, File Explorer & Secure Remote Access Review
+
+## 🎯 Objective
+
+Today's objective was to begin learning Microsoft Windows fundamentals while continuing Linux and Networking. I learned the Windows user interface, File Explorer, Task Manager, Settings, Control Panel, and basic Windows troubleshooting. I also reviewed SSH, SCP, Public vs Private IP addresses, and NAT concepts.
+
+---
+
+# 🪟 Windows Theory
+
+# Windows Desktop
+
+The Desktop is the main workspace in Windows where users access applications, folders, files, and shortcuts.
+
+Components:
+
+- Desktop Icons
+- Taskbar
+- Start Menu
+- Notification Area
+- Search Bar
+
+---
+
+# Start Menu
+
+The Start Menu is used to:
+
+- Search applications
+- Open Settings
+- Shut down or restart the computer
+- Access installed programs
+
+---
+
+# Taskbar
+
+The Taskbar contains:
+
+- Start Button
+- Running Applications
+- Search
+- File Explorer
+- Network Status
+- Volume
+- Date & Time
+- Notification Icons
+
+---
+
+# File Explorer
+
+File Explorer is the primary file management tool in Windows.
+
+Functions:
+
+- Create folders
+- Copy files
+- Move files
+- Rename files
+- Delete files
+- Search files
+- Access local and network drives
+
+Shortcut:
+
+```text
+Windows + E
+```
+
+---
+
+# This PC
+
+"This PC" displays:
+
+- Local drives
+- External USB drives
+- CD/DVD drives (if available)
+- Network locations
+- Storage information
+
+---
+
+# Recycle Bin
+
+The Recycle Bin temporarily stores deleted files and folders.
+
+Functions:
+
+- Recover deleted files
+- Permanently delete files
+- Empty the Recycle Bin
+
+---
+
+# Settings vs Control Panel
+
+## Settings
+
+Modern Windows configuration interface.
+
+Common tasks:
+
+- Windows Update
+- Display settings
+- Network settings
+- Bluetooth
+- Personalization
+
+---
+
+## Control Panel
+
+Legacy Windows configuration tool.
+
+Common tasks:
+
+- Programs and Features
+- Administrative Tools
+- Device configuration
+- User Accounts
+- Network configuration
+
+---
+
+# Task Manager
+
+Shortcut:
+
+```text
+Ctrl + Shift + Esc
+```
+
+Task Manager is used to:
+
+- View running applications
+- Monitor CPU usage
+- Monitor Memory usage
+- End unresponsive tasks
+- Restart Windows Explorer
+- Monitor system performance
+
+---
+
+# 🐧 Linux Revision
+
+Reviewed:
+
+- SSH
+- SCP
+- Public vs Private IP
+- NAT
+
+---
+
+# SSH (Secure Shell)
+
+SSH is a secure protocol used to remotely access another Linux system.
+
+Example:
+
+```bash
+ssh admin@192.168.1.100
+```
+
+Purpose:
+
+- Remote administration
+- Secure command execution
+- Remote troubleshooting
+
+---
+
+# SCP (Secure Copy Protocol)
+
+SCP securely transfers files using SSH.
+
+Copy a file:
+
+```bash
+scp report.txt admin@192.168.1.100:/home/admin/
+```
+
+Retrieve a file:
+
+```bash
+scp admin@192.168.1.100:/home/admin/report.txt .
+```
+
+---
+
+# 🌐 Networking Theory
+
+# Public IP Address
+
+Assigned by an Internet Service Provider (ISP).
+
+Characteristics:
+
+- Internet accessible
+- Unique
+- Used for external communication
+
+---
+
+# Private IP Address
+
+Used within local networks.
+
+Examples:
+
+- 192.168.x.x
+- 10.x.x.x
+- 172.16.x.x – 172.31.x.x
+
+Characteristics:
+
+- Local communication
+- Not directly accessible from the Internet
+
+---
+
+# Network Address Translation (NAT)
+
+NAT translates Private IP addresses into Public IP addresses, allowing devices on a local network to communicate with the Internet.
+
+Usually performed by:
+
+- Router
+
+---
+
+# Difference Between DNS and Default Gateway
+
+| DNS | Default Gateway |
+|------|-----------------|
+| Converts domain names into IP addresses | Routes traffic to other networks |
+| Used for name resolution | Used for network routing |
+
+---
+
+# Practical Work Completed
+
+## Windows
+
+Practiced:
+
+- Opened File Explorer
+- Opened This PC
+- Created a practice folder
+- Renamed folder
+- Deleted folder
+- Restored folder from Recycle Bin
+- Opened Settings
+- Opened Control Panel
+- Opened Task Manager
+
+Observed:
+
+- Windows interface
+- File management
+- Storage locations
+- Running applications
+
+---
+
+## Linux
+
+Reviewed:
+
+```bash
+ssh admin@192.168.1.100
+```
+
+Reviewed:
+
+```bash
+scp report.txt admin@192.168.1.100:/home/admin/
+```
+
+---
+
+# Skills Learned
+
+- Windows interface navigation
+- File Explorer operations
+- Using This PC
+- Recovering deleted files
+- Difference between Settings and Control Panel
+- Basic Task Manager usage
+- Secure Linux remote access
+- Secure file transfer
+- Public vs Private IP addresses
+- NAT functionality
+
+---
+
+# Real World Scenario 1
+
+## Situation
+
+User reports:
+
+> "My File Explorer won't open."
+
+---
+
+## Investigation
+
+Gather information:
+
+- When did the issue begin?
+- Does it happen every time?
+- Any error messages?
+- Did Windows recently update?
+- Have you restarted the computer?
+
+---
+
+## Technical Investigation
+
+Verify the issue.
+
+Attempt to open:
+
+- File Explorer
+- Windows + E
+- This PC
+
+Open:
+
+Task Manager
+
+Check:
+
+- Windows Explorer process
+- CPU usage
+- Memory usage
+
+Restart Windows Explorer if required.
+
+---
+
+## Possible Root Causes
+
+- Windows Explorer not responding
+- Corrupted shortcut
+- Windows update issue
+- High resource usage
+- User profile issue
+
+---
+
+## Resolution
+
+Restart Windows Explorer using Task Manager.
+
+If unsuccessful:
+
+Escalate for advanced troubleshooting.
+
+---
+
+## Verification
+
+Ask the user to open File Explorer again.
+
+Confirm successful operation.
+
+---
+
+## Documentation
+
+Issue:
+
+File Explorer not opening.
+
+Root Cause:
+
+Windows Explorer became unresponsive.
+
+Resolution:
+
+Restarted Windows Explorer.
+
+Verification:
+
+User confirmed issue resolved.
+
+---
+
+# Real World Scenario 2
+
+## Situation
+
+User reports:
+
+> "I accidentally deleted an important folder."
+
+---
+
+## Investigation
+
+Ask:
+
+- What was the folder name?
+- When was it deleted?
+- Was Shift + Delete used?
+- Was it stored locally or on a network drive?
+
+---
+
+## Technical Investigation
+
+Open:
+
+Recycle Bin
+
+Search for the folder.
+
+If located:
+
+Restore it.
+
+If permanently deleted:
+
+Escalate for recovery from backup or recovery software.
+
+---
+
+## Verification
+
+Ask the user to confirm the folder has been restored.
+
+---
+
+## Documentation
+
+Issue:
+
+Folder accidentally deleted.
+
+Root Cause:
+
+Accidental deletion.
+
+Resolution:
+
+Recovered folder from Recycle Bin.
+
+Verification:
+
+User confirmed folder restored successfully.
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-3101
+
+---
+
+### Issue
+
+User unable to open File Explorer.
+
+---
+
+### Investigation
+
+Verified issue.
+
+Checked Windows Explorer process in Task Manager.
+
+---
+
+### Root Cause
+
+Windows Explorer process became unresponsive.
+
+---
+
+### Resolution
+
+Restarted Windows Explorer through Task Manager.
+
+---
+
+### Verification
+
+User confirmed File Explorer opens successfully.
+
+---
+
+### Status
+
+Resolved
+
+---
+
+# Interview Questions
+
+## What is File Explorer?
+
+**Answer**
+
+File Explorer is the Windows file management tool used to browse, organize, copy, move, rename, and delete files and folders.
+
+---
+
+## What is the shortcut to open File Explorer?
+
+**Answer**
+
+```text
+Windows + E
+```
+
+---
+
+## What is the Recycle Bin?
+
+**Answer**
+
+Recycle Bin temporarily stores deleted files and folders, allowing them to be restored before permanent deletion.
+
+---
+
+## Difference between Settings and Control Panel?
+
+**Answer**
+
+Settings is the modern Windows configuration tool, while Control Panel is the legacy configuration tool used for advanced system administration.
+
+---
+
+## What does This PC display?
+
+**Answer**
+
+It displays local drives, external storage devices, network locations, and storage information.
+
+---
+
+## What does SCP do?
+
+**Answer**
+
+SCP securely transfers files between local and remote Linux systems using SSH.
+
+---
+
+## Which command connects to a remote Linux system?
+
+**Answer**
+
+```bash
+ssh username@ip-address
+```
+
+---
+
+## Difference between DNS and Default Gateway?
+
+**Answer**
+
+DNS translates domain names into IP addresses, while the Default Gateway routes traffic from one network to another.
+
+---
+
+# Soft Skills
+
+## Customer Communication
+
+Customer:
+
+"My File Explorer won't open."
+
+Professional Response:
+
+"I'll first gather some information and check whether Windows Explorer is responding. After identifying the cause, I'll apply the appropriate fix and verify that everything is working correctly."
+
+---
+
+Customer:
+
+"I accidentally deleted an important folder."
+
+Professional Response:
+
+"I'll check whether the folder is still available in the Recycle Bin before attempting any advanced recovery methods. Once recovered, I'll verify the folder with you."
+
+---
+
+# Key Takeaways
+
+- File Explorer is the primary Windows file management tool.
+- Task Manager helps monitor system performance and restart Windows Explorer.
+- Recycle Bin allows recovery of accidentally deleted files.
+- Settings and Control Panel both configure Windows but serve different purposes.
+- SSH provides secure remote access.
+- SCP securely transfers files.
+- NAT allows Private IP addresses to communicate over the Internet.
+- Professional troubleshooting always starts with gathering information before applying a solution.
+
+---
+
+# Real World Application
+
+IT Support professionals use File Explorer, Task Manager, Settings, and Control Panel daily to troubleshoot Windows user issues. They also use SSH and SCP to administer Linux systems remotely and securely transfer files. Understanding Public and Private IP addressing and NAT helps diagnose connectivity issues in enterprise environments.
+
+---
+
+# Screenshots Captured
+
+- File Explorer
+- This PC
+- Settings
+- Control Panel
+- Task Manager
+- Recycle Bin
+- Restored Folder
+- SSH command example
+- SCP command example
+
+---
+
+# Reflection
+
+Today I started learning Windows fundamentals and understood how to navigate the Windows interface using File Explorer, Task Manager, Settings, and Control Panel. I also reviewed Linux remote administration using SSH and secure file transfer using SCP. Through Windows troubleshooting scenarios, I practiced gathering information, identifying possible causes, verifying the solution, and documenting the issue before closing the ticket. This helped me understand that although Linux and Windows use different tools, the troubleshooting methodology remains the same.
