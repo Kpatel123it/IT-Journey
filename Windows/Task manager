@@ -1,0 +1,113 @@
+# Task Manager
+
+Task Manager is a Windows utility used to monitor and manage the system.
+
+It provides information about:
+
+- Running Applications
+- Background Processes
+- CPU Usage
+- Memory Usage
+- Disk Usage
+- Network Usage
+- GPU Usage
+- Startup Applications
+- Logged-in Users
+- Windows Services
+
+Shortcut:
+
+```text
+Ctrl + Shift + Esc
+```
+
+---
+
+# Processes Tab
+
+The Processes tab displays:
+
+- Running applications
+- Background processes
+- Windows processes
+
+It is commonly used to identify applications consuming excessive CPU or Memory resources.
+
+Examples:
+
+- Microsoft Edge
+- File Explorer
+- Microsoft Teams
+- Google Chrome
+
+---
+
+# Performance Tab
+
+The Performance tab provides real-time monitoring of:
+
+- CPU Utilization
+- Memory Usage
+- Disk Activity
+- Ethernet/Wi-Fi Usage
+- GPU Usage
+
+This helps IT Support technicians identify system performance bottlenecks.
+
+---
+
+# Startup Apps Tab
+
+The Startup Apps tab displays programs that automatically launch when Windows starts.
+
+Examples:
+
+- Microsoft Teams
+- OneDrive
+- Spotify
+- Discord
+
+Too many enabled startup applications can increase Windows boot time and reduce overall system performance.
+
+---
+
+# Users Tab
+
+Displays:
+
+- Logged-in users
+- Resource usage for each user
+- Session status
+
+Useful in environments where multiple users share a computer.
+
+---
+
+# Services Tab
+
+Displays Windows services and their current status.
+
+Status examples:
+
+- Running
+- Stopped
+
+Examples:
+
+- Windows Update
+- Print Spooler
+- Windows Defender Services
+
+---
+
+# Windows Troubleshooting Process
+
+A professional troubleshooting process should always follow these steps:
+
+1. Gather Information
+2. Reproduce the Problem
+3. Identify Possible Causes
+4. Investigate Using Appropriate Tools
+5. Apply the Correct Solution
+6. Verify with the User
+7. Document the Ticket
