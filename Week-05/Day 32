@@ -1,0 +1,605 @@
+# Day 32 – Windows Task Manager, Process Management & DNS vs NAT
+
+## 🎯 Objective
+
+Today's objective was to learn how Windows Task Manager is used to monitor system performance, identify resource usage, troubleshoot slow computers, and understand Windows startup applications. I also revised Linux process management commands and compared DNS with NAT in networking.
+
+---
+
+# 🪟 Windows Theory
+
+# Task Manager
+
+Task Manager is a Windows utility used to monitor and manage the system.
+
+It provides information about:
+
+- Running Applications
+- Background Processes
+- CPU Usage
+- Memory Usage
+- Disk Usage
+- Network Usage
+- GPU Usage
+- Startup Applications
+- Logged-in Users
+- Windows Services
+
+Shortcut:
+
+```text
+Ctrl + Shift + Esc
+```
+
+---
+
+# Processes Tab
+
+The Processes tab displays:
+
+- Running applications
+- Background processes
+- Windows processes
+
+It is commonly used to identify applications consuming excessive CPU or Memory resources.
+
+Examples:
+
+- Microsoft Edge
+- File Explorer
+- Microsoft Teams
+- Google Chrome
+
+---
+
+# Performance Tab
+
+The Performance tab provides real-time monitoring of:
+
+- CPU Utilization
+- Memory Usage
+- Disk Activity
+- Ethernet/Wi-Fi Usage
+- GPU Usage
+
+This helps IT Support technicians identify system performance bottlenecks.
+
+---
+
+# Startup Apps Tab
+
+The Startup Apps tab displays programs that automatically launch when Windows starts.
+
+Examples:
+
+- Microsoft Teams
+- OneDrive
+- Spotify
+- Discord
+
+Too many enabled startup applications can increase Windows boot time and reduce overall system performance.
+
+---
+
+# Users Tab
+
+Displays:
+
+- Logged-in users
+- Resource usage for each user
+- Session status
+
+Useful in environments where multiple users share a computer.
+
+---
+
+# Services Tab
+
+Displays Windows services and their current status.
+
+Status examples:
+
+- Running
+- Stopped
+
+Examples:
+
+- Windows Update
+- Print Spooler
+- Windows Defender Services
+
+---
+
+# Windows Troubleshooting Process
+
+A professional troubleshooting process should always follow these steps:
+
+1. Gather Information
+2. Reproduce the Problem
+3. Identify Possible Causes
+4. Investigate Using Appropriate Tools
+5. Apply the Correct Solution
+6. Verify with the User
+7. Document the Ticket
+
+---
+
+# 🐧 Linux Revision
+
+## Process Management
+
+### top
+
+Displays:
+
+- Running processes
+- CPU usage
+- Memory usage
+- Process IDs
+- System uptime
+
+---
+
+### ps
+
+Displays currently running processes.
+
+Example:
+
+```bash
+ps aux
+```
+
+---
+
+### pidof
+
+Returns the Process ID (PID) of a running program.
+
+Example:
+
+```bash
+pidof firefox
+```
+
+---
+
+### kill
+
+Requests a process to terminate gracefully.
+
+Example:
+
+```bash
+kill 2456
+```
+
+---
+
+### kill -9
+
+Forcefully terminates a process that is not responding.
+
+Example:
+
+```bash
+kill -9 2456
+```
+
+---
+
+# 🌐 Networking Theory
+
+# DNS
+
+DNS (Domain Name System) converts a domain name into an IP address.
+
+Example:
+
+```text
+google.com
+↓
+
+142.x.x.x
+```
+
+Purpose:
+
+Name Resolution
+
+---
+
+# NAT
+
+Network Address Translation converts Private IP addresses into Public IP addresses and vice versa.
+
+Usually performed by:
+
+- Router
+
+Purpose:
+
+Allow devices inside a private network to communicate with the Internet.
+
+---
+
+# DNS vs NAT
+
+| DNS | NAT |
+|------|-----|
+| Converts domain names into IP addresses | Converts Private IP addresses into Public IP addresses |
+| Name Resolution | Address Translation |
+| Used before communication begins | Used while sending traffic to another network |
+
+---
+
+# Practical Work Completed
+
+## Windows
+
+Practiced:
+
+- Opened Task Manager
+- Reviewed Processes tab
+- Reviewed Performance tab
+- Reviewed Startup Apps
+- Reviewed Users tab
+- Reviewed Services tab
+- Created Windows_Day32 folder
+- Created Practice folder
+- Deleted Practice folder
+- Restored folder from Recycle Bin
+
+Observed:
+
+- CPU usage
+- Memory usage
+- Running processes
+- Startup applications
+- Logged-in users
+- Windows services
+
+---
+
+## Linux Review
+
+Reviewed:
+
+```bash
+top
+
+ps aux
+
+pidof firefox
+
+kill PID
+
+kill -9 PID
+```
+
+---
+
+# Skills Learned
+
+- Using Windows Task Manager
+- Identifying high CPU usage
+- Monitoring Memory utilization
+- Understanding Startup Applications
+- Understanding Windows Services
+- Monitoring logged-in users
+- Managing Linux processes
+- Gracefully terminating processes
+- Forcefully terminating processes
+- Difference between DNS and NAT
+- Structured troubleshooting methodology
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-3201
+
+---
+
+### User
+
+David – Finance Department
+
+---
+
+### Issue
+
+"My computer is running extremely slow."
+
+---
+
+## Investigation
+
+Gathered information by asking:
+
+- When did the issue start?
+- Does it happen every time?
+- Is it affecting one application or the whole computer?
+- Have you installed any software recently?
+- Have you restarted your computer?
+
+---
+
+## Possible Causes
+
+- High CPU usage
+- High Memory usage
+- Too many background applications
+- Startup applications
+- Windows updates
+- Antivirus scan
+
+---
+
+## Technical Investigation
+
+Opened Task Manager using:
+
+```text
+Ctrl + Shift + Esc
+```
+
+Checked:
+
+Processes Tab
+
+- Identified applications consuming excessive CPU or Memory.
+
+Performance Tab
+
+- Verified CPU utilization.
+- Checked Memory utilization.
+- Checked Disk usage.
+
+Startup Apps
+
+- Reviewed applications that automatically launch when Windows starts.
+
+---
+
+## Resolution
+
+Confirmed with the user before closing unnecessary applications.
+
+Closed applications that were consuming excessive resources and were not required.
+
+---
+
+## Verification
+
+Asked the user to perform the same task again.
+
+Verified system performance improved.
+
+---
+
+## Documentation
+
+Issue:
+
+Computer running slowly.
+
+Root Cause:
+
+Background application consuming excessive CPU resources.
+
+Resolution:
+
+Closed unnecessary background application after user confirmation.
+
+Verification:
+
+User confirmed improved system performance.
+
+Status:
+
+Resolved.
+
+---
+
+# Practical Scenario
+
+## Situation
+
+User reports:
+
+"My laptop suddenly became very slow."
+
+---
+
+## Investigation
+
+Asked:
+
+- When did the issue begin?
+- Is the problem constant or intermittent?
+- Is one application affected or the entire system?
+- Were any changes recently made?
+
+---
+
+## Technical Investigation
+
+Opened Task Manager.
+
+Reviewed:
+
+Processes
+
+- Checked applications consuming excessive CPU or Memory.
+
+Performance
+
+- Verified CPU usage.
+- Verified Memory usage.
+- Verified Disk usage.
+
+Startup Apps
+
+- Checked applications automatically launching during startup.
+
+---
+
+## Resolution
+
+Closed unnecessary applications after confirming with the user.
+
+If the issue remained unresolved, escalated to the next support level.
+
+---
+
+## Verification
+
+User confirmed improved performance.
+
+---
+
+## Documentation
+
+Recorded:
+
+- Issue
+- Investigation
+- Root Cause
+- Resolution
+- Verification
+- Ticket Status
+
+---
+
+# Interview Questions
+
+## What is Task Manager?
+
+**Answer**
+
+Task Manager is a Windows utility used to monitor and manage running applications, processes, startup applications, users, services, and overall system performance.
+
+---
+
+## Which shortcut opens Task Manager?
+
+**Answer**
+
+```text
+Ctrl + Shift + Esc
+```
+
+---
+
+## Which tab displays CPU and Memory usage?
+
+**Answer**
+
+Performance Tab
+
+---
+
+## Why are Startup Apps important?
+
+**Answer**
+
+Startup Apps automatically launch when Windows starts. Too many enabled startup applications can slow system startup and reduce performance.
+
+---
+
+## What information does the Users tab display?
+
+**Answer**
+
+The Users tab displays logged-in users, their session status, and resource usage.
+
+---
+
+## What does the Linux top command display?
+
+**Answer**
+
+The top command displays running processes along with CPU usage, Memory usage, process IDs, and system performance in real time.
+
+---
+
+## Difference between kill and kill -9?
+
+**Answer**
+
+kill requests a process to terminate gracefully, while kill -9 forcefully terminates an unresponsive process.
+
+---
+
+## Difference between DNS and NAT?
+
+**Answer**
+
+DNS translates domain names into IP addresses, while NAT translates Private IP addresses into Public IP addresses so devices can access the Internet.
+
+---
+
+# Soft Skills
+
+## Customer Communication
+
+Customer:
+
+"My computer is extremely slow."
+
+Professional Response:
+
+"I'll first gather some information about when the issue started and whether it affects the whole computer or a specific application. Then I'll check system resource usage to identify the root cause before making any changes."
+
+---
+
+Customer:
+
+"Can you just close everything?"
+
+Professional Response:
+
+"I'll first identify which application is causing the issue and confirm with you before closing any programs to avoid losing unsaved work."
+
+---
+
+# Key Takeaways
+
+- Task Manager is one of the most important Windows troubleshooting tools.
+- Processes tab identifies resource-heavy applications.
+- Performance tab shows overall system health.
+- Startup applications can affect boot performance.
+- Linux process management concepts are similar to Windows Task Manager.
+- DNS performs name resolution.
+- NAT performs address translation.
+- Professional troubleshooting always follows a structured investigation process.
+
+---
+
+# Real World Application
+
+IT Support technicians frequently use Task Manager to troubleshoot slow computers by identifying applications consuming excessive CPU or Memory. They also compare DNS and NAT concepts when diagnosing network connectivity problems. Understanding both Windows and Linux process management helps troubleshoot systems across different operating environments.
+
+---
+
+# Screenshots Captured
+
+- Task Manager – Processes
+- Performance Tab
+- Startup Apps
+- Users Tab
+- Services Tab
+- Windows_Day32 Folder
+- Practice Folder
+- Restored Folder
+- CPU Usage
+- Memory Usage
+
+---
+
+# Reflection
+
+Today I learned how Windows Task Manager helps identify performance issues by monitoring running processes, CPU usage, memory utilization, startup applications, users, and services. I practiced troubleshooting a slow computer by gathering information, investigating system resources, confirming the root cause, verifying the solution, and documenting the ticket. I also reinforced Linux process management concepts and understood the difference between DNS and NAT, strengthening my ability to troubleshoot both Windows and networking issues using a structured approach.
