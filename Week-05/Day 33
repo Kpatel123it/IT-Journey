@@ -1,0 +1,540 @@
+# Day 33 – Windows Device Manager, Drivers & Hardware Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to learn how Windows Device Manager is used to identify and troubleshoot hardware issues. I learned about device drivers, hardware detection, driver problems, and how IT Support technicians diagnose USB device issues. I also revised Linux service management commands and Networking concepts such as IP Address vs MAC Address.
+
+---
+
+# 🪟 Windows Theory
+
+# Control Panel
+
+Control Panel is the traditional Windows administration tool used to configure system settings.
+
+Common Categories:
+
+- System and Security
+- Network and Internet
+- Hardware and Sound
+- Programs
+- User Accounts
+- Appearance and Personalization
+
+Common Tasks:
+
+- Install/Uninstall Programs
+- Configure Devices
+- Manage User Accounts
+- Change Network Settings
+- Power Options
+
+---
+
+# Device Manager
+
+Device Manager is a Windows utility that displays all hardware connected to the computer.
+
+Examples:
+
+- Keyboard
+- Mouse
+- USB Devices
+- Bluetooth
+- Display Adapter
+- Network Adapter
+- Disk Drives
+- Audio Devices
+
+Purpose:
+
+- Detect connected hardware
+- Check hardware status
+- Enable/Disable hardware
+- Update drivers
+- Troubleshoot hardware issues
+
+---
+
+# Device Driver
+
+A device driver is software that allows Windows to communicate with hardware devices.
+
+Examples:
+
+- Mouse Driver
+- Printer Driver
+- Network Driver
+- Graphics Driver
+- Audio Driver
+
+Without the correct driver, Windows may not recognize or properly use the hardware.
+
+---
+
+# Yellow Warning Icon
+
+A yellow warning icon (!) in Device Manager usually indicates:
+
+- Missing driver
+- Corrupted driver
+- Driver update required
+- Hardware issue
+
+---
+
+# Windows Hardware Troubleshooting Process
+
+Professional troubleshooting steps:
+
+1. Gather information
+2. Reproduce the issue
+3. Check Device Manager
+4. Identify the root cause
+5. Apply the correct solution
+6. Verify with the user
+7. Document the ticket
+
+---
+
+# 🐧 Linux Revision
+
+## systemctl status
+
+Command:
+
+```bash
+systemctl status ssh
+```
+
+Purpose:
+
+Checks whether a service is:
+
+- Running
+- Stopped
+- Failed
+
+Useful when troubleshooting Linux services.
+
+---
+
+## journalctl -u ssh
+
+Command:
+
+```bash
+journalctl -u ssh
+```
+
+Purpose:
+
+Displays logs related to the SSH service.
+
+Useful for checking:
+
+- Login attempts
+- Authentication failures
+- SSH errors
+- Service start and stop events
+
+---
+
+# 🌐 Networking Theory
+
+# IP Address
+
+An IP address is a logical address assigned to a device for communication on a network.
+
+Characteristics:
+
+- Layer 3 (Network Layer)
+- Can change
+- Used for routing data between networks
+
+Example:
+
+```text
+192.168.1.100
+```
+
+---
+
+# MAC Address
+
+A MAC (Media Access Control) address is the physical hardware address of a network interface.
+
+Characteristics:
+
+- Layer 2 (Data Link Layer)
+- Usually permanent
+- Used for communication within a local network
+
+Example:
+
+```text
+00:1A:2B:3C:4D:5E
+```
+
+---
+
+# Difference Between IP Address and MAC Address
+
+| IP Address | MAC Address |
+|------------|-------------|
+| Logical Address | Physical Address |
+| Layer 3 | Layer 2 |
+| Can change | Usually permanent |
+| Used for routing | Used for local communication |
+
+---
+
+# Practical Lab Completed
+
+## Windows
+
+Practiced:
+
+- Opened Control Panel
+- Opened Device Manager
+- Viewed:
+  - Network Adapters
+  - Display Adapters
+  - Disk Drives
+  - Bluetooth
+  - USB Controllers
+  - Keyboard
+  - Mouse
+- Checked for yellow warning icons
+- Explored installed hardware
+
+---
+
+## Linux Review
+
+Reviewed commands:
+
+```bash
+systemctl status ssh
+
+journalctl -u ssh
+```
+
+Understood:
+
+- Service status
+- SSH logs
+- Troubleshooting Linux services
+
+---
+
+# Skills Learned
+
+- Windows Device Manager
+- Device Drivers
+- Hardware troubleshooting
+- Driver update process
+- Missing driver identification
+- Windows hardware detection
+- Linux service status
+- Linux log analysis
+- IP Address
+- MAC Address
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-3301
+
+### User
+
+Emily – Sales Department
+
+### Issue
+
+"My USB mouse stopped working after I plugged it into my laptop."
+
+---
+
+# Investigation
+
+Gathered information by asking:
+
+- When did the issue start?
+- Have you made any changes recently?
+- Have you tried unplugging and reconnecting the mouse?
+- Does another USB device work in the same port?
+- Does the mouse work on another computer?
+
+---
+
+# Possible Causes
+
+- Missing or corrupted driver
+- Disabled hardware
+- Faulty USB port
+- Faulty mouse
+- Windows hardware detection issue
+
+---
+
+# Technical Investigation
+
+Opened:
+
+Device Manager
+
+Checked:
+
+- Mouse device
+- USB Controllers
+- Yellow warning icon
+- Driver status
+
+If driver missing:
+
+- Update driver
+
+If hardware disabled:
+
+- Enable device
+
+If USB port suspected:
+
+- Test another USB port
+
+---
+
+# Resolution
+
+Updated or enabled the required driver if needed.
+
+Tested the USB mouse again.
+
+---
+
+# Verification
+
+Asked the user to reconnect the USB mouse.
+
+Confirmed the mouse was functioning correctly.
+
+---
+
+# Documentation
+
+Issue:
+
+USB mouse not working.
+
+Root Cause:
+
+Driver issue (or hardware configuration issue).
+
+Resolution:
+
+Updated driver and verified functionality.
+
+Verification:
+
+User confirmed USB mouse working.
+
+Status:
+
+Resolved.
+
+---
+
+# Practical Scenario
+
+## Situation
+
+User reports:
+
+"My USB mouse is not detected."
+
+---
+
+# Investigation
+
+Asked:
+
+- Does the mouse work on another computer?
+- Does another USB device work on this computer?
+- When did the issue start?
+- Were any changes made recently?
+
+---
+
+# Technical Investigation
+
+Opened Device Manager.
+
+Checked:
+
+- Driver status
+- Hardware status
+- USB Controllers
+- Warning icons
+
+Updated drivers if required.
+
+Enabled hardware if disabled.
+
+---
+
+# Resolution
+
+Installed or updated the driver where required.
+
+Tested the mouse.
+
+---
+
+# Verification
+
+Confirmed with the user that the mouse was functioning properly.
+
+---
+
+# Documentation
+
+Recorded:
+
+- User issue
+- Investigation
+- Root Cause
+- Resolution
+- Verification
+- Ticket Status
+
+---
+
+# Interview Questions
+
+## What is Device Manager?
+
+**Answer**
+
+Device Manager is a Windows utility used to view, manage, and troubleshoot hardware devices and their drivers.
+
+---
+
+## What is a device driver?
+
+**Answer**
+
+A device driver is software that enables communication between Windows and hardware devices.
+
+---
+
+## Why is Device Manager important?
+
+**Answer**
+
+It helps IT technicians identify hardware problems, update drivers, enable or disable devices, and troubleshoot hardware issues.
+
+---
+
+## What does a yellow warning icon indicate?
+
+**Answer**
+
+It usually indicates a missing, corrupted, or outdated driver, or a hardware problem.
+
+---
+
+## Name three devices shown in Device Manager.
+
+**Answer**
+
+- Network Adapter
+- Keyboard
+- Mouse
+
+Other examples:
+
+- Bluetooth
+- USB Controllers
+- Disk Drives
+- Display Adapter
+
+---
+
+## What does `journalctl -u ssh` display?
+
+**Answer**
+
+It displays logs related to the SSH service, including authentication attempts, service events, and errors.
+
+---
+
+## When would you use `systemctl status`?
+
+**Answer**
+
+I use `systemctl status` to check whether a service is running, stopped, or has failed.
+
+---
+
+## Difference between IP Address and MAC Address?
+
+**Answer**
+
+An IP address is a logical address used for routing between networks, while a MAC address is a physical hardware address used for communication within a local network.
+
+---
+
+# Soft Skills
+
+## Customer Communication
+
+Customer:
+
+"My USB mouse isn't working."
+
+Professional Response:
+
+"I'll first determine whether the issue is with the mouse, the USB port, or the computer by asking a few questions and checking the device status in Device Manager. Once I identify the cause, I'll apply the appropriate solution and verify that everything is working."
+
+---
+
+# Key Takeaways
+
+- Device Manager is the primary Windows tool for hardware troubleshooting.
+- Device drivers enable communication between Windows and hardware.
+- Yellow warning icons often indicate driver problems.
+- Hardware troubleshooting should isolate whether the issue is with the device, port, driver, or operating system.
+- `systemctl status` checks service status.
+- `journalctl -u ssh` reviews service logs.
+- IP addresses are logical and used for routing.
+- MAC addresses are physical and used for communication within local networks.
+
+---
+
+# Real World Application
+
+Help Desk technicians frequently use Device Manager to diagnose hardware issues such as USB devices, printers, keyboards, mice, and network adapters. Understanding device drivers and hardware troubleshooting allows technicians to identify whether a problem is caused by missing drivers, disabled devices, or faulty hardware before escalating the issue.
+
+---
+
+# Screenshots Captured
+
+- Control Panel
+- Device Manager
+- Network Adapters
+- Display Adapters
+- USB Controllers
+- Keyboard
+- Mouse
+- Bluetooth
+- Any warning icons (if present)
+
+---
+
+# Reflection
+
+Today I learned how Device Manager helps troubleshoot hardware problems by checking connected devices, drivers, and warning indicators. I practiced diagnosing a USB mouse issue by gathering information, isolating the problem, checking drivers, verifying the solution, and documenting the ticket. I also reviewed Linux service troubleshooting using `systemctl status` and `journalctl -u ssh`, and reinforced the difference between IP addresses and MAC addresses. This strengthened my understanding of hardware troubleshooting and professional Help Desk workflows.
