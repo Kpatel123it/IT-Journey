@@ -1,0 +1,88 @@
+# Control Panel
+
+Control Panel is the traditional Windows administration tool used to configure system settings.
+
+Common Categories:
+
+- System and Security
+- Network and Internet
+- Hardware and Sound
+- Programs
+- User Accounts
+- Appearance and Personalization
+
+Common Tasks:
+
+- Install/Uninstall Programs
+- Configure Devices
+- Manage User Accounts
+- Change Network Settings
+- Power Options
+
+---
+
+# Device Manager
+
+Device Manager is a Windows utility that displays all hardware connected to the computer.
+
+Examples:
+
+- Keyboard
+- Mouse
+- USB Devices
+- Bluetooth
+- Display Adapter
+- Network Adapter
+- Disk Drives
+- Audio Devices
+
+Purpose:
+
+- Detect connected hardware
+- Check hardware status
+- Enable/Disable hardware
+- Update drivers
+- Troubleshoot hardware issues
+
+---
+
+# Device Driver
+
+A device driver is software that allows Windows to communicate with hardware devices.
+
+Examples:
+
+- Mouse Driver
+- Printer Driver
+- Network Driver
+- Graphics Driver
+- Audio Driver
+
+Without the correct driver, Windows may not recognize or properly use the hardware.
+
+---
+
+# Yellow Warning Icon
+
+A yellow warning icon (!) in Device Manager usually indicates:
+
+- Missing driver
+- Corrupted driver
+- Driver update required
+- Hardware issue
+
+---
+
+# Windows Hardware Troubleshooting Process
+
+Professional troubleshooting steps:
+
+1. Gather information
+2. Reproduce the issue
+3. Check Device Manager
+4. Identify the root cause
+5. Apply the correct solution
+6. Verify with the user
+7. Document the ticket
+
+---
