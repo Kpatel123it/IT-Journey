@@ -1,0 +1,138 @@
+# Windows Services
+
+A Windows Service is a background program that runs automatically without user interaction.
+
+Purpose:
+
+- Supports operating system functionality
+- Runs continuously in the background
+- Starts automatically or manually depending on configuration
+
+Examples:
+
+- Print Spooler
+- DHCP Client
+- DNS Client
+- Windows Update
+- Windows Defender
+
+---
+
+# Opening Windows Services
+
+Method 1:
+
+```
+Windows + R
+```
+
+Type:
+
+```
+services.msc
+```
+
+Method 2:
+
+Search:
+
+```
+Services
+```
+
+from the Start Menu.
+
+---
+
+# Service Status
+
+A Windows Service can be:
+
+- Running
+- Stopped
+- Disabled
+
+---
+
+# Print Spooler Service
+
+Purpose:
+
+The Print Spooler service manages print jobs sent from Windows to the printer.
+
+Responsibilities:
+
+- Receives print requests
+- Places documents in the print queue
+- Sends print jobs to the printer
+
+If Print Spooler stops:
+
+- Print jobs remain in the queue
+- Users cannot print
+
+---
+
+# DHCP Client Service
+
+Purpose:
+
+Automatically obtains network configuration from a DHCP server.
+
+The DHCP Client receives:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+
+Without DHCP Client:
+
+- Computer may not receive an IP address automatically
+- Network connectivity problems may occur
+
+---
+
+# DNS Client Service
+
+Purpose:
+
+Resolves domain names into IP addresses and caches DNS information.
+
+Example:
+
+```
+www.google.com
+```
+
+↓
+
+```
+142.250.xxx.xxx
+```
+
+Benefits:
+
+- Faster website access
+- Reduced DNS lookup time
+- Cached DNS records
+
+---
+
+# Windows Practical Lab
+
+Performed:
+
+- Opened Services Console
+- Viewed:
+  - Print Spooler
+  - DHCP Client
+  - DNS Client
+  - Windows Update
+- Checked:
+  - Startup Type
+  - Service Status
+  - Dependencies
+- Observed service properties
+
+No services were modified.
