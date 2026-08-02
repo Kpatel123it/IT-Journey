@@ -1,0 +1,569 @@
+# Day 34 – Windows Services, DHCP Client & Print Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to understand Windows Services, how background services work, how to troubleshoot service-related issues, and how DHCP Client and DNS Client services support network connectivity. I also learned how to troubleshoot printer issues using Print Spooler and revised Linux service management and networking concepts.
+
+---
+
+# 🪟 Windows Theory
+
+# Windows Services
+
+A Windows Service is a background program that runs automatically without user interaction.
+
+Purpose:
+
+- Supports operating system functionality
+- Runs continuously in the background
+- Starts automatically or manually depending on configuration
+
+Examples:
+
+- Print Spooler
+- DHCP Client
+- DNS Client
+- Windows Update
+- Windows Defender
+
+---
+
+# Opening Windows Services
+
+Method 1:
+
+```
+Windows + R
+```
+
+Type:
+
+```
+services.msc
+```
+
+Method 2:
+
+Search:
+
+```
+Services
+```
+
+from the Start Menu.
+
+---
+
+# Service Status
+
+A Windows Service can be:
+
+- Running
+- Stopped
+- Disabled
+
+---
+
+# Print Spooler Service
+
+Purpose:
+
+The Print Spooler service manages print jobs sent from Windows to the printer.
+
+Responsibilities:
+
+- Receives print requests
+- Places documents in the print queue
+- Sends print jobs to the printer
+
+If Print Spooler stops:
+
+- Print jobs remain in the queue
+- Users cannot print
+
+---
+
+# DHCP Client Service
+
+Purpose:
+
+Automatically obtains network configuration from a DHCP server.
+
+The DHCP Client receives:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+
+Without DHCP Client:
+
+- Computer may not receive an IP address automatically
+- Network connectivity problems may occur
+
+---
+
+# DNS Client Service
+
+Purpose:
+
+Resolves domain names into IP addresses and caches DNS information.
+
+Example:
+
+```
+www.google.com
+```
+
+↓
+
+```
+142.250.xxx.xxx
+```
+
+Benefits:
+
+- Faster website access
+- Reduced DNS lookup time
+- Cached DNS records
+
+---
+
+# Windows Practical Lab
+
+Performed:
+
+- Opened Services Console
+- Viewed:
+  - Print Spooler
+  - DHCP Client
+  - DNS Client
+  - Windows Update
+- Checked:
+  - Startup Type
+  - Service Status
+  - Dependencies
+- Observed service properties
+
+No services were modified.
+
+---
+
+# 🐧 Linux Revision
+
+Reviewed Commands
+
+## Check Service Status
+
+```bash
+systemctl status ssh
+```
+
+Purpose:
+
+Checks whether the SSH service is:
+
+- Running
+- Stopped
+- Failed
+
+---
+
+## View Service Logs
+
+```bash
+journalctl -u ssh
+```
+
+Purpose:
+
+Displays SSH service logs including:
+
+- Authentication attempts
+- Login failures
+- Service errors
+- Service start/stop events
+
+---
+
+## Restart Service
+
+```bash
+systemctl restart ssh
+```
+
+Purpose:
+
+Stops and immediately starts the service again.
+
+Used when:
+
+- Service is unresponsive
+- Configuration changes require a restart
+
+---
+
+## Start Service
+
+```bash
+systemctl start ssh
+```
+
+Purpose:
+
+Starts the service if it is stopped.
+
+---
+
+## Stop Service
+
+```bash
+systemctl stop ssh
+```
+
+Purpose:
+
+Stops the running service.
+
+---
+
+# 🌐 Networking Theory
+
+# DHCP
+
+DHCP (Dynamic Host Configuration Protocol) automatically assigns network configuration to client devices.
+
+DHCP provides:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+
+Advantages:
+
+- Automatic configuration
+- Easy management
+- Reduces manual errors
+
+---
+
+# Static IP
+
+A Static IP address is manually configured.
+
+Administrator manually enters:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+
+Advantages:
+
+- Permanent address
+- Reliable for servers
+- Suitable for printers
+- Suitable for network devices
+
+---
+
+# DHCP vs Static IP
+
+| DHCP | Static IP |
+|------|-----------|
+| Automatic | Manual |
+| IP may change | Permanent |
+| Best for user computers | Best for servers and printers |
+| Easy management | Requires manual configuration |
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-3401
+
+### User
+
+Michael – Accounting Department
+
+### Issue
+
+Unable to print.
+
+Documents remain in the print queue.
+
+---
+
+# Information Gathering
+
+Asked:
+
+- When did the issue start?
+- Have you made any changes recently?
+- Have you restarted your computer?
+- Is the printer visible in Windows?
+- Is anyone else unable to print?
+
+---
+
+# Possible Causes
+
+- Print Spooler service stopped
+- Printer driver issue
+- Printer offline
+- Printer connection issue
+- Network printer issue
+
+---
+
+# Investigation
+
+Checked:
+
+## Device Manager
+
+Verified:
+
+- Printer detected
+- Driver installed correctly
+- No warning icons
+
+---
+
+Opened:
+
+```
+services.msc
+```
+
+Checked:
+
+Print Spooler
+
+Verified:
+
+- Running
+- Startup Type
+
+---
+
+# Resolution
+
+Started or restarted the Print Spooler service if necessary.
+
+Asked user to print a test document.
+
+---
+
+# Verification
+
+User successfully printed a test page.
+
+Issue confirmed resolved.
+
+---
+
+# Documentation
+
+Issue:
+
+Unable to print.
+
+Root Cause:
+
+Print Spooler service stopped.
+
+Resolution:
+
+Started Print Spooler service.
+
+Verification:
+
+User successfully printed.
+
+Status:
+
+Resolved.
+
+---
+
+# Practical Scenario
+
+## User
+
+"My laptop is connected to Wi-Fi but has no IP address."
+
+---
+
+# Investigation
+
+Asked:
+
+- When did the issue start?
+- Any recent changes?
+- Is anyone else experiencing the same issue?
+
+---
+
+# Technical Investigation
+
+Checked:
+
+- Wi-Fi connection
+- Device Manager (Network Adapter)
+- DHCP Client service
+- IP configuration (using `ipconfig` in a real environment)
+
+If DHCP Client was stopped:
+
+- Started the service
+
+If Network Adapter had driver issues:
+
+- Updated or reinstalled the driver
+
+---
+
+# Verification
+
+Confirmed the computer received a valid IP address.
+
+Verified internet connectivity.
+
+Asked the user to browse a website.
+
+---
+
+# Documentation
+
+Recorded:
+
+- User issue
+- Investigation steps
+- Root cause
+- Resolution
+- Verification
+- Ticket closure
+
+---
+
+# Interview Questions
+
+## What is a Windows Service?
+
+A Windows Service is a background program that starts automatically or manually and performs operating system tasks without user interaction.
+
+Examples:
+
+- Print Spooler
+- DHCP Client
+- DNS Client
+- Windows Update
+
+---
+
+## What is the purpose of the Print Spooler service?
+
+It manages print jobs and sends them to the printer. If stopped, users cannot print because print jobs remain in the queue.
+
+---
+
+## What does the DHCP Client service do?
+
+It automatically obtains an IP address, subnet mask, default gateway, and DNS server from a DHCP server.
+
+---
+
+## What does the DNS Client service do?
+
+It resolves domain names into IP addresses and caches DNS information for faster access.
+
+---
+
+## How do you open the Services console?
+
+- Windows + R
+- Type `services.msc`
+
+---
+
+## When would you use `systemctl restart`?
+
+When a service is unresponsive or needs to be restarted after configuration changes.
+
+---
+
+## When would you use `journalctl -u ssh`?
+
+To review SSH service logs, authentication attempts, errors, and troubleshooting information.
+
+---
+
+## Difference between DHCP and Static IP?
+
+DHCP automatically assigns network settings and is suitable for user computers. Static IP is manually configured, remains permanent, and is commonly used for servers, printers, and network devices.
+
+---
+
+# Behavioral Question
+
+## Tell me about a time you had to learn something completely new in a short period.
+
+**Answer**
+
+Since starting my IT journey, I have been learning Linux, Windows, and Networking from the fundamentals. I first build a strong theoretical understanding, then practice everything in my home lab using VMware and Windows tools. After each session, I document my learning in my GitHub portfolio and review it before moving to the next topic. This combination of theory, hands-on practice, documentation, and revision has helped me improve my troubleshooting skills and retain concepts more effectively.
+
+---
+
+# Skills Learned
+
+Windows:
+
+- Windows Services
+- Print Spooler
+- DHCP Client
+- DNS Client
+- Services Console
+
+Linux:
+
+- systemctl status
+- systemctl restart
+- systemctl start
+- systemctl stop
+- journalctl
+
+Networking:
+
+- DHCP
+- Static IP
+- Automatic IP Assignment
+- Network Configuration
+
+Help Desk:
+
+- Printer troubleshooting
+- Service troubleshooting
+- DHCP troubleshooting
+- Ticket documentation
+
+---
+
+# Key Takeaways
+
+- Windows Services run in the background and support operating system functions.
+- Print Spooler manages all print jobs.
+- DHCP Client automatically receives network configuration.
+- DNS Client resolves domain names into IP addresses.
+- `systemctl status` checks the current status of a service.
+- `journalctl -u ssh` helps identify the cause of SSH-related issues by reviewing service logs.
+- DHCP is preferred for end-user devices, while Static IP is commonly used for servers and printers.
+
+---
+
+# Reflection
+
+Today I learned how Windows Services support system functionality and how service-related issues can affect printing and network connectivity. I practiced troubleshooting a printer queue issue by checking Device Manager, Windows Services, and the Print Spooler service. I also strengthened my understanding of DHCP Client, DNS Client, and the difference between DHCP and Static IP addresses. This improved my confidence in diagnosing Windows service problems and applying a structured Help Desk troubleshooting process.
