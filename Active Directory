@@ -1,0 +1,64 @@
+# What is Active Directory?
+
+Active Directory (AD) is Microsoft's directory service used to centrally manage an organization's:
+
+- Users
+- Computers
+- Groups
+- Passwords
+- Permissions
+- Security
+
+Instead of configuring every computer individually, administrators manage everything from a central location.
+
+---
+
+## Domain
+
+A Domain is a collection of computers, users, and resources managed centrally through Active Directory.
+
+Example:
+
+```
+company.local
+```
+
+All users log in using their company credentials.
+
+---
+
+## Domain Controller (DC)
+
+A Domain Controller is the server that hosts Active Directory.
+
+Responsibilities:
+
+- Authenticates users
+- Stores user accounts
+- Stores passwords
+- Manages permissions
+- Applies security policies
+
+Think of it as the "brain" of the organization's network.
+
+---
+
+## Domain vs Workgroup
+
+| Domain | Workgroup |
+|---------|-----------|
+| Business environment | Home or small office |
+| Centrally managed | Individually managed |
+| Uses Active Directory | No Active Directory |
+| One login for network resources | Separate accounts on each computer |
+
+---
+
+## What Active Directory Manages
+
+- Users
+- Computers
+- Groups
+- Passwords
+- Permissions
+- Security Policies
