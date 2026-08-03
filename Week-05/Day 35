@@ -1,0 +1,540 @@
+# Day 35 – Active Directory Fundamentals & Windows Authentication
+
+## 🎯 Objective
+
+Today's objective was to begin learning Active Directory (AD), understand how organizations centrally manage users and computers, and learn the fundamentals of Domain, Domain Controller, and authentication. I also revised Windows Services, Linux service management, and networking concepts while practicing an Active Directory login troubleshooting scenario.
+
+---
+
+# 🪟 Windows Revision
+
+## Windows Services
+
+Windows Services are background programs that start automatically with Windows without user interaction.
+
+Examples:
+
+- Print Spooler
+- DHCP Client
+- DNS Client
+- Windows Update
+
+---
+
+## Print Spooler
+
+Purpose:
+
+- Manages print jobs.
+- Stores print jobs in the print queue.
+- Sends print jobs to the printer.
+
+If Print Spooler stops:
+
+- Users cannot print.
+- Print jobs remain in the queue.
+
+---
+
+## DHCP Client Service
+
+Purpose:
+
+Automatically obtains network configuration from the DHCP Server.
+
+DHCP Client receives:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+
+If the DHCP Client service stops:
+
+- The computer may not receive an IP address.
+- Users may lose network connectivity.
+
+---
+
+## DNS Client Service
+
+Purpose:
+
+- Resolves domain names into IP addresses.
+- Caches DNS records for faster future lookups.
+
+Example:
+
+```
+www.google.com
+```
+
+↓
+
+```
+142.xxx.xxx.xxx
+```
+
+If DNS Client fails:
+
+- Domain names cannot be resolved.
+- Users may still access resources by IP address.
+
+---
+
+## Opening Windows Services
+
+```
+Windows + R
+```
+
+Type:
+
+```
+services.msc
+```
+
+---
+
+# 🐧 Linux Revision
+
+## Check Service Status
+
+```bash
+systemctl status ssh
+```
+
+Purpose:
+
+Displays:
+
+- Running status
+- Loaded service
+- Active state
+
+---
+
+## View Service Logs
+
+```bash
+journalctl -u ssh
+```
+
+Purpose:
+
+Displays:
+
+- Authentication logs
+- Login attempts
+- Errors
+- Service events
+
+---
+
+## Restart Service
+
+```bash
+systemctl restart ssh
+```
+
+Purpose:
+
+Stops and immediately starts the service again.
+
+Used when:
+
+- Service hangs
+- Configuration changes require a restart
+
+---
+
+# 🌐 Networking Revision
+
+## DHCP vs Static IP
+
+### DHCP
+
+Automatically assigns:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+
+Advantages:
+
+- Easy management
+- Automatic configuration
+- Best for end-user computers
+
+---
+
+### Static IP
+
+Manually configured:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+
+Advantages:
+
+- Permanent address
+- Reliable
+- Best for:
+
+  - Servers
+  - Printers
+  - Network devices
+
+Reason:
+
+Users and applications frequently connect to these devices, so their IP address should remain unchanged.
+
+---
+
+# 🏢 Active Directory Fundamentals
+
+## What is Active Directory?
+
+Active Directory (AD) is Microsoft's directory service used to centrally manage an organization's:
+
+- Users
+- Computers
+- Groups
+- Passwords
+- Permissions
+- Security
+
+Instead of configuring every computer individually, administrators manage everything from a central location.
+
+---
+
+## Domain
+
+A Domain is a collection of computers, users, and resources managed centrally through Active Directory.
+
+Example:
+
+```
+company.local
+```
+
+All users log in using their company credentials.
+
+---
+
+## Domain Controller (DC)
+
+A Domain Controller is the server that hosts Active Directory.
+
+Responsibilities:
+
+- Authenticates users
+- Stores user accounts
+- Stores passwords
+- Manages permissions
+- Applies security policies
+
+Think of it as the "brain" of the organization's network.
+
+---
+
+## Domain vs Workgroup
+
+| Domain | Workgroup |
+|---------|-----------|
+| Business environment | Home or small office |
+| Centrally managed | Individually managed |
+| Uses Active Directory | No Active Directory |
+| One login for network resources | Separate accounts on each computer |
+
+---
+
+## What Active Directory Manages
+
+- Users
+- Computers
+- Groups
+- Passwords
+- Permissions
+- Security Policies
+
+---
+
+# Help Desk Ticket
+
+## Ticket ID
+
+INC-3501
+
+### User
+
+Sarah – Human Resources
+
+### Issue
+
+Unable to log in to the company computer.
+
+Message:
+
+"Username or password is incorrect."
+
+---
+
+## Information Gathering
+
+Asked:
+
+- When did the issue start?
+- Have you restarted the computer?
+- Is this happening only to you?
+- Have you made any recent changes?
+
+---
+
+## Possible Causes
+
+- Incorrect username
+- Incorrect password
+- Typing error
+- Authentication issue
+- Account locked
+- Password expired
+
+---
+
+## Investigation
+
+Verified:
+
+- User entered the correct username.
+- User re-entered the password carefully.
+
+Checked in Active Directory:
+
+- Username
+- Account status
+- Password information
+
+If required:
+
+- Reset the user's password.
+- Provide temporary password.
+
+---
+
+## Verification
+
+User logged in successfully using the new password.
+
+Confirmed normal access.
+
+---
+
+## Documentation
+
+Issue:
+
+User unable to log in.
+
+Root Cause:
+
+Password issue.
+
+Resolution:
+
+Password reset in Active Directory.
+
+Verification:
+
+User successfully logged in.
+
+Status:
+
+Resolved.
+
+---
+
+# Practical Scenario
+
+## New Employee Cannot Log In
+
+### Investigation
+
+Asked:
+
+- When did the issue start?
+- Is this a new account?
+- Has the computer been restarted?
+- Is anyone else experiencing the same issue?
+
+Possible causes:
+
+- Incorrect credentials
+- Account not created
+- Password issue
+- Authentication issue
+
+---
+
+## Investigation Steps
+
+- Verify username.
+- Verify password.
+- Check Active Directory.
+- Reset password if necessary.
+- Test login.
+
+---
+
+## Verification
+
+Confirmed successful login.
+
+Documented the ticket.
+
+Escalated if issue remained unresolved.
+
+---
+
+# Interview Questions
+
+## What is Active Directory?
+
+Active Directory is Microsoft's directory service used to centrally manage users, computers, groups, passwords, permissions, and security across an organization's network.
+
+---
+
+## What is a Domain?
+
+A Domain is a collection of users and computers managed centrally through Active Directory.
+
+---
+
+## What is a Domain Controller?
+
+A Domain Controller is the server that hosts Active Directory and authenticates users while managing passwords, permissions, and security.
+
+---
+
+## Difference between Domain and Workgroup
+
+Domain:
+
+- Centralized management
+- Uses Active Directory
+- Suitable for businesses
+
+Workgroup:
+
+- Individual management
+- No Active Directory
+- Suitable for home networks
+
+---
+
+## What can Active Directory manage?
+
+- Users
+- Computers
+- Groups
+- Passwords
+- Permissions
+- Security
+
+---
+
+## What does the DHCP Client service do?
+
+Automatically receives:
+
+- IP Address
+- Subnet Mask
+- Default Gateway
+- DNS Server
+
+---
+
+## Difference between systemctl status and journalctl
+
+systemctl status:
+
+Displays the current status of a service.
+
+journalctl:
+
+Displays logs including authentication events, service messages, and errors.
+
+---
+
+## Why do servers use Static IP addresses?
+
+Servers use Static IP addresses because users and applications connect to them frequently. A permanent IP address ensures reliable access and prevents connectivity issues caused by changing IP addresses.
+
+---
+
+# Behavioral Question
+
+## Explain an IP address to a non-technical person.
+
+I would explain that an IP address is like a home address. Just as a courier needs a home address to deliver a package, computers need an IP address to send and receive data across a network. Without the correct IP address, the data would not know where to go.
+
+---
+
+# Skills Learned
+
+Windows:
+
+- Windows Services
+- Print Spooler
+- DHCP Client
+- DNS Client
+
+Active Directory:
+
+- Active Directory
+- Domain
+- Domain Controller
+- Centralized Management
+- Authentication
+
+Linux:
+
+- systemctl status
+- systemctl restart
+- journalctl
+
+Networking:
+
+- DHCP
+- Static IP
+- DNS
+- Default Gateway
+
+Help Desk:
+
+- Login troubleshooting
+- Password reset process
+- Active Directory investigation
+- User verification
+- Ticket documentation
+
+---
+
+# Key Takeaways
+
+- Active Directory allows centralized management of users, computers, and security.
+- A Domain Controller authenticates users and stores Active Directory information.
+- Domains are used in business environments, while Workgroups are used for small or home networks.
+- DHCP Client automatically receives network configuration.
+- DNS Client resolves and caches domain name lookups.
+- Structured troubleshooting begins with gathering information before making changes.
+- Always verify the solution with the user before closing the ticket.
+
+---
+
+# Reflection
+
+Today I began learning Active Directory, one of the most important technologies used in IT Support environments. I understood how Domains and Domain Controllers allow organizations to centrally manage users, computers, passwords, and permissions. I also practiced a login-related Help Desk scenario using a structured troubleshooting approach and reinforced my understanding of Windows Services, Linux service management, and networking concepts. This session strengthened my understanding of authentication and prepared me for more advanced Active Directory tasks in the coming days.
