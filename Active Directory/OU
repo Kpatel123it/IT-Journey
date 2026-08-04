@@ -1,0 +1,42 @@
+Organizational Unit (OU)
+
+An Organizational Unit (OU) is a container in Active Directory used to organize:
+
+Users
+Computers
+Groups
+
+Example:
+
+Company
+│
+
+├── HR
+├── Finance
+├── IT
+└── Sales
+
+Each department can contain its own users, computers, and groups.
+
+Why Companies Use OUs
+
+Benefits:
+
+Organize users by department
+Easier administration
+Easier troubleshooting
+Easier application of security policies
+Easier Group Policy management
+OU vs Group
+Organizational Unit (OU)
+
+Purpose:
+
+Organizes Active Directory objects.
+Helps administrators manage departments.
+Group
+
+Purpose:
+
+Collection of users.
+Used to assign permissions to resources.
