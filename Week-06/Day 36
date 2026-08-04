@@ -1,0 +1,497 @@
+# Day 36 – Active Directory Organizational Units, Local Users & Groups, Package Management & VPN
+
+## 🎯 Objective
+
+Today's objective was to expand my understanding of Active Directory by learning Organizational Units (OUs), continue Windows administration with Local Users & Groups, learn Linux package management, understand VPN fundamentals, and practice real-world Help Desk troubleshooting.
+
+---
+
+# 🏢 Active Directory
+
+## Organizational Unit (OU)
+
+An Organizational Unit (OU) is a container in Active Directory used to organize:
+
+* Users
+* Computers
+* Groups
+
+Example:
+
+```
+Company
+│
+
+├── HR
+├── Finance
+├── IT
+└── Sales
+```
+
+Each department can contain its own users, computers, and groups.
+
+---
+
+## Why Companies Use OUs
+
+Benefits:
+
+* Organize users by department
+* Easier administration
+* Easier troubleshooting
+* Easier application of security policies
+* Easier Group Policy management
+
+---
+
+## OU vs Group
+
+### Organizational Unit (OU)
+
+Purpose:
+
+* Organizes Active Directory objects.
+* Helps administrators manage departments.
+
+### Group
+
+Purpose:
+
+* Collection of users.
+* Used to assign permissions to resources.
+
+---
+
+# 🪟 Windows Administration
+
+## Local Users & Groups
+
+Local Users & Groups is a Windows management tool used to:
+
+* Create local users
+* Modify users
+* Delete users
+* Create local groups
+* Manage local group membership
+
+---
+
+## Local User
+
+A Local User account exists only on one computer.
+
+Example:
+
+Home computer.
+
+Characteristics:
+
+* Managed locally
+* Cannot log into other computers
+
+---
+
+## Domain User
+
+A Domain User account is created in Active Directory.
+
+Characteristics:
+
+* Centrally managed
+* Can log into multiple domain-joined computers (based on permissions)
+* Managed by the Domain Controller
+
+---
+
+## Administrator vs Standard User
+
+### Administrator
+
+Can:
+
+* Install software
+* Change system settings
+* Manage users
+* Install drivers
+* Run administrative tools
+
+---
+
+### Standard User
+
+Can:
+
+* Use applications
+* Access permitted files
+* Cannot perform administrative changes without approval
+
+---
+
+# 🐧 Linux
+
+## Package Management
+
+Ubuntu uses the APT package manager.
+
+---
+
+### Update Package List
+
+```bash
+sudo apt update
+```
+
+Purpose:
+
+Refreshes the package list from software repositories.
+
+It checks for available software updates but does not install them.
+
+---
+
+### Upgrade Installed Packages
+
+```bash
+sudo apt upgrade
+```
+
+Purpose:
+
+Installs available updates for software already installed on the system.
+
+---
+
+### Install Package
+
+```bash
+sudo apt install tree
+```
+
+Purpose:
+
+Installs new software.
+
+---
+
+### Remove Package
+
+```bash
+sudo apt remove tree
+```
+
+Purpose:
+
+Removes installed software from the system.
+
+---
+
+# 🌐 Networking
+
+## Virtual Private Network (VPN)
+
+A VPN (Virtual Private Network) creates a secure encrypted connection between a user's device and a private company network over the Internet.
+
+---
+
+## Why Companies Use VPN
+
+Benefits:
+
+* Secure remote access
+* Protects sensitive company data
+* Encrypts Internet traffic
+* Allows employees to work from home securely
+
+---
+
+## VPN Process
+
+```
+Employee
+     ↓
+Internet
+     ↓
+Encrypted VPN Tunnel
+     ↓
+Company Network
+```
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Ticket ID
+
+INC-3601
+
+### User
+
+John – Finance Department
+
+### Issue
+
+User forgot Windows password and account is locked.
+
+---
+
+## Information Gathering
+
+Questions asked:
+
+* When did the issue start?
+* Have you restarted your computer?
+* Is this happening only to you?
+* Have you made any recent changes?
+* Are you sure your username and password are correct?
+
+---
+
+## Possible Causes
+
+* Incorrect password
+* Account locked
+* Authentication issue
+* Disabled account
+* Password expired
+
+---
+
+## Investigation
+
+1. Search for the user in Active Directory.
+2. Verify account status.
+3. Check whether the account is:
+
+   * Locked
+   * Disabled
+4. Reset password if required.
+5. Unlock account if necessary.
+
+---
+
+## Verification
+
+Ask the user to log in using the updated credentials.
+
+Confirm successful login.
+
+---
+
+## Documentation
+
+Issue:
+
+User unable to log in because of authentication/account lock.
+
+Resolution:
+
+Verified account, reset password or unlocked account as required.
+
+Verification:
+
+User successfully logged in.
+
+Status:
+
+Resolved.
+
+Escalate if the issue remains unresolved.
+
+---
+
+# 🎤 Interview Questions
+
+## What is an Organizational Unit?
+
+An Organizational Unit is a container in Active Directory used to organize users, computers, and groups.
+
+---
+
+## Why do companies use OUs?
+
+* Easier management
+* Better organization
+* Easier security management
+* Easier Group Policy application
+
+---
+
+## Difference between OU and Group
+
+OU:
+
+Organizes Active Directory objects.
+
+Group:
+
+Collection of users used to assign permissions.
+
+---
+
+## Difference between Local User and Domain User
+
+Local User:
+
+* Exists on one computer
+* Managed locally
+
+Domain User:
+
+* Created in Active Directory
+* Managed centrally
+* Can log into multiple domain-joined computers
+
+---
+
+## Difference between Administrator and Standard User
+
+Administrator:
+
+Has full administrative privileges.
+
+Standard User:
+
+Limited permissions and cannot make system-wide changes without authorization.
+
+---
+
+## What is Local Users & Groups?
+
+A Windows management tool used to create, modify, and manage local user accounts and local groups.
+
+---
+
+## Difference between apt update and apt upgrade
+
+### apt update
+
+Refreshes the package list from repositories.
+
+### apt upgrade
+
+Installs available updates for software already installed on the system.
+
+---
+
+## How do you install software in Ubuntu?
+
+```bash
+sudo apt update
+sudo apt install package_name
+```
+
+---
+
+## What is VPN?
+
+VPN (Virtual Private Network) provides a secure encrypted connection between a user and a private network over the Internet.
+
+---
+
+## Why do companies use VPN?
+
+* Secure remote access
+* Protect company data
+* Encrypt communication
+* Allow employees to work securely from anywhere
+
+---
+
+# 💼 Practical Scenario
+
+## New Employee Setup
+
+Requirements:
+
+* Company laptop
+* Domain account
+* Finance department access
+* Shared folder access
+* Outlook account
+
+### Process
+
+1. Create the user account in Active Directory.
+2. Assign username and temporary password.
+3. Add the user to the Finance Organizational Unit.
+4. Add the user to the appropriate Finance security group.
+5. Grant access to Finance shared folders through group membership.
+6. Configure Outlook/Microsoft 365 account.
+7. Verify the user can:
+
+   * Log in
+   * Access shared folders
+   * Send and receive email
+
+---
+
+# 🤝 Behavioral Question
+
+## How do you learn new technology?
+
+I start by learning the fundamentals before moving to practical implementation. I build a home lab to practice concepts hands-on, document everything in my GitHub portfolio, and regularly review previous topics before learning new ones. This approach helps me understand both the theory and its practical application in real-world IT Support scenarios.
+
+---
+
+# Skills Learned
+
+## Active Directory
+
+* Organizational Units (OU)
+* Department organization
+* OU vs Group
+
+---
+
+## Windows
+
+* Local Users & Groups
+* Local User
+* Domain User
+* Administrator
+* Standard User
+
+---
+
+## Linux
+
+* apt update
+* apt upgrade
+* apt install
+* apt remove
+
+---
+
+## Networking
+
+* VPN
+* Secure remote access
+* Encryption
+
+---
+
+## Help Desk
+
+* Account lock troubleshooting
+* Password reset process
+* Active Directory verification
+* User account management
+
+---
+
+# Key Takeaways
+
+* Organizational Units help organize Active Directory objects by department.
+* Groups are used to assign permissions, while OUs are used for organization.
+* Domain Users are centrally managed through Active Directory.
+* Local Users exist only on one computer.
+* `apt update` refreshes package information.
+* `apt upgrade` installs available software updates.
+* VPN provides encrypted remote access to company resources.
+* Structured troubleshooting should always follow: Gather Information → Investigate → Resolve → Verify → Document → Escalate if necessary.
+
+---
+
+# Reflection
+
+Today I strengthened my understanding of Active Directory by learning Organizational Units and the difference between Local Users and Domain Users. I also learned Linux package management using APT and gained an understanding of VPN technology and its importance in secure remote access. Through the Help Desk scenario, I practiced troubleshooting account lock issues using a structured approach that included information gathering, investigation, verification, documentation, and escalation when necessary.
