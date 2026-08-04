@@ -1,0 +1,33 @@
+Package Management
+
+Ubuntu uses the APT package manager.
+
+Update Package List
+sudo apt update
+
+Purpose:
+
+Refreshes the package list from software repositories.
+
+It checks for available software updates but does not install them.
+
+Upgrade Installed Packages
+sudo apt upgrade
+
+Purpose:
+
+Installs available updates for software already installed on the system.
+
+Install Package
+sudo apt install tree
+
+Purpose:
+
+Installs new software.
+
+Remove Package
+sudo apt remove tree
+
+Purpose:
+
+Removes installed software from the system.
