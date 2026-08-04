@@ -1,0 +1,47 @@
+Local Users & Groups
+
+Local Users & Groups is a Windows management tool used to:
+
+Create local users
+Modify users
+Delete users
+Create local groups
+Manage local group membership
+Local User
+
+A Local User account exists only on one computer.
+
+Example:
+
+Home computer.
+
+Characteristics:
+
+Managed locally
+Cannot log into other computers
+Domain User
+
+A Domain User account is created in Active Directory.
+
+Characteristics:
+
+Centrally managed
+Can log into multiple domain-joined computers (based on permissions)
+Managed by the Domain Controller
+Administrator vs Standard User
+Administrator
+
+Can:
+
+Install software
+Change system settings
+Manage users
+Install drivers
+Run administrative tools
+Standard User
+
+Can:
+
+Use applications
+Access permitted files
+Cannot perform administrative changes without approval
