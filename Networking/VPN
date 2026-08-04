@@ -1,0 +1,20 @@
+Virtual Private Network (VPN)
+
+A VPN (Virtual Private Network) creates a secure encrypted connection between a user's device and a private company network over the Internet.
+
+Why Companies Use VPN
+
+Benefits:
+
+Secure remote access
+Protects sensitive company data
+Encrypts Internet traffic
+Allows employees to work from home securely
+VPN Process
+Employee
+     ↓
+Internet
+     ↓
+Encrypted VPN Tunnel
+     ↓
+Company Network
