@@ -1,0 +1,29 @@
+Cron Jobs
+
+Cron is a Linux scheduling service used to automatically execute tasks at specified times.
+
+Examples:
+
+Daily backups
+Log cleanup
+Running maintenance scripts
+Scheduled system tasks
+Command
+crontab -e
+
+Purpose:
+
+Edit the current user's scheduled Cron Jobs.
+
+Example
+0 2 * * * backup.sh
+
+Meaning:
+
+Run the backup script every day at 2:00 AM.
+
+Why Cron Jobs Are Useful
+Automates repetitive tasks
+Reduces manual work
+Ensures regular system maintenance
+Improves system reliability
