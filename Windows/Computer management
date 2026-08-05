@@ -1,0 +1,20 @@
+Computer Management
+
+Computer Management is a Windows administrative console that combines multiple management tools into a single interface.
+
+Run:
+
+Windows + R
+
+compmgmt.msc
+Tools Available in Computer Management
+Event Viewer
+Device Manager
+Disk Management
+Shared Folders
+Local Users & Groups
+Services
+Task Scheduler
+Why IT Administrators Use Computer Management
+
+Instead of opening multiple Windows tools individually, administrators can manage many system components from one console.
