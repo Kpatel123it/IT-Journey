@@ -1,0 +1,432 @@
+# Day 37 – Active Directory Users & Security Groups, Computer Management, Cron Jobs & VLAN
+
+## 🎯 Objective
+
+Today's objective was to understand how Active Directory manages users and security groups, learn the Windows Computer Management console, understand Linux Cron Jobs for task automation, learn the basics of VLANs, and practice Help Desk troubleshooting involving shared folder access.
+
+---
+
+# 🏢 Active Directory
+
+## Active Directory User
+
+An Active Directory User represents an individual employee within an organization.
+
+Each user account stores information such as:
+
+* Username
+* Password
+* Department
+* Email address
+* Group memberships
+* Login permissions
+
+Example:
+
+```text
+Username: jsmith
+Department: Finance
+Email: jsmith@company.com
+```
+
+---
+
+## Security Group
+
+A Security Group is a collection of users or computers used to assign permissions to resources.
+
+Instead of assigning permissions to every user individually, administrators assign permissions to a Security Group.
+
+Example:
+
+Finance Shared Folder
+
+↓
+
+Finance Security Group
+
+↓
+
+Finance Employees
+
+---
+
+## Why Companies Use Security Groups
+
+Benefits:
+
+* Easier permission management
+* Saves administration time
+* Reduces configuration mistakes
+* Simplifies onboarding new employees
+* Follows the principle of centralized management
+
+---
+
+## Security Group Workflow
+
+```text
+New Employee
+
+↓
+
+Create User
+
+↓
+
+Add User to Finance Security Group
+
+↓
+
+User automatically receives Finance folder permissions
+```
+
+---
+
+# 🪟 Windows Administration
+
+## Computer Management
+
+Computer Management is a Windows administrative console that combines multiple management tools into a single interface.
+
+Run:
+
+```text
+Windows + R
+
+compmgmt.msc
+```
+
+---
+
+## Tools Available in Computer Management
+
+* Event Viewer
+* Device Manager
+* Disk Management
+* Shared Folders
+* Local Users & Groups
+* Services
+* Task Scheduler
+
+---
+
+## Why IT Administrators Use Computer Management
+
+Instead of opening multiple Windows tools individually, administrators can manage many system components from one console.
+
+---
+
+# 🐧 Linux
+
+## Cron Jobs
+
+Cron is a Linux scheduling service used to automatically execute tasks at specified times.
+
+Examples:
+
+* Daily backups
+* Log cleanup
+* Running maintenance scripts
+* Scheduled system tasks
+
+---
+
+## Command
+
+```bash
+crontab -e
+```
+
+Purpose:
+
+Edit the current user's scheduled Cron Jobs.
+
+---
+
+## Example
+
+```text
+0 2 * * * backup.sh
+```
+
+Meaning:
+
+Run the backup script every day at 2:00 AM.
+
+---
+
+## Why Cron Jobs Are Useful
+
+* Automates repetitive tasks
+* Reduces manual work
+* Ensures regular system maintenance
+* Improves system reliability
+
+---
+
+# 🌐 Networking
+
+## VLAN (Virtual Local Area Network)
+
+A VLAN logically divides one physical network into multiple separate networks.
+
+Example:
+
+One office switch:
+
+* Finance VLAN
+* HR VLAN
+* IT VLAN
+
+Although all devices are connected to the same physical switch, VLANs separate network traffic between departments.
+
+---
+
+## Benefits of VLANs
+
+* Better network security
+* Reduced broadcast traffic
+* Easier network management
+* Department isolation
+* Improved network performance
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Ticket ID
+
+INC-3701
+
+### Issue
+
+Finance employee can log in successfully but cannot access the Finance shared folder.
+
+---
+
+## Information Gathering
+
+Questions asked:
+
+* When did the issue start?
+* Have you made any recent changes?
+* Were you able to access the folder previously?
+* Are other users experiencing the same problem?
+* Can you access other shared folders?
+
+---
+
+## Possible Causes
+
+* User is not a member of the Finance Security Group.
+* Incorrect shared folder permissions.
+* Group membership issue.
+* Network drive mapping issue.
+
+---
+
+## Investigation
+
+1. Open Active Directory Users and Computers.
+2. Locate the user account.
+3. Verify the account is enabled.
+4. Check Finance Security Group membership.
+5. Verify shared folder permissions.
+6. Add the user to the appropriate Security Group if required.
+7. Ask the user to sign out and sign back in if group membership was changed.
+
+---
+
+## Verification
+
+Confirm the user can successfully access the Finance shared folder.
+
+---
+
+## Documentation
+
+Issue:
+
+User unable to access Finance shared folder.
+
+Resolution:
+
+Verified Security Group membership and corrected permissions.
+
+Verification:
+
+User successfully accessed the shared folder.
+
+Status:
+
+Resolved.
+
+Escalate if the issue persists.
+
+---
+
+# 🎤 Interview Questions
+
+## What is an Active Directory User?
+
+An Active Directory User is an account representing an individual employee within an organization. It stores user information such as username, password, department, email, and permissions.
+
+---
+
+## What is a Security Group?
+
+A Security Group is a collection of users or computers used to assign permissions to network resources.
+
+---
+
+## Why do companies use Security Groups?
+
+* Easier permission management
+* Reduced administrative effort
+* Improved security
+* Simplified onboarding
+* Fewer configuration errors
+
+---
+
+## How do Security Groups simplify permission management?
+
+Permissions are assigned to the group rather than each individual user. When a new employee joins, the administrator simply adds the user to the appropriate Security Group.
+
+---
+
+## What is Computer Management?
+
+Computer Management is a Windows administration console that combines several management tools into one interface.
+
+---
+
+## Name tools available in Computer Management.
+
+* Event Viewer
+* Device Manager
+* Disk Management
+* Shared Folders
+* Local Users & Groups
+* Services
+* Task Scheduler
+
+---
+
+## What is Cron?
+
+Cron is a Linux scheduling service that automatically runs tasks at specified times.
+
+---
+
+## Why are Cron Jobs useful?
+
+Cron automates repetitive administrative tasks such as backups, maintenance scripts, and log cleanup.
+
+---
+
+## What is a VLAN?
+
+A VLAN (Virtual Local Area Network) logically divides one physical network into multiple separate networks.
+
+---
+
+## Why do companies use VLANs?
+
+* Improve security
+* Reduce unnecessary network traffic
+* Organize departments
+* Simplify network management
+
+---
+
+# 💼 Practical Scenario
+
+## New Finance Employee Setup
+
+### Steps
+
+1. Verify manager or HR approval.
+2. Open Active Directory Users and Computers.
+3. Create the new user account.
+4. Assign a temporary password.
+5. Configure the user to change the password at first login (if required by company policy).
+6. Place the user in the Finance Organizational Unit (OU).
+7. Add the user to the Finance Security Group.
+8. Provision the Outlook/Microsoft 365 mailbox if required.
+9. Verify the user can:
+
+   * Log in successfully
+   * Access the Finance shared folder
+   * Access Outlook
+10. Document the completed work.
+
+---
+
+# 🤝 Behavioral Question
+
+## Describe a time you solved a problem using a structured approach.
+
+When learning Linux and IT Support fundamentals, I used a structured troubleshooting approach instead of guessing. I first gathered information, identified possible causes, tested the simplest solutions, verified each change, and documented my findings in my GitHub portfolio. This method helped me understand problems more effectively and reinforced the importance of documentation and verification in IT Support.
+
+---
+
+# Skills Learned
+
+## Active Directory
+
+* Active Directory Users
+* Security Groups
+* Permission management
+* User provisioning
+
+---
+
+## Windows
+
+* Computer Management
+* Administrative tools
+* Centralized management utilities
+
+---
+
+## Linux
+
+* Cron
+* Scheduled tasks
+* Task automation
+
+---
+
+## Networking
+
+* VLAN
+* Department isolation
+* Network segmentation
+
+---
+
+## Help Desk
+
+* Shared folder access troubleshooting
+* Security Group verification
+* Permission troubleshooting
+* Structured ticket resolution
+
+---
+
+# Key Takeaways
+
+* Active Directory users represent employees within an organization.
+* Security Groups simplify permission management.
+* Computer Management combines multiple Windows administrative tools.
+* Cron automates repetitive Linux administrative tasks.
+* VLANs logically separate departments within the same physical network.
+* Effective Help Desk troubleshooting follows a structured process: Gather Information → Identify Possible Causes → Investigate → Resolve → Verify → Document → Escalate if necessary.
+
+---
+
+# Reflection
+
+Today I learned how organizations manage user accounts and permissions through Active Directory Security Groups. I also explored Windows Computer Management as a centralized administration console, learned how Cron automates Linux tasks, and understood how VLANs improve network security and organization. The Help Desk scenario reinforced the importance of verifying Security Group membership before modifying permissions, following a structured troubleshooting process, and documenting every resolved issue.
