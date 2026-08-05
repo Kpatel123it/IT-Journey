@@ -1,0 +1,59 @@
+Active Directory User
+
+An Active Directory User represents an individual employee within an organization.
+
+Each user account stores information such as:
+
+Username
+Password
+Department
+Email address
+Group memberships
+Login permissions
+
+Example:
+
+Username: jsmith
+Department: Finance
+Email: jsmith@company.com
+Security Group
+
+A Security Group is a collection of users or computers used to assign permissions to resources.
+
+Instead of assigning permissions to every user individually, administrators assign permissions to a Security Group.
+
+Example:
+
+Finance Shared Folder
+
+↓
+
+Finance Security Group
+
+↓
+
+Finance Employees
+
+Why Companies Use Security Groups
+
+Benefits:
+
+Easier permission management
+Saves administration time
+Reduces configuration mistakes
+Simplifies onboarding new employees
+Follows the principle of centralized management
+Security Group Workflow
+New Employee
+
+↓
+
+Create User
+
+↓
+
+Add User to Finance Security Group
+
+↓
+
+User automatically receives Finance folder permissions
