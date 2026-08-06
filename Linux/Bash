@@ -1,0 +1,27 @@
+Bash
+
+Bash (Bourne Again Shell) is the default command-line shell used in many Linux distributions.
+
+A Bash Script is a text file containing multiple Linux commands that execute automatically.
+
+Example Script
+#!/bin/bash
+
+echo "Hello World"
+
+date
+
+pwd
+Save File
+hello.sh
+Make Executable
+chmod +x hello.sh
+Run Script
+./hello.sh
+Why Companies Use Bash Scripts
+Automation
+Daily backups
+Log cleanup
+User management
+System monitoring
+Maintenance tasks
