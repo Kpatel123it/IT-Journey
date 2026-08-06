@@ -1,0 +1,462 @@
+# Day 38 – Active Directory Password Management, Event Viewer, Bash Scripting & SMB
+
+## 🎯 Objective
+
+Today's objective was to learn how IT Support teams manage user accounts in Active Directory by resetting passwords, unlocking accounts, and disabling user accounts. I also learned Windows Event Viewer, Linux Bash scripting basics, SMB (Server Message Block), and practiced real-world Help Desk troubleshooting.
+
+---
+
+# 🏢 Active Directory
+
+## Password Reset
+
+A password reset is performed when a user forgets their password or cannot access their account.
+
+The IT administrator resets the password to a temporary password and asks the user to create a new password after logging in.
+
+### Password Reset Process
+
+1. Verify the user's identity according to company policy.
+2. Open **Active Directory Users and Computers (ADUC)**.
+3. Search for the user account.
+4. Select **Reset Password**.
+5. Assign a temporary password.
+6. Enable **User must change password at next logon** if required by company policy.
+7. Provide the temporary password securely.
+8. Verify the user can successfully log in.
+
+---
+
+## Account Lockout
+
+A user account becomes locked after multiple failed login attempts.
+
+Possible reasons:
+
+* Incorrect password entered several times.
+* Keyboard issues such as Caps Lock.
+* Cached old password on another device.
+
+### Resolution
+
+* Verify the user's identity.
+* Locate the user account in Active Directory.
+* Unlock the account.
+* Reset the password if necessary.
+* Verify successful login.
+
+---
+
+## Disable User Account
+
+A disabled account cannot log in but still exists in Active Directory.
+
+Common reasons:
+
+* Employee resignation
+* Long-term leave
+* Security investigation
+* Temporary suspension
+
+Disabling the account preserves company data while preventing access.
+
+---
+
+## Difference Between Disable and Delete
+
+### Disable
+
+* User account remains in Active Directory.
+* Company data is preserved.
+* Access is blocked.
+
+### Delete
+
+* User account is permanently removed.
+* Usually performed according to company retention policy.
+* Not commonly done immediately after an employee leaves.
+
+---
+
+# 🪟 Windows Administration
+
+# Event Viewer
+
+Event Viewer is a Windows administration tool used to view system logs and troubleshoot operating system, hardware, driver, and application problems.
+
+Run:
+
+```text id="rjlwmx"
+eventvwr.msc
+```
+
+---
+
+## Common Event Viewer Logs
+
+### Application Log
+
+Stores application errors and warnings.
+
+---
+
+### Security Log
+
+Stores:
+
+* Login events
+* Failed login attempts
+* Security auditing information
+
+---
+
+### System Log
+
+Stores:
+
+* Driver events
+* Hardware events
+* Windows service events
+* Startup and shutdown information
+
+---
+
+## Why IT Uses Event Viewer
+
+* Troubleshoot Windows errors
+* Diagnose application crashes
+* Investigate login failures
+* Review hardware issues
+* Identify service failures
+
+---
+
+# 🐧 Linux
+
+# Bash
+
+Bash (Bourne Again Shell) is the default command-line shell used in many Linux distributions.
+
+A Bash Script is a text file containing multiple Linux commands that execute automatically.
+
+---
+
+## Example Script
+
+```bash id="b70mmp"
+#!/bin/bash
+
+echo "Hello World"
+
+date
+
+pwd
+```
+
+---
+
+## Save File
+
+```text id="xkkwfk"
+hello.sh
+```
+
+---
+
+## Make Executable
+
+```bash id="svwygh"
+chmod +x hello.sh
+```
+
+---
+
+## Run Script
+
+```bash id="m0w3mx"
+./hello.sh
+```
+
+---
+
+## Why Companies Use Bash Scripts
+
+* Automation
+* Daily backups
+* Log cleanup
+* User management
+* System monitoring
+* Maintenance tasks
+
+---
+
+# 🌐 Networking
+
+# SMB (Server Message Block)
+
+SMB is a network protocol used to share files, folders, and printers between computers on a network.
+
+---
+
+## Common Uses
+
+* Shared folders
+* File servers
+* Shared printers
+* Network storage
+
+---
+
+## Why Companies Use SMB
+
+* Easy file sharing
+* Centralized storage
+* Shared printer access
+* Improved collaboration
+* Eliminates the need for USB drives
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Ticket ID
+
+INC-3801
+
+### User
+
+Michael – Sales Department
+
+### Issue
+
+User forgot password and account is locked.
+
+---
+
+## Information Gathering
+
+Questions asked:
+
+* When did the issue start?
+* Have you tried logging in again?
+* Are you receiving an "Account Locked" message?
+* Is anyone else experiencing the same issue?
+* Verify username and identity according to company policy.
+
+---
+
+## Possible Causes
+
+* Multiple failed login attempts
+* Account lockout
+* Incorrect password
+* Cached credentials
+
+---
+
+## Investigation
+
+1. Open Active Directory Users and Computers.
+2. Search for the user account.
+3. Verify whether the account is locked.
+4. Unlock the account.
+5. Reset the password if required.
+6. Enable **User must change password at next logon** if required by company policy.
+
+---
+
+## Verification
+
+Ask the user to:
+
+* Log in with the temporary password.
+* Change the password.
+* Confirm successful access.
+
+---
+
+## Documentation
+
+Issue:
+
+User account locked after multiple incorrect login attempts.
+
+Resolution:
+
+Unlocked the account and reset the password.
+
+Verification:
+
+User successfully logged in and changed the password.
+
+Status:
+
+Resolved.
+
+Escalate if the issue remains unresolved.
+
+---
+
+# 🎤 Interview Questions
+
+## What is a password reset?
+
+A password reset is performed when a user forgets their password. The administrator assigns a temporary password, allowing the user to log in and create a new password.
+
+---
+
+## Why require users to change temporary passwords?
+
+To improve security by ensuring only the user knows their permanent password.
+
+---
+
+## Why do accounts become locked?
+
+Accounts become locked after multiple incorrect password attempts to protect against unauthorized access.
+
+---
+
+## Difference between disabling and deleting a user account.
+
+Disable:
+
+Temporarily blocks access while preserving the account and company data.
+
+Delete:
+
+Permanently removes the account according to company policy.
+
+---
+
+## What is Event Viewer?
+
+Event Viewer is a Windows tool used to view system logs and troubleshoot operating system, application, security, and hardware issues.
+
+---
+
+## Name three Event Viewer logs.
+
+* Application
+* Security
+* System
+
+---
+
+## What is Bash?
+
+Bash is the Linux command-line shell.
+
+A Bash script is a text file containing commands executed automatically.
+
+---
+
+## Why do companies use Bash scripts?
+
+* Automation
+* Backups
+* Maintenance
+* Monitoring
+* Log cleanup
+
+---
+
+## What is SMB?
+
+SMB (Server Message Block) is a network protocol used for sharing files, folders, and printers across a network.
+
+---
+
+## Why do companies use SMB?
+
+To provide centralized access to shared files and printers without requiring physical storage devices.
+
+---
+
+# 💼 Practical Scenario
+
+## Employee Resignation
+
+### Process
+
+1. Verify HR or manager approval.
+2. Open Active Directory Users and Computers.
+3. Locate the user account.
+4. Disable the account.
+5. Remove unnecessary access according to company policy.
+6. Preserve company data and mailbox.
+7. Document the account changes.
+8. Notify the appropriate manager that access has been removed.
+
+---
+
+# 🤝 Behavioral Question
+
+## Tell me about a time when attention to detail helped you.
+
+While learning Linux, I noticed several commands looked similar, such as `systemctl` and `journalctl`. Instead of memorizing them without understanding, I practiced each command in my home lab, documented their purpose in my GitHub notes, and reviewed them regularly. Paying close attention to these differences improved my troubleshooting skills and reduced mistakes during practice.
+
+---
+
+# Skills Learned
+
+## Active Directory
+
+* Password Reset
+* Account Unlock
+* Disable User Account
+* Account Security
+
+---
+
+## Windows
+
+* Event Viewer
+* Application Logs
+* Security Logs
+* System Logs
+
+---
+
+## Linux
+
+* Bash
+* Bash Scripts
+* Script Execution
+* Linux Automation
+
+---
+
+## Networking
+
+* SMB
+* Shared Folders
+* Shared Printers
+* File Sharing
+
+---
+
+## Help Desk
+
+* Password Reset
+* Account Lockout
+* User Verification
+* Ticket Documentation
+
+---
+
+# Key Takeaways
+
+* Password resets should always follow identity verification procedures.
+* Locked accounts are commonly caused by multiple failed login attempts.
+* Disabled accounts preserve company data while preventing access.
+* Event Viewer is a primary troubleshooting tool for Windows.
+* Bash scripts automate repetitive Linux administrative tasks.
+* SMB enables secure file and printer sharing across a network.
+* Every Help Desk ticket should follow: Gather Information → Investigate → Resolve → Verify → Document → Escalate if necessary.
+
+---
+
+# Reflection
+
+Today I learned how IT Support teams manage user account security in Active Directory through password resets, account unlocks, and account management. I also explored Windows Event Viewer for troubleshooting system issues, learned the basics of Bash scripting for Linux automation, and understood how SMB supports file and printer sharing across business networks. The Help Desk scenario reinforced the importance of verifying user identity, following company security policies, and documenting every completed task.
