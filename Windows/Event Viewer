@@ -1,0 +1,33 @@
+Event Viewer
+
+Event Viewer is a Windows administration tool used to view system logs and troubleshoot operating system, hardware, driver, and application problems.
+
+Run:
+
+eventvwr.msc
+Common Event Viewer Logs
+Application Log
+
+Stores application errors and warnings.
+
+Security Log
+
+Stores:
+
+Login events
+Failed login attempts
+Security auditing information
+System Log
+
+Stores:
+
+Driver events
+Hardware events
+Windows service events
+Startup and shutdown information
+Why IT Uses Event Viewer
+Troubleshoot Windows errors
+Diagnose application crashes
+Investigate login failures
+Review hardware issues
+Identify service failures
