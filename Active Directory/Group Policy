@@ -1,0 +1,72 @@
+What is Group Policy?
+
+Group Policy allows administrators to centrally configure and enforce settings for users and computers in a Windows domain.
+
+Instead of configuring every computer individually, administrators can apply policies centrally.
+
+Examples of Group Policy
+
+Group Policy can be used for:
+
+Password policies
+Security settings
+USB restrictions
+Desktop configuration
+Software deployment
+Windows configuration
+Network drive mapping
+Restricting access to certain Windows features
+What is a GPO?
+
+GPO = Group Policy Object
+
+A GPO is a collection of configuration settings that can be applied to users or computers.
+
+Example:
+
+A company creates a GPO that prevents Finance computers from using USB storage devices.
+
+OU and Group Policy
+
+An OU (Organizational Unit) is used to organize Active Directory objects.
+
+A GPO can be linked to an OU so that the policy applies to the users or computers within that OU.
+
+Example:
+
+Active Directory
+       |
+   Finance OU
+       |
+   Finance GPO
+       |
+Finance Computers
+Important Difference
+
+These three concepts should not be confused.
+
+OU
+
+Purpose: Organization
+
+Used to organize:
+
+Users
+Computers
+Groups
+Security Group
+
+Purpose: Access
+
+Used to assign permissions to multiple users or computers.
+
+Group Policy
+
+Purpose: Configuration
+
+Used to centrally apply settings to users and computers.
+
+Easy Memory Trick
+OU = WHERE
+Security Group = WHO
+GPO = WHAT SETTINGS
