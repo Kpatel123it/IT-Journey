@@ -41,3 +41,68 @@ sudo ufw status numbered
 - Allows trusted services
 - Protects systems from attacks
 - Improves network security
+
+What is a Firewall?
+
+A firewall is a security system that monitors and controls incoming and outgoing network traffic according to predefined rules.
+
+Basic concept:
+
+Internet
+    |
+    ↓
+ Firewall
+    |
+    ↓
+Computer / Network
+
+The firewall decides whether traffic should be:
+
+ALLOW ✅
+
+or:
+
+BLOCK ❌
+Why are Firewalls Used?
+
+Firewalls help:
+
+Block unauthorized traffic
+Protect computers
+Control network access
+Restrict specific ports
+Reduce the attack surface
+Control incoming and outgoing connections
+Firewall Rules
+
+A firewall rule determines whether particular network traffic is allowed or blocked.
+
+Rules can consider:
+
+IP address
+Port
+Protocol
+Direction
+Source
+Destination
+
+Example:
+
+TCP Port 22 → ALLOW
+TCP Port 23 → BLOCK
+
+Port 22 is commonly used by SSH.
+
+🐧 UFW
+
+UFW = Uncomplicated Firewall
+
+UFW provides a simpler way to manage firewall rules on Ubuntu/Linux systems.
+
+Check status:
+
+sudo ufw status
+
+Allow SSH:
+
+sudo ufw allow 22/tcp
