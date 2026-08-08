@@ -1,0 +1,696 @@
+# Day 39 – Disk Management, Group Policy, Log Rotation & Firewall Fundamentals
+
+## 🎯 Objective
+
+Today's goal was to expand my Windows, Active Directory, Linux, and networking knowledge while continuing to practice Help Desk troubleshooting concepts.
+
+The main topics covered were:
+
+* Windows Disk Management
+* Active Directory Group Policy
+* Group Policy Objects (GPO)
+* Linux Log Rotation
+* Linux `logrotate`
+* Firewall fundamentals
+* UFW
+* Help Desk troubleshooting concepts
+
+---
+
+# 🪟 Windows – Disk Management
+
+## What is Disk Management?
+
+Disk Management is a Windows utility used to view and manage:
+
+* Physical disks
+* Partitions
+* Volumes
+* Drive letters
+* Storage space
+
+It can be useful when troubleshooting storage-related problems.
+
+---
+
+## How to Open Disk Management
+
+Press:
+
+```text
+Windows + R
+```
+
+Then type:
+
+```text
+diskmgmt.msc
+```
+
+Press **Enter**.
+
+---
+
+## What is a Partition?
+
+A partition is a logical division of a physical disk.
+
+For example:
+
+```text
+1 TB Physical SSD
+        |
+   --------------
+   |     |      |
+  C:    D:   Recovery
+```
+
+A single physical disk can contain multiple partitions.
+
+---
+
+## What is a Drive Letter?
+
+Windows assigns letters to identify storage volumes.
+
+Examples:
+
+```text
+C:
+D:
+E:
+```
+
+Usually:
+
+* `C:` → Windows/system drive
+* `D:` → Data or another partition
+* `E:` → External/USB storage
+
+---
+
+## What Can Disk Management Do?
+
+Disk Management can be used to:
+
+* View disks
+* View partitions
+* Create partitions
+* Delete partitions
+* Format volumes
+* Assign drive letters
+* Extend volumes
+* Shrink volumes
+* Check whether a disk is online
+
+---
+
+## Help Desk Example
+
+### Problem
+
+> "My new hard drive isn't appearing in File Explorer."
+
+### Investigation
+
+1. Open Disk Management.
+2. Check whether Windows detects the disk.
+3. Check whether the disk is online.
+4. Check whether a partition exists.
+5. Check whether a drive letter is assigned.
+6. Check whether the volume is formatted.
+
+This helps determine whether the problem is related to Windows configuration or potentially hardware.
+
+---
+
+# 🏢 Active Directory – Group Policy
+
+## What is Group Policy?
+
+Group Policy allows administrators to centrally configure and enforce settings for users and computers in a Windows domain.
+
+Instead of configuring every computer individually, administrators can apply policies centrally.
+
+---
+
+## Examples of Group Policy
+
+Group Policy can be used for:
+
+* Password policies
+* Security settings
+* USB restrictions
+* Desktop configuration
+* Software deployment
+* Windows configuration
+* Network drive mapping
+* Restricting access to certain Windows features
+
+---
+
+# What is a GPO?
+
+**GPO = Group Policy Object**
+
+A GPO is a collection of configuration settings that can be applied to users or computers.
+
+Example:
+
+> A company creates a GPO that prevents Finance computers from using USB storage devices.
+
+---
+
+# OU and Group Policy
+
+An OU (Organizational Unit) is used to organize Active Directory objects.
+
+A GPO can be linked to an OU so that the policy applies to the users or computers within that OU.
+
+Example:
+
+```text
+Active Directory
+       |
+   Finance OU
+       |
+   Finance GPO
+       |
+Finance Computers
+```
+
+---
+
+# Important Difference
+
+These three concepts should not be confused.
+
+## OU
+
+**Purpose: Organization**
+
+Used to organize:
+
+* Users
+* Computers
+* Groups
+
+---
+
+## Security Group
+
+**Purpose: Access**
+
+Used to assign permissions to multiple users or computers.
+
+---
+
+## Group Policy
+
+**Purpose: Configuration**
+
+Used to centrally apply settings to users and computers.
+
+### Easy Memory Trick
+
+```text
+OU = WHERE
+Security Group = WHO
+GPO = WHAT SETTINGS
+```
+
+---
+
+# 🐧 Linux – Log Rotation
+
+## What is Log Rotation?
+
+Log rotation is the process of managing old log files so that logs do not consume excessive disk space.
+
+It can:
+
+* Rotate logs
+* Compress old logs
+* Archive logs
+* Remove old logs according to policy
+
+---
+
+## Why is Log Rotation Important?
+
+Without log rotation, log files could continue growing until they consume a large amount of disk space.
+
+Log rotation helps:
+
+* Prevent disks from filling
+* Keep recent logs available
+* Archive older logs
+* Compress old logs
+* Maintain system reliability
+
+---
+
+# `logrotate`
+
+`logrotate` is a Linux utility used to automatically manage log files.
+
+Common configuration locations:
+
+```bash
+/etc/logrotate.conf
+```
+
+and:
+
+```bash
+/etc/logrotate.d/
+```
+
+---
+
+## Example Log Rotation
+
+Instead of having one huge file:
+
+```text
+application.log
+```
+
+the system may maintain:
+
+```text
+application.log
+application.log.1
+application.log.2
+application.log.3.gz
+```
+
+Older logs can be compressed and eventually removed according to the configured retention policy.
+
+---
+
+# 🌐 Networking – Firewall
+
+## What is a Firewall?
+
+A firewall is a security system that monitors and controls incoming and outgoing network traffic according to predefined rules.
+
+Basic concept:
+
+```text
+Internet
+    |
+    ↓
+ Firewall
+    |
+    ↓
+Computer / Network
+```
+
+The firewall decides whether traffic should be:
+
+```text
+ALLOW ✅
+```
+
+or:
+
+```text
+BLOCK ❌
+```
+
+---
+
+## Why are Firewalls Used?
+
+Firewalls help:
+
+* Block unauthorized traffic
+* Protect computers
+* Control network access
+* Restrict specific ports
+* Reduce the attack surface
+* Control incoming and outgoing connections
+
+---
+
+# Firewall Rules
+
+A firewall rule determines whether particular network traffic is allowed or blocked.
+
+Rules can consider:
+
+* IP address
+* Port
+* Protocol
+* Direction
+* Source
+* Destination
+
+Example:
+
+```text
+TCP Port 22 → ALLOW
+TCP Port 23 → BLOCK
+```
+
+Port 22 is commonly used by SSH.
+
+---
+
+# 🐧 UFW
+
+**UFW = Uncomplicated Firewall**
+
+UFW provides a simpler way to manage firewall rules on Ubuntu/Linux systems.
+
+Check status:
+
+```bash
+sudo ufw status
+```
+
+Allow SSH:
+
+```bash
+sudo ufw allow 22/tcp
+```
+
+---
+
+# 🎫 Help Desk Connection
+
+Firewall knowledge is useful when troubleshooting situations such as:
+
+> "I cannot connect to the server through SSH."
+
+Possible areas to investigate:
+
+1. Is the server reachable?
+2. Is the SSH service running?
+3. Is port 22 listening?
+4. Is the firewall blocking port 22?
+5. Is the correct IP address being used?
+6. Is the user authorized to connect?
+
+This demonstrates how different topics connect together.
+
+```text
+IP Address
+    ↓
+Network Connectivity
+    ↓
+Port 22
+    ↓
+Firewall
+    ↓
+SSH Service
+    ↓
+Authentication
+```
+
+---
+
+# 🎤 Interview Questions & Answers
+
+## 1. What is Disk Management?
+
+Disk Management is a Windows utility used to view and manage disks, partitions, and volumes.
+
+---
+
+## 2. How do you open Disk Management?
+
+Press:
+
+```text
+Windows + R
+```
+
+Then:
+
+```text
+diskmgmt.msc
+```
+
+---
+
+## 3. What is a partition?
+
+A partition is a logical division of a physical disk.
+
+---
+
+## 4. What is a drive letter?
+
+A drive letter is a letter assigned by Windows to identify a storage volume, such as C:, D:, or E:.
+
+---
+
+## 5. What is Group Policy?
+
+Group Policy allows administrators to centrally configure and enforce settings for users and computers in a Windows domain.
+
+---
+
+## 6. Why is Group Policy useful?
+
+It allows administrators to apply consistent settings to many users and computers without configuring each device individually.
+
+---
+
+## 7. What is a GPO?
+
+GPO stands for Group Policy Object. It contains configuration settings that can be applied to users or computers.
+
+---
+
+## 8. How are OUs related to Group Policy?
+
+A GPO can be linked to an OU so its settings can apply to the users or computers inside that OU.
+
+---
+
+## 9. What is log rotation?
+
+Log rotation automatically manages old log files by rotating, compressing, archiving, and eventually removing them according to configured policies.
+
+---
+
+## 10. What is `logrotate`?
+
+`logrotate` is a Linux utility used to automatically manage and rotate log files.
+
+---
+
+## 11. What is a firewall?
+
+A firewall monitors and controls network traffic according to predefined security rules.
+
+---
+
+## 12. What is UFW?
+
+UFW stands for Uncomplicated Firewall. It is a simplified firewall management tool commonly used on Ubuntu/Linux.
+
+---
+
+## 13. What is a firewall rule?
+
+A firewall rule determines whether specific network traffic should be allowed or blocked based on criteria such as IP address, port, or protocol.
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Ticket: User Cannot Save Files to D: Drive
+
+### User Complaint
+
+> "I cannot save files to my D: drive. Windows says there isn't enough space."
+
+---
+
+## Information Gathering
+
+Ask:
+
+1. When did the problem start?
+2. What file are you trying to save?
+3. Does this happen with every file?
+4. How much free space is available?
+5. Have you recently copied a large amount of data?
+6. Have you experienced this problem before?
+
+---
+
+## Possible Causes
+
+* Disk is almost full
+* Large files consuming storage
+* Temporary files
+* Application issue
+* Storage/partition issue
+
+---
+
+## Investigation
+
+1. Open File Explorer.
+2. Select **This PC**.
+3. Check the available space on D:.
+4. Open Disk Management.
+5. Check the D: volume.
+6. Determine whether there is a storage or partition issue.
+
+---
+
+## Resolution
+
+Depending on the cause:
+
+* Remove unnecessary files according to company policy.
+* Move approved data to appropriate storage.
+* Clean temporary files if permitted.
+* Escalate if there is a disk or hardware issue.
+
+---
+
+## Verification
+
+Ask the user to save the file again.
+
+If successful:
+
+> Document the resolution and close the ticket.
+
+If unsuccessful:
+
+> Document troubleshooting steps and escalate according to company procedure.
+
+---
+
+# 💼 Practical Scenario
+
+## Company USB Restriction
+
+### Situation
+
+A company wants to prevent USB storage devices from being used on Finance computers.
+
+### High-Level Approach
+
+```text
+Active Directory
+       ↓
+Finance OU
+       ↓
+Create/Configure GPO
+       ↓
+Apply policy to Finance computers
+       ↓
+Test
+       ↓
+Verify
+       ↓
+Document
+```
+
+The important concept is that Group Policy allows the administrator to centrally apply the configuration instead of changing every computer individually.
+
+---
+
+# 🤝 Behavioral Question
+
+## Question
+
+**Tell me about a time you had to troubleshoot something you didn't understand at first.**
+
+### Answer
+
+While learning Linux, I encountered commands such as `systemctl` and `journalctl` and initially found it difficult to understand the difference between them. Instead of guessing, I reviewed the purpose of each command, practiced them in my home lab, and documented my findings in GitHub. I learned that `systemctl` is primarily used to manage services, while `journalctl` is used to view system and service logs. This experience taught me to investigate carefully, practice the solution, and document what I learn instead of relying only on memorization.
+
+---
+
+# 📚 Today's Key Takeaways
+
+### Windows
+
+* Disk Management
+* Partitions
+* Volumes
+* Drive letters
+* `diskmgmt.msc`
+
+### Active Directory
+
+* Group Policy
+* GPO
+* OU and GPO relationship
+* Security Group vs GPO
+
+### Linux
+
+* Log rotation
+* `logrotate`
+* `/etc/logrotate.conf`
+* `/etc/logrotate.d/`
+
+### Networking
+
+* Firewalls
+* Firewall rules
+* UFW
+* Port-based filtering
+
+---
+
+# ⭐ Important Memory Notes
+
+```text
+OU
+↓
+Organizes objects
+
+Security Group
+↓
+Controls access/permissions
+
+GPO
+↓
+Controls configuration/settings
+```
+
+And:
+
+```text
+Firewall
+↓
+Controls network traffic
+
+Port
+↓
+Identifies a network service
+
+SSH
+↓
+Usually uses TCP 22
+```
+
+---
+
+# 📝 Day 39 Reflection
+
+Today I learned how Windows manages disks and partitions through Disk Management. I also learned the fundamentals of Group Policy and GPOs and how they can be linked to OUs to centrally configure users and computers.
+
+On Linux, I learned about log rotation and the `logrotate` utility, which helps prevent logs from consuming excessive disk space.
+
+For networking, I learned the fundamentals of firewalls, firewall rules, and UFW. I also learned how firewall troubleshooting connects with IP addresses, ports, and services.
+
+The most important distinction from today's lesson was:
+
+**OU = Organization**
+
+**Security Group = Access**
+
+**GPO = Configuration**
