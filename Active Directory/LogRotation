@@ -1,0 +1,46 @@
+What is Log Rotation?
+
+Log rotation is the process of managing old log files so that logs do not consume excessive disk space.
+
+It can:
+
+Rotate logs
+Compress old logs
+Archive logs
+Remove old logs according to policy
+Why is Log Rotation Important?
+
+Without log rotation, log files could continue growing until they consume a large amount of disk space.
+
+Log rotation helps:
+
+Prevent disks from filling
+Keep recent logs available
+Archive older logs
+Compress old logs
+Maintain system reliability
+logrotate
+
+logrotate is a Linux utility used to automatically manage log files.
+
+Common configuration locations:
+
+/etc/logrotate.conf
+
+and:
+
+/etc/logrotate.d/
+Example Log Rotation
+
+Instead of having one huge file:
+
+application.log
+
+the system may maintain:
+
+application.log
+application.log.1
+application.log.2
+application.log.3.gz
+
+Older logs can be compressed and eventually removed according to the configured retention policy.
