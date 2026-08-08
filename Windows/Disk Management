@@ -1,0 +1,80 @@
+What is Disk Management?
+
+Disk Management is a Windows utility used to view and manage:
+
+Physical disks
+Partitions
+Volumes
+Drive letters
+Storage space
+
+It can be useful when troubleshooting storage-related problems.
+
+How to Open Disk Management
+
+Press:
+
+Windows + R
+
+Then type:
+
+diskmgmt.msc
+
+Press Enter.
+
+What is a Partition?
+
+A partition is a logical division of a physical disk.
+
+For example:
+
+1 TB Physical SSD
+        |
+   --------------
+   |     |      |
+  C:    D:   Recovery
+
+A single physical disk can contain multiple partitions.
+
+What is a Drive Letter?
+
+Windows assigns letters to identify storage volumes.
+
+Examples:
+
+C:
+D:
+E:
+
+Usually:
+
+C: → Windows/system drive
+D: → Data or another partition
+E: → External/USB storage
+What Can Disk Management Do?
+
+Disk Management can be used to:
+
+View disks
+View partitions
+Create partitions
+Delete partitions
+Format volumes
+Assign drive letters
+Extend volumes
+Shrink volumes
+Check whether a disk is online
+Help Desk Example
+Problem
+
+"My new hard drive isn't appearing in File Explorer."
+
+Investigation
+Open Disk Management.
+Check whether Windows detects the disk.
+Check whether the disk is online.
+Check whether a partition exists.
+Check whether a drive letter is assigned.
+Check whether the volume is formatted.
+
+This helps determine whether the problem is related to Windows configuration or potentially hardware.
