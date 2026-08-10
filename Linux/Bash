@@ -25,3 +25,68 @@ Log cleanup
 User management
 System monitoring
 Maintenance tasks
+
+
+What is Bash?
+
+Bash is a command-line shell.
+
+A Bash script is a text file containing commands that can be executed as a script.
+
+Example:
+
+#!/bin/bash
+
+
+echo "System Information"
+date
+whoami
+hostname
+Making a Script Executable
+chmod +x script.sh
+
+The +x adds execute permission.
+
+Run the script:
+
+./script.sh
+
+It can also be run with:
+
+bash script.sh
+Why Use Bash Scripts?
+
+Bash scripting can help automate repetitive tasks.
+
+Examples:
+
+Backups
+Log cleanup
+System information collection
+Maintenance
+File management
+Monitoring tasks
+
+Automation saves time and reduces repetitive manual work.
+
+Useful Linux Commands
+Current User
+whoami
+Date and Time
+date
+Hostname
+hostname
+IP Information
+ip addr
+Disk Usage
+df -h
+Memory Usage
+free -h
+Important Memory Trick
+df -h
+↓
+Disk
+
+free -h
+↓
+Memory
