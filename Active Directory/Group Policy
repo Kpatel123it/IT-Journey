@@ -70,3 +70,87 @@ Easy Memory Trick
 OU = WHERE
 Security Group = WHO
 GPO = WHAT SETTINGS
+
+What is Group Policy?
+
+Group Policy allows administrators to centrally configure and enforce settings for users and computers in a Windows domain.
+
+Examples include:
+
+Security settings
+Password policies
+Desktop configuration
+USB restrictions
+Software configuration
+Windows settings
+Group Policy Object (GPO)
+
+GPO = Group Policy Object
+
+A GPO is a collection of configuration settings that can be applied to users or computers.
+
+A GPO can be linked to an OU.
+
+Active Directory
+       ↓
+      OU
+       ↓
+     GPO
+       ↓
+Users / Computers
+GPO Troubleshooting
+
+Two important commands learned:
+
+gpupdate /force
+
+Forces Windows to refresh Group Policy settings.
+
+gpupdate /force
+gpresult /r
+
+Displays the Group Policy settings that have been applied to the current user and computer.
+
+gpresult /r
+Important Correction
+
+Do not confuse these with Linux service commands.
+
+Windows GPO
+↓
+gpupdate
+gpresult
+
+Linux Services
+↓
+systemctl
+journalctl
+🧠 Important Concept Separation
+
+One of today's most important lessons was understanding the difference between OU, Security Group, and GPO.
+
+OU
+
+Purpose: Organization
+
+An Organizational Unit is used to organize objects such as:
+
+Users
+Computers
+Groups
+Security Group
+
+Purpose: Access
+
+A Security Group is used to assign permissions/access to a collection of users or computers.
+
+GPO
+
+Purpose: Configuration
+
+A GPO is used to centrally apply configuration and security settings to users and computers.
+
+Memory Trick
+OU = WHERE
+Security Group = WHO gets ACCESS
+GPO = WHAT SETTINGS
