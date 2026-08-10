@@ -40,3 +40,64 @@ Purpose:
 
 Collection of users.
 Used to assign permissions to resources.
+
+
+Organizational Unit (OU)
+
+An Organizational Unit (OU) is a container in Active Directory used to organize objects such as:
+
+Users
+Computers
+Groups
+
+OUs can also be used as a scope for applying Group Policies.
+
+Simple memory:
+OU = Organization
+2. Security Group
+
+A Security Group is a collection of users or computers used to assign permissions and access to resources.
+
+Instead of assigning permissions individually to every user, administrators can assign permissions to a security group and then add users to that group.
+
+Example:
+Finance Security Group
+        ↓
+Finance Shared Folder
+        ↓
+Users receive access
+Benefits
+Easier permission management
+Saves administrative time
+Reduces configuration mistakes
+Simplifies access control
+Memory:
+Security Group = Access
+
+⚙️ Group Policy Object (GPO)
+
+A GPO (Group Policy Object) is a collection of configuration and security settings that can be centrally applied to users and computers.
+
+Examples:
+
+Password policies
+Security settings
+Desktop configuration
+System restrictions
+Software configuration
+Important distinction:
+OU
+↓
+Organizes objects
+
+Security Group
+↓
+Provides access
+
+GPO
+↓
+Applies configuration
+Memory:
+OU = WHERE
+Security Group = WHO gets ACCESS
+GPO = WHAT SETTINGS
