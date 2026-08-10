@@ -1,0 +1,26 @@
+Remote Desktop
+
+Remote Desktop allows an authorized user or IT technician to remotely connect to and interact with a Windows computer.
+
+Common RDP Port
+TCP 3389
+Example
+IT Technician
+      ↓
+Remote Desktop
+      ↓
+User's Windows Computer
+Quick Assist
+
+Quick Assist is a Windows tool that allows a support person to remotely assist another user with their computer.
+
+RDP vs Quick Assist
+RDP
+↓
+Remote Desktop Connection
+
+Quick Assist
+↓
+Remote Assistance
+
+Both can be used for remote support, but they serve different purposes.
