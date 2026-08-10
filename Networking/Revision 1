@@ -1,0 +1,111 @@
+DNS
+
+DNS (Domain Name System) translates domain names into IP addresses.
+
+Example:
+example.com
+     ↓
+    DNS
+     ↓
+192.168.1.10
+
+DNS allows users and applications to use names instead of remembering IP addresses.
+
+Memory:
+DNS = Name → IP
+DHCP
+
+DHCP (Dynamic Host Configuration Protocol) automatically provides network configuration to devices.
+
+DHCP can provide:
+
+IP address
+Subnet mask
+Default gateway
+DNS server
+Example:
+Device
+   ↓
+DHCP Server
+   ↓
+IP Address
+Subnet Mask
+Default Gateway
+DNS Server
+Memory:
+DHCP = Network Settings → Device
+🖥️ Remote Desktop Protocol (RDP)
+
+RDP is a protocol that allows an authorized user to remotely connect to and interact with a Windows computer.
+
+Default Port
+TCP 3389
+Example:
+IT Technician
+      ↓
+     RDP
+      ↓
+User's Windows Computer
+📁 SMB
+
+SMB (Server Message Block) is a network protocol used for file and printer sharing between computers.
+
+Common Port
+TCP 445
+Example:
+Computer A
+     ↓
+    SMB
+     ↓
+Computer B
+
+SMB is commonly used to access shared folders and network printers.
+
+🔐 SMB vs SCP
+
+These two concepts should not be confused.
+
+SCP
+
+SCP (Secure Copy Protocol) is used to securely transfer files between systems using SSH.
+
+SCP
+↓
+Secure File Transfer
+↓
+SSH
+SMB
+SMB
+↓
+Network File Sharing
+↓
+Printer Sharing
+🔥 Firewall
+
+A firewall controls incoming and outgoing network traffic based on configured security rules.
+
+It can control traffic based on factors such as:
+
+Source
+Destination
+IP address
+Port
+Protocol
+Direction
+Example:
+Internet
+   ↓
+Firewall
+   ↓
+Computer
+📂 NTFS Permissions
+
+NTFS permissions control access to files and folders stored on an NTFS filesystem.
+
+Common NTFS permissions include:
+
+Read
+Modify
+Full Control
+
+Permissions determine what a user is allowed to do with a file or folder.
