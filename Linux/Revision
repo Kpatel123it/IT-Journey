@@ -1,0 +1,96 @@
+Bash
+
+Bash is a command-line shell commonly used in Linux to execute commands and interact with the operating system.
+
+Example:
+
+whoami
+pwd
+ls
+Bash Script
+
+A Bash script is a text file containing a sequence of Bash commands that can be executed to automate tasks.
+
+Example
+#!/bin/bash
+
+echo "Current user:"
+whoami
+
+echo "Current directory:"
+pwd
+Difference
+Bash
+↓
+Shell
+
+Bash Script
+↓
+Commands stored in a file
+↓
+Automation
+📊 Disk vs Memory
+df -h
+
+Displays filesystem/disk space usage in a human-readable format.
+
+df -h
+Used for:
+Checking disk space
+Identifying full filesystems
+Troubleshooting storage problems
+free -h
+
+Displays memory/RAM usage.
+
+free -h
+Used for:
+Checking available RAM
+Checking used memory
+Troubleshooting memory-related performance problems
+Memory
+df -h
+↓
+Disk
+
+free -h
+↓
+Memory
+⚙️ systemctl vs journalctl
+systemctl
+
+systemctl is used to manage and check Linux services.
+
+Example:
+
+systemctl status ssh
+
+It can be used to:
+
+Check service status
+Start services
+Stop services
+Restart services
+Enable services
+journalctl
+
+journalctl is used to view system and service logs.
+
+Example:
+
+journalctl -u ssh
+
+It can help investigate:
+
+Service errors
+Authentication events
+Service activity
+System events
+Memory
+systemctl
+↓
+Service Management
+
+journalctl
+↓
+Logs
