@@ -109,3 +109,71 @@ Modify
 Full Control
 
 Permissions determine what a user is allowed to do with a file or folder.
+
+
+DNS
+
+DNS (Domain Name System) translates domain names into IP addresses.
+
+Example
+www.example.com
+       ↓
+      DNS
+       ↓
+IP Address
+Memory
+DNS = Name → IP
+DHCP
+
+DHCP (Dynamic Host Configuration Protocol) automatically provides network configuration to devices.
+
+Common information provided by DHCP includes:
+
+IP address
+Subnet mask
+Default gateway
+DNS server
+Memory
+DHCP
+↓
+Network Configuration → Device
+NAT
+
+NAT (Network Address Translation) translates between private and public IP addressing, commonly allowing devices using private addresses to communicate through a public IP.
+
+Example
+Private IP
+    ↓
+   NAT
+    ↓
+Public IP
+    ↓
+Internet
+🔒 Private IP vs Public IP
+Private IP
+
+A private IP address is used inside a private/local network and is not directly routable across the public Internet.
+
+Public IP
+
+A public IP address is Internet-routable and is typically assigned by an ISP or network provider.
+
+Comparison
+Private IP	Public IP
+Used inside private networks	Used for Internet communication
+Not directly Internet-routable	Internet-routable
+Commonly used by internal devices	Typically assigned by ISP/provider
+📐 Subnet Mask
+
+A subnet mask is used with an IP address to determine which portion represents the network and which portion represents the host.
+
+Example
+IP Address:     192.168.1.25
+Subnet Mask:    255.255.255.0
+
+Network:        192.168.1.0
+Host:           25
+Memory
+Subnet Mask
+↓
+Network Portion + Host Portion
