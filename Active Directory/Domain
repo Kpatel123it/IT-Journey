@@ -1,0 +1,108 @@
+1. Domain
+
+A domain is a logical environment in which users, computers, and resources can be centrally managed.
+
+A domain commonly uses Active Directory Domain Services (AD DS) to provide centralized identity and access management.
+
+Memory
+Domain
+↓
+Logical management environment
+2. Active Directory
+
+Active Directory Domain Services (AD DS) is Microsoft's directory service used to centrally store and manage information about users, computers, groups, and other resources in a Windows domain environment.
+
+Memory
+Domain
+   ↓
+AD DS
+   ↓
+Users / Computers / Groups / Resources
+3. Organizational Unit (OU)
+
+An Organizational Unit (OU) is a container in Active Directory used to organize objects such as:
+
+Users
+Computers
+Groups
+
+OUs can also provide a scope for applying Group Policy and delegating administration.
+
+Memory
+OU = Organization
+4. Security Group
+
+A Security Group is a collection of users, computers, or other groups that can be used to assign permissions and access to resources.
+
+Using groups instead of assigning permissions individually makes administration easier and reduces repetitive configuration.
+
+Example
+User
+ ↓
+Finance Security Group
+ ↓
+Finance Shared Folder
+Memory
+Security Group = Access
+5. Group Policy Object (GPO)
+
+A GPO is used to centrally apply configuration and security settings to users and computers.
+
+Examples include:
+
+Password policies
+Security settings
+Desktop configuration
+System restrictions
+User environment settings
+Memory
+OU
+↓
+Organizes objects
+
+Security Group
+↓
+Provides access
+
+GPO
+↓
+Applies configuration
+🔐 Active Directory Account States
+Disabled Account
+
+A disabled account still exists in Active Directory but cannot normally be used for authentication.
+
+Possible reasons include:
+
+Employee leaving the organization
+Extended leave
+Security action
+Administrative requirements
+Locked Account
+
+A locked account exists in Active Directory but authentication is temporarily blocked, commonly because the user exceeded the configured number of failed login attempts.
+
+Example
+Incorrect password
+       ↓
+Repeated attempts
+       ↓
+Account Lockout Policy
+       ↓
+Account Locked
+Deleted Account
+
+A deleted account has been removed from Active Directory.
+
+Important distinction
+Disabled
+↓
+Account exists but is disabled
+
+Locked
+↓
+Authentication temporarily blocked
+
+Deleted
+↓
+Account removed
