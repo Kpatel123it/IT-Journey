@@ -1,0 +1,643 @@
+# Day 42 – Active Directory, Windows Permissions, Linux & Networking Revision
+
+## 🎯 Objective
+
+Today's study focused on strengthening previously learned Windows, Active Directory, Linux, and networking concepts.
+
+The primary goal was to improve:
+
+* Technical concept separation
+* Interview-ready terminology
+* Active Directory understanding
+* Windows permission concepts
+* Linux command knowledge
+* Networking fundamentals
+* Troubleshooting methodology
+
+A major focus was learning how to distinguish between similar technologies instead of mixing their purposes.
+
+---
+
+# 🏢 Active Directory Concepts
+
+## 1. Domain
+
+A **domain** is a logical environment in which users, computers, and resources can be centrally managed.
+
+A domain commonly uses Active Directory Domain Services (AD DS) to provide centralized identity and access management.
+
+### Memory
+
+```text
+Domain
+↓
+Logical management environment
+```
+
+---
+
+## 2. Active Directory
+
+**Active Directory Domain Services (AD DS)** is Microsoft's directory service used to centrally store and manage information about users, computers, groups, and other resources in a Windows domain environment.
+
+### Memory
+
+```text
+Domain
+   ↓
+AD DS
+   ↓
+Users / Computers / Groups / Resources
+```
+
+---
+
+## 3. Organizational Unit (OU)
+
+An **Organizational Unit (OU)** is a container in Active Directory used to organize objects such as:
+
+* Users
+* Computers
+* Groups
+
+OUs can also provide a scope for applying Group Policy and delegating administration.
+
+### Memory
+
+```text
+OU = Organization
+```
+
+---
+
+## 4. Security Group
+
+A **Security Group** is a collection of users, computers, or other groups that can be used to assign permissions and access to resources.
+
+Using groups instead of assigning permissions individually makes administration easier and reduces repetitive configuration.
+
+### Example
+
+```text
+User
+ ↓
+Finance Security Group
+ ↓
+Finance Shared Folder
+```
+
+### Memory
+
+```text
+Security Group = Access
+```
+
+---
+
+## 5. Group Policy Object (GPO)
+
+A **GPO** is used to centrally apply configuration and security settings to users and computers.
+
+Examples include:
+
+* Password policies
+* Security settings
+* Desktop configuration
+* System restrictions
+* User environment settings
+
+### Memory
+
+```text
+OU
+↓
+Organizes objects
+
+Security Group
+↓
+Provides access
+
+GPO
+↓
+Applies configuration
+```
+
+---
+
+# 🔐 Active Directory Account States
+
+## Disabled Account
+
+A disabled account still exists in Active Directory but cannot normally be used for authentication.
+
+Possible reasons include:
+
+* Employee leaving the organization
+* Extended leave
+* Security action
+* Administrative requirements
+
+---
+
+## Locked Account
+
+A locked account exists in Active Directory but authentication is temporarily blocked, commonly because the user exceeded the configured number of failed login attempts.
+
+### Example
+
+```text
+Incorrect password
+       ↓
+Repeated attempts
+       ↓
+Account Lockout Policy
+       ↓
+Account Locked
+```
+
+---
+
+## Deleted Account
+
+A deleted account has been removed from Active Directory.
+
+### Important distinction
+
+```text
+Disabled
+↓
+Account exists but is disabled
+
+Locked
+↓
+Authentication temporarily blocked
+
+Deleted
+↓
+Account removed
+```
+
+---
+
+# 🌐 Networking Concepts
+
+## DNS
+
+**DNS (Domain Name System)** translates domain names into IP addresses.
+
+### Example
+
+```text
+www.example.com
+       ↓
+      DNS
+       ↓
+IP Address
+```
+
+### Memory
+
+```text
+DNS = Name → IP
+```
+
+---
+
+## DHCP
+
+**DHCP (Dynamic Host Configuration Protocol)** automatically provides network configuration to devices.
+
+Common information provided by DHCP includes:
+
+* IP address
+* Subnet mask
+* Default gateway
+* DNS server
+
+### Memory
+
+```text
+DHCP
+↓
+Network Configuration → Device
+```
+
+---
+
+## NAT
+
+**NAT (Network Address Translation)** translates between private and public IP addressing, commonly allowing devices using private addresses to communicate through a public IP.
+
+### Example
+
+```text
+Private IP
+    ↓
+   NAT
+    ↓
+Public IP
+    ↓
+Internet
+```
+
+---
+
+# 🔒 Private IP vs Public IP
+
+## Private IP
+
+A private IP address is used inside a private/local network and is not directly routable across the public Internet.
+
+## Public IP
+
+A public IP address is Internet-routable and is typically assigned by an ISP or network provider.
+
+### Comparison
+
+| Private IP                        | Public IP                          |
+| --------------------------------- | ---------------------------------- |
+| Used inside private networks      | Used for Internet communication    |
+| Not directly Internet-routable    | Internet-routable                  |
+| Commonly used by internal devices | Typically assigned by ISP/provider |
+
+---
+
+# 📐 Subnet Mask
+
+A **subnet mask** is used with an IP address to determine which portion represents the network and which portion represents the host.
+
+### Example
+
+```text
+IP Address:     192.168.1.25
+Subnet Mask:    255.255.255.0
+
+Network:        192.168.1.0
+Host:           25
+```
+
+### Memory
+
+```text
+Subnet Mask
+↓
+Network Portion + Host Portion
+```
+
+---
+
+# 🐧 Linux Concepts
+
+## Bash
+
+**Bash** is a command-line shell commonly used in Linux to execute commands and interact with the operating system.
+
+Example:
+
+```bash
+whoami
+pwd
+ls
+```
+
+---
+
+## Bash Script
+
+A **Bash script** is a text file containing a sequence of Bash commands that can be executed to automate tasks.
+
+### Example
+
+```bash
+#!/bin/bash
+
+echo "Current user:"
+whoami
+
+echo "Current directory:"
+pwd
+```
+
+### Difference
+
+```text
+Bash
+↓
+Shell
+
+Bash Script
+↓
+Commands stored in a file
+↓
+Automation
+```
+
+---
+
+# 📊 Disk vs Memory
+
+## df -h
+
+Displays filesystem/disk space usage in a human-readable format.
+
+```bash
+df -h
+```
+
+### Used for:
+
+* Checking disk space
+* Identifying full filesystems
+* Troubleshooting storage problems
+
+---
+
+## free -h
+
+Displays memory/RAM usage.
+
+```bash
+free -h
+```
+
+### Used for:
+
+* Checking available RAM
+* Checking used memory
+* Troubleshooting memory-related performance problems
+
+### Memory
+
+```text
+df -h
+↓
+Disk
+
+free -h
+↓
+Memory
+```
+
+---
+
+# ⚙️ systemctl vs journalctl
+
+## systemctl
+
+`systemctl` is used to manage and check Linux services.
+
+Example:
+
+```bash
+systemctl status ssh
+```
+
+It can be used to:
+
+* Check service status
+* Start services
+* Stop services
+* Restart services
+* Enable services
+
+---
+
+## journalctl
+
+`journalctl` is used to view system and service logs.
+
+Example:
+
+```bash
+journalctl -u ssh
+```
+
+It can help investigate:
+
+* Service errors
+* Authentication events
+* Service activity
+* System events
+
+### Memory
+
+```text
+systemctl
+↓
+Service Management
+
+journalctl
+↓
+Logs
+```
+
+---
+
+# 🎤 Interview Practice
+
+## Question 1 – Domain vs Active Directory
+
+### Answer
+
+> A domain is a logical environment where users, computers, and resources can be centrally managed. Active Directory Domain Services is Microsoft's directory service used to store and manage information about those objects and provide centralized identity and access management.
+
+---
+
+## Question 2 – OU vs Security Group
+
+### Answer
+
+> An OU is a container used to organize users, computers, and groups, while a Security Group is used to assign permissions and access to resources.
+
+---
+
+## Question 3 – Security Group vs GPO
+
+### Answer
+
+> A Security Group is primarily used to assign permissions and access to resources, while a GPO is used to centrally apply configuration and security settings to users and computers.
+
+---
+
+## Question 4 – Disabled vs Locked Account
+
+### Answer
+
+> A disabled account has been intentionally disabled by an administrator or policy, while a locked account is temporarily prevented from authenticating, commonly after repeated failed login attempts.
+
+---
+
+## Question 5 – Private vs Public IP
+
+### Answer
+
+> A private IP address is used within a private network and is not directly routable on the public Internet, while a public IP address is Internet-routable and is typically assigned by an ISP or network provider.
+
+---
+
+## Question 6 – Bash vs Bash Script
+
+### Answer
+
+> Bash is a command-line shell used to execute commands in Linux, while a Bash script is a text file containing multiple Bash commands that can be executed to automate tasks.
+
+---
+
+## Question 7 – df vs free
+
+### Answer
+
+> `df -h` is used to check filesystem and disk space, while `free -h` is used to check RAM and memory usage.
+
+---
+
+## Question 8 – systemctl vs journalctl
+
+### Answer
+
+> `systemctl` is used to manage and check the status of services, while `journalctl` is used to view system and service logs.
+
+---
+
+# 🎫 Help Desk Troubleshooting Methodology
+
+Today's troubleshooting approach:
+
+```text
+1. Gather Information
+        ↓
+2. Identify Possible Causes
+        ↓
+3. Start With Basic Checks
+        ↓
+4. Investigate the Root Cause
+        ↓
+5. Make an Authorized Change
+        ↓
+6. Verify With the User
+        ↓
+7. Document the Resolution
+        ↓
+8. Escalate if Necessary
+```
+
+The key principle is:
+
+> **Do not make unnecessary changes before identifying the likely cause of the problem.**
+
+---
+
+# 🧠 Concept Separation
+
+Today's revision focused heavily on separating similar concepts.
+
+### Active Directory
+
+```text
+Domain
+↓
+Logical environment
+
+AD DS
+↓
+Directory service
+
+OU
+↓
+Organization
+
+Security Group
+↓
+Access / Permissions
+
+GPO
+↓
+Configuration / Security Settings
+```
+
+### Linux
+
+```text
+Bash
+↓
+Shell
+
+Bash Script
+↓
+Automation
+
+systemctl
+↓
+Services
+
+journalctl
+↓
+Logs
+
+df -h
+↓
+Disk
+
+free -h
+↓
+Memory
+```
+
+### Networking
+
+```text
+DNS
+↓
+Name → IP
+
+DHCP
+↓
+Network configuration
+
+NAT
+↓
+Private ↔ Public translation
+
+Subnet Mask
+↓
+Network + Host portions
+```
+
+---
+
+# 🤝 Behavioral Interview Practice
+
+## Question
+
+**How do you approach a technical problem that you have not seen before?**
+
+### Professional Answer
+
+> I would first gather information by asking appropriate questions and understanding the symptoms of the issue. Based on the user's responses, I would identify possible causes and start with basic troubleshooting steps. I would avoid making unnecessary changes and only make changes that I understand and am authorized to perform. After making a change, I would verify the result with the user. If the issue remains unresolved or requires higher-level access, I would document everything I have already checked and escalate the issue appropriately.
+
+---
+
+# 📌 Key Takeaways
+
+Today's most important concepts were:
+
+* Domain vs Active Directory
+* OU vs Security Group
+* Security Group vs GPO
+* Disabled vs Locked vs Deleted accounts
+* Private IP vs Public IP
+* DNS vs DHCP
+* Subnet Mask
+* Bash vs Bash Script
+* `df -h` vs `free -h`
+* `systemctl` vs `journalctl`
+
+## Day 42 Reflection
+
+The main improvement today was not simply learning new commands or definitions. The focus was on **understanding the role of each technology and explaining it using accurate professional terminology**.
+
+The goal is to be able to recognize a problem, identify the appropriate technology or tool, troubleshoot systematically, verify the resolution, document the work, and escalate when necessary.
+
+### Next Focus
+
+Continue expanding the Windows, Active Directory, Linux, and networking checklist while maintaining daily mixed-topic revision so that previously learned concepts remain fresh and can be recalled during interviews.
