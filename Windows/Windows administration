@@ -1,0 +1,131 @@
+1. Windows Administration
+1.1 User Account Control (UAC)
+What is UAC?
+
+User Account Control (UAC) is a Windows security feature designed to help prevent unauthorized changes to the operating system.
+
+UAC may request confirmation or administrative approval when an operation requires elevated privileges.
+
+Why is UAC important?
+
+UAC helps reduce the risk of unauthorized applications or users making system-level changes.
+
+Example
+
+Installing software or changing certain system settings may trigger a UAC prompt.
+
+Interview Answer
+
+UAC is a Windows security feature that helps prevent unauthorized system changes by requiring user confirmation or administrative approval for certain operations.
+
+2. Windows User Profiles
+
+A Windows user profile contains user-specific files, settings, and configuration information.
+
+Typical profile location:
+
+C:\Users\<username>
+
+Examples of information stored in a user profile include:
+
+Desktop
+Documents
+Downloads
+Application settings
+User-specific configuration
+Help Desk Relevance
+
+A corrupted or temporary user profile can cause issues such as:
+
+Missing desktop files
+Missing user settings
+Application configuration problems
+Unexpected default desktop
+3. Windows Registry
+
+The Windows Registry is a hierarchical database that stores configuration information used by Windows and installed applications.
+
+It can contain information related to:
+
+Windows configuration
+Hardware
+Applications
+User settings
+Important Note
+
+Registry modifications should be performed carefully because incorrect changes can cause system or application problems.
+
+Interview Answer
+
+The Windows Registry is a hierarchical database that stores configuration settings used by Windows and applications.
+
+4. Windows Event Viewer
+
+Event Viewer is a Windows troubleshooting tool used to review system events and logs.
+
+Command
+eventvwr.msc
+Important Logs
+Application
+
+Contains events related to applications.
+
+Example:
+
+Application crashes
+Application errors
+System
+
+Contains events related to Windows system components.
+
+Example:
+
+Driver problems
+Service problems
+System errors
+Security
+
+Contains security and authentication-related events.
+
+Example:
+
+Login attempts
+Authentication events
+Security auditing
+Help Desk Workflow
+
+When troubleshooting an application or system problem:
+
+Identify the problem
+        ↓
+Reproduce/confirm the issue
+        ↓
+Open Event Viewer
+        ↓
+Check relevant log
+        ↓
+Review event details
+        ↓
+Identify possible cause
+        ↓
+Apply authorized fix
+        ↓
+Verify
+        ↓
+Document
+5. Windows Update Troubleshooting
+
+When a user reports that Windows Update is failing, I should not immediately make major system changes.
+
+Basic Troubleshooting
+Ask when the problem started.
+Ask whether any recent changes were made.
+Record the error message or error code.
+Check network connectivity.
+Check available disk space.
+Check Windows Update-related services.
+Review relevant Event Viewer logs.
+Retry the update according to company procedure.
+Verify the result.
+Document the troubleshooting steps.
+Escalate if necessary.
