@@ -94,3 +94,75 @@ Service Management
 journalctl
 ↓
 Logs
+
+
+Linux User Investigation
+whoami
+
+Displays the username of the current user.
+
+whoami
+id
+
+Displays user and group identity information.
+
+id
+
+Typical information includes:
+
+UID
+GID
+Group memberships
+Important
+
+id does not primarily display a process ID (PID).
+
+who
+
+Displays users currently logged into the system.
+
+who
+last
+
+Displays login history.
+
+last
+
+This can be useful when investigating previous login activity.
+
+11. Important Linux Account Files
+/etc/passwd
+
+Contains account information for Linux users.
+
+cat /etc/passwd
+
+Information can include:
+
+Username
+UID
+GID
+Home directory
+Login shell
+/etc/group
+
+Contains group information and group membership data.
+
+cat /etc/group
+/etc/shadow
+
+Contains password-related authentication information, including password hashes and account-aging information.
+
+Access to this file is normally restricted.
+
+/etc/passwd
+        ↓
+User account information
+
+/etc/group
+        ↓
+Group information
+
+/etc/shadow
+        ↓
+Password-related authentication information
