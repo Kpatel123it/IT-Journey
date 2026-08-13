@@ -177,3 +177,93 @@ Memory
 Subnet Mask
 ↓
 Network Portion + Host Portion
+
+
+12. Network Troubleshooting
+
+A structured troubleshooting approach is more important than simply memorizing commands.
+
+Windows Network Configuration
+ipconfig /all
+
+This can display:
+
+IPv4 address
+Subnet mask
+Default gateway
+DNS servers
+DHCP information
+Network adapter information
+13. Linux Network Configuration
+IP Address
+ip addr
+Routing Information
+ip route
+
+These commands help identify the device's addressing and routing configuration.
+
+14. Ping Testing
+Test Default Gateway
+ping <default-gateway>
+
+Purpose:
+
+Tests connectivity between the local computer and its default gateway.
+
+Test External IP Connectivity
+ping 8.8.8.8
+
+Purpose:
+
+Tests basic IP connectivity to an external IP address.
+
+This test does not primarily test DNS.
+
+Test DNS Name Resolution
+ping google.com
+
+If:
+
+ping 8.8.8.8
+
+works but:
+
+ping google.com
+
+fails, DNS resolution becomes a strong area to investigate.
+
+15. NSLookup
+nslookup google.com
+
+nslookup is used to query DNS and troubleshoot name resolution.
+
+Example troubleshooting logic
+ping 8.8.8.8 → Works
+        ↓
+ping google.com → Fails
+        ↓
+Investigate DNS
+        ↓
+nslookup google.com
+16. Tracert / Traceroute
+Windows
+tracert google.com
+Linux
+traceroute google.com
+
+These commands help identify the network path and intermediate hops between the local system and a destination.
+
+17. Listening Ports
+
+Linux:
+
+ss -tuln
+
+This displays listening TCP and UDP sockets and associated local ports.
+
+Common ports reviewed
+Service	Port
+SSH	22
+HTTP	80
+HTTPS	443
+RDP	3389
