@@ -1,0 +1,769 @@
+# Day 43 — Windows Administration, Active Directory, Linux Users & Network Troubleshooting
+
+## 📅 Day 43
+
+### 🎯 Objective
+
+Today's objective was to expand my entry-level IT Support knowledge by learning additional Windows and Active Directory concepts, practicing Linux user-management commands, and building a structured network troubleshooting methodology.
+
+The focus was on understanding **what each tool does, when to use it, and how to apply it during real Help Desk troubleshooting**.
+
+---
+
+# 1. Windows Administration
+
+## 1.1 User Account Control (UAC)
+
+### What is UAC?
+
+User Account Control (UAC) is a Windows security feature designed to help prevent unauthorized changes to the operating system.
+
+UAC may request confirmation or administrative approval when an operation requires elevated privileges.
+
+### Why is UAC important?
+
+UAC helps reduce the risk of unauthorized applications or users making system-level changes.
+
+### Example
+
+Installing software or changing certain system settings may trigger a UAC prompt.
+
+### Interview Answer
+
+> UAC is a Windows security feature that helps prevent unauthorized system changes by requiring user confirmation or administrative approval for certain operations.
+
+---
+
+# 2. Windows User Profiles
+
+A Windows user profile contains user-specific files, settings, and configuration information.
+
+Typical profile location:
+
+```text
+C:\Users\<username>
+```
+
+Examples of information stored in a user profile include:
+
+* Desktop
+* Documents
+* Downloads
+* Application settings
+* User-specific configuration
+
+### Help Desk Relevance
+
+A corrupted or temporary user profile can cause issues such as:
+
+* Missing desktop files
+* Missing user settings
+* Application configuration problems
+* Unexpected default desktop
+
+---
+
+# 3. Windows Registry
+
+The Windows Registry is a hierarchical database that stores configuration information used by Windows and installed applications.
+
+It can contain information related to:
+
+* Windows configuration
+* Hardware
+* Applications
+* User settings
+
+### Important Note
+
+Registry modifications should be performed carefully because incorrect changes can cause system or application problems.
+
+### Interview Answer
+
+> The Windows Registry is a hierarchical database that stores configuration settings used by Windows and applications.
+
+---
+
+# 4. Windows Event Viewer
+
+Event Viewer is a Windows troubleshooting tool used to review system events and logs.
+
+### Command
+
+```text
+eventvwr.msc
+```
+
+### Important Logs
+
+#### Application
+
+Contains events related to applications.
+
+Example:
+
+* Application crashes
+* Application errors
+
+#### System
+
+Contains events related to Windows system components.
+
+Example:
+
+* Driver problems
+* Service problems
+* System errors
+
+#### Security
+
+Contains security and authentication-related events.
+
+Example:
+
+* Login attempts
+* Authentication events
+* Security auditing
+
+### Help Desk Workflow
+
+When troubleshooting an application or system problem:
+
+```text
+Identify the problem
+        ↓
+Reproduce/confirm the issue
+        ↓
+Open Event Viewer
+        ↓
+Check relevant log
+        ↓
+Review event details
+        ↓
+Identify possible cause
+        ↓
+Apply authorized fix
+        ↓
+Verify
+        ↓
+Document
+```
+
+---
+
+# 5. Windows Update Troubleshooting
+
+When a user reports that Windows Update is failing, I should not immediately make major system changes.
+
+### Basic Troubleshooting
+
+1. Ask when the problem started.
+2. Ask whether any recent changes were made.
+3. Record the error message or error code.
+4. Check network connectivity.
+5. Check available disk space.
+6. Check Windows Update-related services.
+7. Review relevant Event Viewer logs.
+8. Retry the update according to company procedure.
+9. Verify the result.
+10. Document the troubleshooting steps.
+11. Escalate if necessary.
+
+---
+
+# 6. Active Directory User Management
+
+Active Directory Users and Computers (ADUC) can be used to create and manage domain user accounts and group memberships when the administrator has the appropriate permissions.
+
+## 6.1 Creating a User
+
+Basic workflow:
+
+```text
+Active Directory Users and Computers
+        ↓
+Select appropriate OU
+        ↓
+New
+        ↓
+User
+        ↓
+Enter user information
+        ↓
+Set password
+        ↓
+Apply company password policy
+        ↓
+Create account
+```
+
+A temporary password can be assigned and the user can be required to change it at their next logon, depending on organizational policy.
+
+---
+
+# 7. Active Directory Group Membership
+
+Security groups allow administrators to organize accounts into manageable units and commonly provide access to resources through group membership.
+
+### Basic Workflow
+
+```text
+User
+ ↓
+Properties
+ ↓
+Member Of
+ ↓
+Add
+ ↓
+Select Security Group
+ ↓
+Apply
+```
+
+### Why use Security Groups?
+
+Instead of assigning permissions individually to every user, permissions can be assigned to a group and users can receive access through their group membership.
+
+### Example
+
+```text
+Finance Security Group
+        ↓
+Finance Shared Folder Permission
+        ↓
+Finance Users
+```
+
+This improves consistency and reduces administrative effort.
+
+---
+
+# 8. Active Directory Password Reset
+
+Basic Help Desk workflow:
+
+```text
+Verify user's identity
+        ↓
+Locate user in ADUC
+        ↓
+Reset Password
+        ↓
+Set temporary password
+        ↓
+Require password change if company policy requires
+        ↓
+User attempts login
+        ↓
+Verify
+        ↓
+Document
+```
+
+Microsoft's ADUC workflow supports resetting passwords and can also provide an option to unlock a locked account during the password-reset process.
+
+---
+
+# 9. Locked vs Disabled Accounts
+
+## Locked Account
+
+A locked account is temporarily prevented from authenticating, commonly because the account-lockout policy was triggered after repeated failed authentication attempts.
+
+### Help Desk workflow
+
+```text
+Verify user identity
+        ↓
+Check account status
+        ↓
+Unlock account if authorized
+        ↓
+Verify login
+        ↓
+Document
+```
+
+If the account becomes locked again, investigate the underlying cause rather than repeatedly unlocking it.
+
+---
+
+## Disabled Account
+
+A disabled account still exists in Active Directory but is prevented from new sign-ins.
+
+An administrator can disable or enable the account through ADUC.
+
+### Important distinction
+
+```text
+Locked
+↓
+Authentication temporarily blocked
+
+Disabled
+↓
+Account intentionally disabled
+
+Deleted
+↓
+Account removed from Active Directory
+```
+
+---
+
+# 10. Linux User Investigation
+
+## `whoami`
+
+Displays the username of the current user.
+
+```bash
+whoami
+```
+
+---
+
+## `id`
+
+Displays user and group identity information.
+
+```bash
+id
+```
+
+Typical information includes:
+
+* UID
+* GID
+* Group memberships
+
+### Important
+
+`id` does **not** primarily display a process ID (PID).
+
+---
+
+## `who`
+
+Displays users currently logged into the system.
+
+```bash
+who
+```
+
+---
+
+## `last`
+
+Displays login history.
+
+```bash
+last
+```
+
+This can be useful when investigating previous login activity.
+
+---
+
+# 11. Important Linux Account Files
+
+## `/etc/passwd`
+
+Contains account information for Linux users.
+
+```bash
+cat /etc/passwd
+```
+
+Information can include:
+
+* Username
+* UID
+* GID
+* Home directory
+* Login shell
+
+---
+
+## `/etc/group`
+
+Contains group information and group membership data.
+
+```bash
+cat /etc/group
+```
+
+---
+
+## `/etc/shadow`
+
+Contains password-related authentication information, including password hashes and account-aging information.
+
+Access to this file is normally restricted.
+
+```text
+/etc/passwd
+        ↓
+User account information
+
+/etc/group
+        ↓
+Group information
+
+/etc/shadow
+        ↓
+Password-related authentication information
+```
+
+---
+
+# 12. Network Troubleshooting
+
+A structured troubleshooting approach is more important than simply memorizing commands.
+
+## Windows Network Configuration
+
+```cmd
+ipconfig /all
+```
+
+This can display:
+
+* IPv4 address
+* Subnet mask
+* Default gateway
+* DNS servers
+* DHCP information
+* Network adapter information
+
+---
+
+# 13. Linux Network Configuration
+
+### IP Address
+
+```bash
+ip addr
+```
+
+### Routing Information
+
+```bash
+ip route
+```
+
+These commands help identify the device's addressing and routing configuration.
+
+---
+
+# 14. Ping Testing
+
+## Test Default Gateway
+
+```cmd
+ping <default-gateway>
+```
+
+Purpose:
+
+> Tests connectivity between the local computer and its default gateway.
+
+---
+
+## Test External IP Connectivity
+
+```cmd
+ping 8.8.8.8
+```
+
+Purpose:
+
+> Tests basic IP connectivity to an external IP address.
+
+This test does **not** primarily test DNS.
+
+---
+
+## Test DNS Name Resolution
+
+```cmd
+ping google.com
+```
+
+If:
+
+```text
+ping 8.8.8.8
+```
+
+works but:
+
+```text
+ping google.com
+```
+
+fails, DNS resolution becomes a strong area to investigate.
+
+---
+
+# 15. NSLookup
+
+```cmd
+nslookup google.com
+```
+
+`nslookup` is used to query DNS and troubleshoot name resolution.
+
+### Example troubleshooting logic
+
+```text
+ping 8.8.8.8 → Works
+        ↓
+ping google.com → Fails
+        ↓
+Investigate DNS
+        ↓
+nslookup google.com
+```
+
+---
+
+# 16. Tracert / Traceroute
+
+### Windows
+
+```cmd
+tracert google.com
+```
+
+### Linux
+
+```bash
+traceroute google.com
+```
+
+These commands help identify the network path and intermediate hops between the local system and a destination.
+
+---
+
+# 17. Listening Ports
+
+Linux:
+
+```bash
+ss -tuln
+```
+
+This displays listening TCP and UDP sockets and associated local ports.
+
+### Common ports reviewed
+
+| Service | Port |
+| ------- | ---: |
+| SSH     |   22 |
+| HTTP    |   80 |
+| HTTPS   |  443 |
+| RDP     | 3389 |
+
+---
+
+# 18. Practical Help Desk Ticket
+
+## Issue
+
+**User reports: "I cannot access the Internet."**
+
+### Initial Questions
+
+1. When did the issue start?
+2. Is anyone else experiencing the same problem?
+3. Did you make any recent changes?
+4. Are you connected through Wi-Fi or Ethernet?
+5. Can you access other websites?
+6. Can you access internal network resources?
+7. Does the computer have an IP address?
+
+### Troubleshooting
+
+```text
+ipconfig /all
+        ↓
+Check IP address
+        ↓
+Check default gateway
+        ↓
+Check DNS server
+        ↓
+ping <default-gateway>
+        ↓
+ping 8.8.8.8
+        ↓
+ping google.com
+        ↓
+nslookup google.com
+```
+
+### Possible Diagnosis
+
+#### No IP address
+
+Investigate:
+
+* DHCP
+* Network adapter
+* Wi-Fi/Ethernet connection
+
+#### Gateway unreachable
+
+Investigate:
+
+* Local network
+* Network adapter
+* Wi-Fi/Ethernet
+* Gateway connectivity
+
+#### 8.8.8.8 works but google.com fails
+
+Investigate:
+
+* DNS configuration
+* DNS server availability
+* Name-resolution issues
+
+### Resolution Process
+
+After identifying the cause:
+
+1. Apply an authorized fix.
+2. Ask the user to test Internet access.
+3. Confirm the issue is resolved.
+4. Document the investigation and resolution.
+5. Close the ticket.
+6. Escalate if the issue remains unresolved or requires higher-level access.
+
+---
+
+# 19. Behavioral Interview Practice
+
+### Question
+
+**How do you troubleshoot an issue when you don't know the cause?**
+
+### Professional Answer
+
+> I start by gathering information from the user and understanding when the issue started, whether any changes were made, and whether other users are affected. Based on the information I collect, I identify the most likely causes and test the simplest and safest possibilities first. I make changes only when I understand the potential impact and have the appropriate authorization. After making a change, I verify the result with the user. Finally, I document the troubleshooting steps and resolution, or escalate the issue if it requires additional access or expertise.
+
+---
+
+# 20. Key Interview Takeaways
+
+Today's important concepts:
+
+```text
+UAC
+↓
+Protects against unauthorized system changes
+
+Event Viewer
+↓
+Application / System / Security logs
+
+ADUC
+↓
+Manage AD users and groups
+
+Security Group
+↓
+Manage resource access
+
+whoami
+↓
+Current username
+
+id
+↓
+UID + GID + groups
+
+who
+↓
+Current logged-in users
+
+last
+↓
+Login history
+
+/etc/passwd
+↓
+User account information
+
+/etc/group
+↓
+Group information
+
+/etc/shadow
+↓
+Password-related authentication information
+
+ipconfig /all
+↓
+Windows network configuration
+
+ping
+↓
+Connectivity testing
+
+nslookup
+↓
+DNS troubleshooting
+
+tracert
+↓
+Network path
+
+ss -tuln
+↓
+Listening sockets/ports
+```
+
+---
+
+# 21. Skills Practiced Today
+
+* Windows UAC fundamentals
+* Windows user profiles
+* Windows Registry fundamentals
+* Event Viewer
+* Windows Update troubleshooting
+* Active Directory user creation
+* Active Directory group membership
+* Password reset
+* Account unlock
+* Account disable/enable
+* Linux user identification
+* Linux account files
+* Windows network troubleshooting
+* Linux network troubleshooting
+* DNS troubleshooting
+* Network path analysis
+* Listening-port investigation
+* Help Desk ticket methodology
+* Interview communication
+
+---
+
+# 22. Key Lesson
+
+The main lesson from today's work was:
+
+> **Effective IT Support is not about memorizing commands. It is about understanding what information each tool provides, choosing the correct tool based on the symptom, making controlled changes, verifying the result, and documenting the resolution.**
+
+---
+
+## Reference
+
+Microsoft Learn — **Manage User Accounts with Active Directory Users and Computers in Windows Server**:
+https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage-user-accounts-in-windows-server
+
+Microsoft Learn confirms that ADUC can be used for user creation, group membership management, password resets, account disabling/enabling, and related account properties.
