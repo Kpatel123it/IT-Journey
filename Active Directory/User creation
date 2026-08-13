@@ -1,0 +1,113 @@
+6. Active Directory User Management
+
+Active Directory Users and Computers (ADUC) can be used to create and manage domain user accounts and group memberships when the administrator has the appropriate permissions.
+
+6.1 Creating a User
+
+Basic workflow:
+
+Active Directory Users and Computers
+        ↓
+Select appropriate OU
+        ↓
+New
+        ↓
+User
+        ↓
+Enter user information
+        ↓
+Set password
+        ↓
+Apply company password policy
+        ↓
+Create account
+
+A temporary password can be assigned and the user can be required to change it at their next logon, depending on organizational policy.
+
+7. Active Directory Group Membership
+
+Security groups allow administrators to organize accounts into manageable units and commonly provide access to resources through group membership.
+
+Basic Workflow
+User
+ ↓
+Properties
+ ↓
+Member Of
+ ↓
+Add
+ ↓
+Select Security Group
+ ↓
+Apply
+Why use Security Groups?
+
+Instead of assigning permissions individually to every user, permissions can be assigned to a group and users can receive access through their group membership.
+
+Example
+Finance Security Group
+        ↓
+Finance Shared Folder Permission
+        ↓
+Finance Users
+
+This improves consistency and reduces administrative effort.
+
+8. Active Directory Password Reset
+
+Basic Help Desk workflow:
+
+Verify user's identity
+        ↓
+Locate user in ADUC
+        ↓
+Reset Password
+        ↓
+Set temporary password
+        ↓
+Require password change if company policy requires
+        ↓
+User attempts login
+        ↓
+Verify
+        ↓
+Document
+
+Microsoft's ADUC workflow supports resetting passwords and can also provide an option to unlock a locked account during the password-reset process.
+
+9. Locked vs Disabled Accounts
+Locked Account
+
+A locked account is temporarily prevented from authenticating, commonly because the account-lockout policy was triggered after repeated failed authentication attempts.
+
+Help Desk workflow
+Verify user identity
+        ↓
+Check account status
+        ↓
+Unlock account if authorized
+        ↓
+Verify login
+        ↓
+Document
+
+If the account becomes locked again, investigate the underlying cause rather than repeatedly unlocking it.
+
+Disabled Account
+
+A disabled account still exists in Active Directory but is prevented from new sign-ins.
+
+An administrator can disable or enable the account through ADUC.
+
+Important distinction
+Locked
+↓
+Authentication temporarily blocked
+
+Disabled
+↓
+Account intentionally disabled
+
+Deleted
+↓
+Account removed from Active Directory
