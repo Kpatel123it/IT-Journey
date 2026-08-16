@@ -166,3 +166,88 @@ Group information
 /etc/shadow
         ↓
 Password-related authentication information
+
+
+Linux Processes
+
+Linux provides several commands for investigating running processes.
+
+ps
+
+Displays a snapshot of running processes.
+
+ps aux
+
+Useful for identifying:
+
+PID
+User
+CPU usage
+Memory usage
+Running commands
+top
+
+Provides dynamic, real-time process and resource monitoring.
+
+top
+htop
+
+An interactive and more user-friendly process monitoring tool.
+
+htop
+Quick Comparison
+ps
+↓
+Process snapshot
+
+top
+↓
+Real-time process monitoring
+
+htop
+↓
+Interactive real-time monitoring
+10. Process ID (PID)
+
+PID stands for Process ID.
+
+Each running process is assigned a PID by the Linux operating system.
+
+Example:
+
+ps aux
+
+A PID can then be used when managing a process.
+
+Example:
+
+kill <PID>
+Important
+
+Do not confuse:
+
+PID → Process ID
+UID → User ID
+GID → Group ID
+11. Linux Process Management
+
+A process can sometimes become unresponsive or consume excessive resources.
+
+Basic command
+kill <PID>
+
+The kill command sends a signal to a process.
+
+Forceful termination
+kill -9 <PID>
+
+kill -9 forcefully terminates a process and should not normally be the first option.
+
+Preferred approach
+Investigate process
+        ↓
+Determine cause
+        ↓
+Attempt normal termination
+        ↓
+Force termination only if necessary
