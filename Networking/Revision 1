@@ -267,3 +267,105 @@ SSH	22
 HTTP	80
 HTTPS	443
 RDP	3389
+
+
+DHCP
+
+DHCP stands for Dynamic Host Configuration Protocol.
+
+DHCP automatically provides network configuration to devices.
+
+Common information provided includes:
+
+IP address
+Subnet mask
+Default gateway
+DNS server
+Lease information
+Why DHCP is useful
+
+Without DHCP, administrators may need to manually configure network settings for many devices.
+
+13. DHCP DORA Process
+
+DHCP commonly uses a four-step process known as DORA.
+
+D → Discover
+O → Offer
+R → Request
+A → Acknowledgment
+1. Discover
+
+The client broadcasts to discover an available DHCP server.
+
+2. Offer
+
+The DHCP server offers an IP address and network configuration.
+
+3. Request
+
+The client requests the offered configuration.
+
+4. Acknowledgment
+
+The DHCP server confirms the lease and configuration.
+
+Interview Answer
+
+DHCP DORA is the four-step process used to dynamically assign network configuration. The client sends a Discover, the server responds with an Offer, the client sends a Request, and the server sends an Acknowledgment confirming the lease.
+
+14. DHCP Troubleshooting
+Windows command
+ipconfig /all
+
+Check:
+
+IP address
+DHCP Enabled
+Default gateway
+DNS servers
+Useful commands
+ipconfig /release
+ipconfig /renew
+
+These can be used to release and request DHCP configuration again when appropriate.
+
+APIPA
+
+If a Windows computer automatically receives an address in the:
+
+169.254.x.x
+
+range, this can indicate that the computer was unable to obtain an IPv4 address from DHCP.
+
+This is known as APIPA — Automatic Private IP Addressing.
+
+15. DHCP Help Desk Scenario
+Ticket
+
+User reports that their computer cannot access the network.
+
+Troubleshooting
+Ask when problem started
+        ↓
+Check whether other users are affected
+        ↓
+Check physical/Wi-Fi connection
+        ↓
+ipconfig /all
+        ↓
+Check IP address
+        ↓
+Check DHCP
+        ↓
+Check default gateway
+        ↓
+Ping gateway
+        ↓
+Test external connectivity
+        ↓
+Investigate DNS if necessary
+        ↓
+Verify
+        ↓
+Document / Escalate
