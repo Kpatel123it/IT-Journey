@@ -111,3 +111,125 @@ A professional troubleshooting process should always follow these steps:
 5. Apply the Correct Solution
 6. Verify with the User
 7. Document the Ticket
+
+
+1. Windows Task Manager
+What is Task Manager?
+
+Task Manager is a Windows utility used to monitor and troubleshoot system performance and running applications.
+
+It provides information about:
+
+Applications
+Processes
+CPU usage
+Memory usage
+Disk usage
+Network usage
+Startup applications
+Services
+Open Task Manager
+Ctrl + Shift + Esc
+
+or:
+
+Ctrl + Alt + Delete
+↓
+Task Manager
+2. Windows Processes
+
+A process is a running instance of a program.
+
+For example, when an application runs, Windows creates one or more processes associated with that application.
+
+Processes consume system resources such as:
+
+CPU
+Memory
+Disk
+Network
+Help Desk Relevance
+
+If a user reports that their computer is slow, Task Manager can help identify whether a particular process is consuming excessive CPU or memory.
+
+3. Process vs Service
+
+A process and a service are related but different concepts.
+
+Process
+
+A running instance of a program.
+
+Example:
+
+chrome.exe
+Service
+
+A background Windows component designed to perform a specific system or application function, often without direct user interaction.
+
+Examples:
+
+Print Spooler
+Windows Update
+DHCP Client
+DNS Client
+Interview Answer
+
+A process is a running instance of a program, while a service is a background component that performs a specific system or application function.
+
+4. Task Manager Performance Troubleshooting
+Scenario
+
+User reports:
+
+"My computer is extremely slow."
+
+Troubleshooting Process
+Ask questions
+        ↓
+Determine when the issue started
+        ↓
+Ask about recent changes
+        ↓
+Open Task Manager
+        ↓
+Check CPU
+        ↓
+Check Memory
+        ↓
+Check Disk
+        ↓
+Check Network
+        ↓
+Review running processes
+        ↓
+Check Startup applications
+        ↓
+Identify abnormal resource usage
+        ↓
+Apply authorized fix
+        ↓
+Verify with user
+        ↓
+Document / Escalate
+Important
+
+Processes should not be terminated simply because they appear unfamiliar.
+
+Before ending a process, determine what it does and whether stopping it could affect the system or another application.
+
+5. Windows Startup Applications
+
+Startup applications are programs configured to start automatically when Windows starts.
+
+They can be reviewed through Task Manager.
+
+Help Desk Relevance
+
+Too many unnecessary startup applications can contribute to:
+
+Slow boot times
+Increased resource usage
+Slower system performance
+
+Any changes should follow company policy.
