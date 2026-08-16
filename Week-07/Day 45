@@ -1,0 +1,729 @@
+# Day 45 — File Permissions, NTFS, Share Permissions, Linux Permissions & TCP/UDP
+
+## 📅 Day 45
+
+### 🎯 Objective
+
+Today's learning focused on Windows file and folder access, NTFS and share permissions, Active Directory security groups, Linux file permissions, TCP/UDP fundamentals, and practical Help Desk troubleshooting.
+
+The primary goal was to understand how permissions are applied in real business environments and how to troubleshoot a user's inability to access a shared folder.
+
+---
+
+# 1. Windows File Paths
+
+A file path identifies the location of a file or folder.
+
+### Local Windows Path
+
+Example:
+
+```text
+C:\Users\John\Documents\report.txt
+```
+
+This represents a resource stored on the local computer.
+
+### Network UNC Path
+
+UNC stands for **Universal Naming Convention**.
+
+A UNC path is a standard Windows path used to access a shared resource over a network without requiring a mapped drive letter.
+
+Example:
+
+```text
+\\Server01\Finance\Reports
+```
+
+Structure:
+
+```text
+\\ServerName\ShareName\Folder\File
+```
+
+A server can also be referenced by IP address:
+
+```text
+\\192.168.1.10\Finance
+```
+
+### Important Distinction
+
+```text
+Local Path
+↓
+C:\Users\John\Documents
+
+UNC Path
+↓
+\\Server01\Finance
+
+Mapped Network Drive
+↓
+Z:\Finance
+```
+
+A mapped drive can point to a UNC path.
+
+---
+
+# 2. NTFS Permissions
+
+NTFS permissions control access to files and folders stored on an NTFS file system.
+
+Common NTFS permissions include:
+
+* Read
+* Write
+* Read & Execute
+* Modify
+* Full Control
+
+NTFS permissions can be applied to users and groups.
+
+Microsoft recommends using groups for assigning permissions because it simplifies administration and access management.
+
+---
+
+# 3. NTFS Permission Examples
+
+### Read
+
+Allows a user to view/access files.
+
+### Write
+
+Allows creation or modification of data where applicable.
+
+### Modify
+
+Generally allows reading, writing, and deleting files/folders.
+
+### Full Control
+
+Provides full access, including the ability to change permissions and ownership where permitted.
+
+The exact effective access depends on the complete permission configuration and inheritance.
+
+---
+
+# 4. Share Permissions
+
+Share permissions control access to a folder when it is accessed through a network share.
+
+Example:
+
+```text
+\\Server01\Finance
+```
+
+Share permissions are configured on the folder's Sharing settings.
+
+Common share permissions include:
+
+* Read
+* Change
+* Full Control
+
+Microsoft documents share permissions separately from NTFS permissions.
+
+---
+
+# 5. NTFS vs Share Permissions
+
+### NTFS
+
+Controls access to files and folders on an NTFS volume.
+
+### Share
+
+Controls access when the resource is accessed through the network share.
+
+### Example
+
+User accesses:
+
+```text
+\\Server01\Finance
+```
+
+The administrator needs to consider:
+
+```text
+Share Permissions
+        +
+NTFS Permissions
+```
+
+The effective access is determined by the combined permission configuration.
+
+### Important
+
+NTFS permissions also apply to local access, while share permissions apply when the resource is accessed through the network share.
+
+---
+
+# 6. Security Groups and File Permissions
+
+Security groups make permission management easier.
+
+Instead of assigning permissions individually:
+
+```text
+User 1 → Permission
+User 2 → Permission
+User 3 → Permission
+User 4 → Permission
+```
+
+An administrator can use:
+
+```text
+Finance Security Group
+        ↓
+Finance Folder Permission
+        ↓
+Finance Users
+```
+
+### Advantages
+
+* Easier administration
+* Less repetitive work
+* More consistent access
+* Easier onboarding/offboarding
+* Reduced chance of individual permission mistakes
+
+Microsoft recommends assigning permissions to groups where practical.
+
+---
+
+# 7. Shared Folder Troubleshooting
+
+### Ticket
+
+> User reports: "I cannot access the Finance shared folder."
+
+### Initial Questions
+
+1. When did the issue start?
+2. Did you have access previously?
+3. Are other users affected?
+4. Can you access other shared folders?
+5. What exact error message do you receive?
+6. Are you connected to the company network or VPN?
+7. Did anything recently change?
+
+---
+
+# 8. Shared Folder Investigation
+
+A structured investigation should be performed before changing permissions.
+
+```text
+Verify User Identity
+        ↓
+Check Network Connectivity
+        ↓
+Check Server Accessibility
+        ↓
+Check User Account
+        ↓
+Check Security Group Membership
+        ↓
+Check Share Permissions
+        ↓
+Check NTFS Permissions
+        ↓
+Identify Missing Permission
+        ↓
+Make Authorized Change
+        ↓
+User Tests Access
+        ↓
+Document
+        ↓
+Close / Escalate
+```
+
+### Important
+
+Permissions should not be changed simply because the user receives an Access Denied message.
+
+First determine:
+
+* What resource the user is accessing
+* What access the user should have
+* Which permission is missing
+* Whether the requested access is authorized
+
+---
+
+# 9. Linux File Permissions
+
+Linux uses permissions to control access to files and directories.
+
+The three main permission categories are:
+
+```text
+Owner
+Group
+Others
+```
+
+The three basic permissions are:
+
+```text
+r = Read
+w = Write
+x = Execute
+```
+
+---
+
+# 10. `ls -l`
+
+The command:
+
+```bash
+ls -l
+```
+
+displays detailed file information including permissions, ownership, group, size, and modification information.
+
+Example:
+
+```text
+-rwxr-xr--
+```
+
+The permission portion can be interpreted as:
+
+```text
+Owner  → rwx
+Group  → r-x
+Others → r--
+```
+
+---
+
+# 11. Linux Permission Numbers
+
+Linux permissions can also be represented numerically.
+
+```text
+Read    = 4
+Write   = 2
+Execute = 1
+```
+
+Therefore:
+
+```text
+7 = rwx
+6 = rw-
+5 = r-x
+4 = r--
+```
+
+---
+
+# 12. `chmod 755`
+
+Example:
+
+```bash
+chmod 755 script.sh
+```
+
+Means:
+
+```text
+Owner  → rwx
+Group  → r-x
+Others → r-x
+```
+
+Therefore:
+
+```text
+755 = rwxr-xr-x
+```
+
+This is commonly used for executable scripts and programs where the owner needs write permission while group and others only need read/execute access.
+
+---
+
+# 13. `chmod`
+
+`chmod` is used to change file or directory permissions.
+
+Example:
+
+```bash
+chmod 644 file.txt
+```
+
+This means:
+
+```text
+Owner  → rw-
+Group  → r--
+Others → r--
+```
+
+---
+
+# 14. `chown`
+
+`chown` changes the owner of a file or directory.
+
+Example:
+
+```bash
+sudo chown john file.txt
+```
+
+Concept:
+
+```text
+chown
+↓
+Change owner
+```
+
+---
+
+# 15. `chgrp`
+
+`chgrp` changes the group ownership of a file or directory.
+
+Example:
+
+```bash
+sudo chgrp finance file.txt
+```
+
+Concept:
+
+```text
+chgrp
+↓
+Change group ownership
+```
+
+---
+
+# 16. Linux Permission Command Summary
+
+```text
+chmod
+↓
+Change permissions
+
+chown
+↓
+Change owner
+
+chgrp
+↓
+Change group
+```
+
+This distinction is important for Linux administration and IT Support interviews.
+
+---
+
+# 17. TCP
+
+TCP stands for **Transmission Control Protocol**.
+
+TCP is:
+
+* Connection-oriented
+* Reliable
+* Ordered
+* Uses acknowledgments
+* Uses retransmission when necessary
+* Uses sequencing
+
+TCP establishes a connection before data transfer.
+
+Common examples include:
+
+* SSH
+* HTTPS
+* SMB
+* RDP
+
+---
+
+# 18. TCP Three-Way Handshake
+
+TCP commonly establishes a connection using a three-way handshake.
+
+```text
+Client                Server
+
+  SYN  ------------>
+
+       <------------  SYN-ACK
+
+  ACK  ------------>
+```
+
+### Sequence
+
+```text
+1. SYN
+2. SYN-ACK
+3. ACK
+```
+
+### Interview Answer
+
+> The TCP three-way handshake establishes a TCP connection using SYN, SYN-ACK, and ACK messages.
+
+---
+
+# 19. UDP
+
+UDP stands for **User Datagram Protocol**.
+
+UDP is:
+
+* Connectionless
+* Lower overhead than TCP
+* Does not provide TCP-style delivery acknowledgments
+* Does not guarantee ordered delivery
+* Does not retransmit lost packets like TCP
+
+Common examples include:
+
+* DNS queries
+* DHCP
+* Real-time applications such as some voice/video traffic
+
+---
+
+# 20. TCP vs UDP
+
+| Feature        | TCP                 | UDP                         |
+| -------------- | ------------------- | --------------------------- |
+| Connection     | Connection-oriented | Connectionless              |
+| Reliability    | Yes                 | No TCP-style guarantee      |
+| Ordering       | Yes                 | No guarantee                |
+| Acknowledgment | Yes                 | No TCP-style acknowledgment |
+| Retransmission | Yes                 | No TCP-style retransmission |
+| Overhead       | Higher              | Lower                       |
+| Example        | SSH                 | DHCP                        |
+
+### Interview Answer
+
+> TCP is connection-oriented and provides reliable, ordered delivery using mechanisms such as acknowledgments and retransmission. UDP is connectionless and has lower overhead but does not provide TCP's delivery and ordering guarantees.
+
+---
+
+# 21. Important Ports Reviewed
+
+|  Port | Service |
+| ----: | ------- |
+|    22 | SSH     |
+|    53 | DNS     |
+| 67/68 | DHCP    |
+|    80 | HTTP    |
+|   443 | HTTPS   |
+|   445 | SMB     |
+|  3389 | RDP     |
+
+---
+
+# 22. RDP
+
+RDP stands for **Remote Desktop Protocol**.
+
+It allows an authorized user to remotely connect to and interact with a Windows computer.
+
+Common RDP port:
+
+```text
+TCP 3389
+```
+
+### Security
+
+Remote access should always follow organizational authorization and security policies.
+
+---
+
+# 23. Help Desk Methodology
+
+Today's ticket reinforced the importance of troubleshooting before making changes.
+
+The general process is:
+
+```text
+Gather Information
+        ↓
+Identify Symptoms
+        ↓
+Form Possible Causes
+        ↓
+Investigate
+        ↓
+Apply Authorized Fix
+        ↓
+Verify
+        ↓
+Document
+        ↓
+Escalate if Necessary
+```
+
+This methodology can be applied to:
+
+* AD login issues
+* Shared folder access
+* DNS problems
+* DHCP problems
+* Printer problems
+* Windows performance issues
+* Linux problems
+
+---
+
+# 24. Interview Questions Practiced
+
+### Windows
+
+1. What is a UNC path?
+2. What is the difference between a local path and a UNC path?
+3. What are NTFS permissions?
+4. What are share permissions?
+5. What is the difference between NTFS and share permissions?
+6. What is RDP?
+
+### Active Directory
+
+7. Why are security groups useful for file permissions?
+8. How would you troubleshoot Access Denied for a shared folder?
+
+### Linux
+
+9. What does `chmod 755` mean?
+10. What is the difference between `chmod`, `chown`, and `chgrp`?
+
+### Networking
+
+11. What is TCP?
+12. What is UDP?
+13. What is the TCP three-way handshake?
+14. What is the difference between TCP and UDP?
+15. What port does SSH use?
+16. What port does RDP commonly use?
+
+---
+
+# 25. Key Technical Corrections From Day 45
+
+### UNC Path
+
+Incorrect:
+
+```text
+Drive letter/folder/file
+```
+
+Correct:
+
+```text
+\\ServerName\ShareName\Folder\File
+```
+
+### Local Path
+
+```text
+C:\Users\John\Documents
+```
+
+### Network Share
+
+```text
+\\Server01\Finance
+```
+
+### Linux Permissions
+
+```text
+chmod
+→ Permissions
+
+chown
+→ Owner
+
+chgrp
+→ Group
+```
+
+### Networking
+
+```text
+TCP
+→ Connection-oriented and reliable
+
+UDP
+→ Connectionless and lower overhead
+```
+
+---
+
+# 26. Key Takeaway
+
+Today's most important lesson was understanding how **identity, groups, permissions, and network access work together**.
+
+For example:
+
+```text
+User
+ ↓
+Active Directory Account
+ ↓
+Security Group
+ ↓
+Shared Folder
+ ↓
+Share Permission
+ ↓
+NTFS Permission
+ ↓
+Effective Access
+```
+
+When a user receives **Access Denied**, an IT Support technician should investigate each layer rather than immediately changing permissions.
+
+The same structured approach applies to Linux and networking:
+
+```text
+Understand
+ ↓
+Investigate
+ ↓
+Identify Cause
+ ↓
+Fix
+ ↓
+Verify
+ ↓
+Document
+```
+
+---
+
+# 📌 Day 45 Summary
+
+Today I strengthened my understanding of Windows file paths, UNC paths, NTFS permissions, share permissions, Active Directory security groups, Linux file permissions, `chmod`, `chown`, `chgrp`, TCP, UDP, TCP three-way handshake, common network ports, and RDP.
+
+I also practiced troubleshooting a shared-folder **Access Denied** ticket using a structured Help Desk methodology.
+
+The focus was not only on memorizing definitions but on understanding how these concepts connect in a real IT Support environment.
