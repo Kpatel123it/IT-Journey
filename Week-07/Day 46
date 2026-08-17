@@ -1,0 +1,906 @@
+# Day 46 — Windows Troubleshooting, Group Policy, Linux Logs & Network Troubleshooting
+
+## 📅 Day 46
+
+### 🎯 Objective
+
+Today's training focused on expanding Windows, Active Directory, Linux, and networking knowledge while continuing to develop a structured Help Desk troubleshooting methodology.
+
+The major topics covered were:
+
+* Windows Event Viewer
+* Device Manager
+* Drivers
+* BSOD
+* System Restore
+* Group Policy
+* `gpupdate`
+* `gpresult`
+* Linux package management
+* Linux logs
+* `grep`
+* DNS troubleshooting
+* DHCP troubleshooting
+* Default gateway
+* ARP
+* `nslookup`
+* `tracert`
+* Help Desk troubleshooting methodology
+
+---
+
+# 1. Windows Event Viewer
+
+Event Viewer is a Windows utility used to view and analyze event logs for troubleshooting system, application, security, and other Windows events.
+
+### Open Event Viewer
+
+```text
+Windows + R
+↓
+eventvwr.msc
+```
+
+### Important Event Logs
+
+```text
+Windows Logs
+├── Application
+├── Security
+├── System
+├── Setup
+└── Forwarded Events
+```
+
+### Application Log
+
+Contains events related to applications and software.
+
+### Security Log
+
+Contains security and authentication-related events.
+
+### System Log
+
+Contains events related to Windows system components, services, drivers, and other system activity.
+
+### Help Desk Use
+
+Event Viewer can provide evidence about:
+
+* Application crashes
+* Service failures
+* Driver problems
+* Authentication problems
+* System errors
+* Windows-related issues
+
+Microsoft recommends reviewing Windows event logs when troubleshooting Group Policy and other system problems.
+
+---
+
+# 2. Device Manager
+
+Device Manager is a Windows utility used to view and manage hardware devices and their drivers.
+
+### Open Device Manager
+
+```text
+Windows + R
+↓
+devmgmt.msc
+```
+
+Examples of devices:
+
+* Network adapters
+* Display adapters
+* Audio devices
+* Keyboards
+* Mice
+* Storage devices
+
+### Help Desk Use
+
+Device Manager can help identify:
+
+* Missing hardware
+* Disabled devices
+* Driver problems
+* Hardware recognition issues
+* Device errors
+
+---
+
+# 3. Device Drivers
+
+A device driver is software that allows the operating system to communicate with and control a hardware device.
+
+Example:
+
+```text
+Windows
+   ↓
+Network Driver
+   ↓
+Network Adapter
+   ↓
+Network
+```
+
+Without an appropriate driver, Windows may not be able to properly communicate with the hardware.
+
+---
+
+# 4. Wi-Fi Adapter Troubleshooting
+
+### Scenario
+
+> User reports that the Wi-Fi adapter is missing or not working.
+
+### Troubleshooting Process
+
+```text
+Gather Information
+↓
+Check Wi-Fi settings
+↓
+Open Device Manager
+↓
+Check Network Adapters
+↓
+Check device status
+↓
+Check driver
+↓
+Check whether device is disabled
+↓
+Apply appropriate authorized fix
+↓
+Verify connectivity
+↓
+Document
+↓
+Close / Escalate
+```
+
+### Important
+
+Do not immediately reinstall the driver.
+
+First investigate:
+
+* Is the adapter detected?
+* Is it disabled?
+* Is there a warning/error?
+* Is the driver missing?
+* Did the problem begin after an update?
+
+---
+
+# 5. Blue Screen of Death (BSOD)
+
+BSOD stands for **Blue Screen of Death**.
+
+It occurs when Windows encounters a critical system error that prevents it from continuing normal operation.
+
+### Possible Causes
+
+* Faulty drivers
+* Hardware problems
+* Corrupted system files
+* Problematic updates
+* Software conflicts
+* Memory problems
+
+### Important Concept
+
+BSOD is a **symptom**, not a specific cause.
+
+A Help Desk technician should investigate the underlying cause rather than assuming that Windows itself is the problem.
+
+---
+
+# 6. System Restore
+
+System Restore allows Windows to return certain system files, drivers, settings, and installed-program states to an earlier restore point.
+
+### Important
+
+System Restore is **not the same as a personal-file backup**.
+
+It should not be treated as a replacement for a proper backup solution.
+
+### Example Use Case
+
+If a driver or software installation causes a system problem, an available restore point may allow the system configuration to be returned to an earlier state.
+
+---
+
+# 7. Group Policy
+
+Group Policy allows administrators to centrally apply configuration and security settings to users and computers in a Windows domain environment.
+
+### Examples
+
+* Security settings
+* Password policies
+* Desktop restrictions
+* Windows configuration
+* User settings
+* Computer settings
+
+### Basic Structure
+
+```text
+Active Directory
+       ↓
+Group Policy
+       ↓
+Users / Computers
+       ↓
+Configuration Applied
+```
+
+Group Policy can be applied to users or computers based on their location and membership within an Active Directory environment.
+
+---
+
+# 8. `gpupdate`
+
+`gpupdate` is used to refresh Group Policy settings.
+
+### Command
+
+```cmd
+gpupdate /force
+```
+
+The `/force` option causes policy settings to be reapplied, including settings that have not changed.
+
+### Basic Concept
+
+```text
+gpupdate
+↓
+Refresh / reapply Group Policy
+```
+
+---
+
+# 9. `gpresult`
+
+`gpresult` displays Resultant Set of Policy (RSoP) information showing Group Policy settings that are applied to a user or computer.
+
+### Command
+
+```cmd
+gpresult /r
+```
+
+### Concept
+
+```text
+gpupdate
+↓
+Refresh policy
+
+gpresult
+↓
+Check resulting/applied policy
+```
+
+Microsoft documents `gpresult` as a tool for displaying the resulting Group Policy settings enforced for a user and computer.
+
+---
+
+# 10. GPO Troubleshooting
+
+### Scenario
+
+> User reports that a new company policy is not being applied.
+
+### Troubleshooting Process
+
+```text
+Gather Information
+↓
+Determine whether one or multiple users are affected
+↓
+Check whether computer is domain-connected
+↓
+Check User / Computer OU
+↓
+Check GPO link
+↓
+Check security filtering
+↓
+Run gpupdate /force
+↓
+Run gpresult /r
+↓
+Review Event Viewer if necessary
+↓
+Verify with user
+↓
+Document
+↓
+Escalate if required
+```
+
+Microsoft's Group Policy troubleshooting guidance recommends reviewing Group Policy event logs, refreshing policy with `GPUPDATE`, and using `GPRESULT` to examine the resulting policy.
+
+---
+
+# 11. Linux Package Management
+
+Linux systems such as Ubuntu use package managers to manage software.
+
+### `apt update`
+
+```bash
+sudo apt update
+```
+
+This updates the local package information from configured repositories.
+
+It does **not** upgrade installed packages.
+
+### `apt upgrade`
+
+```bash
+sudo apt upgrade
+```
+
+This installs available newer versions of installed packages.
+
+### Installing a Package
+
+```bash
+sudo apt install <package-name>
+```
+
+Example:
+
+```bash
+sudo apt install tree
+```
+
+### Remember
+
+```text
+apt update
+↓
+Update package information
+
+apt upgrade
+↓
+Upgrade installed packages
+
+apt install
+↓
+Install a package
+```
+
+---
+
+# 12. Linux Logs
+
+Many Linux logs are stored under:
+
+```text
+/var/log
+```
+
+### Important Correction
+
+The correct common log directory is:
+
+```text
+/var/log
+```
+
+Not:
+
+```text
+/etc/var
+```
+
+### Explore Logs
+
+```bash
+ls /var/log
+```
+
+Logs can contain information about:
+
+* Authentication
+* System activity
+* Services
+* Applications
+* Errors
+
+Logs are important because they provide evidence about what happened on the system.
+
+---
+
+# 13. `grep`
+
+`grep` is used to search text for matching patterns.
+
+Example:
+
+```bash
+grep "error" logfile
+```
+
+Another example:
+
+```bash
+grep -i "failed" /var/log/auth.log
+```
+
+The `-i` option performs a case-insensitive search.
+
+### Concept
+
+```text
+grep
+↓
+Search / filter text
+```
+
+The Linux `grep` utility searches files for lines matching a specified pattern.
+
+---
+
+# 14. DNS Troubleshooting
+
+DNS translates domain names into IP addresses.
+
+Example:
+
+```text
+google.com
+     ↓
+DNS
+     ↓
+IP Address
+```
+
+### Troubleshooting Scenario
+
+> User can access an IP address but cannot access websites by name.
+
+### Process
+
+```text
+Check IP configuration
+↓
+Check default gateway
+↓
+Ping gateway
+↓
+Ping 8.8.8.8
+↓
+Ping google.com
+↓
+If IP works but domain fails
+↓
+Suspect DNS
+↓
+Run nslookup
+↓
+Check DNS configuration
+↓
+Apply authorized fix
+↓
+Verify
+↓
+Document
+```
+
+---
+
+# 15. `nslookup`
+
+`nslookup` is a command-line tool used to query DNS and check how a domain name resolves.
+
+Example:
+
+```cmd
+nslookup google.com
+```
+
+It can show information such as:
+
+* DNS server responding
+* Domain name
+* IP address returned
+
+### Concept
+
+```text
+nslookup
+↓
+Query DNS
+```
+
+---
+
+# 16. DHCP Troubleshooting
+
+DHCP automatically provides network configuration information to clients.
+
+Common information includes:
+
+* IP address
+* Subnet mask
+* Default gateway
+* DNS server
+
+### Windows Command
+
+```cmd
+ipconfig /all
+```
+
+Look for:
+
+```text
+DHCP Enabled
+IPv4 Address
+Subnet Mask
+Default Gateway
+DNS Servers
+```
+
+### Renew DHCP Configuration
+
+```cmd
+ipconfig /release
+```
+
+Then:
+
+```cmd
+ipconfig /renew
+```
+
+Use these commands appropriately and understand that releasing the lease temporarily removes the current DHCP configuration.
+
+---
+
+# 17. Default Gateway
+
+A default gateway is normally a router or Layer 3 interface that forwards traffic from a host's local network toward other networks when there is no more specific route.
+
+Example:
+
+```text
+Computer
+   ↓
+Default Gateway
+   ↓
+Router
+   ↓
+Other Network
+   ↓
+Internet
+```
+
+### Check in Windows
+
+```cmd
+ipconfig
+```
+
+### Test Gateway
+
+```cmd
+ping <default-gateway>
+```
+
+---
+
+# 18. ARP
+
+ARP stands for **Address Resolution Protocol**.
+
+For IPv4 on a local network, ARP helps determine the MAC address associated with an IP address.
+
+Concept:
+
+```text
+IPv4 Address
+     ↓
+ARP
+     ↓
+MAC Address
+```
+
+### Windows
+
+```cmd
+arp -a
+```
+
+### Linux
+
+```bash
+ip neigh
+```
+
+---
+
+# 19. `tracert`
+
+`tracert` is a Windows command used to trace the network path toward a destination.
+
+Example:
+
+```cmd
+tracert google.com
+```
+
+It displays network hops along the path.
+
+### Difference Between Ping and Tracert
+
+```text
+ping
+↓
+Can I reach the destination?
+
+tracert
+↓
+What path/hops are used to reach the destination?
+```
+
+---
+
+# 20. Important Networking Commands
+
+| Command             | Purpose                       |
+| ------------------- | ----------------------------- |
+| `ipconfig`          | View Windows IP configuration |
+| `ipconfig /all`     | Detailed IP configuration     |
+| `ipconfig /release` | Release DHCP configuration    |
+| `ipconfig /renew`   | Request DHCP configuration    |
+| `ping`              | Test connectivity             |
+| `nslookup`          | Query DNS                     |
+| `tracert`           | Trace network path            |
+| `arp -a`            | View ARP cache                |
+
+---
+
+# 21. Help Desk Ticket — GPO Issue
+
+### Ticket
+
+> User reports that a new company policy has not been applied to their computer.
+
+### Questions
+
+1. When did the issue start?
+2. When was the policy changed?
+3. Are other users affected?
+4. Is the computer connected to the company network?
+5. Has the computer been restarted?
+6. Is the computer joined to the domain?
+7. What specific policy is missing?
+
+### Investigation
+
+```text
+Check user/computer
+↓
+Check OU
+↓
+Check GPO scope
+↓
+Check security filtering
+↓
+gpupdate /force
+↓
+gpresult /r
+↓
+Review Event Viewer if necessary
+↓
+Verify
+↓
+Document
+↓
+Escalate if unresolved
+```
+
+---
+
+# 22. Help Desk Troubleshooting Methodology
+
+A professional IT Support troubleshooting process should be systematic.
+
+```text
+1. Gather Information
+        ↓
+2. Clarify Symptoms
+        ↓
+3. Identify Possible Causes
+        ↓
+4. Investigate
+        ↓
+5. Apply Authorized Fix
+        ↓
+6. Verify
+        ↓
+7. Document
+        ↓
+8. Close or Escalate
+```
+
+### Important Principle
+
+Do not immediately make changes.
+
+First determine:
+
+* What is actually failing?
+* Who is affected?
+* When did it begin?
+* What changed?
+* What evidence supports the suspected cause?
+
+---
+
+# 23. Interview Questions Practiced
+
+### Windows
+
+1. What is Event Viewer?
+2. What is Device Manager?
+3. What is a device driver?
+4. How would you troubleshoot a missing Wi-Fi adapter?
+5. What is BSOD?
+6. What is System Restore?
+
+### Active Directory
+
+7. What is Group Policy?
+8. What does `gpupdate /force` do?
+9. What does `gpresult /r` show?
+10. How would you troubleshoot a GPO that is not applying?
+
+### Linux
+
+11. What is the difference between `apt update` and `apt upgrade`?
+12. Where are many Linux logs stored?
+13. What does `grep` do?
+
+### Networking
+
+14. How would you troubleshoot a DNS problem?
+15. What is a default gateway?
+16. What is ARP?
+17. What does `nslookup` do?
+18. What does `tracert` do?
+
+---
+
+# 24. Key Technical Corrections From Day 46
+
+### Event Viewer
+
+> Windows utility for viewing and analyzing event logs.
+
+### Device Manager
+
+> Windows utility for managing hardware devices and drivers.
+
+### Driver
+
+> Software that allows Windows to communicate with hardware.
+
+### BSOD
+
+> A critical Windows system error; BSOD itself is a symptom, not the root cause.
+
+### System Restore
+
+> Returns certain system configuration/system-state components to an earlier restore point; it is not a personal-file backup.
+
+### Group Policy
+
+> Centrally applies configuration and security settings to users and computers.
+
+### `gpupdate`
+
+> Refreshes/reapplies Group Policy.
+
+### `gpresult`
+
+> Displays the resulting/applied Group Policy information.
+
+### Linux logs
+
+```text
+/var/log
+```
+
+### `grep`
+
+> Searches text for matching patterns.
+
+### Default Gateway
+
+> Forwards traffic toward other networks when no more specific route exists.
+
+### ARP
+
+> Resolves/maps IPv4 addresses to MAC addresses on the local network.
+
+### `nslookup`
+
+> Queries DNS.
+
+### `tracert`
+
+> Shows network hops toward a destination.
+
+---
+
+# 25. Practical Lab Completed
+
+### Windows
+
+```cmd
+eventvwr.msc
+devmgmt.msc
+gpupdate /force
+gpresult /r
+ipconfig /all
+nslookup google.com
+arp -a
+tracert google.com
+```
+
+### Linux
+
+```bash
+ls /var/log
+grep -i "error" /var/log/*.log
+sudo apt update
+```
+
+The purpose of these commands is not simply memorization. The goal is to understand **what information each command provides and when a Help Desk technician would use it.**
+
+---
+
+# 26. Day 46 Summary
+
+Today I expanded my Windows troubleshooting knowledge by learning Event Viewer, Device Manager, drivers, BSOD, and System Restore.
+
+I also strengthened my Active Directory knowledge by learning how Group Policy is refreshed and verified using `gpupdate` and `gpresult`.
+
+On Linux, I reviewed package management, the `/var/log` directory, and the `grep` command.
+
+For networking, I practiced troubleshooting DNS and DHCP issues and reviewed the roles of the default gateway, ARP, `nslookup`, and `tracert`.
+
+The main objective was to move beyond memorizing definitions and develop a structured troubleshooting approach:
+
+```text
+Gather Information
+↓
+Investigate
+↓
+Identify Root Cause
+↓
+Apply Authorized Fix
+↓
+Verify
+↓
+Document
+↓
+Close / Escalate
+```
+
+This approach will be used throughout the remaining IT Support roadmap.
