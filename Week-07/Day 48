@@ -1,0 +1,610 @@
+# Day 48 – IT Support Training
+
+## Overview
+
+Today I continued the entry-level IT Support roadmap by covering remaining Windows, Linux, Active Directory, networking, and Microsoft 365 concepts.
+
+The focus was on understanding the purpose of each technology, improving troubleshooting methodology, and developing professional interview communication.
+
+---
+
+# 1. Windows – Safe Mode
+
+## What is Safe Mode?
+
+Safe Mode starts Windows with a limited set of drivers and services.
+
+It is commonly used to troubleshoot issues caused by:
+
+* Drivers
+* Software
+* Startup applications
+* Malware
+* System configuration problems
+
+### Example
+
+If Windows crashes after installing a new driver, Safe Mode can be used to start Windows with limited drivers and troubleshoot the issue.
+
+### Safe Mode with Networking
+
+Safe Mode with Networking loads additional networking components so that network connectivity may be available during troubleshooting.
+
+---
+
+# 2. Windows Recovery Environment (WinRE)
+
+Windows Recovery Environment is a recovery and troubleshooting environment used when Windows has startup or system problems.
+
+Common tools include:
+
+* Startup Repair
+* System Restore
+* Uninstall Updates
+* Command Prompt
+* Reset this PC
+
+### Safe Mode vs WinRE
+
+| Safe Mode                                    | WinRE                                |
+| -------------------------------------------- | ------------------------------------ |
+| Diagnostic environment                       | Recovery environment                 |
+| Starts Windows with limited drivers/services | Provides recovery and repair tools   |
+| Used for troubleshooting software/drivers    | Used for startup and system recovery |
+
+---
+
+# 3. System Restore vs Backup
+
+## System Restore
+
+System Restore returns certain system files, drivers, registry settings, and configuration to an earlier restore point.
+
+It is primarily used to recover from system configuration problems.
+
+## Backup
+
+A backup is a copy of data or systems stored separately so information can be recovered after data loss or system failure.
+
+### Key Difference
+
+```text
+System Restore
+→ Restores system configuration to an earlier point
+
+Backup
+→ Recovers backed-up data or systems
+```
+
+System Restore should not be considered a replacement for a proper backup.
+
+---
+
+# 4. Windows Firewall
+
+Windows Firewall controls inbound and outbound network traffic based on configured rules.
+
+Rules can involve:
+
+* Applications
+* Ports
+* Protocols
+* Network profiles
+
+### Basic Troubleshooting
+
+If an application cannot communicate over the network:
+
+```text
+Check application
+↓
+Check network connectivity
+↓
+Check firewall rules
+↓
+Check required port/protocol
+↓
+Apply authorized change
+↓
+Test application
+```
+
+The firewall should not simply be disabled as a first troubleshooting step.
+
+---
+
+# 5. Linux Filesystem Structure
+
+Important Linux directories reviewed:
+
+| Directory  | Purpose                    |
+| ---------- | -------------------------- |
+| `/`        | Root of the filesystem     |
+| `/home`    | User home directories      |
+| `/etc`     | System configuration files |
+| `/var`     | Variable data and logs     |
+| `/var/log` | System/application logs    |
+| `/tmp`     | Temporary files            |
+| `/usr`     | Applications and utilities |
+| `/opt`     | Optional software          |
+| `/boot`    | Boot-related files         |
+| `/dev`     | Device files               |
+
+### Important interview knowledge
+
+> `/etc` is commonly used for system configuration files.
+
+> `/var/log` contains system and application logs used for troubleshooting.
+
+---
+
+# 6. Linux `sudo`
+
+`sudo` allows an authorized user to execute commands with elevated privileges.
+
+Example:
+
+```bash
+sudo systemctl restart ssh
+```
+
+`sudo` provides controlled privilege elevation rather than permanently making the user root.
+
+### Security connection
+
+This relates to the **Principle of Least Privilege**, where users should receive only the permissions required to perform their tasks.
+
+---
+
+# 7. Linux Package Management
+
+## `apt update`
+
+Refreshes local package information from configured repositories.
+
+```bash
+sudo apt update
+```
+
+## `apt upgrade`
+
+Installs newer versions of packages that are already installed.
+
+```bash
+sudo apt upgrade
+```
+
+## Installing a package
+
+```bash
+sudo apt install package-name
+```
+
+## Removing a package
+
+```bash
+sudo apt remove package-name
+```
+
+### Key Difference
+
+```text
+apt update
+→ Refresh package information
+
+apt upgrade
+→ Upgrade installed packages
+```
+
+---
+
+# 8. DNS Records
+
+DNS translates domain/hostnames into network information.
+
+Important DNS record types:
+
+| Record | Purpose                               |
+| ------ | ------------------------------------- |
+| A      | Maps hostname to IPv4 address         |
+| AAAA   | Maps hostname to IPv6 address         |
+| CNAME  | Creates an alias for another hostname |
+| MX     | Identifies mail servers for a domain  |
+| TXT    | Stores text/verification information  |
+
+### A Record Example
+
+```text
+example.com
+      ↓
+A Record
+      ↓
+IPv4 Address
+```
+
+### MX Record
+
+An MX record identifies the mail server responsible for receiving email for a domain.
+
+MX records are particularly important when troubleshooting email services such as Exchange Online.
+
+---
+
+# 9. DHCP DORA
+
+DHCP automatically provides network configuration to clients.
+
+DHCP can provide:
+
+* IP address
+* Subnet mask
+* Default gateway
+* DNS server
+* Lease information
+
+### DORA Process
+
+```text
+D → Discover
+O → Offer
+R → Request
+A → Acknowledge
+```
+
+### Process
+
+1. Client broadcasts a DHCP Discover message.
+2. DHCP server responds with an Offer.
+3. Client sends a Request for the offered configuration.
+4. DHCP server sends an Acknowledgement confirming the lease.
+
+---
+
+# 10. VPN
+
+VPN stands for Virtual Private Network.
+
+A VPN creates a secure connection over an untrusted network such as the Internet.
+
+It can allow a remote employee to securely access company resources.
+
+### Example
+
+```text
+Remote User
+     ↓
+Internet
+     ↓
+VPN
+     ↓
+Company Network
+     ↓
+Internal Resource
+```
+
+### VPN Troubleshooting
+
+1. Check Internet connectivity.
+2. Check VPN client.
+3. Check credentials.
+4. Check MFA.
+5. Verify VPN connection.
+6. Test internal resources.
+7. Document or escalate.
+
+---
+
+# 11. Active Directory – Domain Controller
+
+A Domain Controller (DC) is a server that hosts Active Directory Domain Services.
+
+It provides functions such as:
+
+* Authentication
+* Directory services
+* Domain-related services
+* User and computer management
+
+### Basic Flow
+
+```text
+User
+ ↓
+Domain Controller
+ ↓
+Authentication
+ ↓
+Access to domain resources
+```
+
+### Important distinction
+
+**Active Directory Domain Services (AD DS)** is the directory service.
+
+**Domain Controller** is a server that hosts AD DS.
+
+---
+
+# 12. Active Directory and DNS
+
+Active Directory relies heavily on DNS to locate Domain Controllers and other domain services.
+
+### Basic Process
+
+```text
+Domain-joined computer
+↓
+DNS lookup
+↓
+Locate Domain Controller
+↓
+Domain authentication
+↓
+Active Directory services
+```
+
+Incorrect DNS configuration can cause problems with:
+
+* Domain login
+* Domain joining
+* Finding Domain Controllers
+* Accessing domain resources
+
+### Interview Answer
+
+> DNS is important to Active Directory because domain-joined computers use DNS to locate Domain Controllers and other domain services.
+
+---
+
+# 13. Security Group vs Distribution Group
+
+## Security Group
+
+A security group is primarily used to assign permissions and control access to resources.
+
+Example:
+
+```text
+Finance Security Group
+        ↓
+Finance Shared Folder
+        ↓
+Access Permission
+```
+
+## Distribution Group
+
+A distribution group is primarily used to distribute email messages to multiple recipients.
+
+Example:
+
+```text
+HR Distribution Group
+        ↓
+HR Employees
+        ↓
+Email Distribution
+```
+
+### Key Difference
+
+```text
+Security Group
+→ Access and permissions
+
+Distribution Group
+→ Email distribution
+```
+
+---
+
+# 14. Microsoft 365
+
+Microsoft 365 is a cloud-based subscription platform providing productivity, communication, collaboration, and security services.
+
+Common services include:
+
+* Outlook
+* Exchange Online
+* Microsoft Teams
+* OneDrive
+* SharePoint
+* Word
+* Excel
+* PowerPoint
+
+Microsoft 365 is largely based on cloud/SaaS services.
+
+---
+
+# 15. Microsoft Entra ID
+
+Microsoft Entra ID is Microsoft's cloud-based identity and access management service.
+
+It is used for:
+
+* User identities
+* Authentication
+* Groups
+* Applications
+* Access management
+* MFA
+* Cloud resources
+
+It was formerly known as **Azure Active Directory (Azure AD)**.
+
+### Basic Mental Model
+
+```text
+Traditional AD
+→ Primarily on-premises identity
+
+Microsoft Entra ID
+→ Cloud identity and access management
+```
+
+They are related concepts but are not simply the same product in different locations.
+
+---
+
+# 16. Active Directory vs Microsoft Entra ID
+
+| Traditional AD DS          | Microsoft Entra ID                    |
+| -------------------------- | ------------------------------------- |
+| Primarily on-premises      | Cloud-based                           |
+| Domain Controller          | Cloud identity service                |
+| Domain authentication      | Cloud authentication                  |
+| Group Policy               | Cloud management/access technologies  |
+| Computer/domain management | Cloud identity and application access |
+
+### Interview Answer
+
+> Traditional Active Directory Domain Services is primarily an on-premises directory service used for domain authentication, computer management, and centralized administration. Microsoft Entra ID is a cloud-based identity and access management service used for cloud applications, identities, and resources.
+
+---
+
+# 17. Microsoft 365 Remote User Troubleshooting
+
+### Scenario
+
+A remote employee cannot access a company application.
+
+### Initial Questions
+
+* When did the issue start?
+* Did you make any changes?
+* Is your Internet working?
+* Can you access other websites?
+* Can other users access the application?
+* Is the VPN connected?
+* Are you receiving an error?
+* Did you recently change your password?
+* Is MFA working?
+
+### Troubleshooting Process
+
+```text
+Internet
+↓
+VPN
+↓
+Authentication
+↓
+MFA
+↓
+Microsoft 365 / Entra ID
+↓
+Application
+↓
+Permissions
+↓
+Verification
+```
+
+If a permission issue is identified, changes should only be made when properly authorized.
+
+---
+
+# 18. Help Desk Troubleshooting Methodology
+
+The troubleshooting methodology practiced today:
+
+```text
+1. Gather information
+2. Understand the symptoms
+3. Ask targeted questions
+4. Identify possible causes
+5. Start with basic troubleshooting
+6. Apply an authorized fix
+7. Verify the result
+8. Document the work
+9. Close or escalate
+```
+
+This methodology can be applied across:
+
+* Windows
+* Linux
+* Networking
+* Active Directory
+* Microsoft 365
+* Security
+
+---
+
+# 19. Interview Questions Practiced
+
+Today's interview preparation included:
+
+* What is Safe Mode?
+* What is Windows Recovery Environment?
+* System Restore vs backup
+* Windows Firewall
+* Linux `/etc`
+* Linux `/var/log`
+* `sudo`
+* `apt update` vs `apt upgrade`
+* DNS A record
+* DNS MX record
+* DHCP DORA
+* VPN
+* Domain Controller
+* Active Directory and DNS
+* Security Group vs Distribution Group
+* Microsoft 365
+* Microsoft Entra ID
+* Active Directory vs Entra ID
+
+---
+
+# 20. Important Corrections From Day 48
+
+### Authentication
+
+Authentication:
+
+> Verifies who the user is.
+
+### Authorization
+
+Authorization:
+
+> Determines what the authenticated user is allowed to access.
+
+### A Record
+
+> Maps a hostname to an IPv4 address.
+
+### MX Record
+
+> Identifies the mail server responsible for receiving email for a domain.
+
+### Domain Controller
+
+> A server that hosts Active Directory Domain Services and provides domain-related services such as authentication.
+
+### `sudo`
+
+> Allows an authorized user to execute commands with elevated privileges.
+
+### Microsoft Entra ID
+
+> Microsoft's cloud-based identity and access management service.
+
+---
+
+# 21. Day 48 Summary
+
+Today I expanded my IT Support knowledge beyond the basic Windows, Linux, Active Directory, and networking foundation.
+
+I learned about Windows recovery tools, Safe Mode, Windows Firewall, Linux filesystem structure, Linux privilege management, package management, DNS records, DHCP, VPNs, Domain Controllers, the relationship between Active Directory and DNS, security and distribution groups, Microsoft 365, and Microsoft Entra ID.
+
+I also practiced a realistic remote-user troubleshooting scenario involving Internet connectivity, VPN, authentication, MFA, Microsoft 365, and application permissions.
+
+## Key Learning Goal
+
+My focus is now shifting from simply knowing definitions to being able to:
+
+**Explain → Apply → Troubleshoot → Verify → Document**
+
+This approach will help prepare me for entry-level IT Support and Help Desk interviews.
