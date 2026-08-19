@@ -1,0 +1,629 @@
+# Day 47 – IT Support Training
+
+## Overview
+
+Today I focused on strengthening my Windows, Active Directory, Linux, networking, security, and Help Desk troubleshooting knowledge.
+
+The main objective was to improve both my technical understanding and my ability to explain concepts using professional IT Support terminology.
+
+---
+
+## 1. Windows – System Configuration
+
+### System Configuration (`msconfig`)
+
+System Configuration is a Windows utility used to troubleshoot startup, boot, and system configuration issues.
+
+It can be opened using:
+
+```text
+Windows + R
+msconfig
+```
+
+Important areas include:
+
+* General
+* Boot
+* Services
+* Startup
+* Tools
+
+Changes to system services or startup settings should only be made when appropriate and authorized.
+
+---
+
+## 2. Windows Services vs Startup Applications
+
+### Windows Service
+
+A Windows service is a background component that can run independently of a user's session.
+
+Examples:
+
+* DHCP Client
+* DNS Client
+* Print Spooler
+
+### Startup Application
+
+A startup application is an application configured to launch during system startup or when a user signs in.
+
+### Key Difference
+
+```text
+Windows Service
+→ Background system component
+
+Startup Application
+→ Application launched during startup/sign-in
+```
+
+---
+
+## 3. Windows Service Startup Types
+
+Common Windows service startup types include:
+
+* Automatic
+* Automatic (Delayed Start)
+* Manual
+* Disabled
+
+### Purpose
+
+* **Automatic:** Starts automatically during system startup.
+* **Automatic (Delayed Start):** Starts automatically after other startup operations.
+* **Manual:** Starts when needed.
+* **Disabled:** Cannot start until its startup configuration is changed.
+
+---
+
+## 4. Print Spooler
+
+The Print Spooler is a Windows service that manages print jobs and sends them to the appropriate printer.
+
+Basic troubleshooting process:
+
+```text
+Check printer
+↓
+Check connection
+↓
+Check print queue
+↓
+Check Print Spooler
+↓
+Restart service if appropriate
+↓
+Test printing
+↓
+Document the resolution
+```
+
+---
+
+## 5. Windows System Information
+
+### `systeminfo`
+
+The `systeminfo` command displays detailed information about the Windows operating system, computer, hardware, and configuration.
+
+Other important Windows commands reviewed:
+
+```cmd
+hostname
+whoami
+systeminfo
+ipconfig
+ping
+nslookup
+tracert
+```
+
+### Command purposes
+
+| Command      | Purpose                                  |
+| ------------ | ---------------------------------------- |
+| `hostname`   | Displays computer name                   |
+| `whoami`     | Displays current logged-in user          |
+| `systeminfo` | Displays detailed system information     |
+| `ipconfig`   | Displays IP configuration                |
+| `ping`       | Tests network connectivity               |
+| `nslookup`   | Tests/queries DNS                        |
+| `tracert`    | Traces the network path to a destination |
+
+---
+
+# 6. Active Directory – Authentication and Authorization
+
+## Authentication
+
+Authentication verifies the identity of a user.
+
+Example:
+
+```text
+Username + Password
+↓
+Authentication
+↓
+Who are you?
+```
+
+## Authorization
+
+Authorization determines what an authenticated user is allowed to access or perform.
+
+Example:
+
+```text
+Authenticated User
+↓
+Security Group
+↓
+Folder Permission
+↓
+Access Granted
+```
+
+### Key Difference
+
+> Authentication verifies **who you are**; authorization determines **what you are allowed to access**.
+
+---
+
+# 7. Domain Account Troubleshooting
+
+When a domain user cannot log in, I should not immediately assume that the Active Directory account is the problem.
+
+A structured troubleshooting approach is:
+
+```text
+Gather information
+↓
+Check error message
+↓
+Check network connectivity
+↓
+Verify username/password
+↓
+Check account status
+↓
+Check locked/disabled status
+↓
+Check domain connectivity
+↓
+Apply authorized fix
+↓
+Verify with user
+↓
+Document
+↓
+Close or escalate
+```
+
+Important questions include:
+
+* When did the problem start?
+* What error message do you receive?
+* Can another user log in?
+* Did you recently change your password?
+* Did you enter the password incorrectly multiple times?
+* Can you access the company network?
+* Are you able to log in from another computer?
+
+---
+
+# 8. Networking – Subnet Mask
+
+A subnet mask works with an IP address to identify the network portion and host portion of an IP address.
+
+Example:
+
+```text
+IP Address:
+192.168.1.10
+
+Subnet Mask:
+255.255.255.0
+```
+
+The subnet mask helps determine which portion represents the network and which portion represents the host.
+
+---
+
+# 9. Private and Public IP Addresses
+
+## Private IP
+
+A private IP address is used within a private/local network and is not directly routable across the public Internet.
+
+Common private IPv4 ranges include:
+
+```text
+10.0.0.0/8
+
+172.16.0.0 – 172.31.255.255
+
+192.168.0.0/16
+```
+
+## Public IP
+
+A public IP address is globally routable and is used for communication across the public Internet.
+
+Public IPv4 connectivity is commonly provided through an ISP or organization.
+
+---
+
+# 10. NAT
+
+NAT stands for Network Address Translation.
+
+NAT translates IP addressing between different network contexts and commonly allows devices using private IPv4 addresses to access the Internet through public IPv4 connectivity.
+
+Example:
+
+```text
+Private IP
+192.168.1.10
+      ↓
+     NAT
+      ↓
+Public IP
+      ↓
+Internet
+```
+
+---
+
+# 11. Important Network Ports
+
+|  Port | Protocol/Service |
+| ----: | ---------------- |
+|    22 | SSH              |
+|    53 | DNS              |
+| 67/68 | DHCP             |
+|    80 | HTTP             |
+|   443 | HTTPS            |
+|   445 | SMB              |
+|  3389 | RDP              |
+
+### Important correction
+
+SMB uses **TCP 445**, not 447.
+
+---
+
+# 12. Linux – Processes
+
+A process is a running instance of a program.
+
+Commands reviewed:
+
+```bash
+ps
+ps aux
+top
+htop
+```
+
+### `ps aux`
+
+Displays currently running processes.
+
+### `top`
+
+Displays processes and system resource usage dynamically.
+
+### `htop`
+
+Provides an interactive view of running processes and resource usage.
+
+---
+
+# 13. Linux – Services and Logs
+
+### `systemctl`
+
+`systemctl` is used to manage and inspect systemd services.
+
+Example:
+
+```bash
+systemctl status ssh
+```
+
+### `journalctl`
+
+`journalctl` is used to view logs collected by the systemd journal.
+
+Example:
+
+```bash
+journalctl -u ssh
+```
+
+### Key Difference
+
+```text
+systemctl
+→ Service management/status
+
+journalctl
+→ Logs
+```
+
+---
+
+# 14. Linux Networking
+
+Important commands reviewed:
+
+```bash
+ip addr
+ip route
+ip neigh
+ping
+```
+
+### `ip addr`
+
+Displays network interfaces and IP addresses.
+
+### `ip route`
+
+Displays the system's routing table.
+
+### `ip neigh`
+
+Displays neighboring devices and ARP-related information.
+
+### `ping`
+
+Tests network connectivity.
+
+---
+
+# 15. Linux Permissions
+
+Reviewed `chmod 755`.
+
+```text
+755
+↓
+rwx r-x r-x
+```
+
+| User               | Group        | Others       |
+| ------------------ | ------------ | ------------ |
+| rwx                | r-x          | r-x          |
+| Read/Write/Execute | Read/Execute | Read/Execute |
+
+Other important permission commands:
+
+```bash
+chmod
+chown
+chgrp
+```
+
+* `chmod` → Changes permissions
+* `chown` → Changes ownership
+* `chgrp` → Changes group ownership
+
+---
+
+# 16. Security – Principle of Least Privilege
+
+The principle of least privilege means giving users, systems, or applications only the minimum permissions required to perform their responsibilities.
+
+Benefits include:
+
+* Reduced unauthorized access
+* Reduced security risk
+* Reduced potential damage from compromised accounts
+* Easier permission management
+
+Example:
+
+A finance employee should receive the permissions required for their job rather than unnecessary administrator privileges.
+
+---
+
+# 17. Multi-Factor Authentication
+
+MFA stands for Multi-Factor Authentication.
+
+MFA uses two or more different authentication factor categories.
+
+### Something you know
+
+* Password
+* PIN
+
+### Something you have
+
+* Authenticator app/device
+* Security key
+
+### Something you are
+
+* Fingerprint
+* Facial recognition
+
+Example:
+
+```text
+Password
++
+Authenticator App
+=
+MFA
+```
+
+---
+
+# 18. Help Desk Ticket Scenario
+
+### Scenario
+
+A user cannot access the Finance shared folder after changing their password.
+
+### Initial Questions
+
+* When did the issue start?
+* Did you recently change your password?
+* Can you log in to Windows?
+* Can you access other shared folders?
+* Are other Finance users affected?
+* What error message do you receive?
+* Are you connected to the company network or VPN?
+
+### Investigation
+
+```text
+Authentication
+↓
+Active Directory account
+↓
+Network connectivity
+↓
+Security group membership
+↓
+Share permissions
+↓
+NTFS permissions
+```
+
+If a permission issue is identified, changes should only be made with appropriate authorization.
+
+### Verification
+
+Ask the user to test the shared folder again.
+
+Example:
+
+```text
+\\Server01\Finance
+```
+
+If resolved:
+
+```text
+Document
+↓
+Close ticket
+```
+
+If unresolved or outside my access:
+
+```text
+Document findings
+↓
+Escalate
+```
+
+---
+
+# 19. Troubleshooting Methodology
+
+The general Help Desk troubleshooting process practiced today:
+
+```text
+1. Gather information
+2. Identify symptoms
+3. Ask targeted questions
+4. Identify possible causes
+5. Start with basic troubleshooting
+6. Apply an authorized fix
+7. Verify the result
+8. Document the resolution
+9. Close or escalate
+```
+
+This methodology can be applied to Windows, Linux, networking, Active Directory, and Microsoft 365 issues.
+
+---
+
+# 20. Interview Preparation
+
+Important interview concepts practiced today:
+
+* Authentication vs authorization
+* Windows services
+* Startup applications
+* Print Spooler
+* `msconfig`
+* Subnet mask
+* Private vs public IP
+* NAT
+* Network ports
+* Linux processes
+* `systemctl`
+* `journalctl`
+* Linux permissions
+* Least privilege
+* MFA
+* Domain login troubleshooting
+
+---
+
+# 21. Key Corrections From Today
+
+Important corrections to remember:
+
+```text
+445 → SMB
+22 → SSH
+3389 → RDP
+```
+
+```text
+Authentication
+→ Who are you?
+
+Authorization
+→ What are you allowed to access?
+```
+
+```text
+Process
+→ Running instance of a program
+```
+
+```text
+systemctl
+→ Manage/check services
+
+journalctl
+→ View logs
+```
+
+```text
+MFA
+→ Uses different authentication factor categories
+```
+
+---
+
+# 22. Day 47 Learning Summary
+
+Today I strengthened my understanding of Windows system configuration, services, Active Directory authentication and authorization, networking concepts, Linux processes and services, security principles, and Help Desk troubleshooting.
+
+I also focused on improving my technical wording so that I can communicate solutions more professionally during interviews and real-world IT Support situations.
+
+## Next Step
+
+Continue expanding the remaining Windows, Linux, Active Directory, and networking checklist while beginning Microsoft 365 fundamentals, including:
+
+* Microsoft 365 basics
+* Microsoft Entra ID
+* Outlook/Exchange Online
+* Teams
+* OneDrive
+* SharePoint
+* Microsoft 365 troubleshooting
+
+The goal is to have broad entry-level IT Support awareness across **Windows, Linux, Active Directory, Networking, Microsoft 365, Security, and Troubleshooting**.
