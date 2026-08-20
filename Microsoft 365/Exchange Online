@@ -1,0 +1,93 @@
+--- Exchange Online
+
+Exchange Online is Microsoft's cloud-hosted email and calendaring service within Microsoft 365.
+
+It provides:
+
+Mailboxes
+Email
+Calendars
+Contacts
+Email delivery
+----- Outlook vs Exchange Online
+Outlook
+
+Outlook is a client/application used to access:
+
+Email
+Calendar
+Contacts
+Mailbox features
+Exchange Online
+
+Exchange Online is the cloud service that provides:
+
+Mailboxes
+Email infrastructure
+Calendaring
+Email delivery
+Memory
+Outlook
+↓
+Client
+
+Exchange Online
+↓
+Cloud email service
+------ Shared Mailbox
+
+A shared mailbox allows multiple authorized users to access a common mailbox.
+
+Example:
+
+support@company.com
+        ↓
+IT Support Team
+
+Common examples:
+
+support@
+sales@
+HR@
+
+Users may receive permissions such as:
+
+Read/access
+Send As
+Send on Behalf
+---. Microsoft 365 License
+
+A Microsoft 365 license determines which Microsoft 365 services and features a user is entitled to access based on the assigned plan and service configuration.
+
+Possible services include:
+
+Exchange Online
+Teams
+OneDrive
+SharePoint
+Office applications
+Help Desk Scenario
+
+If a user cannot access Teams, possible causes could include:
+
+Authentication problem
+MFA problem
+License/service assignment
+Network problem
+Application problem
+Microsoft 365 service issue
+
+The license should be investigated rather than assumed to be the cause.
+
+--- Microsoft 365 Admin Center
+
+At an entry-level Help Desk level, understand that the Microsoft 365 Admin Center provides centralized administration for areas such as:
+
+Users
+Groups
+Licenses
+Services
+Service health
+Organization settings
+
+Advanced administration is outside the current beginner roadmap.
