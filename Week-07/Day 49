@@ -1,0 +1,1023 @@
+# Day 49 — Windows, Active Directory, Linux, Networking & Microsoft 365
+
+## 🎯 Objective
+
+Today's objective was to continue building a complete entry-level IT Support foundation by covering additional Windows, Active Directory, Linux, Networking, Security, and Microsoft 365 concepts.
+
+The main focus was to understand the **purpose of each technology, how it is used in a real IT Support environment, and how to troubleshoot related issues systematically**.
+
+---
+
+# 🪟 Windows Administration
+
+## 1. Windows Registry
+
+The Windows Registry is a **hierarchical database** that stores configuration information used by Windows, applications, users, and hardware.
+
+Registry information can include:
+
+* Windows configuration
+* Application settings
+* User settings
+* Hardware-related configuration
+* System settings
+
+### Common Registry Hives
+
+Basic awareness:
+
+```text
+HKEY_LOCAL_MACHINE
+→ System-wide configuration
+
+HKEY_CURRENT_USER
+→ Current user's configuration
+
+HKEY_CLASSES_ROOT
+→ File associations and application/class information
+
+HKEY_USERS
+→ Settings for user profiles
+```
+
+### Open Registry Editor
+
+```text
+Windows + R
+regedit
+```
+
+### Important
+
+Registry modifications should be performed carefully because incorrect changes can affect Windows or applications.
+
+---
+
+# 2. Event Viewer
+
+Event Viewer is a Windows utility used to view and analyze event logs for troubleshooting.
+
+### Open Event Viewer
+
+```text
+Windows + R
+eventvwr.msc
+```
+
+### Important Logs
+
+#### Application
+
+Contains events related to applications.
+
+Examples:
+
+* Application crashes
+* Application errors
+* Application warnings
+
+#### Security
+
+Contains security and authentication-related events.
+
+Examples:
+
+* Login attempts
+* Authentication events
+* Security auditing
+
+#### System
+
+Contains events related to Windows system components.
+
+Examples:
+
+* Driver events
+* Service events
+* System errors
+* Startup/shutdown events
+
+### Event Severity
+
+Common event levels include:
+
+* Information
+* Warning
+* Error
+* Critical
+
+### Troubleshooting Example
+
+If a computer unexpectedly restarts:
+
+```text
+Computer Restart
+       ↓
+Event Viewer
+       ↓
+Windows Logs
+       ↓
+System
+       ↓
+Review events around the restart time
+       ↓
+Identify possible cause
+```
+
+---
+
+# 3. Task Scheduler
+
+Task Scheduler is a Windows utility that allows tasks or programs to run automatically based on predefined triggers.
+
+### Open Task Scheduler
+
+```text
+Windows + R
+taskschd.msc
+```
+
+### Important Concepts
+
+**Trigger**
+
+Determines when the task runs.
+
+Examples:
+
+* At startup
+* At logon
+* At a specific time
+* On a schedule
+* After a system event
+
+**Action**
+
+Determines what the task performs.
+
+Example:
+
+```text
+Every night at 2:00 AM
+        ↓
+Run backup script
+```
+
+### Common Uses
+
+* Backups
+* Maintenance
+* Cleanup
+* Scripts
+* Automated application tasks
+
+---
+
+# 4. Windows Services vs Scheduled Tasks
+
+## Windows Service
+
+A Windows service is a background software component designed to perform a specific system or application function, often without direct user interaction.
+
+Examples:
+
+* Print Spooler
+* DHCP Client
+* DNS Client
+* Windows Update
+
+## Scheduled Task
+
+A scheduled task is an action configured to run automatically when a specified trigger occurs.
+
+### Comparison
+
+```text
+Windows Service
+→ Background system/application component
+
+Scheduled Task
+→ Executes a task based on a trigger
+```
+
+---
+
+# 🏢 Active Directory
+
+## 5. Group Policy
+
+Group Policy allows administrators to centrally apply configuration and security settings to users and computers in a Windows domain environment.
+
+Examples:
+
+* Password policies
+* Security settings
+* Desktop configuration
+* System restrictions
+* User configuration
+* Computer configuration
+
+### Basic Structure
+
+```text
+Active Directory
+       ↓
+      GPO
+       ↓
+Users / Computers
+       ↓
+Configuration Applied
+```
+
+---
+
+# 6. Group Policy Refresh
+
+## `gpupdate /force`
+
+The command:
+
+```cmd
+gpupdate /force
+```
+
+forces Windows to refresh and reapply Group Policy settings.
+
+### Key Meaning
+
+```text
+gpupdate
+↓
+Refresh / Reapply Group Policy
+```
+
+---
+
+# 7. Checking Applied Group Policy
+
+## `gpresult /r`
+
+The command:
+
+```cmd
+gpresult /r
+```
+
+displays Resultant Set of Policy information, including Group Policy settings applied to the current user and computer.
+
+### Difference
+
+```text
+gpupdate /force
+↓
+Refresh policy
+
+gpresult /r
+↓
+Check resulting/applied policy
+```
+
+---
+
+# 8. GPO Troubleshooting
+
+If a user reports that a new Group Policy setting is not being applied:
+
+### Troubleshooting Process
+
+```text
+Identify affected user/computer
+        ↓
+Check domain connectivity
+        ↓
+Check correct OU
+        ↓
+Check GPO link/scope
+        ↓
+Check security filtering
+        ↓
+gpupdate /force
+        ↓
+gpresult /r
+        ↓
+Review Event Viewer if needed
+        ↓
+Verify
+        ↓
+Document / Escalate
+```
+
+---
+
+# 🐧 Linux Administration
+
+## 9. Linux Filesystem
+
+Important directories reviewed:
+
+| Directory  | Purpose                    |
+| ---------- | -------------------------- |
+| `/`        | Root of filesystem         |
+| `/home`    | User home directories      |
+| `/etc`     | System configuration       |
+| `/var`     | Variable data              |
+| `/var/log` | Logs                       |
+| `/tmp`     | Temporary files            |
+| `/usr`     | Applications and utilities |
+| `/opt`     | Optional software          |
+| `/boot`    | Boot-related files         |
+| `/dev`     | Device files               |
+
+### Important Interview Knowledge
+
+```text
+/etc
+→ Configuration files
+
+/var/log
+→ Log files
+```
+
+---
+
+# 10. `sudo`
+
+`sudo` allows an authorized user to execute a command with elevated privileges.
+
+Example:
+
+```bash
+sudo systemctl restart ssh
+```
+
+### Purpose
+
+* Perform administrative tasks
+* Control privileged operations
+* Avoid requiring direct root login for every administrative action
+
+### Security Connection
+
+`sudo` supports the **Principle of Least Privilege** when privileges are properly controlled.
+
+---
+
+# 11. Linux Package Management
+
+Ubuntu uses APT for package management.
+
+## Update package information
+
+```bash
+sudo apt update
+```
+
+This refreshes local package information from configured repositories.
+
+## Upgrade installed packages
+
+```bash
+sudo apt upgrade
+```
+
+This installs newer versions of installed packages when available.
+
+## Install a package
+
+```bash
+sudo apt install package-name
+```
+
+Example:
+
+```bash
+sudo apt install tree
+```
+
+## Remove a package
+
+```bash
+sudo apt remove package-name
+```
+
+### Key Difference
+
+```text
+apt update
+→ Refresh package information
+
+apt upgrade
+→ Upgrade installed packages
+
+apt install
+→ Install software
+
+apt remove
+→ Remove software
+```
+
+---
+
+# 12. Linux Archive Management
+
+## `tar`
+
+`tar` is used to create and extract archives containing files and directories.
+
+### Create an archive
+
+```bash
+tar -cvf backup.tar folder/
+```
+
+### Extract an archive
+
+```bash
+tar -xvf backup.tar
+```
+
+### Create a gzip-compressed archive
+
+```bash
+tar -czvf backup.tar.gz folder/
+```
+
+### Extract a gzip-compressed archive
+
+```bash
+tar -xzvf backup.tar.gz
+```
+
+### Important
+
+`tar` itself creates an archive. Compression can be added through options such as `-z`.
+
+---
+
+# 🌐 Networking
+
+## 13. OSI Layer 2 vs Layer 3
+
+### Layer 2 — Data Link
+
+Common concepts:
+
+* MAC addresses
+* Ethernet frames
+* Switching
+* VLANs
+
+### Layer 3 — Network
+
+Common concepts:
+
+* IP addresses
+* Routing
+* Packets
+* Routers
+
+### Memory
+
+```text
+Layer 2
+→ MAC
+→ Frames
+→ Local network communication
+
+Layer 3
+→ IP
+→ Packets
+→ Routing between networks
+```
+
+---
+
+# 14. Network Troubleshooting
+
+For a user reporting no Internet access, use a structured process.
+
+```text
+Check physical/Wi-Fi connection
+        ↓
+ipconfig /all
+        ↓
+Check IP address
+        ↓
+Ping default gateway
+        ↓
+Ping 8.8.8.8
+        ↓
+Ping google.com
+        ↓
+nslookup google.com
+        ↓
+Identify the likely problem
+        ↓
+Apply authorized fix
+        ↓
+Verify
+        ↓
+Document
+```
+
+### Interpretation
+
+#### Cannot reach default gateway
+
+Investigate:
+
+* Local network
+* Wi-Fi/Ethernet
+* Network adapter
+* Gateway configuration
+
+#### 8.8.8.8 works but google.com fails
+
+Investigate:
+
+* DNS configuration
+* DNS server availability
+* Name resolution
+
+#### Internet works but one application fails
+
+Investigate:
+
+* Application
+* Firewall
+* Port
+* Authentication
+* Permissions
+* Application/server availability
+
+---
+
+# 15. TCP vs UDP
+
+## TCP
+
+TCP is:
+
+* Connection-oriented
+* Reliable
+* Ordered
+* Uses acknowledgments
+* Uses retransmission when necessary
+
+Common examples:
+
+* SSH
+* HTTPS
+* SMB
+* RDP
+
+## UDP
+
+UDP is:
+
+* Connectionless
+* Lower overhead
+* Does not provide TCP-style delivery guarantees
+* Does not guarantee ordering
+* Does not use TCP-style retransmission
+
+Common examples:
+
+* DNS queries
+* DHCP
+* Some real-time applications
+
+### Interview Answer
+
+> TCP is connection-oriented and provides reliable, ordered delivery using mechanisms such as acknowledgments and retransmission. UDP is connectionless and has lower overhead but does not provide TCP's delivery and ordering guarantees.
+
+---
+
+# 🏢 Active Directory and Authentication
+
+## 16. Authentication
+
+Authentication verifies the identity of a user.
+
+Example:
+
+```text
+Username + Password
+        ↓
+Authentication
+        ↓
+Who are you?
+```
+
+---
+
+## 17. Authorization
+
+Authorization determines what an authenticated user is allowed to access or perform.
+
+Example:
+
+```text
+Authenticated User
+        ↓
+Security Group
+        ↓
+Finance Folder
+        ↓
+Authorized Access
+```
+
+### Key Difference
+
+> **Authentication verifies who you are; authorization determines what you are allowed to access.**
+
+---
+
+# ☁️ Microsoft 365
+
+## 18. Exchange Online
+
+Exchange Online is Microsoft's cloud-hosted email and calendaring service within Microsoft 365.
+
+It provides:
+
+* Mailboxes
+* Email
+* Calendars
+* Contacts
+* Email delivery
+
+---
+
+# 19. Outlook vs Exchange Online
+
+### Outlook
+
+Outlook is a client/application used to access:
+
+* Email
+* Calendar
+* Contacts
+* Mailbox features
+
+### Exchange Online
+
+Exchange Online is the cloud service that provides:
+
+* Mailboxes
+* Email infrastructure
+* Calendaring
+* Email delivery
+
+### Memory
+
+```text
+Outlook
+↓
+Client
+
+Exchange Online
+↓
+Cloud email service
+```
+
+---
+
+# 20. Shared Mailbox
+
+A shared mailbox allows multiple authorized users to access a common mailbox.
+
+Example:
+
+```text
+support@company.com
+        ↓
+IT Support Team
+```
+
+Common examples:
+
+* support@
+* sales@
+* HR@
+
+Users may receive permissions such as:
+
+* Read/access
+* Send As
+* Send on Behalf
+
+---
+
+# 21. Microsoft 365 License
+
+A Microsoft 365 license determines which Microsoft 365 services and features a user is entitled to access based on the assigned plan and service configuration.
+
+Possible services include:
+
+* Exchange Online
+* Teams
+* OneDrive
+* SharePoint
+* Office applications
+
+### Help Desk Scenario
+
+If a user cannot access Teams, possible causes could include:
+
+* Authentication problem
+* MFA problem
+* License/service assignment
+* Network problem
+* Application problem
+* Microsoft 365 service issue
+
+The license should be investigated rather than assumed to be the cause.
+
+---
+
+# 22. Microsoft 365 Admin Center
+
+At an entry-level Help Desk level, understand that the Microsoft 365 Admin Center provides centralized administration for areas such as:
+
+* Users
+* Groups
+* Licenses
+* Services
+* Service health
+* Organization settings
+
+Advanced administration is outside the current beginner roadmap.
+
+---
+
+# 23. Microsoft 365 Help Desk Ticket
+
+## Ticket
+
+> User cannot access Outlook and Teams after changing their password.
+
+### Information Gathering
+
+Ask:
+
+1. When did the issue start?
+2. Did you recently change the password?
+3. Can you sign in to Windows?
+4. Is Internet access working?
+5. Can you access Outlook Web?
+6. Can you access Teams?
+7. Are you receiving an error message?
+8. Is MFA working?
+9. Are other users affected?
+10. Can another Microsoft 365 service be accessed?
+
+### Investigation
+
+```text
+Internet
+ ↓
+Account / Authentication
+ ↓
+Password
+ ↓
+MFA
+ ↓
+Outlook Web / Teams Web
+ ↓
+Microsoft 365 service health
+ ↓
+License / service assignment
+ ↓
+Local application
+ ↓
+Fix
+ ↓
+Verify
+ ↓
+Document / Escalate
+```
+
+---
+
+# 24. Security Concepts
+
+## Principle of Least Privilege
+
+Least privilege means giving users, systems, or applications only the minimum permissions required to perform their responsibilities.
+
+### Example
+
+A Help Desk employee should not automatically receive Domain Administrator privileges when a lower level of access is sufficient.
+
+---
+
+# 25. Multi-Factor Authentication (MFA)
+
+MFA uses two or more different authentication factor categories.
+
+### Something you know
+
+* Password
+* PIN
+
+### Something you have
+
+* Authenticator app/device
+* Security key
+
+### Something you are
+
+* Fingerprint
+* Facial recognition
+
+### Example
+
+```text
+Password
++
+Authenticator App
+=
+MFA
+```
+
+A password and PIN alone are normally both examples of the **same factor category** ("something you know"), so they do not by themselves represent two distinct MFA factors.
+
+---
+
+# 26. Help Desk Troubleshooting Methodology
+
+Today's support workflow:
+
+```text
+1. Gather Information
+        ↓
+2. Understand Symptoms
+        ↓
+3. Identify Possible Causes
+        ↓
+4. Start With Basic Checks
+        ↓
+5. Investigate Evidence
+        ↓
+6. Apply Authorized Fix
+        ↓
+7. Verify With User
+        ↓
+8. Document
+        ↓
+9. Close or Escalate
+```
+
+### Important Principle
+
+> **Do not guess and do not make unnecessary changes. Use evidence to identify the likely cause first.**
+
+---
+
+# 27. Interview Questions Practiced
+
+### Windows
+
+1. What is the Windows Registry?
+2. What is Event Viewer?
+3. What is Task Scheduler?
+4. Difference between a Windows service and a scheduled task?
+
+### Linux
+
+5. What is `/etc`?
+6. What is `/var/log`?
+7. What does `sudo` do?
+8. What is `grep`?
+9. What is `tar`?
+
+### Networking
+
+10. Explain OSI Layer 2 vs Layer 3.
+11. How would you troubleshoot no Internet access?
+12. What is TCP?
+13. What is UDP?
+
+### Active Directory
+
+14. What is authentication?
+15. What is authorization?
+16. What is the difference between authentication and authorization?
+17. What is GPO?
+18. What does `gpupdate /force` do?
+19. What does `gpresult /r` do?
+
+### Microsoft 365
+
+20. What is Exchange Online?
+21. Outlook vs Exchange Online?
+22. What is a shared mailbox?
+23. What is a Microsoft 365 license?
+24. What can an administrator do in the Microsoft 365 Admin Center?
+
+---
+
+# 28. Professional Behavioral Answer
+
+## Question
+
+**How do you approach troubleshooting when you do not immediately know the cause?**
+
+### Answer
+
+> I first gather information by asking targeted questions and understanding the symptoms. I then identify possible causes and start with the simplest and safest troubleshooting steps. I use available system tools, logs, and documentation to collect evidence rather than guessing. Once I identify the likely cause and have authorization to make the change, I apply the appropriate fix and verify the result with the user. Finally, I document the troubleshooting and resolution, or escalate the issue with my findings if it requires additional access or expertise.
+
+---
+
+# 29. Key Technical Corrections From Day 49
+
+### Windows Service vs Services Tool
+
+```text
+Windows Service
+→ Background software component
+
+services.msc
+→ Tool used to manage Windows services
+```
+
+### Layer 2 vs Layer 3
+
+```text
+Layer 2
+→ MAC
+→ Frames
+
+Layer 3
+→ IP
+→ Packets
+→ Routing
+```
+
+### Microsoft 365
+
+```text
+Outlook
+→ Client
+
+Exchange Online
+→ Cloud email service
+
+Shared Mailbox
+→ Common mailbox for multiple authorized users
+
+License
+→ Determines entitled services/features
+```
+
+### Linux
+
+```text
+sudo
+→ Run authorized commands with elevated privileges
+
+tar
+→ Create/extract archives
+
+/var/log
+→ Logs
+```
+
+---
+
+# 30. Day 49 Summary
+
+Today I expanded my IT Support knowledge across Windows, Active Directory, Linux, networking, security, and Microsoft 365.
+
+I learned about the Windows Registry, Event Viewer, Task Scheduler, Linux package and archive management, OSI Layer 2 and Layer 3, TCP and UDP, authentication and authorization, Group Policy, Exchange Online, Outlook, shared mailboxes, Microsoft 365 licensing, the Microsoft 365 Admin Center, least privilege, and MFA.
+
+I also practiced troubleshooting a Microsoft 365 user who could not access Outlook and Teams after changing their password.
+
+The major learning objective was to connect individual technologies into a complete Help Desk troubleshooting process:
+
+```text
+User Problem
+     ↓
+Information Gathering
+     ↓
+Identify Technology Involved
+     ↓
+Collect Evidence
+     ↓
+Identify Root Cause
+     ↓
+Authorized Fix
+     ↓
+User Verification
+     ↓
+Documentation
+     ↓
+Close / Escalate
+```
+
+### Final Reflection
+
+Today's training reinforced that IT Support is not simply about memorizing commands. A good technician needs to understand **which technology is involved, what evidence to collect, which tool to use, how to make a controlled change, and how to verify and document the result**.
+
+The roadmap is now moving toward final checklist completion across Windows, Linux, Networking, Active Directory, Microsoft 365, Security, and Help Desk troubleshooting.
