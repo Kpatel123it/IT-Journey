@@ -1,0 +1,85 @@
+4.1 DNS Records
+
+Important DNS record types:
+
+Record	Purpose
+A	Hostname → IPv4 address
+AAAA	Hostname → IPv6 address
+CNAME	Alias → hostname
+MX	Identifies mail server for a domain
+TXT	Stores text/verification information
+4.2 MX Record
+
+An MX (Mail Exchange) record identifies the mail server responsible for receiving email for a domain.
+
+Example:
+
+company.com
+     ↓
+MX Record
+     ↓
+Mail Server
+
+MX records are important when troubleshooting email delivery.
+
+4.3 DHCP Reservation
+
+A DHCP reservation allows a DHCP server to consistently assign a particular IP address to a specific device.
+
+It is commonly associated with a device's MAC address or other client identifier.
+
+Useful for:
+
+Printers
+Servers
+Cameras
+Network devices
+Example
+Printer
+ ↓
+MAC Address
+ ↓
+DHCP Reservation
+ ↓
+192.168.1.50
+
+This provides predictable addressing while maintaining centralized DHCP management.
+
+4.4 Proxy
+
+A proxy acts as an intermediary between a client and a destination service.
+
+Basic structure:
+
+Client
+ ↓
+Proxy
+ ↓
+Internet / Destination
+
+Organizations may use proxies for:
+
+Web filtering
+Logging
+Security
+Access control
+Interview Answer
+
+A proxy acts as an intermediary between a client and a destination service and can be used for filtering, logging, security, and access control.
+
+4.5 ACL
+
+ACL stands for Access Control List.
+
+An ACL is a collection of allow/deny rules used to control access or traffic.
+
+In networking, ACL rules may use criteria such as:
+
+Source IP
+Destination IP
+Protocol
+Port
+Memory
+ACL
+↓
+Allow / Deny Rules
