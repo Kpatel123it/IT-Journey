@@ -1,0 +1,63 @@
+3.1 Root and sudo
+
+The root account is the Linux superuser account with extensive administrative privileges.
+
+sudo allows an authorized user to execute commands with elevated privileges.
+
+Example:
+
+sudo systemctl restart ssh
+Security Principle
+
+Using sudo appropriately supports controlled privilege elevation and the Principle of Least Privilege.
+
+3.2 Linux Archive Management with tar
+
+tar is commonly used to create and extract archives containing files and directories.
+
+Create an archive
+tar -cvf backup.tar folder/
+Extract an archive
+tar -xvf backup.tar
+Create a gzip-compressed archive
+tar -czvf backup.tar.gz folder/
+Extract a gzip-compressed archive
+tar -xzvf backup.tar.gz
+Important Distinction
+tar
+↓
+Archive
+
+gzip
+↓
+Compression
+
+tar creates the archive; compression can be added through options such as -z.
+
+3.3 Environment Variables
+
+Environment variables are named values available to the shell and processes that store configuration or runtime information.
+
+View environment variables:
+
+env
+
+Example:
+
+echo $PATH
+3.4 PATH
+
+PATH is an environment variable containing directories that the shell searches when locating executable commands.
+
+Concept:
+
+Command
+ ↓
+Search PATH directories
+ ↓
+Find executable
+ ↓
+Execute command
+Interview Answer
+
+PATH is an environment variable containing directories that the shell searches when locating executable commands.
