@@ -1,0 +1,937 @@
+# Day 50 — Windows, Active Directory, Linux, Networking & Microsoft 365
+
+## 🎯 Objective
+
+Today's training focused on completing more of the entry-level IT Support roadmap across Windows, Active Directory, Linux, networking, security, and Microsoft 365.
+
+The primary objective was to understand the purpose of each technology, distinguish similar concepts, and apply them to realistic Help Desk troubleshooting scenarios.
+
+---
+
+# 🪟 1. Windows Administration
+
+## 1.1 PowerShell
+
+PowerShell is Microsoft's command-line shell and scripting environment.
+
+It can be used for:
+
+* System administration
+* Automation
+* Troubleshooting
+* Process management
+* Service management
+* Network administration
+
+### Common Commands
+
+```powershell
+whoami
+```
+
+Displays the current user.
+
+```powershell
+hostname
+```
+
+Displays the computer name.
+
+```powershell
+Get-Process
+```
+
+Displays running processes.
+
+```powershell
+Get-Service
+```
+
+Displays Windows services.
+
+```powershell
+Test-Connection 8.8.8.8
+```
+
+Tests network connectivity using PowerShell.
+
+```powershell
+Get-Help Get-Service
+```
+
+Displays help information for a PowerShell command.
+
+### Interview Answer
+
+> PowerShell is Microsoft's command-line shell and scripting environment used to administer Windows systems, troubleshoot problems, and automate tasks.
+
+---
+
+# 1.2 Windows Credential Manager
+
+Credential Manager is a Windows feature used to view and manage certain saved credentials used by Windows and applications.
+
+It can contain:
+
+* Windows credentials
+* Web credentials
+
+### Help Desk Relevance
+
+If a user changes a password and an application continues using an old saved credential, Credential Manager may be an area to investigate according to company procedures.
+
+### Important
+
+Saved credentials should not be deleted blindly. First identify which resource or application is using the credential.
+
+---
+
+# 1.3 Windows Firewall
+
+Windows Firewall monitors and controls network traffic based on configured rules.
+
+It can control:
+
+* Inbound traffic
+* Outbound traffic
+* Applications
+* Ports
+* Network profiles
+
+### Example
+
+```text
+Inbound TCP 3389
+        ↓
+Firewall Rule
+        ↓
+Allow / Block
+```
+
+### Interview Answer
+
+> Windows Firewall controls inbound and outbound network traffic according to configured security rules involving applications, ports, protocols, and network profiles.
+
+---
+
+# 🏢 2. Active Directory
+
+## 2.1 Domain Controller
+
+A Domain Controller (DC) is a server that hosts Active Directory Domain Services (AD DS).
+
+It provides functions such as:
+
+* Authentication
+* Directory services
+* Domain-related management
+* User and computer authentication
+
+### Basic Flow
+
+```text
+User
+ ↓
+Domain Controller
+ ↓
+Authentication
+ ↓
+Domain Resources
+```
+
+### Important Distinction
+
+```text
+Domain
+↓
+Logical environment
+
+Active Directory Domain Services
+↓
+Directory service
+
+Domain Controller
+↓
+Server that hosts AD DS
+```
+
+---
+
+# 2.2 Computer Account
+
+A computer account is an Active Directory object that represents a computer joined to the domain.
+
+Example:
+
+```text
+Computer:
+PC-FIN-001
+
+        ↓
+
+Active Directory
+        ↓
+Computer Account
+```
+
+Computer accounts allow the organization to manage domain-joined computers.
+
+---
+
+# 2.3 Domain Join
+
+Domain joining adds a computer to an Active Directory domain.
+
+### Basic Process
+
+```text
+Computer
+ ↓
+Correct DNS configuration
+ ↓
+Reach Domain Controller
+ ↓
+Authorized domain credentials
+ ↓
+Join Domain
+ ↓
+Restart
+ ↓
+Domain Authentication
+```
+
+### Important
+
+Incorrect DNS configuration can prevent domain-join operations because the computer needs to locate domain services and Domain Controllers.
+
+---
+
+# 2.4 GPO Inheritance
+
+Group Policy settings can be inherited from higher-level Active Directory containers and may affect lower-level OUs and objects depending on the policy configuration and processing rules.
+
+### Basic Structure
+
+```text
+Domain
+ ↓
+OU
+ ↓
+Sub-OU
+ ↓
+User / Computer
+```
+
+### Interview Answer
+
+> GPO inheritance allows policy settings from higher-level Active Directory containers to be inherited by lower-level containers and objects according to Group Policy processing rules.
+
+---
+
+# 2.5 Security Group vs Distribution Group
+
+## Security Group
+
+Primarily used for:
+
+* Access control
+* Permissions
+* Resource access
+
+Example:
+
+```text
+Finance Security Group
+        ↓
+Finance Shared Folder
+        ↓
+Access
+```
+
+## Distribution Group
+
+Primarily used for:
+
+* Email distribution
+
+Example:
+
+```text
+HR Distribution Group
+        ↓
+HR Employees
+        ↓
+Email Distribution
+```
+
+### Memory
+
+```text
+Security Group
+↓
+Access
+
+Distribution Group
+↓
+Email
+```
+
+---
+
+# 🐧 3. Linux Administration
+
+## 3.1 Root and `sudo`
+
+The `root` account is the Linux superuser account with extensive administrative privileges.
+
+`sudo` allows an authorized user to execute commands with elevated privileges.
+
+Example:
+
+```bash
+sudo systemctl restart ssh
+```
+
+### Security Principle
+
+Using `sudo` appropriately supports controlled privilege elevation and the **Principle of Least Privilege**.
+
+---
+
+# 3.2 Linux Archive Management with `tar`
+
+`tar` is commonly used to create and extract archives containing files and directories.
+
+### Create an archive
+
+```bash
+tar -cvf backup.tar folder/
+```
+
+### Extract an archive
+
+```bash
+tar -xvf backup.tar
+```
+
+### Create a gzip-compressed archive
+
+```bash
+tar -czvf backup.tar.gz folder/
+```
+
+### Extract a gzip-compressed archive
+
+```bash
+tar -xzvf backup.tar.gz
+```
+
+### Important Distinction
+
+```text
+tar
+↓
+Archive
+
+gzip
+↓
+Compression
+```
+
+`tar` creates the archive; compression can be added through options such as `-z`.
+
+---
+
+# 3.3 Environment Variables
+
+Environment variables are named values available to the shell and processes that store configuration or runtime information.
+
+View environment variables:
+
+```bash
+env
+```
+
+Example:
+
+```bash
+echo $PATH
+```
+
+---
+
+# 3.4 PATH
+
+`PATH` is an environment variable containing directories that the shell searches when locating executable commands.
+
+Concept:
+
+```text
+Command
+ ↓
+Search PATH directories
+ ↓
+Find executable
+ ↓
+Execute command
+```
+
+### Interview Answer
+
+> PATH is an environment variable containing directories that the shell searches when locating executable commands.
+
+---
+
+# 🌐 4. Networking
+
+## 4.1 DNS Records
+
+Important DNS record types:
+
+| Record | Purpose                              |
+| ------ | ------------------------------------ |
+| A      | Hostname → IPv4 address              |
+| AAAA   | Hostname → IPv6 address              |
+| CNAME  | Alias → hostname                     |
+| MX     | Identifies mail server for a domain  |
+| TXT    | Stores text/verification information |
+
+---
+
+# 4.2 MX Record
+
+An MX (Mail Exchange) record identifies the mail server responsible for receiving email for a domain.
+
+Example:
+
+```text
+company.com
+     ↓
+MX Record
+     ↓
+Mail Server
+```
+
+MX records are important when troubleshooting email delivery.
+
+---
+
+# 4.3 DHCP Reservation
+
+A DHCP reservation allows a DHCP server to consistently assign a particular IP address to a specific device.
+
+It is commonly associated with a device's MAC address or other client identifier.
+
+Useful for:
+
+* Printers
+* Servers
+* Cameras
+* Network devices
+
+### Example
+
+```text
+Printer
+ ↓
+MAC Address
+ ↓
+DHCP Reservation
+ ↓
+192.168.1.50
+```
+
+This provides predictable addressing while maintaining centralized DHCP management.
+
+---
+
+# 4.4 Proxy
+
+A proxy acts as an intermediary between a client and a destination service.
+
+Basic structure:
+
+```text
+Client
+ ↓
+Proxy
+ ↓
+Internet / Destination
+```
+
+Organizations may use proxies for:
+
+* Web filtering
+* Logging
+* Security
+* Access control
+
+### Interview Answer
+
+> A proxy acts as an intermediary between a client and a destination service and can be used for filtering, logging, security, and access control.
+
+---
+
+# 4.5 ACL
+
+ACL stands for **Access Control List**.
+
+An ACL is a collection of allow/deny rules used to control access or traffic.
+
+In networking, ACL rules may use criteria such as:
+
+* Source IP
+* Destination IP
+* Protocol
+* Port
+
+### Memory
+
+```text
+ACL
+↓
+Allow / Deny Rules
+```
+
+---
+
+# ☁️ 5. Microsoft 365
+
+## 5.1 Microsoft 365
+
+Microsoft 365 is a cloud-based subscription platform providing productivity, communication, collaboration, and security services.
+
+Common services include:
+
+* Outlook
+* Exchange Online
+* Microsoft Teams
+* OneDrive
+* SharePoint
+* Word
+* Excel
+* PowerPoint
+
+---
+
+# 5.2 Exchange Online
+
+Exchange Online is Microsoft's cloud-hosted email and calendaring service.
+
+It provides:
+
+* Mailboxes
+* Email
+* Calendars
+* Contacts
+* Email delivery
+
+---
+
+# 5.3 Outlook vs Exchange Online
+
+## Outlook
+
+Outlook is the client/application used by users to access email, calendar, contacts, and mailbox features.
+
+## Exchange Online
+
+Exchange Online is the cloud email service that hosts mailboxes and provides email and calendaring functionality.
+
+### Memory
+
+```text
+Outlook
+↓
+Client
+
+Exchange Online
+↓
+Cloud Email Service
+```
+
+---
+
+# 5.4 Shared Mailbox
+
+A shared mailbox is a common mailbox that multiple authorized users can access.
+
+Example:
+
+```text
+support@company.com
+        ↓
+IT Support Team
+```
+
+Common permissions include:
+
+* Full Access
+* Send As
+* Send on Behalf
+
+### Help Desk Example
+
+> User can open a shared mailbox but cannot send email from it.
+
+Possible area to investigate:
+
+* Send As permission
+* Send on Behalf permission
+
+---
+
+# 5.5 OneDrive
+
+OneDrive for Business is Microsoft's cloud storage and synchronization service for a user's work files.
+
+Common uses:
+
+* File storage
+* Synchronization
+* Sharing
+* File recovery/versioning features
+
+### Memory
+
+```text
+OneDrive
+↓
+My work files
+```
+
+---
+
+# 5.6 SharePoint
+
+SharePoint is a Microsoft platform used for organizational content, collaboration, document management, and team-based information.
+
+### Memory
+
+```text
+SharePoint
+↓
+Team / Organization files
+```
+
+---
+
+# 5.7 OneDrive vs SharePoint
+
+### OneDrive
+
+Primarily used for an individual user's work files.
+
+### SharePoint
+
+Primarily used for team and organizational content.
+
+### Simple Memory
+
+```text
+OneDrive
+↓
+Mine
+
+SharePoint
+↓
+Ours
+```
+
+This is a simplified model, but useful for entry-level Help Desk interviews.
+
+---
+
+# 5.8 Microsoft Teams
+
+Microsoft Teams is a collaboration platform used for:
+
+* Chat
+* Meetings
+* Voice/video communication
+* File collaboration
+* Team/channel-based work
+
+Teams can integrate with SharePoint for file storage and collaboration.
+
+---
+
+# 5.9 Microsoft 365 Admin Center
+
+The Microsoft 365 Admin Center provides centralized administration for areas such as:
+
+* Users
+* Groups
+* Licenses
+* Services
+* Service health
+* Organization settings
+
+### Help Desk Relevance
+
+If a large number of users suddenly report that Teams or Outlook is unavailable, checking Microsoft 365 service health can help determine whether the problem is service-wide rather than local.
+
+---
+
+# 5.10 Microsoft Entra ID
+
+Microsoft Entra ID is Microsoft's cloud-based identity and access management service.
+
+It provides capabilities involving:
+
+* User identities
+* Authentication
+* Groups
+* Applications
+* Access management
+* MFA
+
+### Basic Comparison
+
+```text
+Traditional Active Directory
+↓
+Primarily on-premises identity/domain services
+
+Microsoft Entra ID
+↓
+Cloud identity and access management
+```
+
+They are related but are not simply the same product in different locations.
+
+---
+
+# 🎫 6. Help Desk Ticket
+
+## Ticket: Shared Mailbox Access
+
+### User Issue
+
+> "My normal email works, but I cannot access the department's shared mailbox."
+
+### Information Gathering
+
+Ask:
+
+1. When did the issue start?
+2. Were you able to access it previously?
+3. Can other users access the shared mailbox?
+4. Does your normal mailbox work?
+5. Can you access Outlook Web?
+6. What error message appears?
+7. Did your role or department recently change?
+8. Were any Microsoft 365 changes recently made?
+
+### Troubleshooting
+
+```text
+Normal mailbox works?
+        ↓
+Test Outlook Web
+        ↓
+Test shared mailbox
+        ↓
+Check shared mailbox permissions
+        ↓
+Check Send As / Send on Behalf if sending is affected
+        ↓
+Check Outlook client/profile if web access works
+        ↓
+Check Microsoft 365 service health
+        ↓
+Apply authorized fix
+        ↓
+Verify
+        ↓
+Document
+        ↓
+Close / Escalate
+```
+
+### Important
+
+Do not immediately recreate the Outlook profile or change permissions without identifying the cause.
+
+---
+
+# 🗣️ 7. Behavioral Interview Practice
+
+## Question
+
+**How do you prioritize multiple Help Desk tickets?**
+
+### Professional Answer
+
+> I prioritize tickets based on business impact, severity, urgency, number of users affected, security impact, and the applicable SLA. For example, an outage affecting an entire department would normally receive a higher priority than a low-impact issue affecting only one user. I also consider whether the issue prevents critical business operations or creates a security risk.
+
+---
+
+# 🔄 8. Troubleshooting Methodology
+
+Today's troubleshooting approach follows:
+
+```text
+1. Gather Information
+        ↓
+2. Understand the Symptoms
+        ↓
+3. Identify Possible Causes
+        ↓
+4. Start With Basic Checks
+        ↓
+5. Collect Evidence
+        ↓
+6. Apply Authorized Fix
+        ↓
+7. Verify With User
+        ↓
+8. Document
+        ↓
+9. Close / Escalate
+```
+
+### Core principle
+
+> **Do not guess or make unnecessary changes. Investigate first and use evidence to identify the likely cause.**
+
+---
+
+# 📚 9. Key Interview Concepts
+
+Today's important concepts:
+
+### Windows
+
+* PowerShell
+* Credential Manager
+* Windows Firewall
+* Windows services
+* Scheduled tasks
+
+### Active Directory
+
+* Domain Controller
+* Computer Account
+* Domain Join
+* GPO inheritance
+* Security Group
+* Distribution Group
+
+### Linux
+
+* Root
+* `sudo`
+* `tar`
+* Environment variables
+* PATH
+
+### Networking
+
+* DNS records
+* MX
+* DHCP reservations
+* Proxy
+* ACL
+* TCP/UDP
+* Network troubleshooting
+
+### Microsoft 365
+
+* Microsoft 365
+* Exchange Online
+* Outlook
+* Shared Mailbox
+* OneDrive
+* SharePoint
+* Teams
+* Microsoft 365 Admin Center
+* Microsoft Entra ID
+
+---
+
+# ⭐ 10. Key Technical Corrections
+
+## PowerShell
+
+> PowerShell is a command-line shell and scripting environment, not simply a tool for running programs.
+
+## Domain Controller
+
+> A Domain Controller is a server that hosts AD DS, not a container.
+
+## Environment Variable
+
+> An environment variable stores configuration/runtime information.
+
+## PATH
+
+> PATH contains directories searched for executable commands.
+
+## MX
+
+> MX identifies the mail server responsible for receiving email for a domain.
+
+## Outlook vs Exchange Online
+
+```text
+Outlook
+→ Client
+
+Exchange Online
+→ Cloud email service
+```
+
+## OneDrive vs SharePoint
+
+```text
+OneDrive
+→ Individual work files
+
+SharePoint
+→ Team/organizational content
+```
+
+---
+
+# 🎯 11. Day 50 Summary
+
+Today I expanded my IT Support knowledge into additional Windows administration, Active Directory, Linux, networking, security, and Microsoft 365 topics.
+
+I learned how PowerShell supports Windows administration and automation, how Domain Controllers and computer accounts fit into Active Directory, how GPO inheritance works, and how security and distribution groups differ.
+
+On Linux, I learned about root privileges, `sudo`, `tar`, environment variables, and PATH.
+
+In networking, I learned about DNS records, MX records, DHCP reservations, proxies, and ACLs.
+
+I also expanded my Microsoft 365 knowledge to include Exchange Online, Outlook, shared mailboxes, OneDrive, SharePoint, Teams, Microsoft 365 administration, and Microsoft Entra ID.
+
+The most important lesson was to connect these technologies to real Help Desk problems instead of memorizing isolated definitions.
+
+```text
+User Problem
+     ↓
+Identify Technology
+     ↓
+Gather Information
+     ↓
+Investigate
+     ↓
+Identify Likely Cause
+     ↓
+Authorized Fix
+     ↓
+Verify
+     ↓
+Document
+     ↓
+Close / Escalate
+```
+
+## Final Reflection
+
+Today's training showed me that modern IT Support requires knowledge across both traditional infrastructure and cloud services.
+
+I need to be comfortable troubleshooting Windows computers, Active Directory accounts, Linux systems, networking issues, and Microsoft 365 services.
+
+My continued goal is to develop both **technical knowledge and professional communication**, so I can clearly explain a problem, choose the correct troubleshooting tool, safely apply a fix, verify the result, and document the resolution.
