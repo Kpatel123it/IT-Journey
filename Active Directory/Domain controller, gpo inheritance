@@ -1,0 +1,122 @@
+2.1 Domain Controller
+
+A Domain Controller (DC) is a server that hosts Active Directory Domain Services (AD DS).
+
+It provides functions such as:
+
+Authentication
+Directory services
+Domain-related management
+User and computer authentication
+Basic Flow
+User
+ ↓
+Domain Controller
+ ↓
+Authentication
+ ↓
+Domain Resources
+Important Distinction
+Domain
+↓
+Logical environment
+
+Active Directory Domain Services
+↓
+Directory service
+
+Domain Controller
+↓
+Server that hosts AD DS
+2.2 Computer Account
+
+A computer account is an Active Directory object that represents a computer joined to the domain.
+
+Example:
+
+Computer:
+PC-FIN-001
+
+        ↓
+
+Active Directory
+        ↓
+Computer Account
+
+Computer accounts allow the organization to manage domain-joined computers.
+
+2.3 Domain Join
+
+Domain joining adds a computer to an Active Directory domain.
+
+Basic Process
+Computer
+ ↓
+Correct DNS configuration
+ ↓
+Reach Domain Controller
+ ↓
+Authorized domain credentials
+ ↓
+Join Domain
+ ↓
+Restart
+ ↓
+Domain Authentication
+Important
+
+Incorrect DNS configuration can prevent domain-join operations because the computer needs to locate domain services and Domain Controllers.
+
+2.4 GPO Inheritance
+
+Group Policy settings can be inherited from higher-level Active Directory containers and may affect lower-level OUs and objects depending on the policy configuration and processing rules.
+
+Basic Structure
+Domain
+ ↓
+OU
+ ↓
+Sub-OU
+ ↓
+User / Computer
+Interview Answer
+
+GPO inheritance allows policy settings from higher-level Active Directory containers to be inherited by lower-level containers and objects according to Group Policy processing rules.
+
+2.5 Security Group vs Distribution Group
+Security Group
+
+Primarily used for:
+
+Access control
+Permissions
+Resource access
+
+Example:
+
+Finance Security Group
+        ↓
+Finance Shared Folder
+        ↓
+Access
+Distribution Group
+
+Primarily used for:
+
+Email distribution
+
+Example:
+
+HR Distribution Group
+        ↓
+HR Employees
+        ↓
+Email Distribution
+Memory
+Security Group
+↓
+Access
+
+Distribution Group
+↓
+Email
