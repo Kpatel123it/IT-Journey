@@ -1,0 +1,155 @@
+5.1 Microsoft 365
+
+Microsoft 365 is a cloud-based subscription platform providing productivity, communication, collaboration, and security services.
+
+Common services include:
+
+Outlook
+Exchange Online
+Microsoft Teams
+OneDrive
+SharePoint
+Word
+Excel
+PowerPoint
+5.2 Exchange Online
+
+Exchange Online is Microsoft's cloud-hosted email and calendaring service.
+
+It provides:
+
+Mailboxes
+Email
+Calendars
+Contacts
+Email delivery
+5.3 Outlook vs Exchange Online
+Outlook
+
+Outlook is the client/application used by users to access email, calendar, contacts, and mailbox features.
+
+Exchange Online
+
+Exchange Online is the cloud email service that hosts mailboxes and provides email and calendaring functionality.
+
+Memory
+Outlook
+↓
+Client
+
+Exchange Online
+↓
+Cloud Email Service
+5.4 Shared Mailbox
+
+A shared mailbox is a common mailbox that multiple authorized users can access.
+
+Example:
+
+support@company.com
+        ↓
+IT Support Team
+
+Common permissions include:
+
+Full Access
+Send As
+Send on Behalf
+Help Desk Example
+
+User can open a shared mailbox but cannot send email from it.
+
+Possible area to investigate:
+
+Send As permission
+Send on Behalf permission
+5.5 OneDrive
+
+OneDrive for Business is Microsoft's cloud storage and synchronization service for a user's work files.
+
+Common uses:
+
+File storage
+Synchronization
+Sharing
+File recovery/versioning features
+Memory
+OneDrive
+↓
+My work files
+5.6 SharePoint
+
+SharePoint is a Microsoft platform used for organizational content, collaboration, document management, and team-based information.
+
+Memory
+SharePoint
+↓
+Team / Organization files
+5.7 OneDrive vs SharePoint
+OneDrive
+
+Primarily used for an individual user's work files.
+
+SharePoint
+
+Primarily used for team and organizational content.
+
+Simple Memory
+OneDrive
+↓
+Mine
+
+SharePoint
+↓
+Ours
+
+This is a simplified model, but useful for entry-level Help Desk interviews.
+
+5.8 Microsoft Teams
+
+Microsoft Teams is a collaboration platform used for:
+
+Chat
+Meetings
+Voice/video communication
+File collaboration
+Team/channel-based work
+
+Teams can integrate with SharePoint for file storage and collaboration.
+
+5.9 Microsoft 365 Admin Center
+
+The Microsoft 365 Admin Center provides centralized administration for areas such as:
+
+Users
+Groups
+Licenses
+Services
+Service health
+Organization settings
+Help Desk Relevance
+
+If a large number of users suddenly report that Teams or Outlook is unavailable, checking Microsoft 365 service health can help determine whether the problem is service-wide rather than local.
+
+5.10 Microsoft Entra ID
+
+Microsoft Entra ID is Microsoft's cloud-based identity and access management service.
+
+It provides capabilities involving:
+
+User identities
+Authentication
+Groups
+Applications
+Access management
+MFA
+Basic Comparison
+Traditional Active Directory
+↓
+Primarily on-premises identity/domain services
+
+Microsoft Entra ID
+↓
+Cloud identity and access management
+
+They are related but are not simply the same product in different locations.
