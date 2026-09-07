@@ -1,0 +1,81 @@
+Help Desk / ITSM Concepts
+Incident
+
+An incident is an unplanned interruption or degradation of an IT service.
+
+Example:
+
+Teams suddenly stops working.
+
+Service Request
+
+A service request is a request for a standard or approved service.
+
+Example:
+
+Create a new user account.
+
+Memory
+Incident
+↓
+Something is broken
+
+Service Request
+↓
+User needs something
+31. Priority and Severity
+Severity
+
+Describes how serious or damaging the issue is.
+
+Priority
+
+Helps determine how urgently the issue should be addressed, considering factors such as business impact and urgency.
+
+Examples
+
+A company-wide Microsoft 365 outage may have high priority because many users and business operations are affected.
+
+A minor display preference issue affecting one user may have lower priority.
+
+32. SLA
+
+SLA stands for:
+
+Service Level Agreement
+
+It defines agreed service expectations such as response or resolution targets.
+
+Help Desk Relevance
+
+When prioritizing tickets, consider:
+
+Severity
+Urgency
+Business impact
+Number of users affected
+Security implications
+SLA requirements
+33. Escalation
+
+Escalation means transferring an issue to a higher-level or specialized team when it exceeds the technician's:
+
+Technical knowledge
+Authorization
+Access
+Responsibility
+Examples
+Security incident
+↓
+Security Team
+
+Server problem
+↓
+Infrastructure Team
+
+Vendor issue
+↓
+Vendor Support
+Professional Escalation Statement
+
+I have completed the applicable troubleshooting steps, documented my findings and evidence, and am escalating the issue to the appropriate team for further investigation.
