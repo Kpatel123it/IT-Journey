@@ -1,0 +1,116 @@
+5.1 Microsoft 365 Licensing
+
+A Microsoft 365 license determines which Microsoft 365 services and features a user is entitled to access according to the assigned plan and service configuration.
+
+Possible services may include:
+
+Exchange Online
+Teams
+OneDrive
+SharePoint
+Microsoft 365 applications
+Important
+
+A missing feature should not automatically be assumed to be a licensing issue. Other possibilities include authentication, account configuration, service outages, or application problems.
+
+5.2 Shared Mailbox Permissions
+
+A shared mailbox can use different permissions.
+
+Full Access
+
+Allows an authorized user to access and work with the mailbox.
+
+Send As
+
+Allows an authorized user to send a message that appears to come directly from the shared mailbox.
+
+Example:
+
+From: support@company.com
+Send on Behalf
+
+Allows a user to send a message on behalf of the shared mailbox.
+
+Example:
+
+John on behalf of support@company.com
+Help Desk Scenario
+
+User can open the shared mailbox but cannot send from it.
+
+Possible area to investigate:
+
+Send As permission
+Send on Behalf permission
+5.3 OneDrive vs SharePoint
+OneDrive
+
+Primarily used for an individual's work files and cloud synchronization.
+
+User
+ ↓
+OneDrive
+ ↓
+Individual work files
+SharePoint
+
+Primarily used for team and organizational content.
+
+Team
+ ↓
+SharePoint
+ ↓
+Shared files / collaboration
+Memory
+OneDrive
+↓
+Mine
+
+SharePoint
+↓
+Ours
+
+This is a simplified model for interview purposes.
+
+5.4 Microsoft Teams Troubleshooting
+
+Common troubleshooting areas include:
+
+Internet connectivity
+Account authentication
+MFA
+License/service assignment
+Teams Web
+Teams desktop application
+Microsoft 365 Service Health
+Troubleshooting Process
+Internet
+ ↓
+Account
+ ↓
+Authentication
+ ↓
+MFA
+ ↓
+License
+ ↓
+Service Health
+ ↓
+Teams Web
+ ↓
+Desktop Application
+ ↓
+Verify
+
+Testing Teams Web can help determine whether the problem is related to the account/service or the local desktop application.
+
+5.5 Microsoft 365 Service Health
+
+The Microsoft 365 Admin Center includes service-health information.
+
+If many users suddenly report that Outlook or Teams is unavailable, service health can help determine whether there is a Microsoft 365 service-side issue.
+
+Help Desk Principle
+
+Do not troubleshoot each computer independently when the evidence suggests a company-wide service problem.
