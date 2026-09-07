@@ -1,0 +1,122 @@
+Microsoft 365 Licensing
+
+A Microsoft 365 license determines which services and features a user is entitled to use based on their assigned plan and service configuration.
+
+Possible services include:
+
+Exchange Online
+Teams
+OneDrive
+SharePoint
+Microsoft 365 applications
+Help Desk scenario
+
+User says Teams is unavailable while colleagues can use it.
+
+Possible areas to investigate:
+
+Account
+↓
+Authentication
+↓
+MFA
+↓
+License/service assignment
+↓
+Teams
+
+Licensing should be investigated as one possible cause rather than assumed to be the cause.
+
+22. Shared Mailbox Permissions
+
+A shared mailbox allows multiple authorized users to access a common mailbox.
+
+Important permission concepts include:
+
+Full Access
+
+Allows an authorized user to access the mailbox.
+
+Send As
+
+Allows an authorized user to send an email that appears to come directly from the shared mailbox.
+
+Example:
+
+From: support@company.com
+Send on Behalf
+
+Allows an authorized user to send a message on behalf of the shared mailbox.
+
+Example:
+
+John on behalf of support@company.com
+Help Desk example
+
+User can open the shared mailbox but cannot send from it.
+
+Investigate:
+
+Send As / Send on Behalf permissions
+
+23. OneDrive vs SharePoint
+OneDrive
+
+OneDrive for Business is primarily used for an individual's work files and cloud synchronization.
+
+User
+ ↓
+OneDrive
+ ↓
+Individual Work Files
+SharePoint
+
+SharePoint is primarily used for team and organizational content, collaboration, and document management.
+
+Team
+ ↓
+SharePoint
+ ↓
+Shared Content
+Memory
+OneDrive
+↓
+Mine
+
+SharePoint
+↓
+Ours
+
+This is a simplified model for interview purposes.
+
+24. Microsoft Teams
+
+Microsoft Teams is a collaboration platform used for:
+
+Chat
+Meetings
+Voice/video communication
+Team collaboration
+File collaboration
+Channels
+
+Teams can integrate with SharePoint for file storage and collaboration.
+
+25. Microsoft 365 Service Health
+
+The Microsoft 365 Admin Center provides service-health information.
+
+Help Desk scenario
+
+If hundreds of users report:
+
+"Teams is not working."
+
+Before troubleshooting individual computers, check whether Microsoft 365 has a service-side incident.
+
+Principle
+Many users affected
+↓
+Check Service Health
+
+This prevents unnecessary individual troubleshooting.
