@@ -1,0 +1,88 @@
+1.1 BitLocker
+
+BitLocker is a Windows drive-encryption technology used to protect data from unauthorized access.
+
+It is particularly useful when a laptop or storage drive is lost or stolen.
+
+Basic concept
+Laptop / Drive
+      ↓
+BitLocker Encryption
+      ↓
+Protected Data
+Help Desk Relevance
+
+A user may encounter a BitLocker recovery-key prompt.
+
+The technician should:
+
+Verify the user's identity.
+Determine why recovery was triggered.
+Follow organizational recovery procedures.
+Retrieve the recovery key through the approved management process if authorized.
+Verify the user can access the device.
+Document the resolution.
+Interview Answer
+
+BitLocker is a Windows drive-encryption technology designed to protect data from unauthorized access.
+
+1.2 Windows Security
+
+Windows Security provides access to built-in security features such as:
+
+Microsoft Defender Antivirus
+Firewall
+Account protection
+Device security
+App and browser protection
+Firewall vs Antivirus
+Firewall
+↓
+Controls network traffic
+
+Antivirus
+↓
+Detects and blocks malicious software
+1.3 Local Security Policy
+
+Local Security Policy is used to configure security settings on an individual Windows computer.
+
+Open:
+
+Windows + R
+secpol.msc
+
+Possible settings include:
+
+Password policies
+Account lockout policies
+Audit policies
+User rights
+Important distinction
+Local Security Policy
+↓
+Individual computer
+
+Group Policy
+↓
+Centralized/domain environment
+1.4 PowerShell
+
+PowerShell is Microsoft's command-line shell and scripting environment.
+
+It can be used for:
+
+Windows administration
+Troubleshooting
+Automation
+Process management
+Service management
+Network administration
+Example Commands
+Get-Process
+Get-Service
+Get-ComputerInfo
+Get-NetIPConfiguration
+Interview Answer
+
+PowerShell is Microsoft's command-line shell and scripting environment used to manage systems, troubleshoot problems, and automate administrative tasks.
