@@ -1,0 +1,1355 @@
+# Day 52 — Final First-Pass IT Support Coverage
+
+## 🎯 Objective
+
+Today marked the completion of the first-pass coverage phase of my IT Support roadmap.
+
+The goal was to make sure I had at least a basic understanding of the remaining important concepts across:
+
+* Windows
+* Active Directory
+* Linux
+* Networking
+* Microsoft 365
+* Security
+* Help Desk / ITSM
+
+The focus was not on advanced administration. Instead, the objective was to understand what each technology is, why it is used, how it appears in a real IT Support environment, and what I should investigate when a related problem occurs.
+
+---
+
+# 🪟 1. Windows Security
+
+## 1.1 BitLocker
+
+### What is BitLocker?
+
+BitLocker is a Windows drive-encryption technology used to protect data stored on a computer's drive.
+
+Encryption helps prevent unauthorized access to data if a device or storage drive is lost or stolen.
+
+### Example
+
+A company laptop containing sensitive business information is lost.
+
+Without drive encryption, someone who gains physical access to the drive may attempt to access the stored data.
+
+With BitLocker enabled:
+
+```text
+Laptop
+   ↓
+Encrypted Drive
+   ↓
+Protected Data
+```
+
+### Help Desk Relevance
+
+A user may report:
+
+> "My laptop is asking for a BitLocker recovery key."
+
+A Help Desk technician should:
+
+1. Verify the user's identity.
+2. Confirm the device.
+3. Determine why recovery was triggered.
+4. Follow the organization's recovery procedure.
+5. Retrieve or provide the recovery key only through an authorized process.
+6. Verify that the user can access the device.
+7. Document the incident.
+
+### Interview Answer
+
+> BitLocker is a Windows drive-encryption technology used to protect data from unauthorized access, especially if a device or drive is lost or stolen.
+
+### Key Memory
+
+```text
+BitLocker
+↓
+Drive Encryption
+↓
+Data Protection
+```
+
+---
+
+# 2. Windows Security / Microsoft Defender
+
+## What is Windows Security?
+
+Windows Security is the Windows interface for several built-in security features.
+
+It provides access to areas such as:
+
+* Microsoft Defender Antivirus
+* Firewall
+* Account Protection
+* Device Security
+* App and Browser Protection
+
+### Antivirus vs Firewall
+
+These two concepts should remain separate.
+
+```text
+Antivirus
+↓
+Detects / blocks malicious software
+
+Firewall
+↓
+Controls network traffic
+```
+
+### Help Desk Example
+
+A user reports:
+
+> "Windows detected a security threat."
+
+The technician should investigate the alert and follow organizational security procedures rather than simply dismissing the warning.
+
+---
+
+# 3. Local Security Policy
+
+## What is Local Security Policy?
+
+Local Security Policy is used to configure security-related settings on an individual Windows computer.
+
+Open:
+
+```text
+Windows + R
+secpol.msc
+```
+
+Examples include:
+
+* Password policies
+* Account lockout policies
+* Audit policies
+* User rights
+
+### Local Security Policy vs Group Policy
+
+```text
+Local Security Policy
+↓
+Individual computer
+
+Group Policy
+↓
+Centralized/domain environment
+```
+
+### Interview Answer
+
+> Local Security Policy is used to configure security settings on an individual Windows computer.
+
+---
+
+# 4. PowerShell
+
+## What is PowerShell?
+
+PowerShell is Microsoft's command-line shell and scripting environment used for system administration, troubleshooting, and automation.
+
+### Commands practiced
+
+```powershell
+Get-Process
+```
+
+Displays running processes.
+
+```powershell
+Get-Service
+```
+
+Displays Windows services.
+
+```powershell
+Get-ComputerInfo
+```
+
+Provides system information.
+
+```powershell
+Get-NetIPConfiguration
+```
+
+Provides network configuration information.
+
+### Why IT Support uses PowerShell
+
+PowerShell can be used to:
+
+* Gather system information
+* Check services
+* Investigate processes
+* Troubleshoot networks
+* Automate repetitive tasks
+* Administer Windows systems
+
+### Interview Answer
+
+> PowerShell is Microsoft's command-line shell and scripting environment used for Windows administration, troubleshooting, and automation.
+
+---
+
+# 🏢 5. Active Directory Security Group Scope
+
+Active Directory supports different security group scopes.
+
+The three major types are:
+
+* Global
+* Domain Local
+* Universal
+
+## Global Group
+
+A Global group is commonly used to group users or computers with similar roles or responsibilities.
+
+Example:
+
+```text
+Finance Users
+↓
+Global Group
+```
+
+## Domain Local Group
+
+A Domain Local group is commonly used when assigning permissions to resources within a domain.
+
+Example:
+
+```text
+Finance Folder
+↓
+Domain Local Group
+↓
+Permission
+```
+
+## Universal Group
+
+Universal groups can be used across multiple domains within an Active Directory forest.
+
+### Basic Memory
+
+```text
+Global
+↓
+Group similar accounts
+
+Domain Local
+↓
+Assign resource permissions
+
+Universal
+↓
+Cross-domain use
+```
+
+At entry-level Help Desk, understanding the purpose of each scope is more important than memorizing complex group-design rules.
+
+---
+
+# 6. Kerberos
+
+## What is Kerberos?
+
+Kerberos is an authentication protocol commonly used in Active Directory environments.
+
+It uses tickets to authenticate users and services.
+
+### Basic Concept
+
+```text
+User
+ ↓
+Kerberos
+ ↓
+Authentication Ticket
+ ↓
+Authorized Access
+```
+
+Kerberos is important because it provides a secure mechanism for authentication within a domain environment.
+
+### Interview Answer
+
+> Kerberos is an authentication protocol commonly used by Active Directory that uses tickets to securely authenticate users and services.
+
+### Help Desk Relevance
+
+Kerberos can become relevant when troubleshooting:
+
+* Domain authentication
+* Access to domain resources
+* Authentication failures
+* Time synchronization problems
+
+For first-pass learning, the ticket-based authentication concept is sufficient.
+
+---
+
+# 7. LDAP
+
+## What is LDAP?
+
+LDAP stands for:
+
+**Lightweight Directory Access Protocol**
+
+LDAP is a protocol used to access and query directory services.
+
+### Basic Concept
+
+```text
+Application
+     ↓
+LDAP
+     ↓
+Directory Service
+     ↓
+Users / Groups / Objects
+```
+
+### Interview Answer
+
+> LDAP is a protocol used to access and query information stored in directory services.
+
+### Memory
+
+```text
+LDAP
+↓
+Directory Access
+```
+
+---
+
+# 8. Domain Trust
+
+A trust relationship allows identities or resources in one Active Directory domain to interact with resources in another trusted domain according to configured permissions.
+
+### Concept
+
+```text
+Domain A
+    ↕
+  Trust
+    ↕
+Domain B
+```
+
+### Example
+
+A company may have separate domains for different business environments but require users from one domain to access authorized resources in another.
+
+For entry-level support, understanding the concept of **cross-domain trust** is sufficient.
+
+---
+
+# 9. Active Directory Replication
+
+Active Directory replication synchronizes directory changes between Domain Controllers.
+
+### Example
+
+```text
+Domain Controller 1
+        ↓
+   Replication
+        ↓
+Domain Controller 2
+```
+
+If a user account or group membership changes on one Domain Controller, that change may need to replicate to other Domain Controllers.
+
+### Why replication matters
+
+It helps maintain consistent directory information across Domain Controllers.
+
+### Interview Answer
+
+> Active Directory replication synchronizes directory changes between Domain Controllers.
+
+---
+
+# 10. FSMO Roles
+
+FSMO stands for:
+
+**Flexible Single Master Operations**
+
+Active Directory has five specialized FSMO roles.
+
+These roles handle specific operations that should be performed by a single Domain Controller at a time.
+
+### First-pass understanding
+
+```text
+FSMO
+↓
+Specialized Active Directory roles
+↓
+5 roles
+```
+
+For an entry-level IT Support position, detailed FSMO administration is not required at this stage.
+
+### Interview Answer
+
+> FSMO roles are specialized Active Directory roles that handle specific operations that are assigned to a single Domain Controller at a time.
+
+---
+
+# 🐧 11. Linux Mounting
+
+## What is Mounting?
+
+Mounting makes a filesystem available at a directory location within the Linux filesystem hierarchy.
+
+Example:
+
+```text
+/dev/sdb1
+   ↓
+mount
+   ↓
+/mnt/data
+```
+
+Once mounted, users and applications can access the filesystem through the mount point.
+
+### Useful commands
+
+```bash
+mount
+```
+
+Shows mounted filesystems.
+
+```bash
+findmnt
+```
+
+Shows mounted filesystems in a structured format.
+
+```bash
+lsblk
+```
+
+Displays block devices and their filesystem information.
+
+### Interview Answer
+
+> Mounting makes a filesystem accessible through a directory in the Linux filesystem hierarchy.
+
+---
+
+# 12. `/etc/fstab`
+
+`/etc/fstab` contains filesystem mount configuration.
+
+It can define filesystems that Linux should mount automatically.
+
+### Concept
+
+```text
+/etc/fstab
+↓
+Filesystem mount configuration
+↓
+Automatic/persistent mounting
+```
+
+### Interview Answer
+
+> `/etc/fstab` contains filesystem mount configuration and can define filesystems that should be mounted automatically.
+
+### Important
+
+Incorrect changes to `/etc/fstab` can prevent systems from mounting filesystems correctly, so it should be edited carefully.
+
+---
+
+# 13. Linux `sudoers`
+
+The sudoers configuration determines which users and groups are permitted to use `sudo` and under what conditions.
+
+Main file:
+
+```text
+/etc/sudoers
+```
+
+A safer editing method is:
+
+```bash
+sudo visudo
+```
+
+### Why this matters
+
+It provides controlled privilege escalation.
+
+### Example
+
+```bash
+sudo systemctl restart ssh
+```
+
+### Interview Answer
+
+> The sudoers configuration defines which users or groups are authorized to use sudo and what commands they can execute with elevated privileges.
+
+---
+
+# 14. Linux Archives and Compression
+
+## `tar`
+
+`tar` is commonly used to create archives containing files and directories.
+
+Example:
+
+```bash
+tar -cvf backup.tar folder/
+```
+
+Extract:
+
+```bash
+tar -xvf backup.tar
+```
+
+## gzip
+
+gzip is used for compression.
+
+Example:
+
+```bash
+tar -czvf backup.tar.gz folder/
+```
+
+### Key Difference
+
+```text
+tar
+↓
+Archive
+
+gzip
+↓
+Compression
+```
+
+### Interview Answer
+
+> Tar is primarily used to create and extract archives, while gzip is used to compress data.
+
+---
+
+# 15. Bash Conditions
+
+Bash supports conditional statements that allow scripts to make decisions.
+
+Example:
+
+```bash
+#!/bin/bash
+
+if [ "$USER" = "root" ]; then
+    echo "Root user"
+else
+    echo "Standard user"
+fi
+```
+
+This demonstrates that Bash scripts can make decisions based on conditions.
+
+### Why useful?
+
+Conditional logic allows scripts to:
+
+* Check whether files exist
+* Check user identity
+* Check command results
+* Respond differently to different conditions
+
+For this roadmap, basic awareness is sufficient.
+
+---
+
+# 🌐 16. Network Switch
+
+A network switch connects devices on a LAN and forwards Ethernet frames primarily based on MAC addresses.
+
+### Example
+
+```text
+PC1 ──┐
+PC2 ──┼── Switch
+PC3 ──┘
+```
+
+### OSI Layer
+
+A traditional Ethernet switch primarily operates at:
+
+**Layer 2 — Data Link**
+
+### Interview Answer
+
+> A network switch connects devices on a LAN and forwards Ethernet frames based primarily on MAC addresses.
+
+---
+
+# 17. Access Port vs Trunk Port
+
+## Access Port
+
+An access port typically carries traffic for one VLAN.
+
+```text
+PC
+ ↓
+Access Port
+ ↓
+VLAN 10
+```
+
+## Trunk Port
+
+A trunk port can carry traffic for multiple VLANs between network devices.
+
+```text
+Switch A
+   ⇅
+ Trunk
+   ⇅
+Switch B
+```
+
+### Memory
+
+```text
+Access → One VLAN
+Trunk  → Multiple VLANs
+```
+
+### Important
+
+Do not confuse:
+
+```text
+VLAN
+≠
+VPN
+```
+
+---
+
+# 18. Spanning Tree Protocol (STP)
+
+STP stands for:
+
+**Spanning Tree Protocol**
+
+STP helps prevent Layer 2 switching loops when redundant network paths exist.
+
+### Example
+
+```text
+Switch A
+ ↘   ↖
+  Switch B
+```
+
+A Layer 2 loop can cause serious network problems such as broadcast storms.
+
+STP helps manage redundant paths to prevent such loops.
+
+### Interview Answer
+
+> STP is a protocol used to prevent Layer 2 switching loops in networks with redundant links.
+
+---
+
+# 19. Network ACL
+
+ACL stands for:
+
+**Access Control List**
+
+An ACL is a collection of allow and deny rules used to control network traffic.
+
+Rules can consider:
+
+* Source IP
+* Destination IP
+* Protocol
+* Port
+
+### Example
+
+```text
+Traffic
+ ↓
+ACL Rule
+ ↓
+ALLOW / DENY
+```
+
+### Interview Answer
+
+> A network ACL is a set of allow and deny rules used to control traffic based on factors such as source, destination, protocol, or port.
+
+---
+
+# 20. Wi-Fi Troubleshooting
+
+### Scenario
+
+> User reports that Wi-Fi keeps disconnecting.
+
+### Troubleshooting Process
+
+```text
+Ask questions
+ ↓
+Check whether others are affected
+ ↓
+Check signal strength
+ ↓
+Check Wi-Fi adapter
+ ↓
+Check driver
+ ↓
+ipconfig /all
+ ↓
+Check IP/gateway
+ ↓
+Ping gateway
+ ↓
+Ping external IP
+ ↓
+Check DNS
+ ↓
+Investigate access point/network if required
+```
+
+### Possible Causes
+
+* Weak signal
+* Driver problem
+* Network adapter issue
+* DHCP issue
+* Wireless interference
+* Access point problem
+* Network outage
+
+---
+
+# ☁️ 21. Microsoft 365 Licensing
+
+A Microsoft 365 license determines which services and features a user is entitled to use based on their assigned plan and service configuration.
+
+Possible services include:
+
+* Exchange Online
+* Teams
+* OneDrive
+* SharePoint
+* Microsoft 365 applications
+
+### Help Desk scenario
+
+> User says Teams is unavailable while colleagues can use it.
+
+Possible areas to investigate:
+
+```text
+Account
+↓
+Authentication
+↓
+MFA
+↓
+License/service assignment
+↓
+Teams
+```
+
+Licensing should be investigated as one possible cause rather than assumed to be the cause.
+
+---
+
+# 22. Shared Mailbox Permissions
+
+A shared mailbox allows multiple authorized users to access a common mailbox.
+
+Important permission concepts include:
+
+## Full Access
+
+Allows an authorized user to access the mailbox.
+
+## Send As
+
+Allows an authorized user to send an email that appears to come directly from the shared mailbox.
+
+Example:
+
+```text
+From: support@company.com
+```
+
+## Send on Behalf
+
+Allows an authorized user to send a message on behalf of the shared mailbox.
+
+Example:
+
+```text
+John on behalf of support@company.com
+```
+
+### Help Desk example
+
+> User can open the shared mailbox but cannot send from it.
+
+Investigate:
+
+**Send As / Send on Behalf permissions**
+
+---
+
+# 23. OneDrive vs SharePoint
+
+## OneDrive
+
+OneDrive for Business is primarily used for an individual's work files and cloud synchronization.
+
+```text
+User
+ ↓
+OneDrive
+ ↓
+Individual Work Files
+```
+
+## SharePoint
+
+SharePoint is primarily used for team and organizational content, collaboration, and document management.
+
+```text
+Team
+ ↓
+SharePoint
+ ↓
+Shared Content
+```
+
+### Memory
+
+```text
+OneDrive
+↓
+Mine
+
+SharePoint
+↓
+Ours
+```
+
+This is a simplified model for interview purposes.
+
+---
+
+# 24. Microsoft Teams
+
+Microsoft Teams is a collaboration platform used for:
+
+* Chat
+* Meetings
+* Voice/video communication
+* Team collaboration
+* File collaboration
+* Channels
+
+Teams can integrate with SharePoint for file storage and collaboration.
+
+---
+
+# 25. Microsoft 365 Service Health
+
+The Microsoft 365 Admin Center provides service-health information.
+
+### Help Desk scenario
+
+If hundreds of users report:
+
+> "Teams is not working."
+
+Before troubleshooting individual computers, check whether Microsoft 365 has a service-side incident.
+
+### Principle
+
+```text
+Many users affected
+↓
+Check Service Health
+```
+
+This prevents unnecessary individual troubleshooting.
+
+---
+
+# 🔐 26. Phishing
+
+Phishing is a social-engineering attack designed to trick users into:
+
+* Revealing credentials
+* Clicking malicious links
+* Opening malicious attachments
+* Providing sensitive information
+
+### Examples
+
+* Fake Microsoft 365 login page
+* Fake password reset email
+* Fake invoice
+* Malicious attachment
+
+### Help Desk response
+
+1. Follow company reporting procedures.
+2. Do not encourage opening suspicious links or attachments.
+3. Determine whether credentials were entered.
+4. Escalate to security if necessary.
+5. Document the incident.
+
+---
+
+# 27. Endpoint Detection and Response (EDR)
+
+EDR stands for:
+
+**Endpoint Detection and Response**
+
+EDR technologies monitor endpoint activity to help detect suspicious behavior, investigate threats, and support security response.
+
+### Basic model
+
+```text
+Endpoint
+ ↓
+Monitoring
+ ↓
+Threat Detection
+ ↓
+Investigation
+ ↓
+Response
+```
+
+For entry-level IT Support, understand the purpose rather than learning advanced EDR administration.
+
+---
+
+# 28. Conditional Access
+
+Conditional Access is a Microsoft Entra capability that applies access controls based on defined conditions.
+
+Conditions can include:
+
+* User
+* Device
+* Location
+* Application
+* Risk
+* Authentication requirements
+
+### Example
+
+```text
+User Sign-In
+      ↓
+Conditions Evaluated
+      ↓
+MFA Required
+      ↓
+Access Granted
+```
+
+### Interview Answer
+
+> Conditional Access allows an organization to apply access controls based on conditions such as user, device, location, application, or risk.
+
+---
+
+# 29. Multi-Factor Authentication
+
+MFA uses two or more different authentication factor categories.
+
+### Something You Know
+
+* Password
+* PIN
+
+### Something You Have
+
+* Authenticator app/device
+* Security key
+
+### Something You Are
+
+* Fingerprint
+* Facial recognition
+
+Example:
+
+```text
+Password
++
+Authenticator App
+=
+MFA
+```
+
+A password and PIN alone normally represent the same factor category because both are "something you know."
+
+---
+
+# 🎫 30. Help Desk / ITSM Concepts
+
+## Incident
+
+An incident is an unplanned interruption or degradation of an IT service.
+
+Example:
+
+> Teams suddenly stops working.
+
+## Service Request
+
+A service request is a request for a standard or approved service.
+
+Example:
+
+> Create a new user account.
+
+### Memory
+
+```text
+Incident
+↓
+Something is broken
+
+Service Request
+↓
+User needs something
+```
+
+---
+
+# 31. Priority and Severity
+
+## Severity
+
+Describes how serious or damaging the issue is.
+
+## Priority
+
+Helps determine how urgently the issue should be addressed, considering factors such as business impact and urgency.
+
+### Examples
+
+A company-wide Microsoft 365 outage may have high priority because many users and business operations are affected.
+
+A minor display preference issue affecting one user may have lower priority.
+
+---
+
+# 32. SLA
+
+SLA stands for:
+
+**Service Level Agreement**
+
+It defines agreed service expectations such as response or resolution targets.
+
+### Help Desk Relevance
+
+When prioritizing tickets, consider:
+
+* Severity
+* Urgency
+* Business impact
+* Number of users affected
+* Security implications
+* SLA requirements
+
+---
+
+# 33. Escalation
+
+Escalation means transferring an issue to a higher-level or specialized team when it exceeds the technician's:
+
+* Technical knowledge
+* Authorization
+* Access
+* Responsibility
+
+### Examples
+
+```text
+Security incident
+↓
+Security Team
+
+Server problem
+↓
+Infrastructure Team
+
+Vendor issue
+↓
+Vendor Support
+```
+
+### Professional Escalation Statement
+
+> I have completed the applicable troubleshooting steps, documented my findings and evidence, and am escalating the issue to the appropriate team for further investigation.
+
+---
+
+# 🎫 34. Final Multi-System Help Desk Scenario
+
+## User Problem
+
+A remote employee reports:
+
+> "I cannot access Outlook, Teams, the VPN, or the company's shared folder."
+
+### Information Gathering
+
+Ask:
+
+1. When did the issue begin?
+2. Is Internet access working?
+3. Can other websites be accessed?
+4. Is the VPN connected?
+5. Can Microsoft 365 be accessed through a browser?
+6. Is Outlook Web working?
+7. Is Teams Web working?
+8. Is MFA working?
+9. Did the user recently change their password?
+10. Are other users affected?
+
+### Investigation
+
+```text
+Internet
+ ↓
+VPN
+ ↓
+Authentication
+ ↓
+MFA
+ ↓
+Microsoft 365 / Entra ID
+ ↓
+Active Directory
+ ↓
+Security Group
+ ↓
+Permissions
+ ↓
+Application
+```
+
+The important lesson is that a single Help Desk ticket can involve several technologies.
+
+The technician should isolate the problem rather than assuming everything has one cause.
+
+---
+
+# 🧠 35. Professional Troubleshooting Methodology
+
+The standard troubleshooting method developed throughout this roadmap is:
+
+```text
+1. Gather Information
+        ↓
+2. Clarify the Symptoms
+        ↓
+3. Identify Possible Causes
+        ↓
+4. Start With Basic Checks
+        ↓
+5. Collect Evidence
+        ↓
+6. Identify the Likely Root Cause
+        ↓
+7. Apply an Authorized Fix
+        ↓
+8. Verify With the User
+        ↓
+9. Document
+        ↓
+10. Close or Escalate
+```
+
+### Core Principle
+
+> **Do not guess or make unnecessary changes. Investigate first, use evidence, make controlled changes, and verify the result.**
+
+---
+
+# 🎤 36. Interview Preparation
+
+Today's first-pass completion reinforced the importance of being able to explain a technology using four questions:
+
+### What is it?
+
+Define the technology.
+
+### Why is it used?
+
+Explain its purpose.
+
+### Where would I encounter it?
+
+Connect it to a real IT environment.
+
+### How would I troubleshoot it?
+
+Identify the first appropriate tool or investigation step.
+
+### Example — Teams
+
+> **Microsoft Teams is a collaboration platform used for chat, meetings, calls, and teamwork. In a Help Desk environment, I would troubleshoot Internet connectivity, authentication, MFA, licensing, service health, the web version, and finally the desktop application depending on the symptoms.**
+
+This is the communication style I want to develop for technical interviews.
+
+---
+
+# 🎯 37. First-Pass Completion Milestone
+
+The major entry-level IT Support areas covered throughout the roadmap are now:
+
+```text
+Windows
+      ↓
+Active Directory
+      ↓
+Linux
+      ↓
+Networking
+      ↓
+Microsoft 365
+      ↓
+Security
+      ↓
+Help Desk / ITSM
+```
+
+The purpose of the first pass was to ensure that common concepts were **not completely unfamiliar** during an interview.
+
+The next phase will focus less on introducing isolated topics and more on applying these technologies together.
+
+---
+
+# 🚀 38. Next Phase — IT Professional / Interview Preparation
+
+The next phase will include:
+
+### Real Help Desk Tickets
+
+Examples:
+
+* Account locked
+* Password reset
+* Shared folder Access Denied
+* Printer not working
+* Windows computer slow
+* VPN not connecting
+* DNS failure
+* DHCP problem
+* Outlook not working
+* Teams not working
+* Microsoft 365 authentication issue
+
+### Mixed Technology Troubleshooting
+
+Tickets may combine:
+
+```text
+Windows
++
+Active Directory
++
+Networking
++
+Microsoft 365
++
+Security
+```
+
+### Interview Preparation
+
+Training will include:
+
+* Random technical questions
+* Scenario-based questions
+* Troubleshooting explanations
+* Professional technical wording
+* Behavioral interviews
+* Mock Help Desk interviews
+
+---
+
+# ⭐ Day 52 Reflection
+
+Today completed the first-pass coverage stage of my IT Support roadmap.
+
+I have been introduced to the major entry-level concepts across Windows, Active Directory, Linux, Networking, Microsoft 365, Security, and Help Desk/ITSM.
+
+My objective is no longer simply to memorize definitions.
+
+I need to be able to:
+
+```text
+Recognize the Problem
+        ↓
+Identify the Relevant Technology
+        ↓
+Gather Information
+        ↓
+Use the Correct Tool
+        ↓
+Interpret the Evidence
+        ↓
+Identify the Likely Cause
+        ↓
+Apply an Authorized Fix
+        ↓
+Verify
+        ↓
+Document
+        ↓
+Escalate When Necessary
+```
+
+This first-pass foundation will now be used to prepare for **realistic IT Support work and interviews**, with the goal of developing into a capable IT professional.
