@@ -1,0 +1,82 @@
+3.1 sudoers
+
+The sudoers configuration controls which users or groups are allowed to use sudo and what elevated commands they may execute.
+
+Main configuration file:
+
+/etc/sudoers
+
+A safer way to edit the configuration is:
+
+sudo visudo
+Interview Answer
+
+The sudoers configuration defines which users or groups can use sudo and what commands they are authorized to execute with elevated privileges.
+
+3.2 Linux Mounting
+
+Mounting makes a filesystem available at a location within the Linux directory tree.
+
+Example:
+
+/dev/sdb1
+   ↓
+ mount
+   ↓
+/mnt/data
+Basic commands
+mount
+
+and:
+
+findmnt
+Interview Answer
+
+Mounting makes a filesystem accessible at a directory location in the Linux filesystem hierarchy.
+
+3.3 /etc/fstab
+
+/etc/fstab contains filesystem mount configuration.
+
+It can be used to define filesystems that should be mounted automatically.
+
+Memory
+/etc/fstab
+↓
+Persistent filesystem mount configuration
+3.4 tar and gzip
+
+tar is used to create and extract archives.
+
+Example:
+
+tar -cvf backup.tar folder/
+
+gzip is used for compression.
+
+Compressed archive:
+
+tar -czvf backup.tar.gz folder/
+Difference
+tar
+↓
+Archive
+
+gzip
+↓
+Compression
+3.5 Bash Conditions
+
+Bash can make decisions using conditional statements.
+
+Example:
+
+#!/bin/bash
+
+if [ "$USER" = "root" ]; then
+    echo "Root user"
+else
+    echo "Standard user"
+fi
+
+This demonstrates how scripts can make decisions based on conditions.
