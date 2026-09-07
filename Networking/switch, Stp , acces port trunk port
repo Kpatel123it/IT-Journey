@@ -1,0 +1,127 @@
+Network Switch
+
+A network switch connects devices on a LAN and forwards Ethernet frames primarily based on MAC addresses.
+
+Example
+PC1 ──┐
+PC2 ──┼── Switch
+PC3 ──┘
+OSI Layer
+
+A traditional Ethernet switch primarily operates at:
+
+Layer 2 — Data Link
+
+Interview Answer
+
+A network switch connects devices on a LAN and forwards Ethernet frames based primarily on MAC addresses.
+
+17. Access Port vs Trunk Port
+Access Port
+
+An access port typically carries traffic for one VLAN.
+
+PC
+ ↓
+Access Port
+ ↓
+VLAN 10
+Trunk Port
+
+A trunk port can carry traffic for multiple VLANs between network devices.
+
+Switch A
+   ⇅
+ Trunk
+   ⇅
+Switch B
+Memory
+Access → One VLAN
+Trunk  → Multiple VLANs
+Important
+
+Do not confuse:
+
+VLAN
+≠
+VPN
+18. Spanning Tree Protocol (STP)
+
+STP stands for:
+
+Spanning Tree Protocol
+
+STP helps prevent Layer 2 switching loops when redundant network paths exist.
+
+Example
+Switch A
+ ↘   ↖
+  Switch B
+
+A Layer 2 loop can cause serious network problems such as broadcast storms.
+
+STP helps manage redundant paths to prevent such loops.
+
+Interview Answer
+
+STP is a protocol used to prevent Layer 2 switching loops in networks with redundant links.
+
+19. Network ACL
+
+ACL stands for:
+
+Access Control List
+
+An ACL is a collection of allow and deny rules used to control network traffic.
+
+Rules can consider:
+
+Source IP
+Destination IP
+Protocol
+Port
+Example
+Traffic
+ ↓
+ACL Rule
+ ↓
+ALLOW / DENY
+Interview Answer
+
+A network ACL is a set of allow and deny rules used to control traffic based on factors such as source, destination, protocol, or port.
+
+20. Wi-Fi Troubleshooting
+Scenario
+
+User reports that Wi-Fi keeps disconnecting.
+
+Troubleshooting Process
+Ask questions
+ ↓
+Check whether others are affected
+ ↓
+Check signal strength
+ ↓
+Check Wi-Fi adapter
+ ↓
+Check driver
+ ↓
+ipconfig /all
+ ↓
+Check IP/gateway
+ ↓
+Ping gateway
+ ↓
+Ping external IP
+ ↓
+Check DNS
+ ↓
+Investigate access point/network if required
+Possible Causes
+Weak signal
+Driver problem
+Network adapter issue
+DHCP issue
+Wireless interference
+Access point problem
+Network outage
