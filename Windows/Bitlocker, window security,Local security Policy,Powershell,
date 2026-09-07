@@ -1,0 +1,140 @@
+1.1 BitLocker
+What is BitLocker?
+
+BitLocker is a Windows drive-encryption technology used to protect data stored on a computer's drive.
+
+Encryption helps prevent unauthorized access to data if a device or storage drive is lost or stolen.
+
+Example
+
+A company laptop containing sensitive business information is lost.
+
+Without drive encryption, someone who gains physical access to the drive may attempt to access the stored data.
+
+With BitLocker enabled:
+
+Laptop
+   ↓
+Encrypted Drive
+   ↓
+Protected Data
+Help Desk Relevance
+
+A user may report:
+
+"My laptop is asking for a BitLocker recovery key."
+
+A Help Desk technician should:
+
+Verify the user's identity.
+Confirm the device.
+Determine why recovery was triggered.
+Follow the organization's recovery procedure.
+Retrieve or provide the recovery key only through an authorized process.
+Verify that the user can access the device.
+Document the incident.
+Interview Answer
+
+BitLocker is a Windows drive-encryption technology used to protect data from unauthorized access, especially if a device or drive is lost or stolen.
+
+Key Memory
+BitLocker
+↓
+Drive Encryption
+↓
+Data Protection
+2. Windows Security / Microsoft Defender
+What is Windows Security?
+
+Windows Security is the Windows interface for several built-in security features.
+
+It provides access to areas such as:
+
+Microsoft Defender Antivirus
+Firewall
+Account Protection
+Device Security
+App and Browser Protection
+Antivirus vs Firewall
+
+These two concepts should remain separate.
+
+Antivirus
+↓
+Detects / blocks malicious software
+
+Firewall
+↓
+Controls network traffic
+Help Desk Example
+
+A user reports:
+
+"Windows detected a security threat."
+
+The technician should investigate the alert and follow organizational security procedures rather than simply dismissing the warning.
+
+3. Local Security Policy
+What is Local Security Policy?
+
+Local Security Policy is used to configure security-related settings on an individual Windows computer.
+
+Open:
+
+Windows + R
+secpol.msc
+
+Examples include:
+
+Password policies
+Account lockout policies
+Audit policies
+User rights
+Local Security Policy vs Group Policy
+Local Security Policy
+↓
+Individual computer
+
+Group Policy
+↓
+Centralized/domain environment
+Interview Answer
+
+Local Security Policy is used to configure security settings on an individual Windows computer.
+
+4. PowerShell
+What is PowerShell?
+
+PowerShell is Microsoft's command-line shell and scripting environment used for system administration, troubleshooting, and automation.
+
+Commands practiced
+Get-Process
+
+Displays running processes.
+
+Get-Service
+
+Displays Windows services.
+
+Get-ComputerInfo
+
+Provides system information.
+
+Get-NetIPConfiguration
+
+Provides network configuration information.
+
+Why IT Support uses PowerShell
+
+PowerShell can be used to:
+
+Gather system information
+Check services
+Investigate processes
+Troubleshoot networks
+Automate repetitive tasks
+Administer Windows systems
+Interview Answer
+
+PowerShell is Microsoft's command-line shell and scripting environment used for Windows administration, troubleshooting, and automation.
+
