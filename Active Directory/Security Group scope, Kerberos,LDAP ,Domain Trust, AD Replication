@@ -1,0 +1,91 @@
+2.1 Security Group Scope
+
+Active Directory security groups can have different scopes.
+
+Global
+
+Often used to group users or computers with similar roles or responsibilities.
+
+Domain Local
+
+Often used for assigning permissions to resources within a domain.
+
+Universal
+
+Can be used across multiple domains within an Active Directory forest.
+
+Basic awareness
+Global
+↓
+Group similar accounts
+
+Domain Local
+↓
+Assign resource permissions
+
+Universal
+↓
+Cross-domain use
+2.2 Kerberos
+
+Kerberos is an authentication protocol commonly used in Active Directory environments.
+
+It uses tickets to authenticate users and services.
+
+Basic concept
+User
+ ↓
+Kerberos
+ ↓
+Authentication Ticket
+ ↓
+Authorized Access
+Interview Answer
+
+Kerberos is an authentication protocol commonly used by Active Directory to securely authenticate users and services using tickets.
+
+2.3 LDAP
+
+LDAP stands for Lightweight Directory Access Protocol.
+
+It is a protocol used to access and query directory services.
+
+Memory
+LDAP
+↓
+Directory Access / Queries
+Interview Answer
+
+LDAP is a protocol used to access and query information stored in directory services.
+
+2.4 Domain Trust
+
+A trust relationship can allow identities and resources in one Active Directory domain to interact with resources in another trusted domain according to configured permissions.
+
+Basic concept
+Domain A
+    ↕
+  Trust
+    ↕
+Domain B
+
+This topic was covered at an awareness level.
+
+2.5 Active Directory Replication
+
+Active Directory replication synchronizes directory changes between Domain Controllers.
+
+Example:
+
+DC1
+ ↓
+Replication
+ ↓
+DC2
+Purpose
+
+Replication helps Domain Controllers maintain consistent directory information.
+
+Interview Answer
+
+Active Directory replication synchronizes directory changes between Domain Controllers.
