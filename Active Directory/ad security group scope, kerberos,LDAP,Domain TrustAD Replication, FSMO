@@ -1,0 +1,165 @@
+🏢 5. Active Directory Security Group Scope
+
+Active Directory supports different security group scopes.
+
+The three major types are:
+
+Global
+Domain Local
+Universal
+Global Group
+
+A Global group is commonly used to group users or computers with similar roles or responsibilities.
+
+Example:
+
+Finance Users
+↓
+Global Group
+Domain Local Group
+
+A Domain Local group is commonly used when assigning permissions to resources within a domain.
+
+Example:
+
+Finance Folder
+↓
+Domain Local Group
+↓
+Permission
+Universal Group
+
+Universal groups can be used across multiple domains within an Active Directory forest.
+
+Basic Memory
+Global
+↓
+Group similar accounts
+
+Domain Local
+↓
+Assign resource permissions
+
+Universal
+↓
+Cross-domain use
+
+At entry-level Help Desk, understanding the purpose of each scope is more important than memorizing complex group-design rules.
+
+6. Kerberos
+What is Kerberos?
+
+Kerberos is an authentication protocol commonly used in Active Directory environments.
+
+It uses tickets to authenticate users and services.
+
+Basic Concept
+User
+ ↓
+Kerberos
+ ↓
+Authentication Ticket
+ ↓
+Authorized Access
+
+Kerberos is important because it provides a secure mechanism for authentication within a domain environment.
+
+Interview Answer
+
+Kerberos is an authentication protocol commonly used by Active Directory that uses tickets to securely authenticate users and services.
+
+Help Desk Relevance
+
+Kerberos can become relevant when troubleshooting:
+
+Domain authentication
+Access to domain resources
+Authentication failures
+Time synchronization problems
+
+For first-pass learning, the ticket-based authentication concept is sufficient.
+
+7. LDAP
+What is LDAP?
+
+LDAP stands for:
+
+Lightweight Directory Access Protocol
+
+LDAP is a protocol used to access and query directory services.
+
+Basic Concept
+Application
+     ↓
+LDAP
+     ↓
+Directory Service
+     ↓
+Users / Groups / Objects
+Interview Answer
+
+LDAP is a protocol used to access and query information stored in directory services.
+
+Memory
+LDAP
+↓
+Directory Access
+8. Domain Trust
+
+A trust relationship allows identities or resources in one Active Directory domain to interact with resources in another trusted domain according to configured permissions.
+
+Concept
+Domain A
+    ↕
+  Trust
+    ↕
+Domain B
+Example
+
+A company may have separate domains for different business environments but require users from one domain to access authorized resources in another.
+
+For entry-level support, understanding the concept of cross-domain trust is sufficient.
+
+9. Active Directory Replication
+
+Active Directory replication synchronizes directory changes between Domain Controllers.
+
+Example
+Domain Controller 1
+        ↓
+   Replication
+        ↓
+Domain Controller 2
+
+If a user account or group membership changes on one Domain Controller, that change may need to replicate to other Domain Controllers.
+
+Why replication matters
+
+It helps maintain consistent directory information across Domain Controllers.
+
+Interview Answer
+
+Active Directory replication synchronizes directory changes between Domain Controllers.
+
+10. FSMO Roles
+
+FSMO stands for:
+
+Flexible Single Master Operations
+
+Active Directory has five specialized FSMO roles.
+
+These roles handle specific operations that should be performed by a single Domain Controller at a time.
+
+First-pass understanding
+FSMO
+↓
+Specialized Active Directory roles
+↓
+5 roles
+
+For an entry-level IT Support position, detailed FSMO administration is not required at this stage.
+
+Interview Answer
+
+FSMO roles are specialized Active Directory roles that handle specific operations that are assigned to a single Domain Controller at a time.
