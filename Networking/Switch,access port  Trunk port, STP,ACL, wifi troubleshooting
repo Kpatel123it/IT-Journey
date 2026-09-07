@@ -1,0 +1,114 @@
+4.1 Network Switch
+
+A network switch connects devices within a LAN and forwards Ethernet frames based primarily on MAC addresses.
+
+Concept
+PC1 ──┐
+PC2 ──┼── Switch
+PC3 ──┘
+Interview Answer
+
+A network switch connects devices on a local network and forwards Ethernet frames based primarily on MAC addresses.
+
+4.2 Access Port vs Trunk Port
+Access Port
+
+Typically carries traffic for one VLAN.
+
+PC
+ ↓
+Access Port
+ ↓
+VLAN 10
+Trunk Port
+
+Can carry traffic for multiple VLANs between network devices.
+
+Switch A
+   ⇅
+ Trunk
+   ⇅
+Switch B
+Important Correction
+
+Do not confuse:
+
+VLAN ≠ VPN
+Memory
+Access
+↓
+One VLAN
+
+Trunk
+↓
+Multiple VLANs
+4.3 STP
+
+STP stands for Spanning Tree Protocol.
+
+It helps prevent Layer 2 switching loops when redundant network paths exist.
+
+Example
+Switch A
+ ↘   ↖
+  Switch B
+
+Without loop prevention, redundant Layer 2 paths can cause network problems such as broadcast storms.
+
+Interview Answer
+
+STP helps prevent Layer 2 switching loops in networks with redundant links.
+
+4.4 Network ACL
+
+ACL stands for Access Control List.
+
+A network ACL is a collection of allow and deny rules used to control traffic.
+
+Rules may consider:
+
+Source IP
+Destination IP
+Protocol
+Port
+Concept
+Traffic
+ ↓
+ACL Rule
+ ↓
+ALLOW / DENY
+4.5 Wi-Fi Troubleshooting
+Scenario
+
+User reports that Wi-Fi keeps disconnecting.
+
+Troubleshooting
+Ask questions
+ ↓
+Check whether others are affected
+ ↓
+Check Wi-Fi signal
+ ↓
+Check network adapter
+ ↓
+Check driver
+ ↓
+ipconfig /all
+ ↓
+Check IP and gateway
+ ↓
+Ping gateway
+ ↓
+Test external connectivity
+ ↓
+Investigate DNS if necessary
+ ↓
+Verify
+Possible Causes
+Weak signal
+Driver problem
+Network adapter issue
+DHCP problem
+Access point issue
+Wireless interference
+Network outage
