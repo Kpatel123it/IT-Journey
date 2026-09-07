@@ -1,0 +1,82 @@
+6.1 Phishing
+
+Phishing is a social-engineering attack in which an attacker impersonates a trusted person or organization to trick users into:
+
+Revealing credentials
+Opening malicious attachments
+Clicking malicious links
+Entering information into fake websites
+Examples
+Fake password-reset email
+Fake Microsoft 365 login page
+Fake invoice
+Malicious attachment
+Help Desk Response
+Follow organizational reporting procedures.
+Avoid opening suspicious links or attachments.
+Determine whether credentials were entered.
+Escalate to the security team if required.
+Document the incident.
+6.2 Endpoint Detection and Response (EDR)
+
+EDR stands for Endpoint Detection and Response.
+
+EDR technologies help organizations monitor endpoint activity, detect suspicious behavior, investigate threats, and support security response.
+
+Basic concept
+Endpoint
+ ↓
+Monitoring
+ ↓
+Threat Detection
+ ↓
+Investigation
+ ↓
+Response
+6.3 Conditional Access
+
+Conditional Access is a Microsoft Entra capability used to apply access controls based on conditions.
+
+Conditions may include:
+
+User
+Device
+Location
+Application
+Risk
+Authentication requirements
+Example
+User signs in
+ ↓
+Conditions evaluated
+ ↓
+MFA required
+ ↓
+Access granted after verification
+Interview Answer
+
+Conditional Access allows organizations to apply access controls based on defined conditions such as user, device, location, application, or risk.
+
+6.4 Multi-Factor Authentication
+
+MFA uses two or more different authentication factor categories.
+
+Something you know
+Password
+PIN
+Something you have
+Authenticator device/app
+Security key
+Something you are
+Fingerprint
+Facial recognition
+
+Example:
+
+Password
++
+Authenticator App
+=
+MFA
+
+Using a password and PIN alone normally represents only one factor category because both are "something you know."
