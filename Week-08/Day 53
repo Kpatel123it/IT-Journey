@@ -1,0 +1,781 @@
+# Day 53 — Real Help Desk Troubleshooting
+
+## 🎯 Objective
+
+Today marked the beginning of the practical IT Support and interview-preparation phase of the roadmap.
+
+The first-pass learning phase had introduced the major Windows, Active Directory, Linux, networking, Microsoft 365, and security concepts. Today the focus shifted toward applying those concepts to realistic Help Desk tickets.
+
+The main goal was to develop the ability to:
+
+```text
+Understand the User Problem
+        ↓
+Gather Information
+        ↓
+Identify Possible Causes
+        ↓
+Select the Correct Troubleshooting Tool
+        ↓
+Investigate
+        ↓
+Apply an Authorized Fix
+        ↓
+Verify
+        ↓
+Document
+        ↓
+Close / Escalate
+```
+
+---
+
+# 1. Mixed IT Support Revision
+
+The first part of today's training was a mixed revision of previously learned concepts.
+
+## Authentication vs Authorization
+
+### Authentication
+
+Authentication verifies the identity of a user.
+
+Example:
+
+```text
+Username + Password
+        ↓
+Authentication
+        ↓
+Who are you?
+```
+
+### Authorization
+
+Authorization determines what an authenticated user is allowed to access or perform.
+
+Example:
+
+```text
+Authenticated User
+        ↓
+Security Group
+        ↓
+Permission
+        ↓
+Resource Access
+```
+
+### Interview statement
+
+> Authentication verifies who the user is, while authorization determines what the authenticated user is allowed to access or perform.
+
+---
+
+# 2. OU vs Security Group vs GPO
+
+## Organizational Unit (OU)
+
+An OU is an Active Directory container used to organize objects such as users and computers.
+
+## Security Group
+
+A Security Group is used to assign access and permissions to resources.
+
+## Group Policy Object (GPO)
+
+A GPO is used to centrally apply configuration and security settings to users and computers.
+
+### Concept separation
+
+```text
+OU
+↓
+Organize
+
+Security Group
+↓
+Access / Permissions
+
+GPO
+↓
+Configuration / Security Settings
+```
+
+This distinction is important because these three Active Directory concepts are often confused during entry-level interviews.
+
+---
+
+# 3. Domain vs Domain Controller
+
+## Domain
+
+A domain is a logical environment in which users, computers, and resources can be centrally managed.
+
+## Domain Controller
+
+A Domain Controller is a server that hosts Active Directory Domain Services (AD DS) and provides functions such as authentication and directory services.
+
+### Concept
+
+```text
+Domain
+↓
+Logical environment
+
+Domain Controller
+↓
+Server hosting AD DS
+```
+
+A Domain Controller is not a container.
+
+---
+
+# 4. DNS vs DHCP
+
+## DNS
+
+DNS translates hostnames/domain names into IP addresses.
+
+Example:
+
+```text
+google.com
+     ↓
+DNS
+     ↓
+IP Address
+```
+
+## DHCP
+
+DHCP automatically provides network configuration to clients.
+
+It can provide:
+
+* IP address
+* Subnet mask
+* Default gateway
+* DNS server
+* Lease information
+
+### Concept
+
+```text
+DNS
+↓
+Name Resolution
+
+DHCP
+↓
+Network Configuration
+```
+
+---
+
+# 5. SMB vs SCP
+
+## SMB
+
+SMB is a network protocol commonly used for file and printer sharing.
+
+Example:
+
+```text
+\\Server01\Finance
+```
+
+## SCP
+
+SCP is used to securely copy files and directories between systems over SSH.
+
+### Concept
+
+```text
+SMB
+↓
+Share
+
+SCP
+↓
+Secure Copy
+```
+
+---
+
+# 6. RDP vs Quick Assist
+
+## RDP
+
+RDP allows an authorized user to remotely connect to and interact with a Windows computer.
+
+Common RDP port:
+
+```text
+3389
+```
+
+## Quick Assist
+
+Quick Assist is designed to provide remote assistance to another Windows user.
+
+### Concept
+
+```text
+RDP
+↓
+Remote Desktop Connection
+
+Quick Assist
+↓
+Remote Assistance
+```
+
+All remote access should follow organizational authorization and security procedures.
+
+---
+
+# 7. Linux Service and Log Management
+
+## `systemctl`
+
+Used to inspect and manage systemd services.
+
+Example:
+
+```bash
+systemctl status ssh
+```
+
+## `journalctl`
+
+Used to view logs collected by the systemd journal.
+
+Example:
+
+```bash
+journalctl -u ssh
+```
+
+### Concept
+
+```text
+systemctl
+↓
+Service Management
+
+journalctl
+↓
+Logs
+```
+
+---
+
+# 8. Linux Disk and Memory
+
+## `df -h`
+
+Used to check filesystem/disk space.
+
+```bash
+df -h
+```
+
+## `free -h`
+
+Used to check memory/RAM usage.
+
+```bash
+free -h
+```
+
+### Memory
+
+```text
+df -h
+↓
+Disk
+
+free -h
+↓
+RAM
+```
+
+This distinction was reinforced because mixing disk space and memory can lead to incorrect troubleshooting decisions.
+
+---
+
+# 9. Outlook vs Exchange Online
+
+## Outlook
+
+Outlook is a client application used to access email, calendars, contacts, and mailbox features.
+
+## Exchange Online
+
+Exchange Online is Microsoft's cloud-hosted email and calendaring service.
+
+### Concept
+
+```text
+Outlook
+↓
+Client
+
+Exchange Online
+↓
+Cloud Email Service
+```
+
+---
+
+# 10. OneDrive vs SharePoint
+
+## OneDrive
+
+Primarily used for an individual's work files and synchronization.
+
+## SharePoint
+
+Primarily used for team and organizational files and collaboration.
+
+### Memory
+
+```text
+OneDrive
+↓
+Mine
+
+SharePoint
+↓
+Ours
+```
+
+---
+
+# 🎫 11. Main Help Desk Scenario
+
+## User Problem
+
+A user cannot log in to Windows and also cannot access the Finance shared folder.
+
+### Initial Questions
+
+The first step is information gathering rather than immediately changing the account.
+
+Questions include:
+
+* When did the issue start?
+* What exact error message appears?
+* Could you log in yesterday?
+* Did you recently change your password?
+* Did you enter the password incorrectly several times?
+* Can another user log in to the computer?
+* Is the computer connected to the company network?
+* Are other users affected?
+* Were you previously able to access the Finance folder?
+
+### Purpose of these questions
+
+The objective is to determine whether the issue is related to:
+
+* Account authentication
+* Password
+* Account lockout
+* Network connectivity
+* Domain connectivity
+* Security Group membership
+* Share permissions
+* NTFS permissions
+
+---
+
+# 12. Active Directory Investigation
+
+If the user has an authentication issue, the account should be investigated before making changes.
+
+Check:
+
+* Is the account enabled?
+* Is it locked?
+* Is there a password issue?
+* Is the account expired?
+* Is the user in the required security groups?
+
+Example:
+
+```text
+User
+ ↓
+Finance Security Group
+ ↓
+Finance Folder
+ ↓
+Permission
+```
+
+### Important
+
+A user account is not normally "disconnected" from Active Directory.
+
+Better terminology is:
+
+> Check whether the account is enabled, locked, expired, or experiencing an authentication problem.
+
+---
+
+# 13. Network Investigation
+
+Use evidence to determine whether the network is contributing to the problem.
+
+Windows:
+
+```cmd
+ipconfig /all
+```
+
+Check:
+
+* IPv4 address
+* Subnet mask
+* Default gateway
+* DNS server
+* DHCP information
+
+Then:
+
+```cmd
+ping <default-gateway>
+```
+
+This tests connectivity to the local gateway.
+
+Where appropriate:
+
+```cmd
+ping 8.8.8.8
+```
+
+This tests external IP connectivity.
+
+DNS can then be investigated using:
+
+```cmd
+nslookup google.com
+```
+
+---
+
+# 14. Shared Folder Troubleshooting
+
+If the user can log in but receives Access Denied on the Finance folder:
+
+```text
+User Account
+      ↓
+Security Group
+      ↓
+Network Share
+      ↓
+Share Permissions
+      ↓
+NTFS Permissions
+      ↓
+Effective Access
+```
+
+### Important
+
+Permissions should not be changed simply because the user cannot access a folder.
+
+The technician should first determine:
+
+* Whether the user is authorized
+* What access they should have
+* Which permission is missing
+* Whether the technician has authorization to change it
+
+---
+
+# 15. Microsoft 365 Connection
+
+A Help Desk ticket may involve multiple systems.
+
+If Outlook and Teams are also affected, investigate:
+
+* Internet
+* Account
+* Authentication
+* MFA
+* Microsoft Entra ID
+* License/service assignment
+* Microsoft 365 Service Health
+* Local application
+
+### Useful diagnostic comparison
+
+```text
+Outlook Web works
++
+Teams Web works
++
+Desktop application fails
+↓
+Investigate local application/client
+```
+
+Whereas:
+
+```text
+Outlook Web fails
++
+Teams Web fails
++
+Other users are working
+↓
+Investigate account/authentication/MFA/
+license/service configuration
+```
+
+---
+
+# 16. Linux Troubleshooting Scenario
+
+## User Problem
+
+> Linux server is running slowly.
+
+### Investigation
+
+CPU/processes:
+
+```bash
+top
+```
+
+Memory:
+
+```bash
+free -h
+```
+
+Disk:
+
+```bash
+df -h
+```
+
+Processes:
+
+```bash
+ps aux
+```
+
+Service status:
+
+```bash
+systemctl status <service>
+```
+
+Service logs:
+
+```bash
+journalctl -u <service>
+```
+
+### Troubleshooting model
+
+```text
+CPU
+↓
+Memory
+↓
+Disk
+↓
+Processes
+↓
+Services
+↓
+Logs
+```
+
+The technician should investigate before restarting the server.
+
+---
+
+# 17. Security Scenario — Phishing
+
+A user reports receiving a suspicious Microsoft 365 password-reset email and says they entered their password.
+
+This should be treated as a potential security incident.
+
+### Response
+
+1. Follow the organization's security procedure.
+2. Determine whether credentials or other sensitive information were entered.
+3. Escalate to the security team as required.
+4. Follow approved account-protection procedures.
+5. Document the relevant facts.
+
+### Important
+
+The technician should not continue interacting with suspicious content unnecessarily.
+
+---
+
+# 18. Tool Selection
+
+Today's training reinforced choosing tools based on symptoms.
+
+| Problem                  | Appropriate Tool       |
+| ------------------------ | ---------------------- |
+| Slow Windows computer    | Task Manager           |
+| Windows service          | `services.msc`         |
+| Application/system error | Event Viewer           |
+| Hardware/driver issue    | Device Manager         |
+| Startup issue            | `msconfig`             |
+| GPO issue                | `gpupdate`, `gpresult` |
+| IP configuration         | `ipconfig /all`        |
+| DNS issue                | `nslookup`             |
+| Network path             | `tracert`              |
+| Linux process            | `ps`, `top`, `htop`    |
+| Linux disk               | `df -h`                |
+| Linux memory             | `free -h`              |
+| Linux service            | `systemctl`            |
+| Linux service logs       | `journalctl`           |
+
+### Key principle
+
+> Choose the troubleshooting tool based on the symptom and the information you need to collect.
+
+---
+
+# 19. Professional Ticket Documentation
+
+A Help Desk ticket should record factual information.
+
+### Example
+
+```text
+Issue:
+User unable to access Finance shared folder.
+
+Investigation:
+Verified user identity and confirmed successful Windows login.
+Checked network connectivity and Active Directory account status.
+Reviewed Finance security-group membership and folder permissions.
+
+Finding:
+User was not a member of the required Finance security group.
+
+Action:
+Added the user to the authorized security group according to procedure.
+
+Verification:
+User successfully accessed the Finance shared folder.
+
+Resolution:
+Issue resolved and documented.
+```
+
+Good ticket notes explain:
+
+**Problem → Investigation → Finding → Action → Verification**
+
+---
+
+# 20. Interview Practice
+
+Today's interview practice focused on scenario-based questions rather than only definitions.
+
+Examples:
+
+* User cannot log into Windows — what do you check?
+* User receives Access Denied — what do you investigate?
+* `8.8.8.8` works but `google.com` fails — what do you suspect?
+* Computer has `169.254.x.x` — what could be wrong?
+* Teams Web works but desktop does not — what does that suggest?
+* Shared mailbox works for reading but not sending — what permissions should be checked?
+* Linux server is slow — which commands should be used?
+* When should a Help Desk technician escalate a ticket?
+
+---
+
+# 21. Behavioral Interview Practice
+
+### Question
+
+**How do you approach troubleshooting when you do not know the solution?**
+
+### Professional approach
+
+> I first gather information and clarify the symptoms. I then identify possible causes and start with the simplest and safest troubleshooting steps. I use available tools, logs, and documentation to collect evidence rather than making assumptions. After identifying the likely cause, I apply an authorized fix and verify the result with the user. Finally, I document the work and escalate the issue if it is outside my scope or authorization.
+
+---
+
+# 22. Key Lessons From Day 53
+
+Today's major lesson was that IT Support is not simply about knowing commands.
+
+A technician needs to understand:
+
+```text
+What is the problem?
+        ↓
+Which technology is involved?
+        ↓
+What evidence do I need?
+        ↓
+Which tool gives me that evidence?
+        ↓
+What does the result mean?
+        ↓
+What should I do next?
+```
+
+The goal is to make **evidence-based decisions instead of guessing**.
+
+---
+
+# 📌 Day 53 Summary
+
+Today began the practical IT Support phase of the roadmap.
+
+I practiced applying knowledge of Windows, Active Directory, Linux, networking, Microsoft 365, permissions, and security to realistic support scenarios.
+
+The main focus was developing a structured troubleshooting methodology:
+
+```text
+Gather
+ ↓
+Investigate
+ ↓
+Identify Cause
+ ↓
+Fix
+ ↓
+Verify
+ ↓
+Document
+ ↓
+Escalate if Necessary
+```
+
+This approach will be used throughout the interview-preparation phase.
+
+---
+
+# 🚀 Next Step
+
+The next sessions will increasingly use complex tickets where multiple technologies are involved.
+
+The objective is to move from:
+
+> "I know what DNS is."
+
+to:
+
+> "The user can reach an external IP but cannot resolve a domain, so I would investigate DNS using `nslookup` and review the DNS configuration."
+
+This represents the transition from **learning IT concepts to thinking like an IT Support professional**.
