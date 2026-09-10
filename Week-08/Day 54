@@ -1,0 +1,610 @@
+# Day 54 — Multi-System Help Desk Troubleshooting
+
+## 🎯 Objective
+
+Today's training focused on applying the first-pass technical knowledge to realistic Help Desk scenarios.
+
+The main objective was to troubleshoot issues without being told which technology was responsible.
+
+Today's practice combined:
+
+* Windows
+* Active Directory
+* Networking
+* Linux
+* Microsoft 365
+* Security
+* Help Desk ticket management
+
+The focus was on **diagnostic reasoning, tool selection, professional communication, verification, and escalation**.
+
+---
+
+# 1. Mixed Technical Revision
+
+The day began with a mixed revision of previously learned concepts.
+
+The goal was to demonstrate that the concepts could be recalled even when presented in a different order.
+
+Important distinctions reviewed included:
+
+```text
+Authentication
+→ Who are you?
+
+Authorization
+→ What are you allowed to access?
+
+OU
+→ Organize
+
+Security Group
+→ Access / permissions
+
+GPO
+→ Configuration
+
+DNS
+→ Name resolution
+
+DHCP
+→ Network configuration
+```
+
+---
+
+# 2. Main Help Desk Scenario
+
+## Ticket
+
+> User reports: "I changed my password this morning. Now Outlook keeps asking me to sign in, Teams isn't working, and I cannot access the Finance shared folder."
+
+This ticket may involve multiple technologies and should not be treated as a single known problem.
+
+Potential areas include:
+
+* Authentication
+* Active Directory
+* MFA
+* Microsoft 365
+* VPN/networking
+* Security Groups
+* Share permissions
+* NTFS permissions
+* Local applications
+
+---
+
+# 3. Information Gathering
+
+Before making changes, I would ask:
+
+1. When did the problem start?
+2. Did you change your password today?
+3. Can you log into Windows?
+4. Is Internet access working?
+5. Can you access Microsoft 365 in a browser?
+6. Does Outlook Web work?
+7. Does Teams Web work?
+8. Is MFA working?
+9. Are other users affected?
+10. Were you previously able to access the Finance folder?
+11. What exact error appears?
+12. Is VPN connected or required by the organization?
+
+### Purpose
+
+These questions help separate the problem into:
+
+```text
+Authentication
+↓
+Networking
+↓
+Microsoft 365
+↓
+Active Directory
+↓
+Permissions
+↓
+Application
+```
+
+---
+
+# 4. Active Directory Investigation
+
+If the user can log into Windows successfully, that provides evidence that basic Windows authentication is functioning.
+
+The next step is to check account-related information if required.
+
+### Check:
+
+* Account enabled/disabled
+* Account locked/unlocked
+* Password-related issues
+* Account expiration
+* Security-group membership
+
+Example:
+
+```text
+User
+ ↓
+Finance Security Group
+ ↓
+Finance Resource
+```
+
+### Important
+
+Don't say the user is "disconnected" from Active Directory.
+
+Use precise terms:
+
+> Check whether the account is enabled, locked, expired, or experiencing an authentication problem.
+
+---
+
+# 5. Network Investigation
+
+Use:
+
+```cmd
+ipconfig /all
+```
+
+Review:
+
+* IPv4 address
+* Subnet mask
+* Default gateway
+* DNS server
+* DHCP information
+
+### Gateway test
+
+```cmd
+ping <default-gateway>
+```
+
+Tests connectivity to the local default gateway.
+
+### External IP test
+
+```cmd
+ping 8.8.8.8
+```
+
+Tests IP connectivity to an external address.
+
+### DNS test
+
+```cmd
+nslookup google.com
+```
+
+Tests DNS resolution.
+
+---
+
+# 6. Microsoft 365 Investigation
+
+Because the password changed before the problem started, authentication is an important area to investigate.
+
+### Test Outlook Web
+
+If Outlook Web works:
+
+```text
+Cloud service/account accessible
+↓
+Investigate local Outlook application
+```
+
+### Test Teams Web
+
+If Teams Web works but desktop Teams fails:
+
+```text
+Likely local Teams client/application issue
+```
+
+### Additional checks
+
+* MFA
+* Account status
+* License/service assignment
+* Microsoft 365 Service Health
+
+### Important
+
+VPN should only be considered necessary when required by the organization's architecture or when accessing internal resources. Microsoft 365 cloud services do not automatically require a VPN.
+
+---
+
+# 7. Finance Shared Folder Investigation
+
+If the user can log in and Microsoft 365 works but Finance still shows Access Denied:
+
+```text
+User Account
+ ↓
+Finance Security Group
+ ↓
+Share Permissions
+ ↓
+NTFS Permissions
+ ↓
+Effective Access
+```
+
+### Investigation Questions
+
+* Is the user authorized to access Finance?
+* Is the user a member of the required group?
+* Does the network share allow access?
+* Do NTFS permissions allow access?
+
+### Important
+
+Never change permissions without determining:
+
+* The required level of access
+* The user's authorization
+* Which permission is causing the denial
+* Whether I have authority to change it
+
+---
+
+# 8. Linux Troubleshooting Scenario
+
+## Ticket
+
+> "Linux server is running slowly."
+
+The first step is to determine whether the issue is CPU, memory, disk, process, service, or application related.
+
+### CPU / Process Monitoring
+
+```bash
+top
+```
+
+Provides dynamic information about processes and resource usage.
+
+### Memory
+
+```bash
+free -h
+```
+
+Checks RAM usage.
+
+### Disk
+
+```bash
+df -h
+```
+
+Checks filesystem/disk space.
+
+### Process Investigation
+
+```bash
+ps aux
+```
+
+Provides a process snapshot.
+
+### Service Status
+
+```bash
+systemctl status <service>
+```
+
+Checks the status of a service.
+
+### Service Logs
+
+```bash
+journalctl -u <service>
+```
+
+Reviews logs for a specific service.
+
+### Investigation flow
+
+```text
+CPU
+ ↓
+Memory
+ ↓
+Disk
+ ↓
+Processes
+ ↓
+Services
+ ↓
+Logs
+```
+
+### Key lesson
+
+A slow server should not automatically be restarted.
+
+The cause should be investigated first.
+
+---
+
+# 9. Security Scenario
+
+## User Report
+
+> "I received an email asking me to verify my Microsoft 365 password. I clicked the link and entered my password."
+
+This should be treated as a potential phishing/security incident.
+
+### Response
+
+1. Follow the organization's incident-response procedure.
+2. Determine whether credentials were entered.
+3. Escalate to the security team as required.
+4. Follow approved account-protection procedures.
+5. Document the relevant facts.
+
+### Important
+
+A Help Desk technician should recognize when an ordinary technical-support issue becomes a security incident.
+
+---
+
+# 10. Correct Tool Selection
+
+Today's training reinforced using the right tool for the symptom.
+
+| Symptom                       | Tool                   |
+| ----------------------------- | ---------------------- |
+| Windows performance problem   | Task Manager           |
+| Windows service               | `services.msc`         |
+| System/application error      | Event Viewer           |
+| Hardware/driver               | Device Manager         |
+| Startup problem               | `msconfig`             |
+| Group Policy issue            | `gpupdate`, `gpresult` |
+| Windows network configuration | `ipconfig /all`        |
+| DNS issue                     | `nslookup`             |
+| Network path                  | `tracert`              |
+| Linux processes               | `ps`, `top`, `htop`    |
+| Linux RAM                     | `free -h`              |
+| Linux disk                    | `df -h`                |
+| Linux service                 | `systemctl`            |
+| Linux service logs            | `journalctl`           |
+
+### Principle
+
+> The best first troubleshooting tool is the one that provides the most relevant evidence for the reported symptom.
+
+---
+
+# 11. Concept-Mixing Practice
+
+Today's practice included deliberate concept-mixing to simulate real interviews.
+
+## Shared folder Access Denied
+
+Think:
+
+```text
+Security Group
+↓
+Share
+↓
+NTFS
+```
+
+Not GPO first.
+
+## No IP address
+
+Think:
+
+```text
+Network Adapter
+↓
+DHCP
+↓
+IP Configuration
+```
+
+Not password reset.
+
+## Teams Web works but Desktop fails
+
+Think:
+
+```text
+Local Teams Client
+```
+
+Not automatically Active Directory.
+
+## Linux disk full
+
+Use:
+
+```bash
+df -h
+```
+
+Not:
+
+```bash
+free -h
+```
+
+## Shared mailbox opens but cannot send
+
+Investigate:
+
+```text
+Send As
+or
+Send on Behalf
+```
+
+---
+
+# 12. Help Desk Ticket Documentation
+
+A professional ticket should clearly show what happened.
+
+### Example
+
+```text
+Issue:
+User unable to access Finance shared folder following password change.
+
+Investigation:
+Verified user identity and confirmed successful Windows login.
+Tested Internet and Microsoft 365 web access.
+Checked AD account status and Finance group membership.
+Reviewed share and NTFS permissions.
+
+Finding:
+User did not have the required authorized group membership.
+
+Action:
+Updated group membership according to access procedure.
+
+Verification:
+User successfully accessed the Finance shared folder.
+
+Resolution:
+Issue resolved and ticket documented.
+```
+
+### Documentation Principle
+
+Ticket notes should be:
+
+* Factual
+* Concise
+* Professional
+* Reproducible
+* Free of unnecessary personal information
+
+---
+
+# 13. Interview Scenario Practice
+
+Today's interview questions tested decision-making rather than memorized definitions.
+
+### Examples
+
+**User cannot log in:**
+Check identity, error, credentials, account status, network/domain connectivity.
+
+**Access Denied:**
+Check authorization, Security Group, Share permissions, NTFS permissions.
+
+**8.8.8.8 works but a domain fails:**
+Investigate DNS.
+
+**169.254.x.x:**
+Investigate DHCP/network connectivity.
+
+**Teams Web works:**
+Investigate the desktop client if only the desktop application fails.
+
+**Shared mailbox cannot send:**
+Check Send As/Send on Behalf permissions.
+
+**Slow Windows computer:**
+Start with Task Manager.
+
+**Slow Linux server:**
+Use process, memory, disk, service, and log tools.
+
+---
+
+# 14. Behavioral Interview Practice
+
+## Question
+
+**How do you approach troubleshooting a problem you have not seen before?**
+
+### Professional Answer
+
+> I first gather information and clarify the symptoms. I then identify possible causes and start with the simplest and safest troubleshooting steps. I use available documentation, system tools, and logs to collect evidence rather than making assumptions. Once I identify the likely cause and have authorization to make the change, I apply the appropriate fix and verify the result with the user. I document the work and escalate the issue if it is outside my technical scope or authorization.
+
+---
+
+# 15. Key Lessons From Day 54
+
+The most important lesson from today's training was the ability to **connect multiple technologies within one ticket**.
+
+A single user problem may involve:
+
+```text
+Windows
+ ↓
+Active Directory
+ ↓
+Networking
+ ↓
+Microsoft 365
+ ↓
+Security
+ ↓
+Permissions
+```
+
+The technician must isolate each component rather than assuming every symptom has the same cause.
+
+---
+
+# 16. Troubleshooting Methodology
+
+Today's complete support process was:
+
+```text
+1. Gather Information
+        ↓
+2. Clarify Symptoms
+        ↓
+3. Identify Possible Causes
+        ↓
+4. Select Appropriate Tool
+        ↓
+5. Collect Evidence
+        ↓
+6. Identify Likely Cause
+        ↓
+7. Apply Authorized Fix
+        ↓
+8. Verify With User
+        ↓
+9. Document
+        ↓
+10. Close / Escalate
+```
+
+### Core Principle
+
+> **Good IT Support is evidence-based troubleshooting, not guessing.**
+
+---
+
+# 17. Day 54 Summary
+
+Today I practiced troubleshooting realistic multi-system Help Desk problems involving Windows, Active Directory, networking, Linux, Microsoft 365, permissions, and security.
+
+The main focus was applying previously learned knowledge rather than memorizing new definitions.
+
+I practiced identifying the correct troubleshooting path, selecting appropriate tools, interpreting results, respecting authorization boundaries, verifying fixes, documenting tickets, and recognizing when an issue should be escalated.
+
+The key skill developed today was:
+
+> **Identify the symptom → identify the technology → gather evidence → troubleshoot systematically → verify → document → escalate when necessary.**
+
+This marks continued progress toward becoming an effective IT Support professional and preparing for technical interviews.
