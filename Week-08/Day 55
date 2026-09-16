@@ -1,0 +1,576 @@
+# Day 56 – Windows Server 2025 Home Lab Setup & Network Configuration
+
+## 🎯 Objective
+
+Today's objective was to begin building a Windows Server and Active Directory home lab using VirtualBox.
+
+The Windows Server 2025 ISO was successfully installed in VirtualBox after encountering a boot issue with VMware Workstation 16.2.4. The Windows Server virtual machine was configured as `SERVER01`, assigned a static IPv4 address, and tested for network and DNS connectivity.
+
+This server will be used as the foundation for the Active Directory lab.
+
+---
+
+# 🖥️ Lab Environment
+
+## Host System
+
+Physical computer running Windows with virtualization software.
+
+## Virtualization Platform
+
+Oracle VirtualBox
+
+## Virtual Machine
+
+```text
+SERVER01
+```
+
+## Operating System
+
+```text
+Windows Server 2025
+```
+
+## Virtual Network
+
+```text
+VirtualBox NAT
+```
+
+## Network Configuration
+
+```text
+IPv4 Address:      10.0.2.10
+Subnet Mask:      255.255.255.0
+Default Gateway: 10.0.2.2
+```
+
+The VirtualBox NAT network originally assigned the server:
+
+```text
+IPv4 Address:      10.0.2.15
+Subnet Mask:      255.255.255.0
+Default Gateway: 10.0.2.2
+DHCP Server:      10.0.2.2
+```
+
+The address was then changed to a static IP so that the server can have a predictable address when it is later configured as a Domain Controller and DNS server.
+
+---
+
+# 🧠 Windows Server Fundamentals
+
+## What is Windows Server?
+
+Windows Server is Microsoft's server operating system designed to provide centralized services and resources to computers and users on a network.
+
+Common Windows Server roles include:
+
+* Active Directory Domain Services
+* DNS Server
+* DHCP Server
+* File and Storage Services
+* Print Services
+* Web Services
+
+For this lab, Windows Server will eventually provide:
+
+```text
+Active Directory
+DNS
+User and Group Management
+Group Policy
+File Sharing
+Domain Authentication
+```
+
+---
+
+# 🏢 Planned Active Directory Environment
+
+The current server will eventually be configured as the Domain Controller for the lab.
+
+Planned architecture:
+
+```text
+SERVER01
+   |
+   +-- Windows Server 2025
+   |
+   +-- Active Directory Domain Services
+   |
+   +-- DNS
+   |
+   +-- Domain Controller
+```
+
+A future Windows 11 client will be added to the domain:
+
+```text
+SERVER01
+     |
+     +-------------------+
+     |                   |
+Active Directory     DNS Server
+     |
+     |
+WIN11-CLIENT01
+```
+
+---
+
+# 🌐 Network Configuration
+
+## Initial DHCP Configuration
+
+When Windows Server was first started, VirtualBox NAT assigned:
+
+```text
+IPv4 Address:      10.0.2.15
+Subnet Mask:      255.255.255.0
+Default Gateway: 10.0.2.2
+DHCP Server:      10.0.2.2
+```
+
+The configuration was verified using:
+
+```cmd
+ipconfig /all
+```
+
+---
+
+## Static IP Configuration
+
+Because the server will eventually become a Domain Controller and DNS server, a stable IP address is important.
+
+The server was configured with:
+
+```text
+IPv4 Address:
+10.0.2.10
+
+Subnet Mask:
+255.255.255.0
+
+Default Gateway:
+10.0.2.2
+```
+
+The static IP was configured through:
+
+```text
+Network Connections
+→ Ethernet
+→ Properties
+→ Internet Protocol Version 4 (TCP/IPv4)
+```
+
+---
+
+# 🔍 Important Networking Concepts
+
+## DHCP
+
+DHCP automatically provides network configuration information to a device.
+
+It can provide:
+
+* IP address
+* Subnet mask
+* Default gateway
+* DNS server
+
+In the VirtualBox NAT environment, the DHCP server was:
+
+```text
+10.0.2.2
+```
+
+---
+
+## Static IP
+
+A static IP is manually assigned to a device and remains predictable.
+
+A stable address is useful for servers because other systems need to consistently locate the server.
+
+For this lab:
+
+```text
+SERVER01 = 10.0.2.10
+```
+
+---
+
+## Default Gateway
+
+The default gateway provides the path from the local network to other networks.
+
+In this VirtualBox environment:
+
+```text
+Default Gateway = 10.0.2.2
+```
+
+---
+
+## NAT
+
+NAT (Network Address Translation) allows the virtual machine to communicate with external networks through the host system.
+
+The lab uses:
+
+```text
+VirtualBox
+    |
+    └── NAT
+         |
+      Internet
+```
+
+This keeps the initial lab networking simple while still allowing the virtual machine to access the Internet.
+
+---
+
+# 🧪 Network Troubleshooting Commands
+
+The following commands were used to verify the server configuration.
+
+## 1. Check hostname
+
+```cmd
+hostname
+```
+
+Purpose:
+
+Displays the computer's hostname.
+
+Expected:
+
+```text
+SERVER01
+```
+
+---
+
+## 2. Check complete IP configuration
+
+```cmd
+ipconfig /all
+```
+
+Purpose:
+
+Displays detailed network configuration, including:
+
+* IPv4 address
+* Subnet mask
+* Default gateway
+* DHCP information
+* DNS information
+* MAC address
+
+---
+
+## 3. Test default gateway
+
+```cmd
+ping 10.0.2.2
+```
+
+Purpose:
+
+Tests connectivity between SERVER01 and the VirtualBox NAT gateway.
+
+---
+
+## 4. Test external IP connectivity
+
+```cmd
+ping 8.8.8.8
+```
+
+Purpose:
+
+Tests whether the server can reach an external IP address without relying on DNS name resolution.
+
+---
+
+## 5. Test DNS name resolution and connectivity
+
+```cmd
+ping google.com
+```
+
+Purpose:
+
+Tests both network connectivity and DNS name resolution.
+
+---
+
+## 6. Test DNS resolution directly
+
+```cmd
+nslookup google.com
+```
+
+Purpose:
+
+Checks whether DNS can resolve a hostname into an IP address.
+
+---
+
+# 🔎 Troubleshooting Methodology
+
+A useful network troubleshooting sequence practiced today was:
+
+```text
+Check IP configuration
+        ↓
+Check default gateway
+        ↓
+Test external IP
+        ↓
+Test domain name
+        ↓
+Test DNS directly
+```
+
+Example:
+
+```text
+ipconfig /all
+        ↓
+ping 10.0.2.2
+        ↓
+ping 8.8.8.8
+        ↓
+ping google.com
+        ↓
+nslookup google.com
+```
+
+This approach helps identify whether the problem is related to:
+
+* IP configuration
+* Local connectivity
+* Gateway
+* Internet connectivity
+* DNS resolution
+
+---
+
+# 🎫 Help Desk Troubleshooting Scenario
+
+## Ticket ID
+
+```text
+INC-5601
+```
+
+## Issue
+
+New Windows Server was installed, but the administrator reported that the server could not access external websites.
+
+---
+
+## Information Gathering
+
+First verify:
+
+* Server hostname
+* IPv4 address
+* Subnet mask
+* Default gateway
+* DNS configuration
+
+Command used:
+
+```cmd
+ipconfig /all
+```
+
+---
+
+## Investigation
+
+Tested connectivity in stages:
+
+### Step 1
+
+```cmd
+ping 10.0.2.2
+```
+
+Checked connectivity to the gateway.
+
+### Step 2
+
+```cmd
+ping 8.8.8.8
+```
+
+Checked external IP connectivity.
+
+### Step 3
+
+```cmd
+ping google.com
+```
+
+Checked hostname resolution and connectivity.
+
+### Step 4
+
+```cmd
+nslookup google.com
+```
+
+Checked DNS resolution directly.
+
+---
+
+## Troubleshooting Logic
+
+If:
+
+```text
+ping 8.8.8.8
+```
+
+works but:
+
+```text
+ping google.com
+```
+
+fails, the problem may be related to DNS rather than basic Internet connectivity.
+
+This reinforces the distinction between:
+
+```text
+IP Connectivity
+```
+
+and:
+
+```text
+DNS Name Resolution
+```
+
+---
+
+# 🏢 Active Directory Preparation
+
+Active Directory was **not installed yet**.
+
+The purpose of today's work was to prepare the server before installing Active Directory Domain Services.
+
+The planned sequence is:
+
+```text
+Windows Server Installation
+        ↓
+Hostname Configuration
+        ↓
+Network Configuration
+        ↓
+Static IP
+        ↓
+Connectivity Testing
+        ↓
+Active Directory Domain Services
+        ↓
+DNS
+        ↓
+Domain Controller
+```
+
+This prevents multiple configuration problems from being introduced at the same time.
+
+---
+
+# 🧠 Key Concepts Learned
+
+## Windows Server
+
+Server operating system used to provide centralized services on a network.
+
+## Static IP
+
+A manually assigned and predictable IP address.
+
+## DHCP
+
+Automatically provides IP configuration to network devices.
+
+## NAT
+
+Allows virtual machines to communicate with external networks through the host.
+
+## Default Gateway
+
+Provides the path to other networks.
+
+## DNS
+
+Translates hostnames into IP addresses and is a critical component of Active Directory.
+
+## `ipconfig /all`
+
+Displays detailed Windows network configuration.
+
+## `ping`
+
+Tests IP-level connectivity.
+
+## `nslookup`
+
+Tests DNS name resolution.
+
+---
+
+
+---
+
+# ✅ Day 56 Completion Checklist
+
+* [x] Created SERVER01 virtual machine
+* [x] Installed Windows Server 2025
+* [x] Configured VirtualBox NAT networking
+* [x] Renamed server to SERVER01
+* [x] Reviewed initial DHCP configuration
+* [x] Configured static IPv4 address
+* [x] Configured subnet mask
+* [x] Configured default gateway
+* [x] Verified IP configuration
+* [x] Tested gateway connectivity
+* [x] Tested external IP connectivity
+* [x] Tested DNS resolution
+* [x] Practiced network troubleshooting methodology
+* [x] Prepared SERVER01 for Active Directory installation
+
+---
+
+
+
+# 💡 Reflection
+
+Today I started building my Windows Server and Active Directory home lab using VirtualBox. After successfully installing Windows Server 2025, I configured the system as SERVER01 and practiced server network configuration using VirtualBox NAT networking.
+
+I learned the importance of using a stable IP address for a server that will eventually provide Active Directory and DNS services. I also practiced verifying network connectivity step-by-step using `ipconfig`, `ping`, and `nslookup`.
+
+Today's work provided the foundation for the next stage of my lab, where SERVER01 will be configured as an Active Directory Domain Controller.
+
+The main lesson from today was that server configuration should be completed and verified before adding additional services. This makes troubleshooting easier because problems can be isolated instead of troubleshooting several new technologies at the same time.
+
+# 🔑 Key Takeaway
+
+```text
+Configure → Verify → Document → Then add the next service
+```
+
+This approach will be followed throughout the rest of the home lab.
