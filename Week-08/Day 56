@@ -1,0 +1,768 @@
+# Day 56 – Windows Server 2025 & Active Directory Home Lab Setup
+
+## 🎯 Objective
+
+Today's objective was to begin building the Windows Server and Active Directory portion of my IT Support home lab.
+
+I created a new Windows Server 2025 virtual machine in VirtualBox after confirming that the Windows Server 2025 ISO worked correctly in VirtualBox. VMware Workstation 16.2.4 had a boot issue with the same ISO, while VirtualBox successfully installed and started Windows Server 2025.
+
+The server was configured as `SERVER01`, assigned a static IPv4 address, network connectivity was verified, and the Active Directory Domain Services (AD DS) role was installed.
+
+This server will form the foundation of the Active Directory environment for future Windows client, Group Policy, user-management, file-sharing, and Microsoft 365/Entra integration labs.
+
+---
+
+# 🖥️ Lab Environment
+
+## Host Computer
+
+Physical Windows computer used as the host system.
+
+## Virtualization Platform
+
+Oracle VirtualBox
+
+## Virtual Machine
+
+```text
+SERVER01
+```
+
+## Operating System
+
+```text
+Windows Server 2025
+```
+
+## Network Type
+
+```text
+VirtualBox NAT
+```
+
+---
+
+# 🏗️ Home Lab Architecture
+
+The lab is being built in stages.
+
+Current environment:
+
+```text
+Physical Windows Computer
+        |
+    VirtualBox
+        |
+     SERVER01
+        |
+ Windows Server 2025
+        |
+      AD DS
+```
+
+Existing Linux/networking environment remains separate:
+
+```text
+VMware Workstation
+        |
+Ubuntu-Learning-Lab
+        |
+Linux + Networking Practice
+```
+
+The future Active Directory lab will expand to:
+
+```text
+                 VirtualBox
+                     |
+          +----------+----------+
+          |                     |
+      SERVER01            WIN11-CLIENT01
+          |                     |
+   Windows Server 2025        Windows 11
+          |                     |
+        AD DS                Domain Join
+          |
+        DNS
+          |
+     Active Directory
+```
+
+---
+
+# 🪟 Windows Server 2025 Installation
+
+## Server Name
+
+```text
+SERVER01
+```
+
+The server hostname was changed from the default installation name to `SERVER01`.
+
+The hostname was verified using:
+
+```cmd
+hostname
+```
+
+Expected result:
+
+```text
+SERVER01
+```
+
+---
+
+# 🌐 VirtualBox Network Configuration
+
+The virtual machine was configured to use:
+
+```text
+NAT
+```
+
+NAT allows the virtual machine to communicate with external networks through VirtualBox while keeping the initial lab setup simple.
+
+---
+
+# 📡 Initial DHCP Configuration
+
+When Windows Server was first started, VirtualBox assigned the following network information:
+
+```text
+IPv4 Address:
+10.0.2.15
+
+Subnet Mask:
+255.255.255.0
+
+Default Gateway:
+10.0.2.2
+
+DHCP Server:
+10.0.2.2
+```
+
+The configuration was verified using:
+
+```cmd
+ipconfig /all
+```
+
+---
+
+# 🔒 Static IPv4 Configuration
+
+Because `SERVER01` is being prepared to provide server and Active Directory services, a predictable IP address is required.
+
+The server was configured with:
+
+```text
+IPv4 Address:
+10.0.2.10
+
+Subnet Mask:
+255.255.255.0
+
+Default Gateway:
+10.0.2.2
+```
+
+The static IP was configured through:
+
+```text
+Network Connections
+→ Ethernet
+→ Properties
+→ Internet Protocol Version 4 (TCP/IPv4)
+```
+
+---
+
+# 🧠 Why a Server Needs a Stable IP
+
+A server providing important network services should have a predictable address.
+
+Other computers will eventually need to locate:
+
+```text
+SERVER01
+Active Directory
+DNS
+File Shares
+```
+
+A changing DHCP address could cause connectivity and service-location problems.
+
+Therefore:
+
+```text
+SERVER01
+    ↓
+Static IP
+    ↓
+Predictable server location
+```
+
+---
+
+# 🌐 DNS Preparation
+
+DNS is especially important for Active Directory.
+
+Active Directory uses DNS so domain members can locate Domain Controllers and other directory services.
+
+The eventual architecture will be:
+
+```text
+WIN11-CLIENT01
+        |
+        ↓
+SERVER01 DNS
+        |
+        ↓
+Active Directory
+```
+
+The Domain Controller will use its own Active Directory DNS service after the AD/DNS configuration is completed.
+
+---
+
+# 🧪 Network Verification
+
+The following commands were used to verify the server configuration.
+
+## 1. Hostname
+
+```cmd
+hostname
+```
+
+Purpose:
+
+Checks the computer's hostname.
+
+Expected:
+
+```text
+SERVER01
+```
+
+---
+
+## 2. Complete network configuration
+
+```cmd
+ipconfig /all
+```
+
+Purpose:
+
+Displays:
+
+* IPv4 address
+* Subnet mask
+* Default gateway
+* DHCP information
+* DNS information
+* MAC address
+
+---
+
+## 3. Test the default gateway
+
+```cmd
+ping 10.0.2.2
+```
+
+Purpose:
+
+Tests connectivity between SERVER01 and the VirtualBox NAT gateway.
+
+---
+
+## 4. Test external IP connectivity
+
+```cmd
+ping 8.8.8.8
+```
+
+Purpose:
+
+Tests external network connectivity without depending on DNS name resolution.
+
+---
+
+## 5. Test DNS/name resolution
+
+```cmd
+ping google.com
+```
+
+Purpose:
+
+Tests connectivity while also requiring hostname resolution.
+
+---
+
+## 6. Test DNS directly
+
+```cmd
+nslookup google.com
+```
+
+Purpose:
+
+Checks whether the configured DNS service can resolve a hostname.
+
+---
+
+# 🔎 Network Troubleshooting Method
+
+A structured troubleshooting sequence used during the lab was:
+
+```text
+Check IP configuration
+        ↓
+Check default gateway
+        ↓
+Test external IP
+        ↓
+Test hostname
+        ↓
+Test DNS directly
+```
+
+Example:
+
+```cmd
+ipconfig /all
+ping 10.0.2.2
+ping 8.8.8.8
+ping google.com
+nslookup google.com
+```
+
+This approach helps isolate whether a problem is related to:
+
+* IP configuration
+* Local network connectivity
+* Default gateway
+* Internet connectivity
+* DNS resolution
+
+---
+
+# 🏢 Active Directory Domain Services
+
+## AD DS Installation
+
+The **Active Directory Domain Services (AD DS)** server role was installed on `SERVER01`.
+
+Installation path:
+
+```text
+Server Manager
+→ Manage
+→ Add Roles and Features
+→ Role-based or feature-based installation
+→ SERVER01
+→ Active Directory Domain Services
+```
+
+The required supporting features were also installed when prompted.
+
+---
+
+# 🧠 What is AD DS?
+
+Active Directory Domain Services is Microsoft's directory service used to centrally manage identities and resources in a Windows domain environment.
+
+AD DS stores and manages objects such as:
+
+```text
+Users
+Computers
+Groups
+Organizational Units
+```
+
+It also supports domain authentication and directory services.
+
+---
+
+# 🖥️ What SERVER01 Will Eventually Provide
+
+The server is being developed into the main server for the lab.
+
+Planned services include:
+
+```text
+Active Directory Domain Services
+DNS
+Domain Authentication
+User Management
+Group Management
+Group Policy
+File Sharing
+```
+
+Future architecture:
+
+```text
+SERVER01
+│
+├── Active Directory
+│
+├── DNS
+│
+├── Users
+│
+├── Groups
+│
+├── Organizational Units
+│
+├── Group Policy
+│
+└── File Shares
+```
+
+---
+
+# 🧠 Important AD Concepts Introduced
+
+## Domain
+
+A domain is a logical environment containing users, computers, groups, and other Active Directory objects.
+
+Example planned lab domain:
+
+```text
+kpatel.test
+```
+
+---
+
+## Domain Controller
+
+A Domain Controller is a server running Active Directory Domain Services that provides authentication and directory services for the domain.
+
+The planned Domain Controller for this lab is:
+
+```text
+SERVER01
+```
+
+---
+
+## DNS and Active Directory
+
+DNS is a critical dependency for Active Directory.
+
+It allows domain members to locate Domain Controllers and other services.
+
+Conceptually:
+
+```text
+Windows Client
+      |
+      ↓
+DNS
+      |
+      ↓
+Locate Domain Controller
+      |
+      ↓
+Authenticate User
+```
+
+---
+
+# 🎫 Help Desk Troubleshooting Scenario
+
+## Ticket ID
+
+```text
+INC-5601
+```
+
+## Issue
+
+New Windows Server was installed in the lab and required network verification before being used for Active Directory.
+
+---
+
+## Investigation
+
+### Step 1 – Identify server
+
+```cmd
+hostname
+```
+
+Confirmed:
+
+```text
+SERVER01
+```
+
+### Step 2 – Check network configuration
+
+```cmd
+ipconfig /all
+```
+
+Verified:
+
+```text
+IPv4 Address: 10.0.2.10
+Subnet Mask: 255.255.255.0
+Default Gateway: 10.0.2.2
+```
+
+### Step 3 – Test gateway
+
+```cmd
+ping 10.0.2.2
+```
+
+### Step 4 – Test external connectivity
+
+```cmd
+ping 8.8.8.8
+```
+
+### Step 5 – Test DNS
+
+```cmd
+ping google.com
+nslookup google.com
+```
+
+---
+
+# 🧠 Troubleshooting Logic
+
+An important diagnostic distinction practiced today was:
+
+```text
+ping 8.8.8.8 works
++
+ping google.com fails
+        ↓
+Investigate DNS
+```
+
+Whereas:
+
+```text
+ping 8.8.8.8 fails
+        ↓
+Investigate network connectivity
+        ↓
+Check IP / gateway / adapter / NAT
+```
+
+This prevents immediately blaming DNS or the Internet without gathering evidence.
+
+---
+
+# 🔐 Active Directory Preparation
+
+AD DS was installed on SERVER01.
+
+The next stage of the lab will continue with:
+
+```text
+AD DS
+   ↓
+Domain Controller configuration
+   ↓
+DNS verification
+   ↓
+Active Directory domain
+   ↓
+OUs
+   ↓
+Users
+   ↓
+Groups
+```
+
+This staged approach helps isolate problems and makes troubleshooting easier.
+
+---
+
+# 📸 Screenshots for GitHub
+
+Recommended screenshots from today's work:
+
+1. VirtualBox SERVER01 settings
+2. Windows Server 2025 desktop
+3. Server Manager
+4. `hostname`
+5. `ipconfig /all`
+6. IPv4 static configuration
+7. Successful gateway ping
+8. Successful external IP ping
+9. `nslookup`
+10. Server Manager showing AD DS installed
+
+Do not include:
+
+* Passwords
+* Product keys
+* Personal account information
+* Sensitive credentials
+
+---
+
+# 🛠️ Commands Practiced
+
+```cmd
+hostname
+ipconfig /all
+ping 10.0.2.2
+ping 8.8.8.8
+ping google.com
+nslookup google.com
+```
+
+---
+
+# 📚 Skills Learned
+
+## Windows Server
+
+* Windows Server 2025 installation
+* Server Manager
+* Server hostname configuration
+* Windows Server network configuration
+* Static IPv4 configuration
+* Server network verification
+
+## Networking
+
+* NAT
+* DHCP
+* Static IP
+* IPv4
+* Subnet mask
+* Default gateway
+* DNS
+* Network connectivity testing
+
+## Active Directory
+
+* AD DS
+* Domain Controller fundamentals
+* Domain fundamentals
+* DNS dependency
+* Active Directory lab preparation
+
+## Troubleshooting
+
+* Information gathering
+* Network verification
+* Ping testing
+* DNS testing
+* Identifying possible DNS vs network problems
+* Structured troubleshooting
+
+---
+
+# ✅ Day 56 Completion Checklist
+
+* [x] Created SERVER01 virtual machine
+* [x] Used VirtualBox for the Windows Server lab
+* [x] Installed Windows Server 2025
+* [x] Renamed server to SERVER01
+* [x] Configured VirtualBox NAT networking
+* [x] Reviewed initial DHCP configuration
+* [x] Configured static IPv4 address
+* [x] Configured subnet mask
+* [x] Configured default gateway
+* [x] Verified IP configuration
+* [x] Tested gateway connectivity
+* [x] Tested external IP connectivity
+* [x] Tested DNS resolution
+* [x] Installed Active Directory Domain Services
+* [x] Prepared SERVER01 for Active Directory administration
+* [x] Practiced network troubleshooting
+* [x] Created Help Desk troubleshooting scenario
+* [x] Collected screenshots for documentation
+
+---
+
+# 🔑 Key Takeaways
+
+1. Windows Server provides centralized services for users and computers.
+
+2. A server intended to provide important network services should have a predictable IP address.
+
+3. DHCP automatically assigns network configuration, while a static IP is manually assigned.
+
+4. DNS translates names to IP addresses and is a critical component of Active Directory.
+
+5. `ping` can help test connectivity, while `nslookup` is specifically useful for testing DNS resolution.
+
+6. Active Directory Domain Services provides centralized directory and authentication services.
+
+7. A Domain Controller is a server that hosts Active Directory Domain Services.
+
+8. Troubleshooting should begin with information gathering and evidence rather than immediately changing configuration.
+
+9. The lab should be built progressively so that each component can be verified before adding the next one.
+
+---
+
+# 💭 Reflection
+
+Today I started the Windows Server portion of my IT Support home lab using VirtualBox. I successfully installed Windows Server 2025, configured the system as SERVER01, assigned a static IPv4 address, and verified network and DNS connectivity.
+
+I also installed the Active Directory Domain Services role, establishing the foundation for the Active Directory environment I will continue building in the upcoming labs.
+
+The troubleshooting work reinforced the importance of checking network configuration, gateway connectivity, Internet connectivity, and DNS separately rather than assuming that every connectivity problem has the same cause.
+
+This lab provides the foundation for practicing real IT Support tasks such as domain user management, account lockouts, Group Policy, domain joining, file permissions, and Active Directory troubleshooting.
+
+---
+
+# 🚀 Next Lab
+
+The next stage will focus on **using the Active Directory environment rather than reinstalling it**.
+
+Planned activities:
+
+```text
+SERVER01
+   ↓
+Verify AD/DNS
+   ↓
+Domain configuration
+   ↓
+Organizational Units
+   ↓
+Users
+   ↓
+Security Groups
+   ↓
+Authentication
+   ↓
+Account Lockout
+   ↓
+Windows 11 Domain Client
+```
+
+The goal is to move from:
+
+```text
+"I installed Active Directory"
+```
+
+to:
+
+```text
+"I can administer and troubleshoot Active Directory."
+```
