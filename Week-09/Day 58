@@ -1,0 +1,892 @@
+# Day 58 – Active Directory DNS Troubleshooting & Windows 11 Client Preparation
+
+## 🎯 Objective
+
+Today's objective was to continue building the Active Directory home lab by troubleshooting DNS on the Domain Controller and preparing the Windows 11 client for Active Directory domain connectivity.
+
+The main focus was understanding the difference between:
+
+* Internal Active Directory DNS resolution
+* External Internet DNS resolution
+* DNS forwarding
+* Client DNS configuration
+* Domain Controller connectivity
+* Active Directory domain-join preparation
+
+A real troubleshooting issue was identified where the Active Directory domain could be resolved successfully, but external hostnames such as `google.com` could not be resolved. The issue was investigated and resolved by configuring DNS forwarders on the Domain Controller.
+
+---
+
+# 🏗️ Lab Environment
+
+## Virtualization Platform
+
+```text
+Oracle VirtualBox 7.2.x
+```
+
+## Server
+
+```text
+SERVER01
+Windows Server 2025
+Active Directory Domain Services
+DNS
+Domain Controller
+```
+
+## Client
+
+```text
+WIN11-CLIENT01
+Windows 11 Enterprise Evaluation
+```
+
+## Active Directory Domain
+
+```text
+kpatel.test
+```
+
+## Lab Network
+
+```text
+AD-LAB-NET
+192.168.50.0/24
+```
+
+## SERVER01
+
+```text
+IPv4 Address:
+192.168.50.10
+
+Subnet Mask:
+255.255.255.0
+```
+
+---
+
+# 🌐 Lab Network Architecture
+
+The current lab architecture is:
+
+```text
+                    INTERNET
+                       |
+                 DNS Forwarder
+                       |
+                 SERVER01 DNS
+                       |
+                 Active Directory
+                       |
+                   kpatel.test
+                       |
+             +---------+---------+
+             |                   |
+         SERVER01          WIN11-CLIENT01
+       192.168.50.10
+```
+
+The purpose of the lab network is to allow the Windows Server and Windows client to communicate with each other while remaining isolated from the physical home network.
+
+---
+
+# 🏢 SERVER01 Role
+
+SERVER01 is the central server in the lab.
+
+It provides:
+
+```text
+Active Directory Domain Services
+DNS
+Domain authentication
+Directory services
+```
+
+The server is configured to use a stable IPv4 address:
+
+```text
+192.168.50.10
+```
+
+This allows the Windows client to consistently locate the Domain Controller.
+
+---
+
+# 🌐 DNS Troubleshooting
+
+## Problem Identified
+
+Internal Active Directory DNS resolution was working:
+
+```cmd
+nslookup kpatel.test
+```
+
+Result:
+
+```text
+SUCCESS
+```
+
+However, external hostname resolution was failing:
+
+```cmd
+ping google.com
+```
+
+The system reported that the host could not be found.
+
+This indicated that DNS was partially working rather than completely failing.
+
+---
+
+# 🔎 Troubleshooting Approach
+
+The issue was isolated by testing internal and external DNS separately.
+
+## Test 1 — Internal AD DNS
+
+```cmd
+nslookup kpatel.test
+```
+
+Result:
+
+```text
+Successful
+```
+
+This confirmed that the Active Directory DNS zone was available.
+
+---
+
+## Test 2 — External DNS
+
+```cmd
+nslookup google.com
+```
+
+Result:
+
+```text
+External hostname could not be resolved
+```
+
+The result suggested that the internal DNS server did not have a working forwarding path for external DNS requests.
+
+---
+
+# 🧠 DNS Diagnosis
+
+The results showed:
+
+```text
+Internal DNS
+kpatel.test
+     ↓
+     ✅
+```
+
+while:
+
+```text
+External DNS
+google.com
+     ↓
+     ❌
+```
+
+Therefore, the problem was not that Active Directory DNS was completely unavailable.
+
+The issue was related to **external DNS resolution/forwarding**.
+
+---
+
+# 🔧 DNS Forwarder Configuration
+
+DNS Manager was opened on SERVER01:
+
+```text
+Server Manager
+→ Tools
+→ DNS
+```
+
+Then:
+
+```text
+SERVER01
+→ Properties
+→ Forwarders
+```
+
+External DNS forwarders were configured.
+
+Example:
+
+```text
+8.8.8.8
+1.1.1.1
+```
+
+The purpose of the forwarders is to allow the internal DNS server to forward DNS queries for names that it does not host locally.
+
+---
+
+# 🌍 DNS Forwarding Architecture
+
+The final concept is:
+
+```text
+Client asks:
+"Where is google.com?"
+        |
+        ↓
+SERVER01 DNS
+        |
+        | Internal name?
+        | Yes → Resolve internally
+        |
+        | External name?
+        | Yes
+        ↓
+DNS Forwarder
+        |
+        ↓
+External DNS
+        |
+        ↓
+Internet
+```
+
+For an internal domain:
+
+```text
+kpatel.test
+      |
+      ↓
+SERVER01 DNS
+      |
+      ↓
+Active Directory DNS Zone
+```
+
+---
+
+# 🧪 DNS Verification
+
+After configuring DNS forwarding, DNS resolution was tested again.
+
+Commands used:
+
+```cmd
+nslookup google.com
+```
+
+```cmd
+ping google.com
+```
+
+Additional testing can include:
+
+```cmd
+nslookup microsoft.com
+```
+
+```cmd
+nslookup learn.microsoft.com
+```
+
+The purpose was to confirm that the server could now resolve external hostnames.
+
+---
+
+# 🛠️ DNS Verification Using PowerShell
+
+The configured DNS forwarders can also be checked with:
+
+```powershell
+Get-DnsServerForwarder
+```
+
+This provides a PowerShell-based method of reviewing the DNS forwarding configuration.
+
+---
+
+# 🔍 Active Directory DNS Health
+
+The Domain Controller DNS configuration can be checked using:
+
+```cmd
+dcdiag /test:dns
+```
+
+This provides DNS-related diagnostic information for the Domain Controller.
+
+The command helps investigate:
+
+* DNS configuration
+* DNS registration
+* Forwarders
+* Active Directory DNS records
+* Domain Controller DNS health
+
+---
+
+# 🧠 Important DNS Concept Learned
+
+Today's troubleshooting reinforced an important distinction:
+
+```text
+DNS is working
+≠
+All DNS queries are working
+```
+
+A DNS server may successfully resolve internal Active Directory records while failing to resolve external Internet names.
+
+For example:
+
+```text
+kpatel.test
+   ↓
+Internal DNS
+   ↓
+SUCCESS
+```
+
+but:
+
+```text
+google.com
+   ↓
+External DNS forwarding
+   ↓
+FAILURE
+```
+
+This is why DNS troubleshooting should test both internal and external resolution.
+
+---
+
+# 🖥️ Windows 11 Client
+
+The Windows 11 client was successfully installed as:
+
+```text
+WIN11-CLIENT01
+```
+
+It will act as the employee workstation in the Active Directory environment.
+
+The planned relationship is:
+
+```text
+WIN11-CLIENT01
+       |
+       ↓
+AD-LAB-NET
+       |
+       ↓
+SERVER01
+       |
+       ↓
+kpatel.test
+```
+
+---
+
+# 🌐 Windows 11 DNS Preparation
+
+The Windows 11 client needs to use the Domain Controller's internal DNS server when it needs to locate Active Directory services.
+
+Planned DNS configuration:
+
+```text
+Preferred DNS:
+192.168.50.10
+```
+
+This ensures the client can query:
+
+```text
+kpatel.test
+SERVER01
+Active Directory DNS records
+```
+
+---
+
+# 🧪 Client DNS Testing
+
+Before joining the domain, the client should be tested with:
+
+```cmd
+ipconfig /all
+```
+
+Verify:
+
+```text
+DNS Server:
+192.168.50.10
+```
+
+Then:
+
+```cmd
+ping 192.168.50.10
+```
+
+Test SERVER01 by hostname:
+
+```cmd
+ping SERVER01
+```
+
+Test the domain:
+
+```cmd
+nslookup kpatel.test
+```
+
+Test the Domain Controller's fully qualified name:
+
+```cmd
+nslookup SERVER01.kpatel.test
+```
+
+These tests confirm that the Windows client can communicate with the Domain Controller and resolve internal Active Directory DNS records.
+
+---
+
+# 🏢 Domain Join Preparation
+
+The Windows 11 client is being prepared for a domain join.
+
+Planned process:
+
+```text
+WIN11-CLIENT01
+       ↓
+Check IP
+       ↓
+Check DNS
+       ↓
+Ping SERVER01
+       ↓
+Resolve kpatel.test
+       ↓
+Join kpatel.test
+       ↓
+Restart
+       ↓
+Domain Login
+```
+
+The domain join should only be attempted after the client can successfully resolve the internal domain through SERVER01.
+
+---
+
+# 🧠 Important Active Directory Concepts Reviewed
+
+## Active Directory
+
+Active Directory is Microsoft's directory service used to centrally manage users, computers, groups, and other resources in a Windows domain environment.
+
+---
+
+## AD DS
+
+Active Directory Domain Services is the Windows Server role that provides directory services, authentication, and centralized management of domain objects.
+
+---
+
+## Domain Controller
+
+A Domain Controller is a Windows Server that runs AD DS and provides authentication and directory services for the domain.
+
+---
+
+## DNS
+
+DNS allows domain clients to locate Domain Controllers and other Active Directory services.
+
+---
+
+## Authentication
+
+Authentication verifies who the user is.
+
+```text
+Who are you?
+```
+
+---
+
+## Authorization
+
+Authorization determines what an authenticated user is allowed to access.
+
+```text
+What are you allowed to access?
+```
+
+---
+
+# 🧠 Computer Account
+
+When a Windows computer joins the Active Directory domain, a computer account is created in Active Directory.
+
+Example:
+
+```text
+WIN11-CLIENT01
+        ↓
+Computer Account
+        ↓
+Active Directory
+```
+
+The computer account represents the workstation in the domain.
+
+---
+
+# 🔄 GPO Review
+
+Two important Group Policy commands were reviewed.
+
+## `gpupdate /force`
+
+```cmd
+gpupdate /force
+```
+
+Purpose:
+
+> Forces Windows to refresh and reapply Group Policy settings.
+
+---
+
+## `gpresult /r`
+
+```cmd
+gpresult /r
+```
+
+Purpose:
+
+> Displays the Group Policy settings and Group Policy Objects applied to the current user and computer.
+
+---
+
+# 🎫 Help Desk Ticket – INC-5801
+
+## User
+
+John Finance
+
+## Issue
+
+> "I cannot access the company domain from my Windows computer."
+
+---
+
+## Information Gathering
+
+Questions:
+
+1. What is the exact error?
+2. Does the computer have an IP address?
+3. Can the computer reach SERVER01?
+4. What DNS server is configured?
+5. Can the computer resolve `kpatel.test`?
+6. Is the computer already domain joined?
+7. Does the user's AD account exist?
+8. Is the account locked or disabled?
+
+---
+
+# 🔎 Investigation
+
+### Step 1 — Check IP configuration
+
+```cmd
+ipconfig /all
+```
+
+### Step 2 — Check Domain Controller connectivity
+
+```cmd
+ping SERVER01
+```
+
+### Step 3 — Check AD DNS
+
+```cmd
+nslookup kpatel.test
+```
+
+### Step 4 — Check Domain Controller DNS
+
+```cmd
+nslookup SERVER01.kpatel.test
+```
+
+### Step 5 — Verify Active Directory
+
+Check:
+
+```text
+Active Directory Users and Computers
+```
+
+---
+
+# 🧠 Troubleshooting Principle
+
+Do not immediately assume:
+
+> "Active Directory is broken."
+
+Instead isolate the problem:
+
+```text
+Client IP
+   ↓
+Network connectivity
+   ↓
+SERVER01
+   ↓
+DNS
+   ↓
+Active Directory
+   ↓
+Authentication
+```
+
+This layered approach makes troubleshooting easier and prevents unnecessary configuration changes.
+
+---
+
+# 💼 Behavioral Example
+
+## Question
+
+**Tell me about a technical problem you encountered and how you solved it.**
+
+### Answer
+
+> While building my Active Directory home lab, I noticed that internal DNS resolution for my AD domain was working, but external names such as google.com were not resolving. I tested internal and external DNS separately and determined that the issue was related to DNS forwarding. I configured DNS forwarders on the Domain Controller, tested the configuration again using nslookup and ping, and verified that external DNS resolution was working. This experience reinforced the importance of isolating a problem before making changes and verifying the result afterward.
+
+---
+
+# 🎤 Interview Wording Practice
+
+### What is Active Directory?
+
+> Active Directory is Microsoft's directory service used to centrally manage users, computers, groups, and other resources in a Windows domain environment.
+
+### What is AD DS?
+
+> Active Directory Domain Services is a Windows Server role that provides directory services, authentication, and centralized management of domain objects.
+
+### What is a Domain Controller?
+
+> A Domain Controller is a Windows Server that runs AD DS and provides authentication and directory services for the domain.
+
+### Why is DNS important to Active Directory?
+
+> DNS allows domain clients to locate Domain Controllers and other Active Directory services.
+
+### What is `nslookup`?
+
+> `nslookup` is a command-line tool used to query DNS and troubleshoot hostname-to-IP address resolution.
+
+---
+
+# 📚 Commands Practiced
+
+```cmd
+ipconfig /all
+```
+
+```cmd
+ping SERVER01
+```
+
+```cmd
+ping 192.168.50.10
+```
+
+```cmd
+ping google.com
+```
+
+```cmd
+nslookup kpatel.test
+```
+
+```cmd
+nslookup google.com
+```
+
+```cmd
+dcdiag /test:dns
+```
+
+```cmd
+gpupdate /force
+```
+
+```cmd
+gpresult /r
+```
+
+PowerShell:
+
+```powershell
+Get-DnsServerForwarder
+```
+
+---
+
+# 📸 Screenshots for GitHub
+
+Recommended screenshots:
+
+1. VirtualBox `AD-LAB-NET`
+2. SERVER01 network configuration
+3. DNS Manager
+4. DNS Forwarders
+5. Successful `nslookup kpatel.test`
+6. External DNS test
+7. `dcdiag /test:dns`
+8. WIN11-CLIENT01 network configuration
+9. WIN11 `ipconfig /all`
+10. WIN11 `nslookup kpatel.test`
+11. Group Policy Management
+12. `gpupdate /force`
+13. `gpresult /r`
+
+Do not upload:
+
+* Passwords
+* Product keys
+* MFA codes
+* Personal account credentials
+* Recovery codes
+
+---
+
+# ✅ Day 58 Completion Checklist
+
+* [x] Reviewed Active Directory fundamentals
+* [x] Verified internal AD DNS resolution
+* [x] Identified external DNS resolution failure
+* [x] Troubleshot DNS separately from network connectivity
+* [x] Configured DNS forwarders on SERVER01
+* [x] Tested external DNS resolution
+* [x] Reviewed `dcdiag /test:dns`
+* [x] Windows 11 client installed
+* [x] WIN11-CLIENT01 prepared for AD connectivity
+* [x] Reviewed client DNS configuration
+* [x] Reviewed computer accounts
+* [x] Reviewed GPO troubleshooting commands
+* [x] Practiced account troubleshooting methodology
+* [x] Completed DNS troubleshooting scenario
+* [x] Practiced interview wording
+* [ ] Complete Windows 11 domain join
+* [ ] Log in with a domain user
+* [ ] Verify computer account in Active Directory
+* [ ] Move WIN11-CLIENT01 to Workstations OU
+* [ ] Create/test first GPO
+
+---
+
+# 🔑 Key Takeaways
+
+### 1. Internal and external DNS are different troubleshooting areas.
+
+A DNS server can successfully resolve internal AD records while external DNS resolution is failing.
+
+### 2. Active Directory depends on DNS.
+
+Clients use DNS to locate Domain Controllers and Active Directory services.
+
+### 3. DNS forwarding allows internal DNS servers to resolve external names.
+
+```text
+Internal DNS
+      ↓
+Unknown external name
+      ↓
+Forwarder
+      ↓
+External DNS
+```
+
+### 4. Troubleshoot in layers.
+
+```text
+IP
+↓
+Network
+↓
+DNS
+↓
+Active Directory
+↓
+Authentication
+```
+
+### 5. Don't make unnecessary changes.
+
+First gather evidence, identify the likely cause, make an authorized change, verify the result, and document the resolution.
+
+---
+
+# 💭 Reflection
+
+Today I continued developing my Active Directory home lab by troubleshooting DNS and preparing the Windows 11 workstation for domain connectivity.
+
+The most valuable part of today's lab was experiencing a real DNS troubleshooting problem. Internal Active Directory DNS resolution was working, while external DNS resolution was failing. Instead of assuming that DNS was completely broken, I tested the two situations separately and identified the DNS forwarding issue.
+
+After configuring DNS forwarders on SERVER01, I retested the configuration and verified the results.
+
+I also continued preparing WIN11-CLIENT01 to communicate with the Active Directory environment. This reinforced the importance of using the Domain Controller's internal DNS when working with an Active Directory domain.
+
+Today's work improved both my technical understanding and my troubleshooting methodology because I was able to connect concepts such as DNS, Active Directory, Domain Controllers, and client connectivity to an actual lab problem.
+
+---
+
+# 🚀 Next Lab
+
+The next stage is to complete the Windows 11 Active Directory client setup:
+
+```text
+WIN11-CLIENT01
+       ↓
+DNS = SERVER01
+       ↓
+Connectivity Test
+       ↓
+Join kpatel.test
+       ↓
+Restart
+       ↓
+Domain User Login
+       ↓
+Verify with whoami
+       ↓
+Computer Account in AD
+       ↓
+Move to Workstations OU
+       ↓
+Test Group Policy
+```
+
+The goal is to move from simply understanding Active Directory to **administering and troubleshooting a real domain-joined Windows workstation**.
