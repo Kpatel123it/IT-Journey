@@ -1,0 +1,814 @@
+# Day 57 – Active Directory DNS, VirtualBox Lab Network & Windows 11 Client Preparation
+
+## 🎯 Objective
+
+Today's objective was to continue building the Active Directory home lab by connecting the Windows Server and Windows 11 virtual machines to the same VirtualBox lab network.
+
+The Windows Server 2025 machine (`SERVER01`) already had Active Directory Domain Services installed from the previous lab. Today the focus was on:
+
+* Configuring a dedicated VirtualBox NAT Network for the Active Directory lab.
+* Moving SERVER01 from the original VirtualBox NAT network to the new lab network.
+* Maintaining a stable IP address for SERVER01.
+* Connecting the Windows 11 client to the same virtual network.
+* Testing communication between the client and Domain Controller.
+* Testing Active Directory DNS resolution.
+* Understanding the difference between internal AD DNS and external Internet DNS.
+* Troubleshooting external DNS resolution.
+
+The main goal was to prepare `WIN11-CLIENT01` to become a domain-joined Windows workstation.
+
+---
+
+# 🏗️ Lab Environment
+
+## Virtualization Platform
+
+```text
+Oracle VirtualBox
+```
+
+## Server
+
+```text
+SERVER01
+Windows Server 2025
+Active Directory Domain Services
+DNS
+```
+
+## Client
+
+```text
+WIN11-CLIENT01
+Windows 11 Enterprise Evaluation
+```
+
+## Existing Linux Lab
+
+```text
+VMware Workstation
+└── Ubuntu-Learning-Lab
+```
+
+The Linux environment remains separate from the Windows/Active Directory lab.
+
+---
+
+# 🌐 VirtualBox Lab Network
+
+The original SERVER01 configuration used the default VirtualBox NAT network:
+
+```text
+10.0.2.0/24
+```
+
+The server previously had:
+
+```text
+IPv4 Address:
+10.0.2.10
+
+Subnet Mask:
+255.255.255.0
+
+Default Gateway:
+10.0.2.2
+```
+
+Because the goal is to allow SERVER01 and WIN11-CLIENT01 to communicate with each other as part of the same Active Directory environment, a dedicated VirtualBox NAT Network was created.
+
+---
+
+# 🔌 AD-LAB-NET
+
+A dedicated VirtualBox NAT Network was configured for the Windows/Active Directory lab.
+
+```text
+Network Name:
+AD-LAB-NET
+
+Network:
+192.168.50.0/24
+```
+
+The purpose of the NAT Network is to allow the virtual machines to communicate with each other while also providing Internet connectivity.
+
+VirtualBox NAT Network architecture:
+
+```text
+                Internet
+                    |
+                  NAT
+                    |
+              AD-LAB-NET
+            192.168.50.0/24
+                 /      \
+                /        \
+         SERVER01      WIN11-CLIENT01
+              |
+       Active Directory
+              |
+             DNS
+```
+
+---
+
+# 🖥️ SERVER01 Network Configuration
+
+SERVER01 was moved from the original VirtualBox NAT network to:
+
+```text
+AD-LAB-NET
+```
+
+The server was configured with a stable address on the new lab network.
+
+```text
+SERVER01
+
+IPv4 Address:
+192.168.50.10
+
+Subnet Mask:
+255.255.255.0
+```
+
+The default gateway depends on the VirtualBox NAT Network configuration and should be recorded from the actual lab environment.
+
+```text
+Default Gateway:
+[record actual value]
+```
+
+---
+
+# 🧠 Why SERVER01 Needs a Stable IP
+
+SERVER01 will provide important Active Directory services.
+
+Eventually:
+
+```text
+SERVER01
+   |
+   +-- Active Directory Domain Services
+   |
+   +-- DNS
+   |
+   +-- Domain Controller
+```
+
+Other computers need to reliably locate the server.
+
+A predictable address therefore makes the lab easier to administer and troubleshoot.
+
+---
+
+# 🏢 Active Directory Domain
+
+The Active Directory domain created for the lab is:
+
+```text
+kpatel.test
+```
+
+The planned Domain Controller is:
+
+```text
+SERVER01
+```
+
+with:
+
+```text
+192.168.50.10
+```
+
+The relationship is:
+
+```text
+SERVER01
+   |
+   +-- AD DS
+   |
+   +-- DNS
+   |
+   +-- kpatel.test
+```
+
+---
+
+# 🌐 DNS and Active Directory
+
+One of the main lessons from today's lab was understanding the relationship between DNS and Active Directory.
+
+Active Directory depends on DNS to allow clients to locate Domain Controllers and other Active Directory services.
+
+The basic process is:
+
+```text
+WIN11-CLIENT01
+       |
+       | DNS query
+       ↓
+SERVER01 DNS
+       |
+       ↓
+kpatel.test
+       |
+       ↓
+Locate Domain Controller
+       |
+       ↓
+Authentication
+```
+
+Therefore, the Windows client must use the internal Active Directory DNS server when communicating with the domain.
+
+---
+
+# 🔎 DNS Testing
+
+DNS was tested using:
+
+```cmd
+nslookup kpatel.test
+```
+
+The result was successful.
+
+This confirmed that the Active Directory domain DNS zone was being resolved correctly.
+
+```text
+nslookup kpatel.test
+        ↓
+       ✅
+Internal AD DNS working
+```
+
+This is an important verification step before attempting to join the Windows client to the domain.
+
+---
+
+# 🌍 External DNS Testing
+
+External DNS resolution was also tested:
+
+```cmd
+ping google.com
+```
+
+The hostname could not be resolved.
+
+The issue was further investigated using DNS tools.
+
+The important distinction discovered was:
+
+```text
+Internal DNS
+kpatel.test
+       ↓
+      ✅
+```
+
+while:
+
+```text
+External DNS
+google.com
+       ↓
+      ❌
+```
+
+This means that the Active Directory DNS zone was functioning, but external DNS resolution was not yet working through SERVER01.
+
+---
+
+# 🧪 DNS Troubleshooting
+
+The following commands were used:
+
+```cmd
+nslookup kpatel.test
+```
+
+```cmd
+nslookup google.com
+```
+
+```cmd
+ping google.com
+```
+
+The successful internal lookup demonstrated that the AD DNS zone was available.
+
+The failure of external name resolution indicated a likely DNS forwarding/configuration issue rather than a complete DNS failure.
+
+---
+
+# 🧠 Important DNS Concept
+
+The Domain Controller should use the internal AD DNS service for its domain-related DNS resolution.
+
+The correct architecture is:
+
+```text
+SERVER01
+   |
+Internal DNS
+   |
+   +---- kpatel.test
+   |       |
+   |    AD records
+   |
+   +---- External DNS request
+            |
+        DNS Forwarder
+            |
+         Internet
+```
+
+This is different from simply configuring the Domain Controller to use a public DNS server directly for all queries.
+
+---
+
+# 💻 Windows 11 Client
+
+The Windows 11 virtual machine was successfully installed and configured as:
+
+```text
+WIN11-CLIENT01
+```
+
+The VM is being prepared to act as the employee workstation in the Active Directory lab.
+
+The planned architecture is:
+
+```text
+WIN11-CLIENT01
+       |
+       ↓
+AD-LAB-NET
+       |
+       ↓
+SERVER01
+       |
+       ↓
+kpatel.test
+```
+
+---
+
+# 🌐 Windows 11 Network Preparation
+
+WIN11-CLIENT01 was connected to:
+
+```text
+AD-LAB-NET
+```
+
+The client must be able to communicate with SERVER01 before attempting the domain join.
+
+The expected communication path is:
+
+```text
+WIN11-CLIENT01
+       |
+       ↓
+192.168.50.0/24
+       |
+       ↓
+SERVER01
+192.168.50.10
+```
+
+---
+
+# 🧪 Client Connectivity Testing
+
+Before domain joining the Windows 11 computer, the following checks should be performed:
+
+```cmd
+ipconfig /all
+```
+
+Purpose:
+
+Verify:
+
+* IPv4 address
+* Subnet mask
+* Gateway
+* DNS server
+
+---
+
+Test SERVER01:
+
+```cmd
+ping 192.168.50.10
+```
+
+Test hostname:
+
+```cmd
+ping SERVER01
+```
+
+Test internal DNS:
+
+```cmd
+nslookup kpatel.test
+```
+
+Test SERVER01's DNS name:
+
+```cmd
+nslookup SERVER01
+```
+
+These tests confirm that the client can communicate with the Domain Controller and resolve internal DNS records.
+
+---
+
+# 🔐 DNS Configuration for the Windows Client
+
+The Windows 11 client should eventually use the Domain Controller as its DNS server.
+
+For this lab:
+
+```text
+Preferred DNS:
+192.168.50.10
+```
+
+The reasoning is:
+
+```text
+WIN11
+  |
+  | DNS
+  ↓
+SERVER01
+  |
+  ↓
+Active Directory DNS
+```
+
+Using a public DNS server as the client's only DNS server could prevent the client from finding the Active Directory domain.
+
+---
+
+# 🏢 Domain Join Preparation
+
+The Windows 11 client has not yet been considered fully domain joined.
+
+The next planned process is:
+
+```text
+WIN11-CLIENT01
+       |
+       ↓
+Verify IP
+       |
+       ↓
+Verify SERVER01 connectivity
+       |
+       ↓
+Verify kpatel.test DNS
+       |
+       ↓
+Join kpatel.test
+       |
+       ↓
+Restart
+       |
+       ↓
+Log in using domain account
+```
+
+The domain join should only be attempted after the network and DNS tests succeed.
+
+---
+
+# 🧠 Important Active Directory Concepts Reviewed
+
+## Active Directory
+
+Microsoft's directory service for centrally managing users, computers, groups and other resources.
+
+## AD DS
+
+The Windows Server role that provides Active Directory Domain Services.
+
+## Domain Controller
+
+A Windows Server that runs AD DS and provides directory and authentication services for the domain.
+
+## DNS
+
+Allows domain clients to locate Domain Controllers and Active Directory services.
+
+## Authentication
+
+Verifies who the user is.
+
+## Authorization
+
+Determines what the authenticated user is allowed to access.
+
+---
+
+# 🔄 Important Concept Separation
+
+Today's lab reinforced the following distinctions:
+
+```text
+Active Directory
+↓
+Directory service
+```
+
+```text
+AD DS
+↓
+Windows Server role
+```
+
+```text
+Domain Controller
+↓
+Server running AD DS
+```
+
+```text
+DNS
+↓
+Helps clients locate domain services
+```
+
+```text
+Authentication
+↓
+Who are you?
+```
+
+```text
+Authorization
+↓
+What are you allowed to access?
+```
+
+---
+
+# 🎫 Help Desk Ticket – INC-5703
+
+## User Problem
+
+> "My new Windows computer cannot connect to the company Active Directory domain."
+
+---
+
+## Information Gathering
+
+Questions:
+
+1. What is the exact error message?
+2. Does the computer have an IP address?
+3. Can the computer reach SERVER01?
+4. Can the computer resolve the domain name?
+5. What DNS server is configured?
+6. Has the computer already been joined to the domain?
+7. Can another computer access the domain?
+
+---
+
+# 🔎 Investigation
+
+### Step 1 – Check IP
+
+```cmd
+ipconfig /all
+```
+
+### Step 2 – Check SERVER01
+
+```cmd
+ping 192.168.50.10
+```
+
+### Step 3 – Check hostname
+
+```cmd
+ping SERVER01
+```
+
+### Step 4 – Check AD DNS
+
+```cmd
+nslookup kpatel.test
+```
+
+### Step 5 – Check SERVER01 DNS
+
+```cmd
+nslookup SERVER01
+```
+
+---
+
+# 🧠 Troubleshooting Logic
+
+The troubleshooting process should not immediately assume that Active Directory is broken.
+
+Instead:
+
+```text
+Client IP
+   ↓
+Network connectivity
+   ↓
+SERVER01 connectivity
+   ↓
+DNS resolution
+   ↓
+Active Directory
+   ↓
+Domain authentication
+```
+
+This separates networking problems from DNS problems and Active Directory problems.
+
+---
+
+# 🌍 Internal vs External DNS
+
+One of today's most useful observations was that:
+
+```text
+nslookup kpatel.test
+```
+
+worked.
+
+While:
+
+```text
+ping google.com
+```
+
+could not resolve the hostname.
+
+This demonstrates that DNS can be working for the internal AD domain while external DNS resolution is not working correctly.
+
+The next troubleshooting action is to verify/configure DNS forwarding on SERVER01.
+
+---
+
+# 🛠️ Commands Practiced
+
+```cmd
+ipconfig /all
+```
+
+```cmd
+ping 192.168.50.10
+```
+
+```cmd
+ping SERVER01
+```
+
+```cmd
+ping google.com
+```
+
+```cmd
+nslookup kpatel.test
+```
+
+```cmd
+nslookup SERVER01
+```
+
+---
+
+# 📸 Screenshots for GitHub
+
+Recommended screenshots:
+
+1. VirtualBox NAT Network configuration
+2. SERVER01 network adapter settings
+3. SERVER01 `ipconfig /all`
+4. SERVER01 IP configuration
+5. DNS Manager
+6. Active Directory Users and Computers
+7. `nslookup kpatel.test`
+8. Windows 11 network settings
+9. Windows 11 `ipconfig /all`
+10. Windows 11 connectivity test to SERVER01
+
+Do not include:
+
+* Passwords
+* Product keys
+* Personal email credentials
+* Microsoft 365 credentials
+* MFA codes
+
+---
+
+# ✅ Day 57 Completion Checklist
+
+* [x] Windows Server 2025 installed
+* [x] Active Directory Domain Services already installed from previous lab
+* [x] Windows 11 client installed
+* [x] WIN11-CLIENT01 created
+* [x] VirtualBox NAT Network created
+* [x] AD-LAB-NET configured
+* [x] SERVER01 connected to AD-LAB-NET
+* [x] SERVER01 static IP configured
+* [x] WIN11-CLIENT01 connected to AD-LAB-NET
+* [x] SERVER01 network verified
+* [x] Active Directory domain DNS verified
+* [x] `nslookup kpatel.test` successful
+* [x] External DNS resolution tested
+* [x] External DNS issue identified
+* [x] Windows 11 prepared for domain connectivity
+* [ ] Windows 11 domain join
+* [ ] Domain user login
+* [ ] Computer account moved to Workstations OU
+
+---
+
+# 🚧 Current Lab Status
+
+```text
+SERVER01
+Windows Server 2025             ✅
+AD DS                            ✅
+DNS                              ✅
+Active Directory Domain          ✅
+kpatel.test DNS resolution       ✅
+Static IP                        ✅
+
+WIN11-CLIENT01
+Windows 11                       ✅
+VirtualBox network               ✅
+Client-to-server testing         🔄
+DNS configuration                🔄
+Domain join                      ⏳
+Domain user login                ⏳
+```
+
+---
+
+# 🔑 Key Takeaways
+
+* Active Directory and DNS are closely connected.
+* Internal AD DNS can work even when external DNS resolution has a problem.
+* A Domain Controller should provide the internal DNS service used by domain clients.
+* A Windows client should be able to reach the Domain Controller before attempting a domain join.
+* DNS should be tested separately from general network connectivity.
+* A NAT Network in VirtualBox allows the lab machines to communicate while maintaining Internet connectivity.
+* Troubleshooting should isolate the problem layer instead of assuming that Active Directory itself is broken.
+
+---
+
+# 💭 Reflection
+
+Today I moved my home lab from simply having an Active Directory server to creating a small simulated company network.
+
+I connected SERVER01 and WIN11-CLIENT01 to the same VirtualBox NAT Network and configured SERVER01 with a stable IP address. I then tested communication and DNS resolution between the Active Directory environment and the client.
+
+One of the most useful lessons was seeing the difference between internal and external DNS resolution. The lab's Active Directory domain, `kpatel.test`, resolved successfully, while external hostname resolution for `google.com` was not working. This helped reinforce that a DNS server can successfully resolve internal Active Directory records while still having an issue with external DNS forwarding.
+
+The troubleshooting process also reinforced the importance of testing the network step-by-step before attempting an Active Directory domain join.
+
+---
+
+# 🚀 Next Lab
+
+The next stage will be:
+
+```text
+WIN11-CLIENT01
+       ↓
+Verify DNS = SERVER01
+       ↓
+Join kpatel.test
+       ↓
+Restart
+       ↓
+Domain Login
+       ↓
+Verify with whoami
+       ↓
+Check computer account in AD
+       ↓
+Move computer to Workstations OU
+       ↓
+Begin Group Policy
+```
+
+The next major goal is to make `WIN11-CLIENT01` a fully functioning **domain-joined employee workstation**.
