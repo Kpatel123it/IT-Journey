@@ -1,0 +1,1145 @@
+# Day 63 – CompTIA A+ Peripherals, Printer Troubleshooting, User GPO & Career Preparation
+
+## 🎯 Objective
+
+Today's objective was to continue moving from general IT learning toward **certification preparation and job readiness**.
+
+The main areas covered today were:
+
+* CompTIA A+ peripheral fundamentals
+* Input and output devices
+* USB
+* HDMI and DisplayPort
+* Printer fundamentals
+* Printer troubleshooting
+* Windows Print Spooler
+* Practical User Configuration GPO
+* `gpupdate /force`
+* `gpresult /r`
+* `rsop.msc`
+* Mixed Windows, Active Directory, networking and Linux revision
+* Common networking ports
+* Help Desk printer troubleshooting
+* IT Support job applications
+* LinkedIn networking and professional communication
+
+Today's learning continued the transition from:
+
+```text
+Learning IT Concepts
+        ↓
+Hands-On Practice
+        ↓
+Troubleshooting
+        ↓
+Interview Preparation
+        ↓
+Job Search
+```
+
+---
+
+# 💻 CompTIA A+ – Peripherals
+
+## What is a Peripheral?
+
+A peripheral is a device connected to a computer that provides input, output, storage, communication, or another function.
+
+Examples include:
+
+* Keyboard
+* Mouse
+* Monitor
+* Printer
+* Scanner
+* Webcam
+* Speakers
+* Headset
+* External storage
+* USB devices
+
+Example:
+
+```text
+Computer
+   ↓
+Peripheral
+   ↓
+Additional input/output/function
+```
+
+---
+
+# ⌨️ Input Devices
+
+Input devices provide information to the computer.
+
+Examples:
+
+* Keyboard
+* Mouse
+* Scanner
+* Microphone
+* Webcam
+
+Memory concept:
+
+```text
+INPUT
+↓
+Information goes INTO the computer
+```
+
+---
+
+# 🖥️ Output Devices
+
+Output devices provide information from the computer to the user.
+
+Examples:
+
+* Monitor
+* Printer
+* Speakers
+* Headphones
+
+Memory concept:
+
+```text
+OUTPUT
+↓
+Information goes OUT of the computer
+```
+
+---
+
+# 🔌 USB
+
+USB stands for **Universal Serial Bus**.
+
+USB is commonly used to connect peripherals and other devices to a computer.
+
+Examples include:
+
+* Keyboard
+* Mouse
+* Printer
+* External storage
+* Webcam
+* Mobile devices
+
+For Help Desk support, it is important to determine whether a device is:
+
+* Physically connected
+* Receiving power
+* Detected by Windows
+* Using the correct driver
+* Functioning correctly
+
+---
+
+# 🖥️ HDMI
+
+HDMI is a digital interface commonly used to transmit video and audio.
+
+Common uses include:
+
+* Computer monitors
+* Televisions
+* Projectors
+* Laptops
+
+---
+
+# 🖥️ DisplayPort
+
+DisplayPort is another digital display interface commonly used with computer monitors and desktop systems.
+
+It is frequently found in:
+
+* Desktop computers
+* Monitors
+* Docking setups
+* Professional display environments
+
+---
+
+# 🔌 Wired vs Wireless Peripherals
+
+Peripherals can use different connection methods.
+
+## Wired
+
+Example:
+
+```text
+Mouse
+ ↓
+USB Cable
+ ↓
+Computer
+```
+
+## Wireless
+
+Example:
+
+```text
+Wireless Mouse
+ ↓
+Bluetooth / Wireless Receiver
+ ↓
+Computer
+```
+
+Troubleshooting depends partly on the connection type.
+
+For a wireless device, additional checks may include:
+
+* Battery
+* Bluetooth status
+* Wireless receiver
+* Pairing
+* Interference
+
+---
+
+# 🖨️ Printer Fundamentals
+
+Printers are one of the most common examples of Help Desk support tickets.
+
+Basic printer types include:
+
+## Inkjet
+
+Uses liquid ink cartridges.
+
+Commonly found in:
+
+* Home environments
+* Small offices
+
+---
+
+## Laser
+
+Uses toner and a laser-based printing process.
+
+Commonly used in:
+
+* Business environments
+* Office printers
+
+Laser printers are generally designed for high-volume document printing.
+
+---
+
+## Thermal
+
+Uses heat-sensitive printing methods.
+
+Often used in:
+
+* Receipts
+* Labels
+* Specialized printing systems
+
+For entry-level IT Support, understanding the purpose and basic troubleshooting approach is more important than memorizing internal printer mechanics.
+
+---
+
+# 🛠️ Printer Troubleshooting
+
+A printer problem should be investigated systematically.
+
+A useful troubleshooting process is:
+
+```text
+User Complaint
+      ↓
+Gather Information
+      ↓
+Printer Power
+      ↓
+Connection
+      ↓
+Correct Printer Selected
+      ↓
+Printer Status
+      ↓
+Print Queue
+      ↓
+Print Spooler
+      ↓
+Driver
+      ↓
+Printer Hardware
+      ↓
+Test Print
+      ↓
+Verify With User
+      ↓
+Document
+```
+
+---
+
+# 📴 Printer Offline
+
+If a user reports:
+
+> "My printer is offline."
+
+Possible causes include:
+
+* Printer powered off
+* Network connection problem
+* USB connection problem
+* Printer unavailable
+* Wrong printer selected
+* Driver issue
+* Print queue problem
+* Print Spooler problem
+
+The correct approach is to investigate rather than immediately reinstall the printer.
+
+---
+
+# 📄 Print Queue
+
+When an application sends a document to a printer, Windows manages the print job through a print queue.
+
+Conceptually:
+
+```text
+Application
+     ↓
+Print Job
+     ↓
+Windows Print Queue
+     ↓
+Print Spooler
+     ↓
+Printer
+```
+
+If a print job becomes stuck, the queue should be inspected before making larger changes.
+
+---
+
+# ⚙️ Windows Print Spooler
+
+The **Print Spooler** is a Windows service responsible for managing print jobs and communication with printers.
+
+It can be inspected through:
+
+```text
+services.msc
+```
+
+Find:
+
+```text
+Print Spooler
+```
+
+Important information includes:
+
+* Service status
+* Startup type
+* Whether the service is running
+
+The Print Spooler can be restarted when troubleshooting an appropriate printing problem.
+
+---
+
+# 🧪 Practical Printer Lab
+
+## Lab 1 – Open Printer Settings
+
+On Windows 11:
+
+```text
+Settings
+   ↓
+Bluetooth & devices
+   ↓
+Printers & scanners
+```
+
+The available printers were reviewed.
+
+Possible virtual printers include:
+
+* Microsoft Print to PDF
+* OneNote
+* Other installed printers
+
+---
+
+# Lab 2 – Test Printing
+
+A test document was created using Notepad.
+
+Example:
+
+```text
+IT Support Printer Test
+Day 63
+Windows Troubleshooting Lab
+```
+
+The document was sent to:
+
+```text
+Microsoft Print to PDF
+```
+
+This demonstrated the normal Windows printing workflow:
+
+```text
+Application
+   ↓
+Print
+   ↓
+Select Printer
+   ↓
+Print Job
+   ↓
+Windows Printing System
+   ↓
+Output
+```
+
+---
+
+# Lab 3 – Inspect Print Spooler
+
+The Windows Services management console was opened using:
+
+```text
+Windows + R
+```
+
+Then:
+
+```text
+services.msc
+```
+
+The following service was located:
+
+```text
+Print Spooler
+```
+
+The service status and startup configuration were reviewed.
+
+---
+
+# 🎫 Help Desk Printer Scenario
+
+## Ticket ID
+
+`INC-6301`
+
+## User
+
+Jennifer – Finance
+
+## Issue
+
+> "I sent a document to the printer, but nothing printed. The document has been sitting there for several minutes."
+
+---
+
+## Information Gathering
+
+Questions to ask:
+
+1. When did the problem start?
+2. Which printer are you trying to use?
+3. Is the printer powered on?
+4. Is the printer showing an error?
+5. Can other users print?
+6. Is the document stuck in the print queue?
+7. Can you print a test page?
+8. Has anything recently changed?
+
+---
+
+# Investigation
+
+The following areas should be checked:
+
+```text
+Printer Power
+      ↓
+Printer Connection
+      ↓
+Printer Selection
+      ↓
+Printer Status
+      ↓
+Print Queue
+      ↓
+Print Spooler
+      ↓
+Driver
+      ↓
+Hardware
+```
+
+The technician should start with the simplest and least disruptive checks before making larger changes.
+
+---
+
+# Resolution Principle
+
+Do not assume:
+
+> "The printer needs to be reinstalled."
+
+Instead:
+
+```text
+Gather Evidence
+      ↓
+Identify Cause
+      ↓
+Make Approved Change
+      ↓
+Test
+      ↓
+Verify
+```
+
+---
+
+# 🏢 Practical User GPO Lab
+
+Today's second major hands-on exercise was a **User Configuration Group Policy**.
+
+The lab structure was:
+
+```text
+kpatel.test
+    ↓
+Users
+    ↓
+Finance
+    ↓
+jfinance
+```
+
+The purpose was to reinforce the concept that a GPO is normally **linked to an OU**, rather than directly attached to a user.
+
+---
+
+# GPO Structure
+
+The model used was:
+
+```text
+User
+ ↓
+OU
+ ↓
+GPO Link
+ ↓
+User Configuration
+ ↓
+Policy Processing
+ ↓
+User Receives Setting
+```
+
+---
+
+# 🧪 GPO Lab – Finance User Settings
+
+## Step 1 – Open Group Policy Management
+
+The Group Policy Management Console was opened using:
+
+```text
+Windows + R
+```
+
+Then:
+
+```text
+gpmc.msc
+```
+
+---
+
+# Step 2 – Locate the Finance OU
+
+The Finance OU was located under:
+
+```text
+Forest
+ ↓
+Domains
+ ↓
+kpatel.test
+ ↓
+Users
+ ↓
+Finance
+```
+
+---
+
+# Step 3 – Create a New GPO
+
+The Finance OU was selected.
+
+A new GPO was created and linked to the OU.
+
+GPO name:
+
+```text
+GPO-Finance-UserSettings
+```
+
+---
+
+# Step 4 – Edit the GPO
+
+The GPO was edited and the following path was used:
+
+```text
+User Configuration
+ ↓
+Policies
+ ↓
+Administrative Templates
+ ↓
+Control Panel
+```
+
+A user-based Control Panel policy was configured.
+
+The exact available policy/item names can vary depending on the Windows administrative templates installed.
+
+---
+
+# Step 5 – Update Group Policy
+
+On the Windows 11 client, the Finance test user was used.
+
+The following command was run:
+
+```cmd
+gpupdate /force
+```
+
+Purpose:
+
+Forces Windows to refresh Group Policy settings.
+
+---
+
+# Step 6 – Verify Applied GPOs
+
+The following command was used:
+
+```cmd
+gpresult /r
+```
+
+The output was reviewed under:
+
+```text
+USER SETTINGS
+```
+
+The objective was to verify that:
+
+```text
+GPO-Finance-UserSettings
+```
+
+was applied to the user.
+
+---
+
+# Step 7 – Verify With RSOP
+
+The following command was also used:
+
+```cmd
+rsop.msc
+```
+
+RSOP stands for:
+
+**Resultant Set of Policy**
+
+It can be used to examine the policy settings that resulted after Group Policy processing.
+
+---
+
+# 🧠 Important GPO Concept
+
+A major lesson from today's exercise was:
+
+> **A GPO is linked to an OU; User Configuration settings in that GPO can apply to users in the applicable OU, subject to Group Policy processing and filtering.**
+
+It is better interview wording than simply saying:
+
+> "I applied the GPO to the user."
+
+---
+
+# GPO Verification Commands
+
+## `gpupdate /force`
+
+```cmd
+gpupdate /force
+```
+
+Purpose:
+
+Refreshes Group Policy.
+
+---
+
+## `gpresult /r`
+
+```cmd
+gpresult /r
+```
+
+Purpose:
+
+Displays applied Group Policy information for the current user and computer.
+
+---
+
+## `rsop.msc`
+
+```cmd
+rsop.msc
+```
+
+Purpose:
+
+Displays the resulting policy settings applied to the system/user.
+
+---
+
+# 🧠 Mixed Technical Revision
+
+Today's revision focused on separating concepts that can easily be mixed together.
+
+## Active Directory
+
+```text
+OU
+↓
+Organization / Management
+
+Security Group
+↓
+Access / Permissions
+
+GPO
+↓
+Configuration
+```
+
+---
+
+## Networking
+
+```text
+DNS
+↓
+Name Resolution
+
+DHCP
+↓
+IP Configuration
+
+Default Gateway
+↓
+Path to Other Networks
+```
+
+---
+
+## Linux
+
+```text
+df -h
+↓
+Disk Space
+
+free -h
+↓
+Memory
+
+journalctl
+↓
+Logs
+
+systemctl
+↓
+Service Management
+```
+
+---
+
+# 🌐 Common Ports Revision
+
+The following ports were reviewed for CompTIA A+ and Help Desk troubleshooting:
+
+|  Port | Service |
+| ----: | ------- |
+|    22 | SSH     |
+|    25 | SMTP    |
+|    53 | DNS     |
+| 67/68 | DHCP    |
+|    80 | HTTP    |
+|   110 | POP3    |
+|   143 | IMAP    |
+|   443 | HTTPS   |
+|   445 | SMB     |
+|  3389 | RDP     |
+
+Important associations:
+
+```text
+22
+↓
+SSH
+
+53
+↓
+DNS
+
+67/68
+↓
+DHCP
+
+443
+↓
+HTTPS
+
+445
+↓
+SMB
+
+3389
+↓
+RDP
+```
+
+The objective is to connect the port with the service instead of memorizing numbers without context.
+
+---
+
+# 🎤 Interview Preparation
+
+Today's interview practice focused on peripherals, printer troubleshooting and Group Policy.
+
+Questions practiced:
+
+## 1. What is a peripheral?
+
+A peripheral is a device connected to a computer that provides input, output, storage, communication, or another function.
+
+---
+
+## 2. What is the difference between an input and output device?
+
+An input device sends information to the computer, while an output device presents information from the computer to the user.
+
+---
+
+## 3. What is the Print Spooler?
+
+The Print Spooler is a Windows service that manages print jobs and supports communication between Windows and printers.
+
+---
+
+## 4. A user's printer is offline. How would you troubleshoot it?
+
+I would first gather information and check whether the printer is powered on and connected. Then I would verify the selected printer, printer status, print queue and Print Spooler. If necessary, I would investigate the driver or hardware and then perform a test print.
+
+---
+
+## 5. A document is stuck in the print queue. What would you check?
+
+I would inspect the print queue, confirm the printer is available, check the Print Spooler service and investigate whether the printer or driver is causing the issue.
+
+---
+
+## 6. How do you verify whether a GPO was applied?
+
+I can run:
+
+```cmd
+gpupdate /force
+```
+
+to refresh policy and then use:
+
+```cmd
+gpresult /r
+```
+
+or:
+
+```cmd
+rsop.msc
+```
+
+to verify the resulting policy.
+
+---
+
+## 7. Why might one user receive a GPO while another does not?
+
+Possible reasons include different OU placement, Group Policy filtering, security filtering, inheritance, or other Group Policy processing conditions.
+
+---
+
+# 💼 Career Preparation
+
+Today's career focus continued the transition from studying only technical topics to actively preparing for employment.
+
+The current career strategy is:
+
+```text
+CompTIA A+
+     +
+Interview Preparation
+     +
+Job Applications
+     +
+LinkedIn Networking
+```
+
+---
+
+# 📄 Job Applications
+
+Suitable entry-level positions include:
+
+* IT Support
+* IT Support Technician
+* Help Desk Technician
+* Help Desk Analyst
+* Service Desk Analyst
+* Desktop Support
+* IT Technician
+* Technical Support
+* Junior IT
+* Field Support
+* Junior Network/NOC roles
+
+Applications should be targeted rather than based only on job quantity.
+
+The resume should be adjusted to emphasize the skills most relevant to each posting.
+
+---
+
+# 🔎 Job Application Principle
+
+A job posting may contain:
+
+```text
+Required Skills
++
+Preferred Skills
+```
+
+Not having every preferred qualification does not automatically mean the position should be excluded.
+
+However, qualifications and experience should always be represented honestly.
+
+For example:
+
+### Accurate
+
+> Hands-on home lab experience with Windows Server, Active Directory, Group Policy, DNS and file sharing.
+
+### Inaccurate
+
+> Managed enterprise Active Directory infrastructure.
+
+The first statement accurately describes hands-on training. The second would imply professional enterprise experience that was not actually obtained.
+
+---
+
+# 💼 LinkedIn Networking
+
+Today's LinkedIn goal was to begin building relationships with professionals currently working in IT.
+
+The focus is not to immediately ask for a job.
+
+Instead:
+
+```text
+Connect
+ ↓
+Introduce Yourself
+ ↓
+Build Conversation
+ ↓
+Learn From Their Experience
+ ↓
+Maintain Professional Relationship
+```
+
+---
+
+# 🔎 Finding IT Professionals
+
+Search terms used/recommended include:
+
+```text
+IT Support Regina
+Help Desk Regina
+Service Desk Regina
+Desktop Support Regina
+IT Technician Regina
+IT Manager Regina
+IT Recruiter Regina
+Technical Recruiter Saskatchewan
+```
+
+The priority is to find people who are actually working in or hiring for IT-related roles.
+
+---
+
+# 💬 First Message to an Existing LinkedIn Connection
+
+A professional first message can be:
+
+> Hi [Name], thanks for connecting! I’m currently working toward my first IT Support role and building hands-on experience with Windows, Active Directory, networking, and troubleshooting while preparing for CompTIA A+. Since you’re already working in IT Support, I’d really appreciate hearing about your experience and any advice you might have for someone entering the field.
+
+The purpose of the first message is to begin a professional conversation rather than immediately ask for a referral.
+
+---
+
+# 🤝 LinkedIn Networking Principle
+
+The goal is to build genuine professional relationships.
+
+Useful conversation topics include:
+
+* Career progression
+* Entry-level skills
+* IT Support tools
+* Interview preparation
+* Skills that helped them enter IT
+* Local IT opportunities
+* Technical areas worth learning
+
+A referral request should only be considered after some genuine interaction and when there is an appropriate opportunity.
+
+---
+
+# 📝 Application Tracking
+
+Job applications should be tracked in a spreadsheet.
+
+Recommended fields:
+
+| Date | Company | Position | Source | Applied | Contact | Follow-up | Status |
+| ---- | ------- | -------- | ------ | ------- | ------- | --------- | ------ |
+
+Possible status values:
+
+* Applied
+* Phone Screen
+* Interview
+* Assessment
+* Follow-up
+* Rejected
+* Offer
+
+Tracking applications makes the job search organized and makes it possible to review progress later.
+
+---
+
+# 🧠 Today's Main Career Lesson
+
+The job search should happen **while** studying, not only after finishing the certification.
+
+The current approach is:
+
+```text
+Apply for jobs
+       +
+Study A+
+       +
+Practice interviews
+       +
+Build LinkedIn network
+       +
+Continue hands-on labs
+```
+
+This prevents getting stuck in a cycle of studying indefinitely before applying.
+
+---
+
+# ⭐ Key Takeaways
+
+* Peripherals provide additional computer input, output, storage, communication, or functionality.
+* Input devices send information to the computer.
+* Output devices present information from the computer.
+* USB is a common interface for peripherals.
+* HDMI and DisplayPort are digital display interfaces.
+* Printers are common Help Desk troubleshooting issues.
+* The Print Spooler manages Windows print jobs.
+* Printer troubleshooting should be systematic.
+* A GPO is linked to an OU rather than directly to an individual user.
+* `gpupdate /force` refreshes Group Policy.
+* `gpresult /r` helps verify applied Group Policy.
+* `rsop.msc` can display resulting policy settings.
+* OU, Security Group and GPO have different purposes.
+* Common ports should be understood together with their services.
+* Job applications should continue while studying for certification.
+* LinkedIn networking should focus on professional relationships rather than immediately asking for employment.
+
+---
+
+# 📝 Day 63 Reflection
+
+Today I continued shifting my IT learning toward both certification and career preparation.
+
+I learned more about computer peripherals and printer troubleshooting as part of my CompTIA A+ preparation. I also practiced a User Configuration GPO and verified its application using `gpupdate /force`, `gpresult /r`, and `rsop.msc`.
+
+The GPO exercise reinforced the importance of understanding the difference between a user, an OU and a GPO. Instead of thinking about a GPO as something applied directly to a user, I now understand that the GPO is linked to an OU and its applicable settings are processed for users within that environment, subject to normal Group Policy processing and filtering.
+
+I also continued my job search and started treating LinkedIn networking as part of my career development. Instead of simply sending connection requests, I am learning to introduce myself professionally, ask about other people's experiences, and gradually build relationships with people already working in IT.
+
+My current approach is:
+
+```text
+Learn
+ ↓
+Practice
+ ↓
+Troubleshoot
+ ↓
+Explain
+ ↓
+Interview
+ ↓
+Apply
+ ↓
+Network
+ ↓
+Improve
+```
+
+The goal is no longer just to accumulate IT knowledge. The goal is to turn that knowledge into **certification progress, confident interview performance, professional networking, and employment opportunities**.
