@@ -1,0 +1,712 @@
+# Day 61 – Microsoft 365 & Microsoft Entra ID Fundamentals
+
+## 🎯 Objective
+
+Today's objective was to become familiar with Microsoft 365 administration and Microsoft Entra ID from an IT Support perspective.
+
+The goal was not to build a large Microsoft 365 enterprise lab.
+
+Instead, today's focus was on understanding:
+
+* Microsoft 365 architecture
+* Microsoft 365 Admin Center
+* Microsoft Entra ID
+* Cloud users and groups
+* Licensing
+* Authentication
+* MFA
+* Sign-in logs
+* Audit logs
+* Service Health
+* Common Microsoft 365 Help Desk scenarios
+
+This extended the Windows Server and Active Directory knowledge learned in previous days into the Microsoft cloud environment.
+
+---
+
+# ☁️ What is Microsoft 365?
+
+Microsoft 365 is a cloud-based productivity and collaboration platform that includes services and applications such as:
+
+* Exchange Online
+* Outlook
+* Microsoft Teams
+* OneDrive
+* SharePoint
+* Microsoft Office applications
+* Identity and security capabilities
+
+From an IT Support perspective, Microsoft 365 can involve troubleshooting:
+
+* User accounts
+* Passwords
+* Authentication
+* Email
+* Teams
+* File access
+* Licensing
+* MFA
+* Service availability
+
+---
+
+# 🏢 Microsoft 365 Admin Center
+
+The Microsoft 365 Admin Center is an administrative portal used by organizations to manage Microsoft 365 services.
+
+The administrator can manage areas such as:
+
+* Users
+* Groups
+* Licenses
+* Teams
+* Service Health
+* Reports
+* Settings
+
+The Admin Center is an important tool for Microsoft 365 support and administration.
+
+---
+
+# 🔐 Microsoft Entra ID
+
+Microsoft Entra ID is Microsoft's cloud identity and access management service.
+
+It is used for:
+
+* User identities
+* Group management
+* Authentication
+* Application access
+* Cloud identity management
+* Access control
+
+Example:
+
+```text
+User
+ ↓
+Microsoft Entra ID
+ ↓
+Authentication
+ ↓
+Microsoft 365 resource
+```
+
+---
+
+# 🧠 Active Directory vs Microsoft Entra ID
+
+A major lesson was understanding that Active Directory and Microsoft Entra ID are related identity technologies but are not exactly the same thing.
+
+## On-Premises Active Directory
+
+Our lab:
+
+```text
+SERVER01
+ ↓
+Active Directory Domain Services
+ ↓
+kpatel.test
+```
+
+Used for:
+
+* Domain-joined computers
+* Users
+* Groups
+* OUs
+* Group Policy
+* Kerberos
+* LDAP
+* On-premises resource management
+
+---
+
+## Microsoft Entra ID
+
+Cloud identity environment:
+
+```text
+Microsoft Entra ID
+ ↓
+Cloud identities
+ ↓
+Microsoft 365
+```
+
+Used for:
+
+* Cloud authentication
+* Microsoft 365 access
+* Application access
+* Cloud user and group management
+* Identity-based access control
+
+---
+
+# Important Interview Correction
+
+Do not say:
+
+> "Entra ID is just Active Directory in the cloud."
+
+A more accurate explanation is:
+
+> **Microsoft Entra ID is Microsoft's cloud identity and access management service used to manage identities, authentication, and access to cloud resources and applications.**
+
+---
+
+# 👤 Microsoft 365 Users
+
+Microsoft 365 organizations can create cloud users for employees.
+
+Examples:
+
+```text
+jfinance@company.onmicrosoft.com
+shr@company.onmicrosoft.com
+ait@company.onmicrosoft.com
+```
+
+A user can have:
+
+* Username
+* Password
+* License
+* Microsoft 365 services
+* Group memberships
+* Authentication settings
+
+---
+
+# 👥 Microsoft 365 Groups
+
+Groups can be used to organize users and support collaboration and access management.
+
+Examples:
+
+```text
+Finance
+HR
+IT
+Help Desk
+```
+
+Groups can help administrators manage users more efficiently.
+
+---
+
+# 💳 Microsoft 365 Licensing
+
+Licensing determines which Microsoft 365 services and features a user can access.
+
+For support purposes, an administrator may need to investigate:
+
+> "The user cannot access Teams."
+
+Possible causes could include:
+
+* Account issue
+* License issue
+* Service issue
+* Permission issue
+* Configuration issue
+
+Therefore:
+
+```text
+User problem
+ ↓
+Check account
+ ↓
+Check license/service
+ ↓
+Check permissions
+ ↓
+Check service health
+```
+
+---
+
+# 🔑 Authentication vs Authorization
+
+Today's Microsoft 365 study also reinforced an important concept.
+
+## Authentication
+
+Authentication answers:
+
+> **Who are you?**
+
+Examples:
+
+* Username
+* Password
+* MFA
+
+---
+
+## Authorization
+
+Authorization answers:
+
+> **What are you allowed to access?**
+
+Examples:
+
+* Application permissions
+* Group-based access
+* SharePoint access
+* Teams membership
+
+Memory trick:
+
+```text
+Authentication
+↓
+WHO
+
+Authorization
+↓
+WHAT ACCESS
+```
+
+---
+
+# 🔐 Multi-Factor Authentication
+
+MFA adds an additional verification step during authentication.
+
+Example:
+
+```text
+Password
+   ↓
+MFA verification
+   ↓
+Access granted
+```
+
+MFA can help reduce the risk associated with compromised passwords.
+
+---
+
+# 🧪 MFA Help Desk Scenario
+
+User reports:
+
+> "I got a new phone and I can't sign in because my MFA verification is going to my old phone."
+
+Possible troubleshooting approach:
+
+```text
+1. Verify user identity
+2. Understand the authentication problem
+3. Check authentication methods
+4. Follow organizational reset procedure
+5. Reset/update authentication method if authorized
+6. Have user register the new method
+7. Test sign-in
+8. Document the ticket
+```
+
+Important:
+
+Do not bypass security controls simply to get the user signed in.
+
+---
+
+# 📊 Microsoft Entra Sign-in Logs
+
+Sign-in logs can be used to investigate authentication problems.
+
+Typical information can include:
+
+* User
+* Date/time
+* Application
+* Sign-in status
+* Failure information
+* Authentication details
+* Location/IP-related information where available
+
+A useful troubleshooting workflow is:
+
+```text
+User cannot sign in
+       ↓
+Open Entra
+       ↓
+Sign-in Logs
+       ↓
+Find user's attempt
+       ↓
+Review failure information
+       ↓
+Identify probable cause
+       ↓
+Take authorized action
+       ↓
+Test again
+```
+
+---
+
+# 📝 Audit Logs
+
+Audit logs are useful for investigating administrative and directory changes.
+
+Examples of questions an administrator may investigate:
+
+```text
+Who changed the user?
+Who changed a group?
+Who modified a setting?
+When was the change made?
+```
+
+This creates an evidence-based troubleshooting process.
+
+Instead of guessing:
+
+> "Someone must have changed the account."
+
+The administrator can examine the available audit evidence.
+
+---
+
+# 🏥 Microsoft 365 Service Health
+
+Service Health provides information about Microsoft service incidents and advisories.
+
+This is important because not every Microsoft 365 problem is caused by the user's computer.
+
+Example:
+
+```text
+User reports:
+"Outlook isn't working."
+```
+
+A support technician should consider:
+
+```text
+User-specific problem?
+        ↓
+Device problem?
+        ↓
+Network problem?
+        ↓
+Account/licensing problem?
+        ↓
+Microsoft service incident?
+```
+
+This helps determine the scope of the problem before changing the user's configuration.
+
+---
+
+# ☁️ Microsoft 365 Services to Know
+
+## Exchange Online
+
+Cloud email service.
+
+```text
+Exchange Online
+↓
+Mailbox
+↓
+Email
+↓
+Outlook
+```
+
+---
+
+## Outlook
+
+Outlook is the client/application users commonly use to access email, calendars, contacts, and other mailbox functions.
+
+Important distinction:
+
+```text
+Outlook
+↓
+Application/client
+
+Exchange Online
+↓
+Cloud email service
+```
+
+---
+
+## Microsoft Teams
+
+Teams provides collaboration features such as:
+
+* Chat
+* Meetings
+* Teams
+* Channels
+* Files
+
+---
+
+## OneDrive
+
+OneDrive is designed primarily for a user's individual work files and personal work storage within the organization.
+
+---
+
+## SharePoint
+
+SharePoint is commonly used for team and organizational collaboration, websites, document libraries, and shared content.
+
+---
+
+# 🧠 OneDrive vs SharePoint
+
+Important interview distinction:
+
+```text
+OneDrive
+↓
+Individual user's work files
+
+SharePoint
+↓
+Team / organizational collaboration
+```
+
+---
+
+# 📮 Shared Mailbox
+
+A shared mailbox is designed for multiple users to work with a common mailbox.
+
+Example:
+
+```text
+support@company.com
+```
+
+or:
+
+```text
+finance@company.com
+```
+
+Common permissions include:
+
+* Full Access
+* Send As
+* Send on Behalf
+
+This will be covered in greater depth in a later Exchange Online lab.
+
+---
+
+# 🧪 Microsoft 365 Lab Decision
+
+Today's study intentionally did **not** focus on building a large Microsoft 365 home lab.
+
+The fundamentals were studied conceptually because the immediate career priorities are:
+
+```text
+CompTIA A+
+       +
+Interview Preparation
+       +
+Job Applications
+       +
+LinkedIn Networking
+```
+
+A Microsoft 365 lab can be added later when hands-on cloud administration becomes necessary.
+
+---
+
+# 🎫 Help Desk Scenario – Microsoft 365 Sign-In
+
+## Ticket
+
+**User: John – Finance**
+
+> "I cannot sign in to Microsoft 365."
+
+---
+
+## Information Gathering
+
+Ask:
+
+1. When did the problem begin?
+2. Is this happening on one device or multiple devices?
+3. What error message appears?
+4. Can the user access other websites?
+5. Can another user sign in?
+6. Has the user recently changed their password?
+7. Is MFA involved?
+
+---
+
+## Investigation
+
+Possible areas:
+
+```text
+User Account
+ ↓
+Password
+ ↓
+MFA
+ ↓
+License
+ ↓
+Sign-in Logs
+ ↓
+Service Health
+ ↓
+Application/service issue
+```
+
+---
+
+# 🧠 Troubleshooting Principle
+
+Do not immediately reset the password.
+
+First determine what evidence shows.
+
+For example:
+
+```text
+Failed sign-in
+      ↓
+Check Sign-in Logs
+      ↓
+Determine failure reason
+      ↓
+Take appropriate action
+```
+
+This follows the same troubleshooting philosophy used in the Windows and Active Directory labs:
+
+```text
+Gather Information
+ ↓
+Investigate
+ ↓
+Resolve
+ ↓
+Verify
+ ↓
+Document
+ ↓
+Escalate if necessary
+```
+
+---
+
+# 🎤 Interview Questions
+
+## What is Microsoft 365?
+
+Microsoft 365 is a cloud-based productivity and collaboration platform that provides services and applications such as Exchange Online, Teams, OneDrive, SharePoint and Microsoft Office.
+
+---
+
+## What is Microsoft Entra ID?
+
+Microsoft Entra ID is Microsoft's cloud identity and access management service used to manage identities, authentication and access to cloud resources and applications.
+
+---
+
+## What is the difference between Active Directory and Entra ID?
+
+Active Directory is primarily an on-premises directory service used for domain environments, while Entra ID is Microsoft's cloud identity and access management service used for cloud identities and access.
+
+---
+
+## What is MFA?
+
+MFA is Multi-Factor Authentication. It requires additional verification beyond the user's primary password.
+
+---
+
+## What are Entra sign-in logs used for?
+
+They can be used to investigate authentication attempts, including successful and failed sign-ins.
+
+---
+
+## What are audit logs used for?
+
+Audit logs help investigate changes and administrative activities within the environment.
+
+---
+
+## What is the difference between Outlook and Exchange Online?
+
+Outlook is a client/application used to access email and related mailbox features, while Exchange Online is Microsoft's cloud email service.
+
+---
+
+## What is the difference between OneDrive and SharePoint?
+
+OneDrive is primarily intended for an individual user's work files, while SharePoint is commonly used for team and organizational collaboration.
+
+---
+
+# ⭐ Key Takeaways
+
+* Microsoft 365 provides cloud-based productivity and collaboration services.
+* Microsoft Entra ID provides cloud identity and access management.
+* Active Directory and Entra ID are related but distinct technologies.
+* Authentication determines who the user is.
+* Authorization determines what the user can access.
+* MFA adds another authentication factor.
+* Sign-in logs are useful for authentication troubleshooting.
+* Audit logs provide evidence about changes and activities.
+* Service Health helps determine whether an issue is broader than one user.
+* Outlook is a client/application.
+* Exchange Online is the cloud email service.
+* OneDrive is primarily individual work storage.
+* SharePoint is commonly used for team and organizational collaboration.
+* Shared mailboxes allow multiple users to work with a common mailbox.
+
+---
+
+# 💼 Career Connection
+
+Today's learning is directly relevant to entry-level IT Support because Microsoft 365 issues frequently involve:
+
+* Password problems
+* MFA problems
+* Licensing
+* Outlook
+* Teams
+* File access
+* User accounts
+* Authentication
+* Service availability
+
+The goal is not to memorize every Microsoft 365 administration feature.
+
+The goal is to recognize the technology involved, understand the terminology, ask the right troubleshooting questions, and know where to investigate.
+
+---
+
+# 📝 Reflection
+
+Today I expanded my knowledge from on-premises Windows and Active Directory into Microsoft 365 and Microsoft Entra ID.
+
+One of the most important lessons was separating on-premises Active Directory from cloud identity management instead of treating them as identical technologies.
+
+I also learned how Microsoft 365 troubleshooting can involve identity, authentication, licensing, MFA, application services, logs, and overall service health.
+
+For now, I decided not to spend significant time building a full Microsoft 365 lab because I already understand the fundamentals. My current focus is to continue applying for IT Support jobs, prepare for CompTIA A+, strengthen interview skills, and build my professional LinkedIn network.
