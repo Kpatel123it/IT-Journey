@@ -1,0 +1,625 @@
+# Day 60 – File Shares, SMB, NTFS Permissions & Mapped Drives
+
+## 🎯 Objective
+
+Today's objective was to understand how Windows file sharing works in a domain environment and how IT Support technicians troubleshoot access to shared folders.
+
+The main topics covered were:
+
+* Windows file shares
+* SMB
+* TCP port 445
+* Share permissions
+* NTFS permissions
+* Security group-based access
+* UNC paths
+* Mapped network drives
+* Testing SMB connectivity
+* Troubleshooting shared-folder access
+
+Today's lab connected several previously learned concepts:
+
+```text
+Active Directory
+      ↓
+Security Groups
+      ↓
+File Shares
+      ↓
+NTFS Permissions
+      ↓
+SMB
+      ↓
+Mapped Drives
+      ↓
+User Access
+```
+
+---
+
+# 🪟 Windows File Sharing
+
+## What is a File Share?
+
+A Windows file share allows users on a network to access files and folders stored on another computer or server.
+
+Example:
+
+```text
+Windows 11 Client
+       ↓
+\\SERVER01\Finance
+       ↓
+Finance Shared Folder
+```
+
+The shared folder is stored on the server, while the client accesses it over the network.
+
+---
+
+# 🌐 SMB
+
+## What is SMB?
+
+SMB stands for **Server Message Block**.
+
+SMB is a network protocol used by Windows systems to provide access to shared:
+
+* Files
+* Folders
+* Printers
+* Other network resources
+
+The common modern SMB network port is:
+
+```text
+TCP 445
+```
+
+### Example
+
+```text
+Client
+  ↓
+SMB
+  ↓
+TCP 445
+  ↓
+SERVER01
+  ↓
+Shared Folder
+```
+
+---
+
+# 🔗 UNC Path
+
+A UNC path is used to access a network resource by specifying the server and share name.
+
+Example:
+
+```text
+\\SERVER01\Finance
+```
+
+Structure:
+
+```text
+\\ServerName\ShareName
+```
+
+Another example:
+
+```text
+\\SERVER01\HR
+```
+
+UNC paths are commonly used when accessing network shares directly.
+
+---
+
+# 🏢 Lab Environment
+
+Today's Windows Server lab used:
+
+```text
+Domain:
+kpatel.test
+
+Server:
+SERVER01
+
+Client:
+WIN11-CLIENT01
+```
+
+The lab was configured so the Windows client and server could communicate on the same lab network.
+
+---
+
+# 📁 Creating Shared Folders
+
+On `SERVER01`, test shared folders were created under:
+
+```text
+C:\Shares
+```
+
+Example structure:
+
+```text
+C:\Shares
+│
+├── Finance
+├── HR
+└── IT
+```
+
+Test documents were placed inside the folders to verify access.
+
+---
+
+# 📂 Creating the Finance Share
+
+The Finance folder was shared as:
+
+```text
+\\SERVER01\Finance
+```
+
+This created a network resource that domain users could access.
+
+---
+
+# 🔐 Share Permissions vs NTFS Permissions
+
+One of the most important lessons from today's lab was understanding that **Share permissions and NTFS permissions are separate permission layers**.
+
+## Share Permissions
+
+Share permissions control access when a folder is accessed through the network share.
+
+Example:
+
+```text
+\\SERVER01\Finance
+```
+
+---
+
+## NTFS Permissions
+
+NTFS permissions are permissions assigned to files and folders on the Windows file system.
+
+Common NTFS permissions include:
+
+* Full Control
+* Modify
+* Read & Execute
+* Read
+* Write
+
+---
+
+# 🧠 Important Permission Principle
+
+When accessing a shared folder over the network, both:
+
+```text
+Share Permissions
+        +
+NTFS Permissions
+```
+
+affect the user's effective access.
+
+A common practical approach is to manage access using **security groups** rather than assigning permissions individually to users.
+
+---
+
+# 👥 Security Group Access
+
+A Finance security group was used for Finance access.
+
+Example:
+
+```text
+GG-Finance
+```
+
+A Finance user such as:
+
+```text
+jfinance
+```
+
+could be a member of:
+
+```text
+GG-Finance
+```
+
+The group can then be assigned the appropriate permissions to the Finance shared folder.
+
+This follows the idea:
+
+```text
+User
+ ↓
+Security Group
+ ↓
+Resource Permission
+ ↓
+Access
+```
+
+---
+
+# 💻 Mapped Network Drive
+
+A network share can be mapped to a drive letter to make it easier for a user to access.
+
+Example:
+
+```text
+F:
+```
+
+mapped to:
+
+```text
+\\SERVER01\Finance
+```
+
+The user can then access the share as:
+
+```text
+F:\
+```
+
+instead of typing the full UNC path.
+
+---
+
+# 🧪 Practical Lab
+
+## Test 1 – Direct UNC Access
+
+From the Windows 11 client:
+
+Press:
+
+```text
+Windows + R
+```
+
+Enter:
+
+```text
+\\SERVER01\Finance
+```
+
+The Finance share opened successfully.
+
+This confirmed that:
+
+* Server name resolution was working.
+* The SMB share was available.
+* The client could communicate with the server.
+* The share was accessible using the UNC path.
+
+---
+
+# 🧪 Test 2 – Check SMB Shares
+
+On `SERVER01`, PowerShell can be used to view available SMB shares.
+
+Command:
+
+```powershell
+Get-SmbShare
+```
+
+To inspect the Finance share:
+
+```powershell
+Get-SmbShare -Name Finance
+```
+
+This helped verify that the Finance share existed and was published by the server.
+
+---
+
+# 🧪 Test 3 – Check Security Group Membership
+
+To check members of the Finance group:
+
+```powershell
+Get-ADGroupMember GG-Finance
+```
+
+This can help determine whether the user belongs to the appropriate access group.
+
+---
+
+# 🧪 Test 4 – Check the User
+
+Example:
+
+```powershell
+Get-ADUser jfinance
+```
+
+This can be used to verify that the user account exists in Active Directory.
+
+---
+
+# 🧪 Test 5 – Test SMB Port
+
+The common SMB port is TCP 445.
+
+From the Windows client:
+
+```powershell
+Test-NetConnection SERVER01 -Port 445
+```
+
+A successful connection helps confirm that the server is reachable on the SMB port.
+
+---
+
+# 🧪 Test 6 – Mapped Drive
+
+The Finance share was mapped to:
+
+```text
+F:
+```
+
+with the target:
+
+```text
+\\SERVER01\Finance
+```
+
+This allowed the Finance folder to be accessed as a normal drive.
+
+---
+
+# 🌐 Network Discovery vs Direct SMB Access
+
+An important troubleshooting lesson occurred when the Finance share worked through:
+
+```text
+\\SERVER01\Finance
+```
+
+but `SERVER01` was not automatically visible under:
+
+```text
+File Explorer → Network
+```
+
+Windows also displayed a message indicating that network discovery and file sharing were turned off.
+
+This demonstrated an important distinction:
+
+```text
+Direct UNC/SMB access
+        ≠
+Network Discovery visibility
+```
+
+A computer does not need to appear automatically under **Network** for a known SMB share to be accessible through a direct UNC path.
+
+Therefore:
+
+```text
+\\SERVER01\Finance
+```
+
+working successfully was the more important test for the specific file-share requirement.
+
+---
+
+# 🎫 Help Desk Scenario
+
+## Ticket
+
+**Issue:**
+
+> "I cannot access the Finance shared folder. I was able to access it yesterday."
+
+---
+
+## Information Gathering
+
+Questions to ask:
+
+1. When did the problem begin?
+2. Could you access the folder previously?
+3. Can you access other shared folders?
+4. Are other Finance users affected?
+5. Are you connected to the company network?
+6. What exact error message do you receive?
+7. Have there been any recent changes?
+
+---
+
+# 🔎 Investigation Process
+
+A structured troubleshooting process can be:
+
+```text
+User
+ ↓
+Account
+ ↓
+Network Connectivity
+ ↓
+Authentication
+ ↓
+Security Group
+ ↓
+Share Permissions
+ ↓
+NTFS Permissions
+ ↓
+SMB Connectivity
+ ↓
+Shared Folder
+```
+
+Examples of checks:
+
+```powershell
+Get-ADUser jfinance
+```
+
+```powershell
+Get-ADGroupMember GG-Finance
+```
+
+```powershell
+Test-NetConnection SERVER01 -Port 445
+```
+
+Then test:
+
+```text
+\\SERVER01\Finance
+```
+
+---
+
+# 🚫 Important Help Desk Principle
+
+Do not immediately change permissions.
+
+First determine:
+
+* What access is missing?
+* Is the user authorized?
+* Is the user in the correct security group?
+* Is the server reachable?
+* Is SMB available?
+* Are the permissions correct?
+* Are other users affected?
+
+Only make an approved change after understanding the problem.
+
+---
+
+# 🎤 Interview Questions
+
+## What is SMB?
+
+SMB is a network protocol used by Windows systems to provide access to shared files, folders, printers, and other network resources.
+
+---
+
+## What port does SMB use?
+
+Modern Windows SMB commonly uses:
+
+```text
+TCP 445
+```
+
+---
+
+## What is a UNC path?
+
+A UNC path identifies a network resource using a server and share name.
+
+Example:
+
+```text
+\\SERVER01\Finance
+```
+
+---
+
+## What is the difference between Share permissions and NTFS permissions?
+
+Share permissions control access through the network share, while NTFS permissions control access to files and folders on the Windows file system.
+
+---
+
+## Why use security groups for file access?
+
+Security groups allow permissions to be managed centrally for multiple users instead of assigning access individually.
+
+---
+
+## What is a mapped drive?
+
+A mapped drive assigns a drive letter to a network share.
+
+Example:
+
+```text
+F:
+↓
+\\SERVER01\Finance
+```
+
+---
+
+# 🧠 Key Concept Separation
+
+```text
+SMB
+↓
+Network file-sharing protocol
+
+TCP 445
+↓
+Common SMB port
+
+UNC
+↓
+Path to network resource
+
+Security Group
+↓
+Controls access through assigned permissions
+
+Share Permissions
+↓
+Network-share permission layer
+
+NTFS Permissions
+↓
+File-system permission layer
+
+Mapped Drive
+↓
+Drive letter pointing to a network share
+```
+
+---
+
+# ⭐ Key Takeaways
+
+* Windows uses SMB for network file sharing.
+* SMB commonly uses TCP port 445.
+* UNC paths can be used to access network shares directly.
+* Share permissions and NTFS permissions are separate concepts.
+* Security groups are useful for centralized resource access management.
+* Network drives can be mapped to drive letters.
+* `Test-NetConnection` can help verify TCP 445 connectivity.
+* A share can be directly accessible even if the computer is not displayed under File Explorer's Network section.
+* Troubleshooting should begin with information gathering and evidence rather than immediately changing permissions.
+
+---
+
+# 📝 Reflection
+
+Today I learned how Windows file sharing works in a domain environment and how different components work together to provide access to shared resources.
+
+The most important concept was separating **SMB, Share Permissions, NTFS Permissions, Security Groups, UNC paths, and mapped drives** instead of treating them as one concept.
+
+I also learned that troubleshooting a shared-folder issue requires checking the user's account, group membership, connectivity, SMB availability, and both permission layers before making changes.
+
+This lab helped connect Active Directory, networking, Windows Server, and Help Desk troubleshooting into one realistic support scenario.
