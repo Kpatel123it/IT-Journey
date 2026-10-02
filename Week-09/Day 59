@@ -1,0 +1,1032 @@
+# Day 59 – Windows File Shares, SMB, NTFS Permissions & Network Share Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to build and troubleshoot a Windows file-sharing environment using the existing Active Directory lab.
+
+The main focus was:
+
+* Creating a central file-sharing location on SERVER01.
+* Understanding SMB-based Windows file sharing.
+* Creating the Finance shared folder.
+* Understanding Share permissions versus NTFS permissions.
+* Using Active Directory security groups for resource access.
+* Testing access from WIN11-CLIENT01.
+* Understanding UNC paths.
+* Troubleshooting the difference between direct shared-folder access and Network discovery.
+* Practicing a realistic Help Desk file-access scenario.
+
+The lab was used to connect previously learned concepts:
+
+```text
+Active Directory
+      ↓
+Security Groups
+      ↓
+Permissions
+      ↓
+File Server
+      ↓
+SMB
+      ↓
+Windows Client
+```
+
+---
+
+# 🏗️ Lab Environment
+
+## Virtualization Platform
+
+```text
+Oracle VirtualBox
+```
+
+## Server
+
+```text
+SERVER01
+Windows Server 2025
+Active Directory Domain Services
+DNS
+File Server
+```
+
+## Client
+
+```text
+WIN11-CLIENT01
+Windows 11
+```
+
+## Active Directory Domain
+
+```text
+kpatel.test
+```
+
+## Lab Network
+
+```text
+AD-LAB-NET
+192.168.50.0/24
+```
+
+---
+
+# 🖥️ Lab Architecture
+
+The file-sharing portion of the lab uses the following structure:
+
+```text
+                         kpatel.test
+                              |
+                       Active Directory
+                              |
+                         GG-Finance
+                              |
+                              ↓
+                         SERVER01
+                              |
+                         File Server
+                              |
+                      C:\Shares\Finance
+                              |
+                             SMB
+                              |
+                      \\SERVER01\Finance
+                              |
+                              ↓
+                       WIN11-CLIENT01
+```
+
+---
+
+# 📁 File Server Configuration
+
+SERVER01 was configured as the file server for the lab.
+
+A central folder structure was created:
+
+```text
+C:\Shares
+│
+├── Finance
+├── HR
+└── IT
+```
+
+The purpose of the structure is to simulate departmental file storage in a company environment.
+
+---
+
+# 📂 Finance Folder
+
+The Finance folder was created as:
+
+```text
+C:\Shares\Finance
+```
+
+The folder was used as the main test resource for file-sharing and permissions troubleshooting.
+
+Example test files:
+
+```text
+Finance-Budget.txt
+Finance-Salaries.txt
+Finance-Test.txt
+```
+
+All files used in the lab are test files and do not contain real company information.
+
+---
+
+# 🌐 SMB
+
+## What is SMB?
+
+SMB stands for:
+
+**Server Message Block**
+
+SMB is a Windows network file-sharing protocol used to access files, folders, printers, and other shared resources across a network.
+
+The common modern SMB TCP port is:
+
+```text
+445/TCP
+```
+
+Important distinction:
+
+```text
+SMB
+↓
+File-sharing protocol
+
+Port 445
+↓
+Common TCP port used by SMB
+```
+
+---
+
+# 🔗 UNC Path
+
+A shared folder can be accessed using a UNC path.
+
+UNC means:
+
+**Universal Naming Convention**
+
+The Finance share can be accessed as:
+
+```text
+\\SERVER01\Finance
+```
+
+The structure is:
+
+```text
+\\ServerName\ShareName
+```
+
+Example:
+
+```text
+\\SERVER01\Finance
+```
+
+Where:
+
+```text
+SERVER01
+↓
+Computer / file server
+
+Finance
+↓
+Shared folder name
+```
+
+---
+
+# 🧪 Direct Share Access Test
+
+The Finance folder was successfully accessed from the Windows 11 client through:
+
+```text
+\\SERVER01\Finance
+```
+
+The path was entered using:
+
+```text
+Win + R
+```
+
+This successfully opened the shared folder.
+
+This confirmed that direct SMB share access was functioning.
+
+---
+
+# 🔎 Network Discovery Issue
+
+Although the share could be opened directly through the UNC path, the server/share was not automatically visible through:
+
+```text
+File Explorer
+→ Network
+```
+
+Windows displayed a message indicating that:
+
+```text
+Network discovery and file sharing are turned off.
+```
+
+---
+
+# 🧠 Important Troubleshooting Lesson
+
+This demonstrated that:
+
+```text
+Direct UNC access
+        ≠
+Network discovery
+```
+
+The ability to directly access:
+
+```text
+\\SERVER01\Finance
+```
+
+confirmed that the file share itself was available.
+
+The inability to automatically see the computer under the Network section was related to **network discovery/browsing**, not necessarily a failure of the SMB share.
+
+---
+
+# 🔍 Troubleshooting Logic
+
+The troubleshooting process was:
+
+```text
+User cannot find Finance folder
+        ↓
+Try direct UNC path
+        ↓
+\\SERVER01\Finance
+        ↓
+Share opens successfully
+        ↓
+SMB access confirmed
+        ↓
+Network discovery becomes a separate issue
+```
+
+This prevents incorrectly concluding:
+
+> "The file server is down."
+
+The evidence showed that the file server/share was reachable.
+
+---
+
+# 🛠️ Network Troubleshooting Commands
+
+The following commands can be used when investigating a shared-folder issue.
+
+## Check IP configuration
+
+```cmd
+ipconfig /all
+```
+
+Purpose:
+
+Displays network configuration including:
+
+* IP address
+* Subnet mask
+* Default gateway
+* DNS server
+* DHCP information
+
+---
+
+## Test SERVER01 connectivity
+
+```cmd
+ping SERVER01
+```
+
+Purpose:
+
+Tests network connectivity and name resolution to the server.
+
+---
+
+## Test SMB port
+
+```powershell
+Test-NetConnection SERVER01 -Port 445
+```
+
+Purpose:
+
+Tests whether TCP port 445 is reachable on SERVER01.
+
+A successful result should show:
+
+```text
+TcpTestSucceeded : True
+```
+
+---
+
+# 📤 Verify SMB Shares on SERVER01
+
+PowerShell was used to inspect Windows SMB shares.
+
+```powershell
+Get-SmbShare
+```
+
+Purpose:
+
+Lists the SMB shares available on the server.
+
+The Finance share should appear in the output.
+
+---
+
+# 🔍 Verify the Finance Share
+
+```powershell
+Get-SmbShare -Name Finance
+```
+
+Purpose:
+
+Displays information about the Finance SMB share.
+
+---
+
+# 👥 Active Directory Security Group
+
+The Finance security group was used to control access to the Finance resource.
+
+Group:
+
+```text
+GG-Finance
+```
+
+The Finance user was added to the group.
+
+Conceptual structure:
+
+```text
+John Finance
+      ↓
+GG-Finance
+      ↓
+Finance Resource
+```
+
+---
+
+# 🔐 Why Security Groups Are Used
+
+Instead of assigning permissions individually to each user, permissions can be assigned to a security group.
+
+Example:
+
+```text
+50 Finance users
+       ↓
+  GG-Finance
+       ↓
+Finance folder
+```
+
+When a new employee joins Finance:
+
+```text
+Create account
+      ↓
+Add user to GG-Finance
+      ↓
+User receives authorized access
+```
+
+When the employee leaves Finance:
+
+```text
+Remove user from GG-Finance
+      ↓
+Finance access removed
+```
+
+This makes access management easier to maintain.
+
+---
+
+# 🔑 NTFS Permissions
+
+NTFS permissions control access to files and folders on the Windows filesystem.
+
+For the Finance folder:
+
+```text
+C:\Shares\Finance
+```
+
+the Finance security group can be assigned appropriate NTFS permissions.
+
+Example lab configuration:
+
+```text
+GG-Finance
+    ↓
+Modify
+```
+
+Modify permissions allow authorized users to work with files without automatically giving them Full Control.
+
+---
+
+# 🌐 Share Permissions
+
+Share permissions control access when a folder is accessed through the network share.
+
+The two major permission layers are:
+
+```text
+Share Permissions
+        +
+NTFS Permissions
+        ↓
+Effective Access
+```
+
+This means that troubleshooting a shared-folder problem requires examining both permission layers.
+
+---
+
+# 🧠 Share vs NTFS
+
+## Share Permissions
+
+Control:
+
+```text
+Network access
+```
+
+Example:
+
+```text
+\\SERVER01\Finance
+```
+
+## NTFS Permissions
+
+Control:
+
+```text
+Filesystem access
+```
+
+Example:
+
+```text
+C:\Shares\Finance
+```
+
+For network access:
+
+```text
+Share
++
+NTFS
+↓
+Effective access
+```
+
+---
+
+# 🧪 Finance User Testing
+
+The Finance test user was used to test the shared folder.
+
+Example:
+
+```text
+jfinance
+```
+
+The user was expected to:
+
+```text
+Open Finance
+Read files
+Create test files
+Modify test files
+```
+
+This was based on the user's membership in:
+
+```text
+GG-Finance
+```
+
+---
+
+# 🚫 Non-Finance User Testing
+
+A non-Finance user can be used to test authorization.
+
+Example:
+
+```text
+HR user
+```
+
+The test determines whether the user can access the Finance resource.
+
+Expected concept:
+
+```text
+Finance User
+    ↓
+Authorized
+
+Non-Finance User
+    ↓
+Not authorized
+```
+
+This tests Active Directory authorization rather than authentication.
+
+---
+
+# 🔄 Authentication vs Authorization
+
+Today's lab reinforced this distinction.
+
+## Authentication
+
+Answers:
+
+```text
+Who are you?
+```
+
+Example:
+
+```text
+jfinance
+    ↓
+Active Directory verifies identity
+```
+
+## Authorization
+
+Answers:
+
+```text
+What are you allowed to access?
+```
+
+Example:
+
+```text
+jfinance
+    ↓
+GG-Finance
+    ↓
+Finance folder access
+```
+
+---
+
+# 🗺️ Mapped Drive
+
+The Finance share can also be mapped to a drive letter.
+
+Example:
+
+```text
+F:
+```
+
+pointing to:
+
+```text
+\\SERVER01\Finance
+```
+
+Conceptually:
+
+```text
+F:
+↓
+\\SERVER01\Finance
+```
+
+This allows the user to access the network share more easily from File Explorer.
+
+---
+
+# 🧪 Network Share Troubleshooting Scenario
+
+## Ticket ID
+
+```text
+INC-6001
+```
+
+## User
+
+John Finance
+
+## Department
+
+Finance
+
+## Problem
+
+> "My Finance network drive worked yesterday, but today I cannot access it."
+
+---
+
+# 🔎 Information Gathering
+
+Questions asked:
+
+1. When did the problem begin?
+2. What exact error appears?
+3. Can you log into Windows?
+4. Can you access other network resources?
+5. Can you ping SERVER01?
+6. Can you open `\\SERVER01\Finance` directly?
+7. Can another Finance user access the folder?
+8. Has your department or access changed recently?
+
+---
+
+# 🧪 Investigation
+
+The troubleshooting sequence was:
+
+```text
+User
+ ↓
+Windows login
+ ↓
+Network connectivity
+ ↓
+SERVER01
+ ↓
+SMB
+ ↓
+Finance share
+ ↓
+AD user
+ ↓
+GG-Finance
+ ↓
+Share permissions
+ ↓
+NTFS permissions
+ ↓
+Effective access
+```
+
+---
+
+# 🧠 Important Evidence
+
+Direct access through:
+
+```text
+\\SERVER01\Finance
+```
+
+worked.
+
+Therefore:
+
+```text
+File share
+     ↓
+     ✅ Available
+```
+
+The issue of not seeing SERVER01 under:
+
+```text
+File Explorer → Network
+```
+
+was therefore treated as a separate **Network Discovery** issue.
+
+---
+
+# 🧰 Additional Verification Commands
+
+## List network connections
+
+```cmd
+net use
+```
+
+Purpose:
+
+Shows current network share connections and mapped drives.
+
+---
+
+## Check Finance group membership
+
+```powershell
+Get-ADGroupMember GG-Finance
+```
+
+Purpose:
+
+Shows members of the Finance security group.
+
+---
+
+## Check the Finance user
+
+```powershell
+Get-ADUser jfinance
+```
+
+Purpose:
+
+Retrieves information about the Finance test user.
+
+---
+
+# 🧠 Troubleshooting Principle
+
+A useful troubleshooting principle reinforced today was:
+
+> **Test the actual resource directly before assuming that the resource is unavailable.**
+
+For example:
+
+```text
+Network view doesn't show SERVER01
+            ↓
+Don't immediately conclude:
+"Server is down."
+            ↓
+Try:
+\\SERVER01\Finance
+            ↓
+Share opens
+            ↓
+Server/share is reachable
+```
+
+---
+
+# 🛡️ Security Principle
+
+Do not solve a permission problem by giving broad permissions such as:
+
+```text
+Everyone
+↓
+Full Control
+```
+
+Instead:
+
+```text
+Identify required access
+        ↓
+Verify authorization
+        ↓
+Use appropriate security group
+        ↓
+Assign minimum necessary permission
+        ↓
+Verify access
+```
+
+This applies the principle of **least privilege**.
+
+---
+
+# 📚 Important Concepts Learned
+
+## SMB
+
+Windows network file-sharing protocol.
+
+## UNC
+
+Standard network path format such as:
+
+```text
+\\SERVER01\Finance
+```
+
+## Share Permission
+
+Controls access through the network share.
+
+## NTFS Permission
+
+Controls filesystem access.
+
+## Security Group
+
+Allows permissions to be assigned to groups of authorized users/computers.
+
+## Mapped Drive
+
+A drive letter mapped to a network resource.
+
+## Network Discovery
+
+Allows Windows to discover/display network computers and resources through the Network view.
+
+---
+
+# 🎤 Interview Questions
+
+## What is SMB?
+
+> SMB is a network file-sharing protocol commonly used by Windows to access shared files, folders, printers, and other resources.
+
+## What port does SMB commonly use?
+
+> SMB commonly uses TCP port 445.
+
+## What is a UNC path?
+
+> A UNC path is a standard format for accessing network resources, such as `\\SERVER01\Finance`.
+
+## What is the difference between Share and NTFS permissions?
+
+> Share permissions control access when a folder is accessed over the network, while NTFS permissions control access to files and folders on the Windows filesystem. For a network share, both contribute to effective access.
+
+## Why use security groups?
+
+> Security groups allow permissions to be assigned to groups instead of individual users, making access management easier and more consistent.
+
+## A user cannot see a server under Network, but `\\SERVER01\Finance` works. What does that tell you?
+
+> It indicates that direct access to the SMB share is working, while network discovery or browsing may be the separate issue.
+
+---
+
+# 💼 Behavioral Question
+
+## How do you troubleshoot an issue when the symptoms could have multiple causes?
+
+### Answer
+
+> I first gather information and identify the exact symptom rather than assuming the cause. I then test the problem in stages, starting with basic connectivity and moving toward the specific service or resource. I use evidence from the tests to narrow down the cause, make only authorized changes, verify the solution, and document the result.
+
+---
+
+# 📸 Screenshots for GitHub
+
+Recommended screenshots:
+
+```text
+☐ C:\Shares
+☐ Finance folder
+☐ Finance test files
+☐ Finance share settings
+☐ NTFS Security permissions
+☐ GG-Finance membership
+☐ \\SERVER01\Finance working
+☐ File Explorer Network warning
+☐ Get-SmbShare
+☐ Get-SmbShare -Name Finance
+☐ Get-ADGroupMember GG-Finance
+☐ Test-NetConnection SERVER01 -Port 445
+☐ net use
+☐ F: mapped drive
+```
+
+Do not include passwords, credentials, or sensitive information.
+
+---
+
+# ✅ Day 60 Completion Checklist
+
+* [x] Reviewed Active Directory concepts
+* [x] Created file-server folder structure
+* [x] Created Finance shared folder
+* [x] Reviewed SMB
+* [x] Reviewed TCP 445
+* [x] Configured/tested Windows file sharing
+* [x] Tested UNC path
+* [x] Successfully accessed `\\SERVER01\Finance`
+* [x] Reviewed Share permissions
+* [x] Reviewed NTFS permissions
+* [x] Used GG-Finance for authorization
+* [x] Tested Finance user access
+* [x] Reviewed non-Finance authorization
+* [x] Reviewed mapped drives
+* [x] Investigated Network Discovery behavior
+* [x] Distinguished direct SMB access from Network discovery
+* [x] Practiced file-share troubleshooting
+* [x] Practiced Help Desk ticket INC-6001
+* [x] Practiced PowerShell SMB commands
+* [x] Practiced AD group-membership checks
+* [x] Practiced least-privilege principle
+* [x] Practiced interview answers
+
+---
+
+# 🔑 Key Takeaways
+
+1. **SMB** provides Windows network file sharing.
+
+2. **TCP 445** is the common port used by modern SMB.
+
+3. A UNC path such as:
+
+```text
+\\SERVER01\Finance
+```
+
+provides direct access to a network share.
+
+4. Seeing a computer under **Network** and being able to access its share directly are different things.
+
+5. **Share permissions and NTFS permissions** both matter when troubleshooting network file access.
+
+6. **Security groups** provide a manageable way to assign resource access.
+
+7. **Authentication** verifies identity, while **authorization** determines what the authenticated user can access.
+
+8. A Help Desk technician should test the actual resource before assuming the server or service is unavailable.
+
+9. Permission problems should be resolved through the appropriate authorized group and minimum required access rather than broad permissions.
+
+---
+
+# 💭 Reflection
+
+Today I built and tested a Windows file-sharing environment using SERVER01 and WIN11-CLIENT01.
+
+I learned how a Windows shared folder is accessed through SMB and how a UNC path such as `\\SERVER01\Finance` provides direct access to a shared resource.
+
+One useful troubleshooting experience was discovering that the Finance share could be opened directly using the Run dialog even though SERVER01 was not visible through the File Explorer Network view. This demonstrated that Network Discovery and direct SMB share access are separate concepts.
+
+I also reinforced the relationship between Active Directory security groups and resource permissions. Instead of assigning access directly to individual users, the lab uses the `GG-Finance` security group to control access to the Finance resource.
+
+The main lesson from today's lab was to use evidence-driven troubleshooting. A missing computer from the Network view does not automatically mean that the file server or SMB share is unavailable. Testing the actual UNC path provided evidence that the share itself was accessible.
+
+This lab connected several previously learned concepts—Active Directory, security groups, Windows networking, SMB, permissions, authentication, authorization, and Help Desk troubleshooting—into one practical scenario.
+
+---
+
+# 🚀 Next Lab
+
+The next major stage will move into **Microsoft 365 and Microsoft Entra ID hands-on support**:
+
+```text
+Microsoft 365 Tenant
+        ↓
+Microsoft Entra ID
+        ↓
+Users & Groups
+        ↓
+Licensing
+        ↓
+MFA
+        ↓
+Exchange Online
+        ↓
+Outlook
+        ↓
+Shared Mailbox
+        ↓
+Teams
+        ↓
+OneDrive
+        ↓
+SharePoint
+        ↓
+Realistic M365 Help Desk Tickets
+```
+
+This will complete the other major part of your Tier 1 support lab.
