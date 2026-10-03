@@ -1,0 +1,881 @@
+# Day 62 – CompTIA A+ Hardware Fundamentals, Troubleshooting & Career Preparation
+
+## 🎯 Objective
+
+Today's objective was to begin the next phase of my IT Support journey by starting **CompTIA A+ preparation** while continuing interview preparation, job applications, and professional networking.
+
+Instead of continuing to add large numbers of new technologies, the focus is now on turning the knowledge I have already developed into:
+
+* Certification preparation
+* Practical troubleshooting ability
+* Strong interview answers
+* Targeted job applications
+* Professional LinkedIn networking
+* Better technical communication
+
+Today's main technical topic was **computer hardware fundamentals**, with a focus on the hardware knowledge most relevant to entry-level IT Support.
+
+The learning approach was:
+
+```text
+Learn
+ ↓
+Understand
+ ↓
+Practice
+ ↓
+Troubleshoot
+ ↓
+Explain
+ ↓
+Apply to Help Desk Scenario
+```
+
+---
+
+# 📚 CompTIA A+ Preparation
+
+## Why CompTIA A+?
+
+CompTIA A+ provides a broad foundation for IT Support and Help Desk work.
+
+The certification covers areas such as:
+
+* Hardware
+* Operating systems
+* Networking
+* Troubleshooting
+* Security
+* Virtualization and cloud
+* Operational procedures
+
+My current career target is entry-level:
+
+* IT Support
+* Help Desk
+* Service Desk
+* Desktop Support
+* Technical Support
+* IT Technician
+
+Because of this, A+ fits well with my current career direction.
+
+---
+
+# 💻 Computer Hardware Fundamentals
+
+## CPU
+
+CPU stands for **Central Processing Unit**.
+
+The CPU executes instructions and performs calculations required by the operating system and applications.
+
+Conceptually:
+
+```text
+Application
+     ↓
+Instructions
+     ↓
+CPU
+     ↓
+Processing
+     ↓
+Result
+```
+
+Important concepts include:
+
+* CPU cores
+* CPU threads
+* Clock speed
+* CPU utilization
+* CPU temperature
+* Cooling
+
+---
+
+# 🧠 CPU Troubleshooting
+
+A user may report:
+
+> "My computer is very slow."
+
+The CPU should not automatically be assumed to be faulty.
+
+A technician should first investigate resource usage.
+
+For example:
+
+```text
+Task Manager
+     ↓
+CPU Usage
+     ↓
+Memory Usage
+     ↓
+Disk Usage
+     ↓
+Running Processes
+     ↓
+Startup Applications
+```
+
+This prevents guessing and helps identify the actual bottleneck.
+
+---
+
+# RAM
+
+RAM stands for **Random Access Memory**.
+
+RAM is temporary, volatile memory used by the operating system and applications while the computer is running.
+
+Example:
+
+```text
+Windows
+ +
+Outlook
+ +
+Chrome
+ +
+Teams
+ +
+Excel
+       ↓
+RAM Usage
+```
+
+When many applications are running simultaneously, memory usage can increase.
+
+---
+
+# RAM Troubleshooting
+
+If a user reports:
+
+> "The computer becomes very slow when I open several applications."
+
+One of the first checks can be:
+
+```text
+Task Manager
+ ↓
+Performance
+ ↓
+Memory
+```
+
+Review:
+
+* Memory utilization
+* Available memory
+* Applications using large amounts of memory
+
+The important point is to **measure the problem before assuming the cause**.
+
+---
+
+# Storage
+
+Two common types of computer storage are:
+
+## HDD
+
+HDD stands for **Hard Disk Drive**.
+
+HDDs use mechanical components to store data.
+
+---
+
+## SSD
+
+SSD stands for **Solid State Drive**.
+
+SSDs use flash memory and do not contain the same mechanical spinning components used by traditional HDDs.
+
+General comparison:
+
+```text
+HDD
+↓
+Mechanical storage
+
+SSD
+↓
+Solid-state storage
+```
+
+Storage should not be confused with RAM.
+
+```text
+RAM
+↓
+Temporary working memory
+
+Storage
+↓
+Persistent data
+```
+
+---
+
+# Motherboard
+
+The motherboard is the main circuit board that provides connections between major hardware components.
+
+It allows components such as:
+
+* CPU
+* RAM
+* Storage
+* Expansion devices
+* Network hardware
+* USB devices
+
+to communicate within the system.
+
+Conceptually:
+
+```text
+          CPU
+           │
+RAM ───────┼────── Storage
+           │
+       Motherboard
+           │
+       Expansion
+           │
+       Peripherals
+```
+
+---
+
+# Power Supply Unit
+
+The PSU stands for **Power Supply Unit**.
+
+It provides electrical power to the computer's components.
+
+Possible symptoms of a power-related issue may include:
+
+* Computer does not power on
+* Unexpected shutdowns
+* Random restarts
+* Failure to boot
+
+A technician should troubleshoot the complete power path before declaring the PSU faulty.
+
+---
+
+# GPU
+
+GPU stands for **Graphics Processing Unit**.
+
+The GPU processes graphical workloads and helps provide display output.
+
+A GPU may be:
+
+* Integrated
+* Dedicated
+
+For entry-level IT Support, the main objective is to understand the GPU's purpose and recognize it as a possible component involved in display-related issues.
+
+---
+
+# NIC
+
+NIC stands for **Network Interface Controller/Card**.
+
+A NIC provides network connectivity.
+
+Examples:
+
+* Ethernet adapter
+* Wi-Fi adapter
+
+Conceptually:
+
+```text
+Computer
+   ↓
+NIC
+   ↓
+Network
+```
+
+This connects hardware knowledge with networking knowledge studied earlier.
+
+---
+
+# Cooling
+
+Computer components produce heat during operation.
+
+Cooling systems can include:
+
+* Fans
+* Heat sinks
+* Thermal interface material
+* Case airflow
+
+Possible symptoms of overheating can include:
+
+* High temperatures
+* Fan running continuously
+* Performance throttling
+* Unexpected shutdowns
+
+A technician should check temperatures, airflow and system behavior before assuming a component has failed.
+
+---
+
+# 🧪 Windows Hardware Information Lab
+
+## `systeminfo`
+
+The following command was reviewed:
+
+```cmd
+systeminfo
+```
+
+This provides detailed information about the Windows system.
+
+Examples of information available include:
+
+* Operating system
+* Windows version
+* System manufacturer
+* Processor
+* Memory
+* Boot information
+* Network-related information
+
+This command can be useful during system investigation.
+
+---
+
+# PowerShell – `Get-ComputerInfo`
+
+The following command was also reviewed:
+
+```powershell
+Get-ComputerInfo
+```
+
+This provides detailed computer and operating system information through PowerShell.
+
+The goal was to become comfortable using both traditional Windows commands and PowerShell for system investigation.
+
+---
+
+# 🪟 Task Manager Lab
+
+Task Manager was opened using:
+
+```text
+Ctrl + Shift + Esc
+```
+
+The following areas were reviewed:
+
+* Processes
+* Performance
+* Startup applications
+
+Under **Performance**, the following resources were examined:
+
+* CPU
+* Memory
+* Disk
+* Network
+* GPU where available
+
+---
+
+# Task Manager Troubleshooting
+
+Task Manager can help identify which resource may be contributing to a performance problem.
+
+Example:
+
+```text
+User reports slow computer
+        ↓
+Task Manager
+        ↓
+CPU
+Memory
+Disk
+Processes
+Startup
+        ↓
+Identify possible bottleneck
+```
+
+This reinforces the troubleshooting principle:
+
+> **Use evidence instead of assumptions.**
+
+---
+
+# 🧰 Device Manager Lab
+
+Device Manager was opened using:
+
+```text
+devmgmt.msc
+```
+
+The following categories were reviewed:
+
+* Display adapters
+* Network adapters
+* Disk drives
+* Processors
+* Keyboards
+* Mice
+* System devices
+
+Device Manager can be useful for investigating:
+
+* Missing devices
+* Driver problems
+* Hardware recognition issues
+* Disabled devices
+* Device errors
+
+---
+
+# 🌐 Network Adapter Review
+
+The Network Adapters section of Device Manager was examined to identify the network interfaces used by the system.
+
+The relationship between hardware and networking was reviewed:
+
+```text
+NIC
+ ↓
+Network Connection
+ ↓
+IP Configuration
+ ↓
+Default Gateway
+ ↓
+DNS
+ ↓
+Application Access
+```
+
+This helps connect CompTIA A+ hardware concepts with previously learned networking concepts.
+
+---
+
+# 🛠️ Hardware Troubleshooting Method
+
+A major lesson from today's study was that technicians should troubleshoot systematically.
+
+A general hardware troubleshooting process is:
+
+```text
+User Complaint
+       ↓
+Gather Information
+       ↓
+Identify Symptoms
+       ↓
+Check Simple Causes
+       ↓
+Test
+       ↓
+Isolate the Cause
+       ↓
+Repair / Replace / Configure
+       ↓
+Verify
+       ↓
+Document
+```
+
+---
+
+# 🎫 Help Desk Scenario – Computer Running Slowly
+
+## Ticket ID
+
+`INC-6201`
+
+## User
+
+Sarah – Finance
+
+## Issue
+
+> "My computer is extremely slow and Outlook keeps freezing."
+
+---
+
+## Information Gathering
+
+Questions to ask:
+
+1. When did the problem start?
+2. Does the problem happen all the time?
+3. Does it affect other applications?
+4. Did anything recently change?
+5. Is the issue affecting only this computer?
+6. Is Outlook the only application affected?
+7. How much free storage is available?
+
+---
+
+# Investigation
+
+A possible investigation could include:
+
+```text
+Task Manager
+      ↓
+CPU
+      ↓
+Memory
+      ↓
+Disk
+      ↓
+Processes
+      ↓
+Startup Applications
+      ↓
+Storage
+      ↓
+Windows Updates
+      ↓
+Outlook-specific investigation
+```
+
+The technician should identify the evidence before making a change.
+
+---
+
+# Possible Causes
+
+Possible causes could include:
+
+* High CPU usage
+* High memory utilization
+* High disk utilization
+* Too many startup applications
+* Background processes
+* Low available storage
+* Windows update activity
+* Application-specific problems
+* Malware
+* Hardware issues
+
+These are possibilities, not conclusions.
+
+The actual cause should be established through investigation.
+
+---
+
+# Resolution Principle
+
+The correct approach is:
+
+```text
+Investigate
+ ↓
+Identify Cause
+ ↓
+Make Approved Change
+ ↓
+Test
+ ↓
+Verify
+ ↓
+Document
+```
+
+A technician should not automatically reinstall applications or replace hardware without evidence.
+
+---
+
+# 🔀 Mixed Technical Revision
+
+Today's revision continued the practice of separating related concepts.
+
+## OU vs Security Group vs GPO
+
+```text
+OU
+↓
+Organization / Management
+
+Security Group
+↓
+Access / Permissions
+
+GPO
+↓
+Configuration
+```
+
+---
+
+# DNS vs DHCP vs Gateway
+
+```text
+DNS
+↓
+Name Resolution
+
+DHCP
+↓
+Network Configuration
+
+Default Gateway
+↓
+Path to Other Networks
+```
+
+---
+
+# Linux Command Separation
+
+```text
+df -h
+↓
+Disk Space
+
+free -h
+↓
+Memory
+
+systemctl
+↓
+Service Management
+
+journalctl
+↓
+Logs
+```
+
+This review is important because similar concepts can easily become mixed together during interviews.
+
+---
+
+# 🌐 Common Port Review
+
+The following ports were reviewed:
+
+|  Port | Service |
+| ----: | ------- |
+|    22 | SSH     |
+|    25 | SMTP    |
+|    53 | DNS     |
+| 67/68 | DHCP    |
+|    80 | HTTP    |
+|   110 | POP3    |
+|   143 | IMAP    |
+|   443 | HTTPS   |
+|   445 | SMB     |
+|  3389 | RDP     |
+
+Important associations:
+
+```text
+22 → SSH
+53 → DNS
+67/68 → DHCP
+443 → HTTPS
+445 → SMB
+3389 → RDP
+```
+
+The goal is to understand both the **port number and the service**.
+
+---
+
+# 🎤 Interview Preparation
+
+Today's interview preparation focused on being able to explain hardware concepts clearly.
+
+## Question 1
+
+### What is RAM?
+
+RAM is volatile memory used by the operating system and applications while the computer is running.
+
+---
+
+## Question 2
+
+### What is the difference between RAM and storage?
+
+RAM is temporary working memory used while the system is running, while storage retains data even after the computer is powered off.
+
+---
+
+## Question 3
+
+### What does a CPU do?
+
+The CPU executes instructions and performs calculations required by the operating system and applications.
+
+---
+
+## Question 4
+
+### What is the difference between an HDD and an SSD?
+
+An HDD uses mechanical storage components, while an SSD uses solid-state flash memory.
+
+---
+
+## Question 5
+
+### What is a NIC?
+
+A NIC is a network interface that allows a computer to connect to a network through technologies such as Ethernet or Wi-Fi.
+
+---
+
+## Question 6
+
+### How would you troubleshoot a slow computer?
+
+I would first gather information about when the issue started and whether it affects other applications. Then I would use tools such as Task Manager to check CPU, memory, disk usage and running processes. I would investigate the likely cause, make an approved change if necessary, test the system and verify the result with the user.
+
+---
+
+## Question 7
+
+### A computer turns on but there is no display. What would you check?
+
+I would first check the monitor power, display cable and selected input source. Then I would investigate the display adapter, graphics output, RAM and any available hardware error indicators.
+
+---
+
+# 🧠 Interview Answer Formula
+
+Today's practice reinforced the following structure:
+
+```text
+Definition
+     ↓
+Purpose
+     ↓
+Example / Troubleshooting Use
+```
+
+Example:
+
+### What is a NIC?
+
+**Definition:**
+
+> A NIC is a network interface that allows a computer to connect to a network.
+
+**Purpose:**
+
+> It provides the hardware interface required for network communication.
+
+**Example:**
+
+> If a computer cannot connect to the network, I may check the NIC in Device Manager and then investigate its network configuration.
+
+---
+
+
+# ⭐ Main Lessons From Day 62
+
+Today's biggest technical lessons were:
+
+* CPU processes instructions and calculations.
+* RAM provides temporary working memory.
+* HDD and SSD are persistent storage technologies.
+* The motherboard connects major computer components.
+* The PSU provides electrical power.
+* The GPU handles graphical processing.
+* The NIC provides network connectivity.
+* Task Manager can help identify performance bottlenecks.
+* Device Manager can help investigate hardware and driver issues.
+* `systeminfo` and `Get-ComputerInfo` can provide system information.
+* Hardware troubleshooting should be based on evidence rather than assumptions.
+
+The biggest career lessons were:
+
+* Start CompTIA A+ preparation.
+* Continue applying for IT Support jobs.
+* Practice interview answers while studying.
+* Build a professional LinkedIn network.
+* Do not wait until every skill is perfect before applying.
+* Clearly distinguish hands-on home-lab experience from professional work experience.
+
+---
+
+# 🧠 Day 62 Concept Separation
+
+```text
+CPU
+↓
+Processes instructions
+
+RAM
+↓
+Temporary working memory
+
+Storage
+↓
+Persistent data
+
+Motherboard
+↓
+Connects components
+
+PSU
+↓
+Provides power
+
+GPU
+↓
+Graphics processing
+
+NIC
+↓
+Network connectivity
+```
+
+---
+
+# 📝 Day 62 Reflection
+
+Today marked the beginning of a more career-focused phase of my IT journey.
+
+I started preparing for CompTIA A+ by studying computer hardware fundamentals, including the CPU, RAM, storage, motherboard, PSU, GPU, NIC and cooling. I also practiced using Windows tools such as Task Manager, Device Manager, `systeminfo`, and PowerShell `Get-ComputerInfo`.
+
+The most important lesson was not simply memorizing hardware definitions, but learning how a Help Desk technician would investigate a real user problem. For example, when a user reports that a computer is slow, the technician should examine CPU, memory, disk usage and running processes rather than immediately assuming that a hardware component has failed.
+
+I also continued practicing concept separation because I have noticed that similar IT concepts can sometimes become mixed together. Reviewing OU vs Security Group vs GPO, DNS vs DHCP, and Linux commands helped reinforce the difference between related technologies.
+
+From a career perspective, I am now combining technical study with active job searching and LinkedIn networking. I am not waiting until I complete every certification or learn every technology before applying.
+
+My current approach is:
+
+```text
+CompTIA A+
+     ↓
+Hands-On Practice
+     ↓
+Interview Preparation
+     ↓
+Job Applications
+     ↓
+LinkedIn Networking
+     ↓
+Continuous Improvement
+```
+
+The goal is to turn my technical knowledge into practical troubleshooting ability, confident interview communication, professional relationships, and ultimately an entry-level IT Support opportunity.
