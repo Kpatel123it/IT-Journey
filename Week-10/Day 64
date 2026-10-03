@@ -1,0 +1,1000 @@
+# Day 64 – A+ Hardware Troubleshooting, Display Problems, Storage & Boot Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to strengthen my **CompTIA A+ hardware troubleshooting knowledge** and practice diagnosing common computer startup, display, storage, and boot problems.
+
+The main focus was not only memorizing hardware concepts but learning how to approach hardware troubleshooting like an IT Support technician.
+
+Today's topics included:
+
+* POST
+* BIOS and UEFI
+* Boot order
+* No-power troubleshooting
+* No-display troubleshooting
+* Boot device problems
+* RAM vs storage
+* Hardware troubleshooting methodology
+* Windows hardware investigation
+* DHCP/APIPA revision
+* Authentication vs authorization
+* Linux command revision
+* Help Desk ticket documentation
+* IT Support interview practice
+
+---
+
+# 🖥️ 1. Power-On Self-Test (POST)
+
+## What is POST?
+
+**POST stands for Power-On Self-Test.**
+
+POST is a diagnostic process performed when a computer starts.
+
+It checks important hardware components before the operating system begins loading.
+
+Examples of hardware that may be checked include:
+
+* RAM
+* CPU
+* Keyboard
+* Display hardware
+* Storage-related hardware
+* Other essential components
+
+Simplified startup process:
+
+```text
+Power On
+   ↓
+POST
+   ↓
+BIOS / UEFI
+   ↓
+Boot Device
+   ↓
+Operating System
+```
+
+If a serious hardware problem is detected during POST, the computer may:
+
+* Display an error
+* Produce beep codes
+* Show diagnostic indicators
+* Stop before Windows loads
+
+---
+
+# 🔧 2. BIOS and UEFI
+
+## BIOS
+
+**BIOS stands for Basic Input/Output System.**
+
+It is firmware stored on the motherboard that performs essential hardware initialization and helps start the boot process.
+
+---
+
+## UEFI
+
+Modern computers commonly use **UEFI (Unified Extensible Firmware Interface)** instead of traditional BIOS.
+
+UEFI provides firmware functionality and manages the early boot process.
+
+Modern systems may support features such as:
+
+* Secure Boot
+* GPT disk support
+* Modern boot management
+* Firmware configuration
+
+---
+
+# 🔄 3. Boot Order
+
+## What is Boot Order?
+
+Boot order determines the sequence of devices that the computer checks for a bootable operating system.
+
+Example:
+
+```text
+1. USB
+2. SSD
+3. Network
+```
+
+If a bootable USB is inserted and USB is first in the boot order, the computer may attempt to boot from the USB before checking the internal SSD.
+
+---
+
+## Troubleshooting Boot Order
+
+If a computer displays:
+
+> "No bootable device found"
+
+Possible checks include:
+
+1. Enter BIOS/UEFI.
+2. Check whether the storage device is detected.
+3. Check boot order.
+4. Confirm the correct storage device is selected.
+5. Check whether the operating system is installed correctly.
+6. Investigate possible boot-file or storage problems.
+
+---
+
+# ⚡ 4. No Power Troubleshooting
+
+## User Complaint
+
+> "My computer will not turn on."
+
+Before assuming the PSU or motherboard has failed, start with basic checks.
+
+---
+
+## Troubleshooting Process
+
+```text
+Check Power Outlet
+       ↓
+Check Power Strip / Surge Protector
+       ↓
+Check Power Cable
+       ↓
+Check Computer Power Connection
+       ↓
+Check Power Button
+       ↓
+Look for Power Indicators
+       ↓
+Investigate PSU / Internal Hardware
+```
+
+---
+
+## Questions to Ask
+
+* Is the computer receiving power?
+* Are there any lights?
+* Do fans spin?
+* Are there any beep codes?
+* Does the monitor have power?
+* Did the problem start suddenly?
+* Was the computer recently moved?
+* Was there a power outage?
+
+### Important Principle
+
+Do not immediately conclude:
+
+> "The PSU is dead."
+
+First collect evidence.
+
+---
+
+# 🖥️ 5. No Display / No Signal
+
+## User Complaint
+
+> "My computer turns on, but the monitor says No Signal."
+
+This is different from a computer that has no power.
+
+Possible causes include:
+
+* Monitor turned off
+* Incorrect monitor input
+* Loose video cable
+* Faulty video cable
+* Incorrect video port
+* Graphics adapter problem
+* RAM problem
+* Hardware/POST failure
+* Monitor failure
+
+---
+
+# 🔎 No-Display Troubleshooting
+
+Start with simple checks.
+
+### Step 1 – Check Monitor Power
+
+Confirm:
+
+* Monitor is powered on.
+* Power cable is connected.
+* Power indicator is active.
+
+---
+
+### Step 2 – Check Monitor Input
+
+Confirm the monitor is using the correct input.
+
+Examples:
+
+```text
+HDMI
+DisplayPort
+DVI
+VGA
+```
+
+If the computer is connected through DisplayPort but the monitor is set to HDMI, the monitor may show:
+
+> No Signal
+
+---
+
+### Step 3 – Check Video Cable
+
+Verify that the video cable is securely connected to:
+
+* Computer
+* Monitor
+
+Try a known-good cable if available.
+
+---
+
+### Step 4 – Check Correct Video Output
+
+If the computer has a dedicated graphics card, the monitor may need to be connected to the graphics card rather than the motherboard's video output.
+
+Example:
+
+```text
+Computer
+   ↓
+Dedicated GPU
+   ↓
+HDMI / DisplayPort
+   ↓
+Monitor
+```
+
+---
+
+### Step 5 – Test With Known-Good Hardware
+
+If available:
+
+* Try another monitor.
+* Try another video cable.
+* Try another video port.
+
+This helps isolate the faulty component.
+
+---
+
+# 🧠 6. Display Problem vs Boot Problem
+
+These two problems should not be confused.
+
+## Display Problem
+
+The computer may be running, but no expected video output is visible.
+
+Example:
+
+> Computer powers on, but monitor displays "No Signal."
+
+---
+
+## Boot Problem
+
+The computer cannot successfully load the operating system.
+
+Example:
+
+> "Operating System Not Found"
+
+or
+
+> "No Boot Device Found"
+
+---
+
+### Important Concept
+
+```text
+Display Problem
+↓
+Video output issue
+
+Boot Problem
+↓
+Operating system startup issue
+```
+
+A black screen alone does not automatically mean the monitor or graphics card is defective.
+
+---
+
+# 💾 7. RAM vs Storage
+
+Understanding the difference between RAM and storage is important for A+ troubleshooting.
+
+## RAM
+
+RAM is temporary, volatile memory used by the computer while programs are running.
+
+Characteristics:
+
+* Fast
+* Temporary
+* Volatile
+* Used by active programs
+* Contents are lost when power is removed
+
+---
+
+## Storage
+
+Storage includes devices such as:
+
+* SSD
+* HDD
+
+Characteristics:
+
+* Non-volatile
+* Stores operating system
+* Stores applications
+* Stores user files
+* Retains data when the computer is powered off
+
+---
+
+## Memory Trick
+
+```text
+RAM
+↓
+Temporary working memory
+
+SSD / HDD
+↓
+Long-term storage
+```
+
+---
+
+# 💽 8. Storage Troubleshooting
+
+If Windows cannot find the operating system, possible causes include:
+
+* SSD/HDD failure
+* Loose connection
+* Incorrect boot order
+* Storage device not detected
+* Corrupted boot files
+* Operating system problem
+
+---
+
+## Basic Investigation
+
+```text
+BIOS / UEFI
+     ↓
+Is storage detected?
+     ↓
+YES
+     ↓
+Check boot order
+     ↓
+Check OS / boot files
+
+NO
+     ↓
+Check storage connection
+     ↓
+Check storage device
+     ↓
+Investigate hardware
+```
+
+---
+
+# 🛠️ 9. Windows Hardware Investigation
+
+Several Windows tools can help gather hardware information.
+
+---
+
+## `systeminfo`
+
+```cmd
+systeminfo
+```
+
+Displays detailed Windows system information.
+
+Useful information includes:
+
+* Windows version
+* Hostname
+* OS configuration
+* System information
+* Memory-related information
+* Boot information
+
+---
+
+## PowerShell – Get-ComputerInfo
+
+```powershell
+Get-ComputerInfo
+```
+
+Provides detailed information about the Windows computer.
+
+---
+
+## Device Manager
+
+Device Manager can be used to investigate:
+
+* Hardware devices
+* Device status
+* Drivers
+* Hardware errors
+* Disabled devices
+
+Warning symbols can indicate a device or driver problem that requires further investigation.
+
+---
+
+# 💾 10. Disk Space Investigation
+
+A Windows command that can be used to check available space is:
+
+```cmd
+fsutil volume diskfree C:
+```
+
+This displays free and available space information for the specified volume.
+
+Low disk space can contribute to:
+
+* Windows Update problems
+* Application installation failures
+* Performance problems
+* File operations failing
+
+---
+
+# 🧪 11. Virtual Machine Boot Troubleshooting Practice
+
+As part of the hardware/boot learning process, I reviewed how virtual machine boot settings can affect startup.
+
+Important settings include:
+
+* Boot order
+* Virtual hard disk
+* ISO/DVD drive
+* EFI/UEFI settings
+* Network boot
+
+Example:
+
+```text
+Virtual Machine
+      ↓
+Boot Order
+      ↓
+Virtual Hard Disk
+      ↓
+Windows
+```
+
+Changing boot order can affect whether a virtual machine starts from its installed operating system or another boot device.
+
+---
+
+# 🌐 12. Networking Revision – DHCP and APIPA
+
+## DHCP
+
+DHCP automatically provides network configuration to clients.
+
+The basic DHCP process is:
+
+```text
+Discover
+   ↓
+Offer
+   ↓
+Request
+   ↓
+Acknowledge
+```
+
+This is commonly remembered as:
+
+> **DORA**
+
+---
+
+# 169.254.x.x – APIPA
+
+If a Windows computer receives an address such as:
+
+```text
+169.254.x.x
+```
+
+it generally means the computer failed to obtain an IPv4 address from DHCP.
+
+This is called **APIPA (Automatic Private IP Addressing).**
+
+Possible causes include:
+
+* DHCP server unavailable
+* Network connection problem
+* DHCP scope problem
+* Network configuration issue
+
+---
+
+# 🔐 13. Authentication vs Authorization
+
+Another important concept reviewed today was the difference between authentication and authorization.
+
+## Authentication
+
+Authentication verifies:
+
+> **Who are you?**
+
+Example:
+
+A user enters their username and password.
+
+---
+
+## Authorization
+
+Authorization determines:
+
+> **What are you allowed to access?**
+
+Example:
+
+A user successfully logs into Windows but does not have permission to access the Finance shared folder.
+
+The user is:
+
+```text
+Authenticated
+↓
+Identity verified
+
+But
+
+Not Authorized
+↓
+No permission to access the resource
+```
+
+---
+
+# 🐧 14. Linux Mixed Revision
+
+Today's Linux revision focused on remembering the difference between several commands.
+
+## Disk
+
+```bash
+df -h
+```
+
+Shows filesystem disk usage.
+
+---
+
+## Memory
+
+```bash
+free -h
+```
+
+Shows RAM and swap usage.
+
+---
+
+## Services
+
+```bash
+systemctl status ssh
+```
+
+Checks the status of the SSH service.
+
+---
+
+## Logs
+
+```bash
+journalctl -u ssh
+```
+
+Displays journal logs associated with the SSH service.
+
+---
+
+## Memory Trick
+
+```text
+df
+↓
+Disk
+
+free
+↓
+Memory
+
+systemctl
+↓
+Services
+
+journalctl
+↓
+Logs
+```
+
+---
+
+# 🎫 15. Help Desk Ticket – Monitor No Signal
+
+## Ticket ID
+
+**INC-6401**
+
+### User
+
+Employee – Finance Department
+
+### Issue
+
+> "My computer turns on, but my monitor says No Signal."
+
+---
+
+# 📝 Information Gathering
+
+Questions to ask:
+
+1. When did the problem start?
+2. Does the computer power on?
+3. Are the computer fans running?
+4. Is the monitor powered on?
+5. Does the monitor display "No Signal"?
+6. What video cable is being used?
+7. Is the cable connected securely?
+8. Is the monitor using the correct input?
+9. Did anything change recently?
+10. Does another monitor work?
+
+---
+
+# 🔎 Investigation
+
+Troubleshooting process:
+
+```text
+Check Computer Power
+        ↓
+Check Monitor Power
+        ↓
+Check Monitor Input
+        ↓
+Check Video Cable
+        ↓
+Check Correct Video Port
+        ↓
+Try Known-Good Cable
+        ↓
+Try Known-Good Monitor
+        ↓
+Investigate GPU / RAM / POST
+```
+
+---
+
+# 🛠️ Example Resolution
+
+Suppose the investigation shows that the monitor was connected to the motherboard video output while the system was using a dedicated GPU.
+
+Resolution:
+
+1. Confirm dedicated graphics card is installed.
+2. Connect the monitor to the correct GPU output.
+3. Select the correct monitor input.
+4. Confirm display appears.
+5. Ask the user to verify normal operation.
+
+---
+
+# ✅ Verification
+
+After resolving the issue:
+
+* Confirm video output is working.
+* Confirm the correct resolution is displayed.
+* Confirm the user can access Windows.
+* Ask the user to confirm the original problem is resolved.
+
+---
+
+# 📋 Ticket Documentation
+
+**Issue:**
+User reported that the computer powered on but the monitor displayed "No Signal."
+
+**Investigation:**
+Verified monitor power, monitor input, video cable, and computer video output. Confirmed the display cable was connected to an incorrect video output.
+
+**Resolution:**
+Connected the video cable to the correct graphics output and selected the appropriate monitor input.
+
+**Verification:**
+Display returned successfully and the user confirmed normal operation.
+
+**Status:**
+Resolved.
+
+---
+
+# 🎤 16. Interview Questions
+
+## Q1. What is POST?
+
+POST stands for Power-On Self-Test. It is a startup diagnostic process that checks essential hardware before the operating system begins loading.
+
+---
+
+## Q2. What is BIOS?
+
+BIOS stands for Basic Input/Output System. It is firmware on the motherboard that initializes hardware and helps start the boot process.
+
+Modern computers commonly use UEFI instead of traditional BIOS.
+
+---
+
+## Q3. How would you troubleshoot a computer with no power?
+
+I would first check the power outlet, power strip, power cable, and computer power connection. I would then check for signs of power such as LEDs or fans before investigating components such as the PSU or motherboard.
+
+---
+
+## Q4. How would you troubleshoot a computer with no display?
+
+I would check monitor power, input selection, video cables, and the correct video output. I would then test with a known-good cable or monitor and investigate the graphics adapter, RAM, or POST if necessary.
+
+---
+
+## Q5. What is the difference between a display problem and a boot problem?
+
+A display problem involves the computer not producing the expected video output, while a boot problem occurs when the computer cannot successfully start or load the operating system.
+
+---
+
+## Q6. What would you check if a computer says "Operating System Not Found"?
+
+I would check whether the storage device is detected in BIOS/UEFI, verify the boot order, and investigate the operating system or boot files if the storage device is detected.
+
+---
+
+## Q7. What is the difference between RAM and storage?
+
+RAM is volatile temporary memory used while programs are running. Storage such as SSDs and HDDs is non-volatile and retains data when the computer is powered off.
+
+---
+
+## Q8. What is boot order?
+
+Boot order is the sequence in which the computer checks devices for a bootable operating system.
+
+---
+
+## Q9. What does a 169.254.x.x address usually indicate?
+
+It is an APIPA address and generally indicates that the client failed to obtain an IPv4 address from DHCP.
+
+---
+
+## Q10. What is the difference between authentication and authorization?
+
+Authentication verifies a user's identity, while authorization determines what resources or actions that authenticated user is allowed to access.
+
+---
+
+# 🤝 17. Behavioral Question
+
+## Question
+
+**How do you troubleshoot a technical problem?**
+
+### Answer
+
+> I start by gathering information and understanding the exact symptoms. I ask questions about when the issue started, what changed, and whether other users are affected. I then identify possible causes and begin with basic troubleshooting steps. I use evidence such as error messages, system information, and logs rather than making assumptions. After making an appropriate change, I verify the result with the user, document the resolution, and escalate the issue if it requires additional access or expertise.
+
+---
+
+# 🧠 18. Technical Wording Improvements
+
+Today's practice also focused on using professional IT terminology.
+
+Instead of:
+
+> "Power on self test when computer starts."
+
+Use:
+
+> **"POST is a startup diagnostic process that checks essential hardware before the operating system loads."**
+
+Instead of:
+
+> "Check the power device."
+
+Use:
+
+> **"Check the power source, outlet, power strip, and power cable."**
+
+Instead of:
+
+> "Check the display cable."
+
+Use:
+
+> **"Check the video cable and confirm it is connected to the correct display output."**
+
+Instead of:
+
+> "Check if the OS file is showing."
+
+Use:
+
+> **"Check whether the storage device is detected and whether the system has a valid bootable operating system."**
+
+Instead of:
+
+> "RAM erases everything."
+
+Use:
+
+> **"RAM is volatile memory, so its contents are lost when power is removed."**
+
+Instead of:
+
+> "How computer is boot."
+
+Use:
+
+> **"Boot order determines the sequence of devices the computer checks for a bootable operating system."**
+
+---
+
+# 📚 19. Skills Practiced Today
+
+## Hardware
+
+* POST
+* BIOS
+* UEFI
+* Boot order
+* RAM
+* SSD/HDD
+* GPU
+* Monitor
+* Video cables
+* Power troubleshooting
+
+## Windows
+
+* `systeminfo`
+* `Get-ComputerInfo`
+* Device Manager
+* `fsutil`
+* Hardware troubleshooting
+
+## Networking
+
+* DHCP
+* DORA
+* APIPA
+* 169.254.x.x
+
+## Active Directory / Security
+
+* Authentication
+* Authorization
+
+## Linux
+
+* `df -h`
+* `free -h`
+* `systemctl`
+* `journalctl`
+
+## Help Desk
+
+* Information gathering
+* Hardware troubleshooting
+* No-display diagnosis
+* Verification
+* Ticket documentation
+* Professional escalation
+
+---
+
+# ⭐ Main Lesson From Day 64
+
+Today's biggest lesson was that **good IT Support troubleshooting starts with evidence rather than assumptions**.
+
+For example:
+
+```text
+Computer has no display
+        ↓
+Don't immediately replace GPU
+        ↓
+Check monitor
+        ↓
+Check power
+        ↓
+Check input
+        ↓
+Check cable
+        ↓
+Check correct output
+        ↓
+Test known-good hardware
+        ↓
+Investigate GPU / RAM / POST
+```
+
+The same troubleshooting mindset can be applied to networking, software, Active Directory, printers, and other Help Desk issues.
+
+---
+
+# 📝 Day 64 Reflection
+
+Today I strengthened my CompTIA A+ hardware troubleshooting knowledge by reviewing POST, BIOS/UEFI, boot order, RAM, storage, display problems, and power issues.
+
+The practical focus helped me understand the difference between a **no-power problem, a display problem, and a boot problem** instead of treating them as the same issue.
+
+I also continued mixed revision of DHCP, APIPA, authentication versus authorization, and Linux commands so that previously learned concepts remain familiar.
+
+The Help Desk monitor ticket helped me practice a structured troubleshooting approach:
+
+```text
+Gather Information
+        ↓
+Identify Symptoms
+        ↓
+Check Basic Causes
+        ↓
+Test Possible Causes
+        ↓
+Apply Approved Fix
+        ↓
+Verify
+        ↓
+Document
+        ↓
+Escalate if Necessary
+```
+
+Another important lesson was improving my technical wording. I am becoming more comfortable with the concepts, but I need to continue practicing how to explain them clearly and professionally during IT Support interviews.
+
+My goal is not only to know the technical answer but to be able to **explain the reasoning behind the troubleshooting process**.
