@@ -1,0 +1,1133 @@
+# Day 65 – Windows Troubleshooting, Recovery Tools, BSOD & Help Desk Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to strengthen my **Windows troubleshooting and recovery knowledge** as part of my CompTIA A+ preparation while continuing to improve my Help Desk troubleshooting approach.
+
+The main focus was understanding how to troubleshoot Windows problems systematically rather than immediately changing settings or reinstalling the operating system.
+
+Today's topics included:
+
+* Windows troubleshooting methodology
+* Safe Mode
+* Windows Recovery Environment (WinRE)
+* Startup Repair
+* System Restore
+* Windows Update troubleshooting
+* Driver troubleshooting
+* Blue Screen of Death (BSOD)
+* Event Viewer
+* Windows troubleshooting commands
+* Help Desk ticket documentation
+* Mixed revision of networking, Active Directory, Linux, and hardware concepts
+* Interview communication practice
+
+---
+
+# 🪟 Windows Troubleshooting
+
+## Why Troubleshooting Methodology Matters
+
+A Help Desk technician should not immediately make changes without understanding the problem.
+
+A structured troubleshooting process helps:
+
+* Identify the actual cause
+* Avoid unnecessary changes
+* Reduce downtime
+* Prevent making the problem worse
+* Document the resolution
+* Know when to escalate
+
+A useful troubleshooting process is:
+
+```text
+1. Gather Information
+        ↓
+2. Identify the Problem
+        ↓
+3. Establish Possible Causes
+        ↓
+4. Test the Most Likely Cause
+        ↓
+5. Apply an Approved Solution
+        ↓
+6. Verify the Result
+        ↓
+7. Document the Resolution
+        ↓
+8. Escalate if Necessary
+```
+
+---
+
+# 🔍 Step 1 – Gather Information
+
+Before changing anything, ask the user questions.
+
+Examples:
+
+* What exactly is happening?
+* When did the issue start?
+* Did it work previously?
+* Did anything change recently?
+* Does the problem happen every time?
+* Is anyone else experiencing the issue?
+* What error message appears?
+* What troubleshooting has already been attempted?
+
+---
+
+# 🧠 Step 2 – Identify the Problem
+
+The goal is to clearly define the issue.
+
+Example:
+
+User says:
+
+> "My computer isn't working."
+
+This is too general.
+
+After asking questions, the actual problem might be:
+
+> "Windows displays a blue screen immediately after a recent driver update."
+
+That gives the technician a much clearer direction.
+
+---
+
+# 🧪 Step 3 – Establish Possible Causes
+
+Possible causes should be considered before making changes.
+
+For a Windows crash, possible causes include:
+
+* Faulty driver
+* Windows update
+* Corrupted system files
+* Hardware problem
+* Malware
+* Storage failure
+* Memory problem
+* Software conflict
+
+---
+
+# 🛠️ Windows Safe Mode
+
+## What is Safe Mode?
+
+Safe Mode starts Windows with a limited set of drivers and services.
+
+It is useful for troubleshooting problems caused by:
+
+* Drivers
+* Startup applications
+* Software conflicts
+* Certain configuration problems
+
+The goal is to determine whether the problem occurs in a minimal Windows environment.
+
+---
+
+## Example
+
+Suppose Windows crashes during normal startup.
+
+A technician can attempt to start Windows in Safe Mode.
+
+If Windows works correctly in Safe Mode, this provides evidence that the problem may involve:
+
+* A third-party driver
+* Startup software
+* A service
+* Other software that does not load normally
+
+Safe Mode does not automatically fix the problem. It is primarily a **diagnostic troubleshooting tool**.
+
+---
+
+# 🔧 Windows Recovery Environment (WinRE)
+
+## What is WinRE?
+
+Windows Recovery Environment is a recovery environment used to troubleshoot and repair Windows when the operating system cannot start normally.
+
+Common tools include:
+
+* Startup Repair
+* System Restore
+* Command Prompt
+* Uninstall Updates
+* Startup Settings
+* Reset this PC
+
+---
+
+# 🚀 Startup Repair
+
+## Purpose
+
+Startup Repair attempts to diagnose and repair problems preventing Windows from starting correctly.
+
+Example:
+
+```text
+Computer
+   ↓
+Windows fails to start
+   ↓
+WinRE
+   ↓
+Startup Repair
+   ↓
+Attempt to repair startup problems
+```
+
+Startup Repair is useful when Windows cannot successfully boot.
+
+---
+
+# 🔄 System Restore
+
+## What is System Restore?
+
+System Restore allows Windows to return certain system files, drivers, settings, and installed software state to an earlier restore point.
+
+It is useful when a recent:
+
+* Driver installation
+* Software installation
+* Configuration change
+* Windows change
+
+causes a problem.
+
+---
+
+## Important Distinction
+
+System Restore is **not the same as restoring personal files from a backup**.
+
+```text
+System Restore
+↓
+Returns system configuration to an earlier state
+
+Backup Restore
+↓
+Restores backed-up data/files
+```
+
+---
+
+# 🪟 Windows Update Troubleshooting
+
+Windows updates are important for:
+
+* Security
+* Bug fixes
+* Stability
+* New features
+* Driver and system improvements
+
+However, updates can occasionally cause problems.
+
+Possible symptoms:
+
+* Update fails
+* Update repeatedly attempts to install
+* Applications stop working
+* Drivers become unstable
+* Windows becomes unstable
+
+---
+
+## Basic Troubleshooting Process
+
+```text
+Check Windows Update
+        ↓
+Record error message/code
+        ↓
+Restart computer
+        ↓
+Check available storage
+        ↓
+Retry update
+        ↓
+Investigate affected driver/software
+        ↓
+Use appropriate recovery option
+        ↓
+Verify
+```
+
+Avoid immediately resetting or reinstalling Windows without understanding the issue.
+
+---
+
+# 🧩 Driver Troubleshooting
+
+A driver allows Windows to communicate with hardware.
+
+Examples:
+
+* Display driver
+* Network adapter driver
+* Audio driver
+* Printer driver
+* Storage controller driver
+
+---
+
+## Device Manager
+
+Device Manager can be used to inspect hardware devices and their drivers.
+
+Useful actions include:
+
+* View device status
+* Update driver
+* Roll back driver
+* Disable device
+* Uninstall device
+* Scan for hardware changes
+
+---
+
+## Driver Problem Scenario
+
+Example:
+
+A user reports:
+
+> "My second monitor stopped working after yesterday's update."
+
+Possible investigation:
+
+1. Check monitor power.
+2. Check video cable.
+3. Verify correct display input.
+4. Check Windows display settings.
+5. Open Device Manager.
+6. Check the display adapter.
+7. Check for warning symbols.
+8. Determine whether a recent driver update occurred.
+9. Consider rolling back the driver if appropriate and authorized.
+10. Test the display again.
+
+---
+
+# 💻 Blue Screen of Death (BSOD)
+
+## What is a BSOD?
+
+A Blue Screen of Death occurs when Windows encounters a serious system error and cannot safely continue normal operation.
+
+The system may stop and restart to protect system stability.
+
+---
+
+## Possible Causes
+
+BSODs can be caused by:
+
+* Faulty drivers
+* Hardware problems
+* RAM problems
+* Storage problems
+* Corrupted system files
+* Incompatible software
+* Windows issues
+* Hardware/driver conflicts
+
+One important troubleshooting principle is:
+
+> **Do not assume every BSOD is caused by one specific component. Investigate the evidence.**
+
+---
+
+# 🔎 BSOD Troubleshooting
+
+A basic troubleshooting process:
+
+```text
+Record Stop Code
+       ↓
+Ask What Changed?
+       ↓
+Check Recent Drivers/Updates
+       ↓
+Check Event Logs
+       ↓
+Test Hardware if Indicated
+       ↓
+Run Appropriate Repairs
+       ↓
+Verify Stability
+       ↓
+Document
+```
+
+---
+
+# 📋 Event Viewer
+
+## What is Event Viewer?
+
+Event Viewer is a Windows tool used to view system and application event logs.
+
+It can help technicians investigate:
+
+* Application failures
+* Driver problems
+* Service failures
+* System errors
+* Security events
+* Startup problems
+
+---
+
+## Common Event Categories
+
+### Application
+
+Contains events related to applications.
+
+### System
+
+Contains events related to Windows system components, drivers, and services.
+
+### Security
+
+Contains security-related events such as authentication and audit activity.
+
+---
+
+## Important Principle
+
+Event Viewer does not automatically tell you the exact solution.
+
+It provides **evidence** that can help identify the cause.
+
+A technician should correlate the event with:
+
+* Time of the problem
+* User symptoms
+* Recent changes
+* Other logs
+* System behavior
+
+---
+
+# 🛠️ Useful Windows Troubleshooting Commands
+
+## System Information
+
+```cmd
+systeminfo
+```
+
+Displays detailed Windows system information.
+
+---
+
+## Current User
+
+```cmd
+whoami
+```
+
+Shows the currently logged-in user.
+
+---
+
+## Computer Name
+
+```cmd
+hostname
+```
+
+Displays the computer hostname.
+
+---
+
+## IP Configuration
+
+```cmd
+ipconfig /all
+```
+
+Displays detailed network configuration.
+
+Useful for troubleshooting:
+
+* IP address
+* Subnet mask
+* Default gateway
+* DNS servers
+* DHCP information
+
+---
+
+## DNS Testing
+
+```cmd
+nslookup google.com
+```
+
+Used to query DNS and help troubleshoot name resolution.
+
+---
+
+## Network Connectivity
+
+```cmd
+ping 8.8.8.8
+```
+
+Tests basic IP connectivity to the destination.
+
+---
+
+## Domain Name Connectivity
+
+```cmd
+ping google.com
+```
+
+This tests both DNS resolution and network connectivity to the resolved address.
+
+---
+
+# 🧠 Important Troubleshooting Example
+
+Suppose:
+
+```text
+ping 8.8.8.8
+       ↓
+Works
+
+ping google.com
+       ↓
+Fails
+```
+
+This suggests basic IP connectivity is working but DNS resolution may be the problem.
+
+Next steps could include:
+
+```text
+ipconfig /all
+        ↓
+Check DNS configuration
+        ↓
+nslookup google.com
+        ↓
+Investigate DNS
+        ↓
+Correct authorized DNS configuration
+        ↓
+Test again
+```
+
+---
+
+# 🌐 Mixed Networking Revision
+
+## DHCP
+
+DHCP automatically provides network configuration to clients.
+
+Common information includes:
+
+* IP address
+* Subnet mask
+* Default gateway
+* DNS server
+
+### DORA
+
+```text
+Discover
+Offer
+Request
+Acknowledge
+```
+
+---
+
+# DNS
+
+DNS translates domain names into IP addresses.
+
+Example:
+
+```text
+google.com
+     ↓
+DNS
+     ↓
+IP address
+```
+
+---
+
+# 169.254.x.x
+
+An address beginning with:
+
+```text
+169.254.x.x
+```
+
+is generally an **APIPA address**.
+
+It usually indicates that the client did not successfully obtain an IPv4 address from DHCP.
+
+Possible causes include:
+
+* DHCP server unavailable
+* Network connection problem
+* DHCP scope problem
+* Incorrect network configuration
+
+---
+
+# 🔐 Active Directory Revision
+
+## Authentication
+
+Authentication answers:
+
+> **Who are you?**
+
+Example:
+
+A user enters their domain username and password.
+
+---
+
+## Authorization
+
+Authorization answers:
+
+> **What are you allowed to access?**
+
+Example:
+
+A user successfully logs into Windows but cannot access the Finance shared folder.
+
+The user is authenticated but may not be authorized to access the resource.
+
+---
+
+# 🏢 OU vs Security Group vs GPO
+
+One of the most important concept separations:
+
+```text
+OU
+↓
+Organization / Management
+
+Security Group
+↓
+Access / Permissions
+
+GPO
+↓
+Configuration / Security Settings
+```
+
+### Memory Trick
+
+> **OU = WHERE**
+> **Security Group = WHO gets ACCESS**
+> **GPO = WHAT SETTINGS**
+
+---
+
+# 🐧 Linux Mixed Revision
+
+## Disk Usage
+
+```bash
+df -h
+```
+
+Shows filesystem disk-space usage.
+
+---
+
+## Memory Usage
+
+```bash
+free -h
+```
+
+Shows RAM and swap usage.
+
+---
+
+## Service Management
+
+```bash
+systemctl status ssh
+```
+
+Checks the status of the SSH service.
+
+---
+
+## Logs
+
+```bash
+journalctl -u ssh
+```
+
+Displays journal entries related to the SSH service.
+
+---
+
+## Important Distinction
+
+```text
+df
+↓
+Disk
+
+free
+↓
+Memory
+
+systemctl
+↓
+Services
+
+journalctl
+↓
+Logs
+```
+
+---
+
+# 🎫 Help Desk Ticket
+
+## Ticket ID
+
+**INC-6501**
+
+### User
+
+Sarah – Marketing Department
+
+### Issue
+
+> "My Windows computer keeps restarting and sometimes shows a blue screen."
+
+---
+
+# 📝 Information Gathering
+
+Questions:
+
+1. When did the restarting begin?
+2. Does the blue screen appear every time?
+3. What stop code is displayed?
+4. Did you install any software recently?
+5. Did Windows install an update recently?
+6. Did you install or update a driver?
+7. Does the issue happen during a specific application?
+8. Can the computer start normally?
+9. Does the issue occur in Safe Mode?
+10. Is anyone else experiencing the same problem?
+
+---
+
+# 🔎 Investigation
+
+Possible causes:
+
+* Driver issue
+* Windows update
+* Hardware problem
+* RAM issue
+* Storage issue
+* Corrupted system files
+* Software conflict
+
+Investigation:
+
+```text
+User Symptoms
+      ↓
+Recent Changes
+      ↓
+BSOD Stop Code
+      ↓
+Event Viewer
+      ↓
+Drivers / Updates
+      ↓
+Safe Mode
+      ↓
+Hardware Testing if Required
+```
+
+---
+
+# 🛠️ Resolution Example
+
+Suppose investigation shows that the BSOD started immediately after a display driver update.
+
+The technician could:
+
+1. Verify the driver change.
+2. Check Device Manager.
+3. Confirm the affected display adapter.
+4. Roll back the driver if appropriate and authorized.
+5. Restart the computer.
+6. Verify whether the BSOD has stopped.
+7. Confirm the result with the user.
+
+---
+
+# ✅ Verification
+
+After making a change:
+
+* Restart the computer.
+* Confirm Windows loads normally.
+* Test the affected application.
+* Confirm the computer remains stable.
+* Ask the user to reproduce the original problem.
+
+---
+
+# 📚 Documentation
+
+Example:
+
+**Issue:**
+User reported repeated Windows restarts and intermittent BSODs.
+
+**Investigation:**
+Collected the BSOD stop code and reviewed recent system changes. Identified a recently updated display driver as a possible cause.
+
+**Resolution:**
+Rolled back the affected driver using Device Manager after confirming the change was appropriate.
+
+**Verification:**
+Restarted the computer and confirmed Windows loaded normally. User confirmed the system was stable.
+
+**Status:**
+Resolved.
+
+---
+
+# 🚨 When to Escalate
+
+A Help Desk technician should escalate when:
+
+* The issue requires administrator privileges they do not have.
+* Hardware replacement is required.
+* The problem affects many users.
+* There is a suspected security incident.
+* The issue involves critical infrastructure.
+* Troubleshooting steps have been exhausted.
+* The problem requires specialized technical knowledge.
+* The technician is not authorized to make the required change.
+
+Before escalation:
+
+```text
+Document Symptoms
+↓
+Document Troubleshooting
+↓
+Document Results
+↓
+Provide Error Messages
+↓
+Provide Relevant Logs
+↓
+Escalate
+```
+
+---
+
+# 🎤 Interview Questions
+
+## 1. What is Safe Mode?
+
+Safe Mode starts Windows with a limited set of drivers and services to help troubleshoot problems caused by software, drivers, or configuration issues.
+
+---
+
+## 2. What is Windows Recovery Environment?
+
+WinRE is a recovery environment that provides tools for troubleshooting and repairing Windows startup and system problems.
+
+---
+
+## 3. What is Startup Repair?
+
+Startup Repair is a Windows recovery tool that attempts to diagnose and repair problems preventing Windows from starting correctly.
+
+---
+
+## 4. What is System Restore?
+
+System Restore returns certain Windows system files, settings, drivers, and software state to an earlier restore point.
+
+---
+
+## 5. What is a BSOD?
+
+A BSOD occurs when Windows encounters a serious system error and cannot safely continue normal operation.
+
+---
+
+## 6. How would you troubleshoot a BSOD?
+
+I would first record the stop code and determine when the issue started. I would check recent drivers, software, and Windows updates, review relevant logs, test in Safe Mode when appropriate, investigate hardware if indicated, apply an approved fix, and verify system stability.
+
+---
+
+## 7. What is Event Viewer used for?
+
+Event Viewer is used to review Windows system, application, security, and other event logs to help troubleshoot problems.
+
+---
+
+## 8. What is the difference between System Restore and a backup?
+
+System Restore returns certain system configuration and software state to an earlier restore point, while a backup is used to restore backed-up data or systems.
+
+---
+
+## 9. What does Device Manager do?
+
+Device Manager allows technicians to view and manage hardware devices and their drivers in Windows.
+
+---
+
+## 10. A user has an APIPA address. What could be wrong?
+
+A 169.254.x.x address usually indicates that the computer failed to obtain an IPv4 address from DHCP. I would check network connectivity, DHCP configuration, the DHCP server, and the client's network settings.
+
+---
+
+# 🤝 Behavioral Question
+
+## Question
+
+**Tell me about a time you had to troubleshoot a problem you did not immediately understand.**
+
+### Answer
+
+> When I encounter a problem I do not immediately understand, I avoid guessing and first gather information about the symptoms. I ask questions, identify what changed, and break the problem into smaller areas. I start with basic troubleshooting steps and use available evidence such as error messages or logs. If I make a change, I verify the result with the user. If I cannot resolve the issue or it requires higher-level access, I document everything I have tried and escalate it appropriately.
+
+---
+
+# 🧠 Technical Wording Practice
+
+Instead of:
+
+> "Safe Mode fixes Windows."
+
+Use:
+
+> **"Safe Mode starts Windows with a limited set of drivers and services and is useful for troubleshooting."**
+
+Instead of:
+
+> "System Restore restores my files."
+
+Use:
+
+> **"System Restore returns certain system settings, drivers, and software state to an earlier restore point."**
+
+Instead of:
+
+> "Event Viewer tells you the problem."
+
+Use:
+
+> **"Event Viewer provides logs and evidence that can help identify the cause of a problem."**
+
+Instead of:
+
+> "BSOD means Windows is broken."
+
+Use:
+
+> **"A BSOD indicates that Windows encountered a serious system error and could not safely continue normal operation."**
+
+Instead of:
+
+> "The driver is bad."
+
+Use:
+
+> **"The driver may be contributing to the problem, based on the symptoms and troubleshooting evidence."**
+
+This type of wording is more professional because it separates **evidence from assumptions**.
+
+---
+
+# ⭐ Main Lesson From Day 65
+
+Today's most important lesson was:
+
+> **Troubleshooting is about gathering evidence before making changes.**
+
+A good IT Support technician does not immediately assume:
+
+```text
+BSOD = RAM
+```
+
+or:
+
+```text
+No Internet = DNS
+```
+
+or:
+
+```text
+Printer problem = Printer driver
+```
+
+Instead:
+
+```text
+Symptoms
+   ↓
+Questions
+   ↓
+Evidence
+   ↓
+Possible Causes
+   ↓
+Testing
+   ↓
+Root Cause
+   ↓
+Approved Fix
+   ↓
+Verification
+```
+
+This approach reduces unnecessary changes and makes troubleshooting more professional.
+
+---
+
+# 📌 Key Takeaways
+
+### Windows
+
+* Safe Mode
+* WinRE
+* Startup Repair
+* System Restore
+* Windows Update troubleshooting
+* Device Manager
+* Driver troubleshooting
+* BSOD
+* Event Viewer
+
+### Networking
+
+* DHCP
+* DNS
+* APIPA
+* `ipconfig /all`
+* `ping`
+* `nslookup`
+
+### Active Directory
+
+* Authentication
+* Authorization
+* OU
+* Security Group
+* GPO
+
+### Linux
+
+* `df -h`
+* `free -h`
+* `systemctl`
+* `journalctl`
+
+### Help Desk
+
+* Information gathering
+* Evidence-based troubleshooting
+* Approved changes
+* Verification
+* Documentation
+* Escalation
+
+---
+
+# 💼 Career Application
+
+Today's technical knowledge can directly support entry-level IT Support interviews.
+
+When applying for jobs, I should be comfortable discussing scenarios involving:
+
+* Windows troubleshooting
+* Hardware problems
+* Driver problems
+* User login issues
+* Network connectivity
+* DNS/DHCP
+* Shared folders
+* Active Directory
+* Group Policy
+* Printers
+* Software problems
+* Ticket documentation
+* Escalation
+
+I should continue applying for IT Support and Help Desk positions while studying for CompTIA A+ rather than waiting until I complete the entire certification.
+
+---
+
+# 📝 Day 65 Reflection
+
+Today I strengthened my Windows troubleshooting knowledge by learning how Safe Mode, Windows Recovery Environment, Startup Repair, System Restore, Device Manager, and Event Viewer can be used during troubleshooting.
+
+The most important lesson was to avoid making assumptions. A symptom does not automatically identify the root cause. I need to gather information, collect evidence, test possible causes, make an authorized change, verify the result, and document the resolution.
+
+I also continued reviewing networking, Active Directory, and Linux concepts so that I do not lose previously learned knowledge while focusing on CompTIA A+.
+
+My main improvement area remains **technical communication**. I need to explain what I know using accurate terminology and professional wording instead of using shortcuts that could create confusion during an interview.
+
+My current approach is:
+
+```text
+Learn
+ ↓
+Practice
+ ↓
+Revise
+ ↓
+Troubleshoot
+ ↓
+Explain
+ ↓
+Apply to Real Scenario
+ ↓
+Document
+```
+
+This approach will help me build both the technical knowledge and communication skills required for an entry-level IT Support role.
