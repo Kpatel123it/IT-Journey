@@ -1,0 +1,294 @@
+# Day 67 – Windows Network Troubleshooting, DNS, DHCP & Help Desk Diagnosis
+
+## 🎯 Objective
+
+Today's objective was to strengthen my Windows network troubleshooting skills, understand DNS and DHCP problems, identify common connectivity symptoms, and follow a structured Help Desk troubleshooting process.
+
+---
+
+## 1. Windows Network Troubleshooting
+
+When a user reports that they cannot access the Internet or a network resource, I should investigate the issue systematically instead of immediately changing network settings.
+
+### Initial Questions
+
+- When did the issue start?
+- Is the issue affecting only one user or multiple users?
+- Can the user access other websites or network resources?
+- Are other devices experiencing the same problem?
+- Were any recent changes made to the computer or network?
+
+### Troubleshooting Workflow
+
+```text
+Gather Information
+        ↓
+Determine the Scope
+        ↓
+Check Network Configuration
+        ↓
+Test Local and External Connectivity
+        ↓
+Investigate DNS or DHCP
+        ↓
+Apply an Authorized Fix
+        ↓
+Retest and Verify
+        ↓
+Document the Resolution
+```
+
+---
+
+## 2. Useful Windows Network Commands
+
+### `ipconfig`
+
+Displays basic IP configuration.
+
+```cmd
+ipconfig
+```
+
+### `ipconfig /all`
+
+Displays detailed network configuration, including IP address, subnet mask, default gateway, DHCP status, and DNS servers.
+
+```cmd
+ipconfig /all
+```
+
+### `ipconfig /release`
+
+Releases the current DHCP-assigned IPv4 address.
+
+```cmd
+ipconfig /release
+```
+
+### `ipconfig /renew`
+
+Requests a new DHCP lease.
+
+```cmd
+ipconfig /renew
+```
+
+Use these commands only when appropriate. Releasing an address can temporarily disconnect the device from the network.
+
+### `ipconfig /flushdns`
+
+Clears the local Windows DNS resolver cache.
+
+```cmd
+ipconfig /flushdns
+```
+
+This can help when a cached DNS result is causing a problem, but it does not repair every DNS issue.
+
+### `ping`
+
+Tests basic IP connectivity and response time.
+
+```cmd
+ping 192.168.1.1
+ping 8.8.8.8
+ping google.com
+```
+
+Note: A failed ping does not always mean a device or service is unavailable because firewalls may block ICMP traffic.
+
+### `nslookup`
+
+Queries DNS to check whether a hostname can be resolved.
+
+```cmd
+nslookup google.com
+```
+
+This is useful when investigating possible DNS problems.
+
+---
+
+## 3. DNS – Domain Name System
+
+DNS translates domain names into IP addresses so devices can locate network services.
+
+Example:
+
+```text
+User enters a website name
+          ↓
+       DNS query
+          ↓
+   IP address returned
+          ↓
+Device connects to the destination
+```
+
+### Common DNS Symptoms
+
+- Websites fail to open by name.
+- Applications cannot locate servers using hostnames.
+- Access by IP address may work while access by hostname fails.
+
+### Troubleshooting Example
+
+A user cannot access a website by name.
+
+1. Check the device's IP configuration.
+2. Test connectivity to the default gateway.
+3. Test external IP connectivity where permitted.
+4. Run `nslookup` for the affected hostname.
+5. Verify the configured DNS server and investigate DNS availability.
+6. Clear the local DNS cache if appropriate.
+7. Retest the hostname and application.
+
+**Important:** If external IP connectivity works but hostname resolution fails, DNS is a strong possibility. Confirm it with evidence before making changes.
+
+---
+
+## 4. DHCP – Dynamic Host Configuration Protocol
+
+DHCP automatically provides network configuration to clients.
+
+A DHCP lease commonly supplies:
+
+- IP address
+- Subnet mask
+- Default gateway
+- DNS server information
+
+### DHCP Troubleshooting
+
+If a Windows device cannot obtain a valid address:
+
+1. Run `ipconfig /all`.
+2. Check whether DHCP is enabled.
+3. Check the assigned IP address and lease information.
+4. Look for an address beginning with `169.254`.
+5. Check the network connection and whether other clients are affected.
+6. If appropriate, try `ipconfig /release` followed by `ipconfig /renew`.
+7. Investigate the DHCP server, scope availability, relay configuration, or network restrictions if the problem continues.
+
+### What Does a `169.254.x.x` Address Mean?
+
+Windows may automatically assign itself an APIPA address when it cannot obtain an IPv4 address from DHCP.
+
+It often indicates a DHCP or network connectivity problem, but it does not prove that the DHCP server itself is faulty.
+
+---
+
+## 5. Default Gateway
+
+The default gateway is the device that forwards traffic from the local network to other networks when no more specific route applies.
+
+Example:
+
+```text
+Computer
+192.168.1.20
+     |
+     v
+Default Gateway
+192.168.1.1
+     |
+     v
+Other Networks / Internet
+```
+
+If the gateway cannot be reached, investigate the local network connection, IP configuration, VLAN, gateway availability, or firewall rules.
+
+Useful commands:
+
+```cmd
+ipconfig
+ping 192.168.1.1
+route print
+```
+
+Replace the example gateway with the actual address shown in the device's configuration.
+
+---
+
+## 6. Practical Troubleshooting Scenario
+
+### Ticket ID: INC-6701
+
+**User:** Employee  
+**Issue:** The user cannot access external websites.
+
+### Information Gathering
+
+- When did the issue start?
+- Can the user access internal resources?
+- Are other users affected?
+- Can the user access websites using another device?
+- Were there any recent network or configuration changes?
+
+### Investigation
+
+1. Check the computer's IP address, subnet mask, gateway, and DNS servers.
+2. Test local connectivity.
+3. Test external IP connectivity if permitted.
+4. Use `nslookup` to investigate hostname resolution.
+5. Compare results with a working device if appropriate.
+6. Identify the likely cause before changing settings.
+
+### Resolution
+
+Apply the fix that matches the evidence. For example, correct an incorrect DNS configuration only when it has been confirmed and the change is authorized.
+
+### Verification
+
+- Retest the affected hostname.
+- Open the required website or application.
+- Ask the user to confirm access is restored.
+
+### Documentation
+
+Record the symptoms, diagnostic commands, findings, changes made, verification results, and any escalation.
+
+---
+
+## 7. Interview Questions
+
+### What is DNS?
+
+DNS translates domain names into IP addresses so devices can locate network services.
+
+### What is DHCP?
+
+DHCP automatically assigns IP configuration, including an IP address and other network settings, to clients.
+
+### What does APIPA mean?
+
+APIPA is Automatic Private IP Addressing. Windows may assign a `169.254.x.x` address when it cannot obtain an IPv4 address through DHCP.
+
+### What is the purpose of `ipconfig /flushdns`?
+
+It clears the local Windows DNS resolver cache.
+
+### How would you troubleshoot a computer that cannot access the Internet?
+
+I would gather information, determine whether the problem affects one device or multiple devices, check IP configuration, test local and external connectivity, investigate DNS or DHCP when indicated, apply an authorized fix, verify the result, and document the ticket.
+
+### What is the difference between DNS and DHCP?
+
+DNS resolves names to IP addresses. DHCP automatically provides IP configuration to network clients.
+
+---
+
+## 8. Key Takeaways
+
+- `ipconfig /all` displays detailed network configuration.
+- `ipconfig /renew` requests a DHCP lease.
+- `ipconfig /flushdns` clears the DNS resolver cache.
+- `nslookup` helps investigate name resolution.
+- DNS and DHCP perform different functions.
+- A `169.254.x.x` address often indicates that a client did not obtain a normal DHCP-assigned IPv4 address.
+- Troubleshooting should be based on evidence rather than assumptions.
+
+## Reflection
+
+Today I strengthened my understanding of Windows network troubleshooting and learned how to use common commands to investigate connectivity, DNS, and DHCP issues. I also practiced a structured Help Desk approach that includes gathering information, testing connectivity, identifying the likely cause, applying an authorized fix, verifying the result, and documenting the resolution.
