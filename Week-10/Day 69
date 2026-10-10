@@ -1,0 +1,421 @@
+# Day 69 – Cloud Computing, Virtualization & Help Desk Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to understand cloud computing service models, cloud deployment models, virtualization, hypervisors, virtual machine resources, and the difference between snapshots and backups.
+
+I also practiced a Help Desk troubleshooting scenario involving a slow virtual machine and reviewed how to investigate performance issues using evidence before making changes.
+
+---
+
+# ☁️ 1. Cloud Computing
+
+## What Is Cloud Computing?
+
+Cloud computing is the delivery of computing resources, such as servers, storage, networking, and software, over a network, often the Internet.
+
+Organizations use cloud computing to access resources without having to own and maintain all the underlying physical infrastructure.
+
+### Common Uses
+
+- Virtual servers
+- Cloud storage
+- Application hosting
+- Online email and productivity applications
+- Application development and deployment
+- Data backup and recovery
+
+---
+
+## 2. Cloud Service Models
+
+### IaaS – Infrastructure as a Service
+
+IaaS provides computing infrastructure, including virtual machines, storage, and networking.
+
+The customer generally manages the operating system, applications, and associated configurations, while the provider manages the underlying physical infrastructure.
+
+**Example:** Renting a virtual machine from a cloud provider and installing an operating system and applications.
+
+### PaaS – Platform as a Service
+
+PaaS provides a managed platform for developing, testing, and deploying applications.
+
+The provider manages more of the underlying infrastructure and platform, allowing developers to focus on their applications.
+
+**Example:** Deploying an application to a managed application platform without managing the underlying server operating system.
+
+### SaaS – Software as a Service
+
+SaaS provides ready-to-use software over a network.
+
+The provider manages most of the underlying infrastructure and application platform.
+
+**Examples:** Web-based email and online document applications.
+
+### Comparison
+
+| Model | Main purpose | Customer focus |
+|---|---|---|
+| IaaS | Provides infrastructure | Operating systems and applications |
+| PaaS | Provides an application platform | Developing and deploying applications |
+| SaaS | Provides ready-to-use software | Using the application |
+
+### Memory Trick
+
+- **IaaS:** Infrastructure
+- **PaaS:** Platform
+- **SaaS:** Software
+
+---
+
+# 🌐 3. Cloud Deployment Models
+
+## Public Cloud
+
+Cloud services are provided using a provider's infrastructure, which may serve multiple customers.
+
+Organizations rent resources rather than necessarily owning the underlying physical hardware.
+
+## Private Cloud
+
+Cloud infrastructure is dedicated to one organization. It may be operated by the organization or by a third-party provider.
+
+## Hybrid Cloud
+
+A hybrid cloud combines private infrastructure or cloud services with public cloud services.
+
+For example, an organization may keep certain workloads in a private environment while using public cloud services for other applications.
+
+### Comparison
+
+| Model | Description |
+|---|---|
+| Public cloud | Uses cloud infrastructure provided as a service |
+| Private cloud | Dedicated to one organization |
+| Hybrid cloud | Combines private and public cloud environments |
+
+---
+
+# 🖥️ 4. Virtualization
+
+## What Is Virtualization?
+
+Virtualization is a technology that allows one physical computer to run multiple virtual machines.
+
+Each virtual machine has virtual hardware, including CPU, memory, storage, and networking, and can run its own operating system.
+
+### Example
+
+My home lab uses VirtualBox to run virtual machines for Windows Server and Windows client practice.
+
+```text
+Physical Laptop
+      |
+      v
+Host Operating System
+      |
+      v
+VirtualBox
+      |
+      +------------------+
+      |                  |
+      v                  v
+Windows Server VM    Windows Client VM
+      |                  |
+      v                  v
+Guest OS              Guest OS
+```
+
+---
+
+## 5. Important Virtualization Terminology
+
+### Host Machine
+
+The physical computer that provides resources to virtual machines.
+
+### Host Operating System
+
+The operating system running on the physical computer when using a hosted hypervisor.
+
+### Guest Operating System
+
+The operating system installed inside a virtual machine.
+
+### Virtual Machine (VM)
+
+A software-defined computer that uses virtual hardware to run an operating system and applications.
+
+### Hypervisor
+
+Software or a virtualization layer that creates and manages virtual machines.
+
+### Virtual Disk
+
+A virtual storage device presented to a virtual machine, commonly backed by files on the host.
+
+---
+
+# 6. Type 1 vs. Type 2 Hypervisors
+
+## Type 1 Hypervisor
+
+A Type 1 hypervisor runs directly on physical hardware.
+
+**Example:** VMware ESXi.
+
+It is commonly used in enterprise virtualization environments and data centers.
+
+## Type 2 Hypervisor
+
+A Type 2 hypervisor runs as an application on a host operating system.
+
+**Examples:**
+
+- Oracle VirtualBox
+- VMware Workstation
+
+It is useful for learning, development, testing, and home labs.
+
+### Key Difference
+
+A Type 1 hypervisor runs directly on the hardware, while a Type 2 hypervisor runs on top of a host operating system.
+
+---
+
+# 7. Virtual Machine Resources
+
+Virtual machines consume resources from the physical host.
+
+## CPU
+
+Provides processing capacity to the virtual machine.
+
+## RAM
+
+Provides memory for the guest operating system and its applications.
+
+## Storage
+
+Provides space for the virtual machine's operating system, applications, and data.
+
+## Networking
+
+Allows the VM to communicate with the host, other virtual machines, and external networks, depending on its configuration.
+
+### Performance Considerations
+
+If multiple VMs use too much of the host's available memory or processing capacity, the host and guest systems may become slow.
+
+A virtual disk's maximum configured size is not necessarily the same as the disk space it currently occupies on the host.
+
+---
+
+# 8. Snapshot vs. Backup
+
+## Snapshot
+
+A snapshot records a virtual machine's state at a particular point in time.
+
+It can help an administrator revert a VM after a configuration change or lab experiment.
+
+Snapshots may consume additional disk space and can depend on the original VM files.
+
+## Backup
+
+A backup is a separate recovery copy intended to protect data or systems against loss or failure.
+
+A backup should be stored and managed appropriately so that it remains useful if the original system becomes unavailable.
+
+### Comparison
+
+| Snapshot | Backup |
+|---|---|
+| Records a VM's state at a point in time | Creates a recovery copy of data or systems |
+| Useful before lab changes | Useful for recovery after data loss |
+| May depend on original VM files | Should be protected independently where appropriate |
+| Not a complete substitute for a backup | Part of a recovery strategy |
+
+**Important:** A snapshot should not be treated as a complete replacement for an independent backup.
+
+---
+
+# 9. Practical Home Lab
+
+## Objective
+
+Inspect the existing VirtualBox environment and understand how the virtual machines use physical resources.
+
+### Tasks Completed or Planned
+
+1. Open Windows Task Manager.
+2. Review CPU and memory usage on the host.
+3. Open VirtualBox Manager.
+4. Inspect the Windows Server VM settings.
+5. Review RAM and CPU allocation.
+6. Review the virtual disk configuration.
+7. Review the network adapter mode.
+8. Repeat the inspection for the Windows client VM.
+9. Record observations about host and guest resource usage.
+
+### Safety Precautions
+
+- Do not reinstall Windows Server or Active Directory.
+- Do not delete snapshot files manually.
+- Do not change network settings unnecessarily.
+- Do not start additional VMs if the host does not have sufficient resources.
+- Shut down virtual machines normally whenever possible.
+
+### Lab Reflection Questions
+
+- Why does a VM need allocated RAM?
+- What happens when the host has insufficient memory?
+- What is the difference between the host and guest operating systems?
+- Why might an administrator create a snapshot before changing a VM?
+- Why should snapshots not replace independent backups?
+
+---
+
+# 🎫 10. Help Desk Ticket – Slow Virtual Machine
+
+## Ticket ID: INC-6901
+
+**User:** Alex – IT Training Lab
+
+**Issue:** The user reports that a Windows virtual machine has become slow since another VM was started.
+
+## Information Gathering
+
+Questions to ask:
+
+- When did the slowdown begin?
+- Did it begin after another VM was started?
+- Is the physical laptop also slow?
+- Is the issue constant or intermittent?
+- Were any VM settings changed recently?
+
+## Investigation
+
+1. Open Task Manager on the host.
+2. Check CPU, memory, and disk utilization.
+3. Determine whether the host, guest, or both are slow.
+4. Check the number of running virtual machines.
+5. Review RAM and CPU allocation for each VM.
+6. Check available host storage.
+7. Consider other causes, such as background updates or disk activity.
+
+## Possible Cause
+
+If memory utilization is very high and performance deteriorated after another VM was started, resource contention is a possible cause.
+
+This must be verified using evidence before deciding on a resolution.
+
+## Resolution
+
+Depending on the findings and authorization:
+
+- Shut down an unnecessary VM gracefully.
+- Close unneeded applications.
+- Reduce the number of simultaneously running VMs.
+- Adjust resource allocation only after checking the host's available capacity.
+
+## Verification
+
+- Confirm that the virtual machine responds normally.
+- Check that the host is stable.
+- Test the applications that were previously slow.
+- Confirm the result with the user.
+
+## Documentation
+
+Record the reported symptoms, diagnostic findings, changes made, verification results, and any escalation required.
+
+---
+
+# 🎤 11. Interview Questions and Answers
+
+## What is cloud computing?
+
+Cloud computing is the delivery of computing resources, such as servers, storage, networking, and software, over a network, often the Internet.
+
+## What is the difference between IaaS, PaaS, and SaaS?
+
+IaaS provides infrastructure, PaaS provides a managed platform for application development and deployment, and SaaS provides ready-to-use software.
+
+## What is the difference between public, private, and hybrid cloud?
+
+A public cloud provides services using a cloud provider's infrastructure. A private cloud is dedicated to one organization. A hybrid cloud combines private infrastructure or cloud services with public cloud services.
+
+## What is virtualization?
+
+Virtualization allows one physical computer to run multiple virtual machines using virtualized hardware resources.
+
+## What is a hypervisor?
+
+A hypervisor is the virtualization layer that creates and manages virtual machines.
+
+## What is the difference between Type 1 and Type 2 hypervisors?
+
+A Type 1 hypervisor runs directly on physical hardware, while a Type 2 hypervisor runs on top of a host operating system.
+
+## What is the difference between a host OS and a guest OS?
+
+The host OS runs on the physical computer, while the guest OS runs inside a virtual machine.
+
+## What is the difference between a snapshot and a backup?
+
+A snapshot records a VM's state at a point in time and can help revert changes. A backup is a recovery copy intended to protect data or systems against loss or failure.
+
+## How would you troubleshoot a slow VM?
+
+I would check host CPU, memory, and disk utilization, determine whether the host or guest is affected, review the VM's resource allocation, identify the likely cause, apply an appropriate authorized change, and verify the result.
+
+---
+
+# 📚 12. Skills Learned
+
+## Cloud Computing
+
+- Cloud computing fundamentals
+- IaaS, PaaS, and SaaS
+- Public, private, and hybrid cloud
+
+## Virtualization
+
+- Virtual machines
+- Host and guest operating systems
+- Hypervisors
+- Type 1 and Type 2 hypervisors
+- VM resource allocation
+
+## Troubleshooting
+
+- Host performance investigation
+- Memory and CPU utilization
+- Virtual machine resource contention
+- Snapshot and backup distinctions
+- Verification and documentation
+
+---
+
+# ⭐ Key Takeaways
+
+- Cloud computing provides access to computing resources over a network.
+- IaaS provides infrastructure, PaaS provides a platform, and SaaS provides software.
+- A virtual machine runs an operating system using virtual hardware.
+- A hypervisor creates and manages virtual machines.
+- Virtual machines consume physical host resources.
+- A snapshot helps revert VM state but is not a complete substitute for a backup.
+- Troubleshooting should be based on evidence rather than assumptions.
+- Any change should be appropriate, authorized, tested, and documented.
+
+---
+
+# 📝 Day 69 Reflection
+
+Today I learned the fundamentals of cloud computing and virtualization. I improved my understanding of IaaS, PaaS, SaaS, cloud deployment models, virtual machines, and hypervisors. I also learned the difference between snapshots and backups and how virtual machines use the resources of a physical computer.
+
+Through the slow virtual machine scenario, I practiced investigating CPU, memory, disk activity, and VM resource allocation before making changes.
+
+My next goal is to continue improving technical accuracy and professional interview wording while applying my knowledge to realistic IT Support scenarios.
