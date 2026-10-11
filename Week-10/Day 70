@@ -1,0 +1,470 @@
+# Day 70 – Cybersecurity Fundamentals & Phishing Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to understand essential cybersecurity concepts, recognize common security threats, learn how to protect user accounts, and practice responding to a potential phishing-related security incident.
+
+Key learning goals:
+
+- Understand the CIA triad.
+- Differentiate authentication from authorization.
+- Recognize phishing, social engineering, malware, and ransomware.
+- Understand Multi-Factor Authentication (MFA).
+- Apply the principle of least privilege.
+- Differentiate firewalls from antivirus and endpoint protection.
+- Follow a safe incident response process.
+- Document and escalate security incidents professionally.
+
+---
+
+# 🔐 1. The CIA Triad
+
+The CIA triad is a fundamental cybersecurity model consisting of confidentiality, integrity, and availability.
+
+## Confidentiality
+
+Confidentiality means ensuring that information is accessible only to authorized people or systems.
+
+**Example:** Only authorized Finance employees can access confidential payroll information.
+
+## Integrity
+
+Integrity means protecting information from unauthorized or improper changes.
+
+**Example:** Employee salary records must not be changed by unauthorized users.
+
+## Availability
+
+Availability means ensuring that authorized users can access systems and information when needed.
+
+**Example:** Employees should be able to access the company's shared files during business hours.
+
+### Memory Trick
+
+```text
+C = Confidentiality → Who can see the data?
+I = Integrity       → Is the data accurate and protected?
+A = Availability    → Can authorized users access it?
+```
+
+---
+
+# 👤 2. Authentication vs Authorization
+
+These concepts are related but have different purposes.
+
+## Authentication
+
+Authentication verifies a user's identity.
+
+**Example:** An employee enters a username and password to sign in to Windows.
+
+## Authorization
+
+Authorization determines what an authenticated user is permitted to access or do.
+
+**Example:** A Finance employee can access the Finance shared folder but cannot access restricted HR records.
+
+### Key Difference
+
+```text
+Authentication → Who are you?
+Authorization  → What are you allowed to access?
+```
+
+A user can successfully authenticate but still receive an “Access Denied” message if they lack the required permissions.
+
+---
+
+# 🎣 3. Phishing
+
+Phishing is a type of social engineering in which an attacker uses deceptive messages, websites, or other communications to trick people into revealing sensitive information or performing unsafe actions.
+
+Common phishing methods include:
+
+- Fake password-reset emails.
+- Fraudulent account-security alerts.
+- Fake delivery notifications.
+- Messages containing malicious links.
+- Attachments designed to deliver malware.
+
+## Warning Signs
+
+- Unexpected urgency or threats.
+- Requests for passwords or verification codes.
+- Suspicious sender addresses.
+- Unexpected attachments.
+- Links that do not match the claimed organization.
+- Unexpected MFA approval requests.
+
+## Safe Practices
+
+1. Do not click suspicious links or open unexpected attachments.
+2. Verify unusual requests using a trusted communication method.
+3. Report suspected phishing through the organization's approved process.
+4. Do not enter credentials on a website reached through a suspicious link.
+5. Follow company security procedures if you have already interacted with the message.
+
+**Important:** A message that looks professional is not necessarily legitimate.
+
+---
+
+# 🧠 4. Social Engineering
+
+Social engineering is the use of psychological manipulation to persuade people to reveal information, bypass security controls, or perform actions that benefit an attacker.
+
+Examples include:
+
+- Pretending to be an IT technician.
+- Claiming an account will be disabled unless the user acts immediately.
+- Asking a user to disclose a password or MFA code.
+- Impersonating a manager to request confidential information.
+
+### How to Respond
+
+- Verify the person's identity.
+- Follow established security procedures.
+- Never disclose passwords or authentication codes.
+- Report suspicious requests to the appropriate team.
+
+### Phishing vs Social Engineering
+
+Phishing is one type of social engineering. Social engineering is the broader category of manipulation-based attacks.
+
+---
+
+# 🦠 5. Malware vs Ransomware
+
+## Malware
+
+Malware is software designed to perform harmful or unauthorized activities.
+
+Examples include:
+
+- Viruses
+- Trojans
+- Spyware
+- Worms
+- Ransomware
+
+Malware may steal information, monitor activity, damage systems, or provide unauthorized access.
+
+## Ransomware
+
+Ransomware is a type of malware that typically encrypts files or otherwise blocks access to data and demands payment.
+
+### Key Difference
+
+```text
+Malware
+   ↓
+Broad category of malicious software
+
+Ransomware
+   ↓
+Specific type of malware that commonly
+encrypts or blocks access to data
+for extortion
+```
+
+If ransomware is suspected on a company computer, follow the organization's incident response procedure and contact the security team immediately. Do not attempt to remove it or reconnect the device to the network unless instructed by the approved procedure.
+
+---
+
+# 🔑 6. Multi-Factor Authentication (MFA)
+
+MFA adds security by requiring two or more authentication factors of different types.
+
+## Three Common Authentication Factors
+
+### Something You Know
+
+- Password
+- PIN
+
+### Something You Have
+
+- Hardware security key
+- Registered authentication device
+
+### Something You Are
+
+- Fingerprint
+- Facial biometric verification
+
+## Example of MFA
+
+A user signs in with a password and then verifies their identity using a registered authenticator method.
+
+This can provide two different factors: something the user knows and something the user has.
+
+### Important Correction
+
+Using a password and a second password generally does not count as MFA because both are knowledge factors.
+
+## Unexpected MFA Requests
+
+If a user receives an MFA request they did not initiate, they should:
+
+1. Deny the request.
+2. Avoid approving further unexpected requests.
+3. Report the event to IT or the security team.
+4. Follow instructions for securing the account.
+
+If the user has already approved an unexpected request, treat it as a potential account compromise and escalate immediately.
+
+---
+
+# 🛡️ 7. Principle of Least Privilege
+
+The principle of least privilege means giving a user or system only the minimum permissions necessary to perform its required tasks.
+
+### Example
+
+A Finance employee requires access to Finance documents but does not automatically need administrative access to the company's servers.
+
+### Benefits
+
+- Reduces unauthorized access.
+- Limits the potential impact of compromised accounts.
+- Reduces accidental changes.
+- Helps enforce separation of duties.
+
+### Help Desk Principle
+
+Do not grant administrator privileges simply because a user requests them. Confirm the business requirement, authorization, and approval process first.
+
+---
+
+# 🔥 8. Firewall vs Antivirus / Endpoint Protection
+
+## Firewall
+
+A firewall monitors and controls network traffic based on predefined rules.
+
+It may control traffic using:
+
+- Source and destination IP addresses.
+- Ports.
+- Protocols.
+- Traffic direction.
+- Connection rules.
+
+## Antivirus and Endpoint Protection
+
+Antivirus software detects, blocks, or removes malware. Modern endpoint protection tools may also provide capabilities such as suspicious-behavior detection, threat investigation, and response.
+
+### Key Difference
+
+```text
+Firewall
+   ↓
+Controls network traffic
+
+Antivirus / Endpoint Protection
+   ↓
+Detects and helps prevent malicious
+software and endpoint threats
+```
+
+These technologies complement each other. Neither should be treated as a complete replacement for the other.
+
+---
+
+# 🎫 9. Help Desk Security Incident – INC-7001
+
+## Incident Details
+
+**Ticket ID:** INC-7001
+
+**User:** Sarah – Finance Department
+
+**Issue:** User interacted with a suspicious email, entered her password, and approved an unexpected MFA request.
+
+**Priority:** Follow the organization's incident classification process. Prompt security escalation is required because account compromise is possible.
+
+## Step 1: Gather Information
+
+Ask the user:
+
+- When did you receive the email?
+- Did you click a link or open an attachment?
+- Did you enter your username, password, or any verification code?
+- Did you approve an MFA request you did not initiate?
+- Did you download or run a file?
+- Have you noticed unusual account activity?
+
+Do not ask the user to send their password or MFA code to the Help Desk.
+
+## Step 2: Assess the Risk
+
+The user entered a password and approved an unexpected MFA request.
+
+This creates a significant risk that an attacker may have gained access to the account.
+
+Do not assume the account is safe just because the user can still sign in.
+
+## Step 3: Escalate and Contain
+
+1. Contact the security team immediately according to company policy.
+2. Provide the timeline and actions reported by the user.
+3. Follow approved procedures to secure the account and contain the incident.
+4. The authorized team may reset credentials, revoke active sessions or tokens, review sign-in logs, and check for unauthorized changes to MFA methods or account settings.
+5. If a file was downloaded or executed, report that detail so the security team can assess the device.
+
+**Important:** A password reset alone may not be sufficient if an attacker has an active session, stolen tokens, or has changed account security settings.
+
+Do not independently delete evidence, run unapproved remediation tools, or investigate beyond your authority.
+
+## Step 4: Verify
+
+The authorized team should verify that the account and any affected devices have been secured according to the incident response process.
+
+Confirm that the user can access the account appropriately after the security team authorizes recovery.
+
+Do not close the ticket solely because the user can sign in again.
+
+## Step 5: Document
+
+Record:
+
+- What the user reported.
+- The approximate time of the event.
+- Whether a link was clicked, credentials were entered, an MFA request was approved, or a file was executed.
+- Actions taken and the teams notified.
+- Relevant evidence or log references, following company policy.
+- Current status and follow-up requirements.
+
+## Sample Ticket Note
+
+**Issue:** User reported interacting with a suspicious email, entering account credentials, and approving an unexpected MFA request.
+
+**Assessment:** Potential account compromise.
+
+**Actions:** Collected incident details, advised the user not to approve further unexpected MFA requests, and escalated to the security team under the incident response procedure.
+
+**Next Steps:** Authorized security personnel to assess account activity, secure credentials and sessions as required, and verify account integrity.
+
+**Status:** Escalated – awaiting security investigation and confirmation.
+
+---
+
+# 🧭 10. Security Incident Response Workflow
+
+```text
+Detect or Receive Report
+          ↓
+Gather Essential Information
+          ↓
+Assess Potential Risk
+          ↓
+Report and Escalate
+          ↓
+Contain Using Approved Procedures
+          ↓
+Investigate and Remediate
+          ↓
+Verify Security and Recovery
+          ↓
+Document and Close When Authorized
+```
+
+### Key Principle
+
+**Report promptly, preserve evidence, follow approved procedures, and do not claim an incident is resolved until the appropriate verification is complete.**
+
+---
+
+# 🎤 11. Interview Questions and Model Answers
+
+## Q1. What is the CIA triad?
+
+The CIA triad is a cybersecurity model consisting of confidentiality, integrity, and availability. It helps organizations protect information from unauthorized access, improper modification, and disruption.
+
+## Q2. What is the difference between authentication and authorization?
+
+Authentication verifies a user's identity, while authorization determines what resources and actions the authenticated user is permitted to access.
+
+## Q3. What is phishing?
+
+Phishing is a social engineering technique in which attackers use deceptive messages or websites to trick people into revealing information or performing unsafe actions.
+
+## Q4. What is social engineering?
+
+Social engineering involves manipulating people into disclosing information, bypassing security controls, or performing actions that benefit an attacker.
+
+## Q5. What is the difference between malware and ransomware?
+
+Malware is a broad category of malicious software. Ransomware is a type of malware that typically encrypts or blocks access to data to demand payment.
+
+## Q6. What is MFA?
+
+Multi-Factor Authentication requires two or more authentication factors of different types, such as a password and a registered authentication device.
+
+## Q7. What is the principle of least privilege?
+
+It means giving users and systems only the permissions necessary to perform their required tasks.
+
+## Q8. What would you do if a user clicked a suspicious link but did not enter a password?
+
+I would gather details about the link and what happened afterward, including whether a file was downloaded or executed. I would report the incident according to company policy and escalate if there were signs of compromise. I would not assume that clicking the link alone proves the device is infected.
+
+## Q9. What would you do if a user entered their password and approved an unexpected MFA request?
+
+I would treat the situation as a potential account compromise and escalate it immediately to the security team. I would follow approved procedures to secure the account, which may include resetting credentials, revoking active sessions, and reviewing sign-in activity. I would document the incident and verify recovery before closure.
+
+## Q10. What is the difference between a firewall and antivirus?
+
+A firewall controls network traffic based on rules, while antivirus and endpoint protection tools detect and help prevent malware and other endpoint threats.
+
+---
+
+# 💼 12. Behavioral Interview Practice
+
+## Question: What would you do if you made a mistake while handling a security incident?
+
+**Model Answer:**
+
+I would report the mistake promptly and provide accurate details about what happened. I would follow the organization's incident response procedure, avoid making unapproved changes, and cooperate with the appropriate team to reduce potential impact. I would document the actions taken and use the experience to improve my future handling of security incidents.
+
+---
+
+# 📚 13. GitHub Practice
+
+Save this documentation in your IT learning repository:
+
+**Suggested filename:**
+
+`Day-70-Cybersecurity-Fundamentals-and-Phishing-Troubleshooting.md`
+
+Suggested commit message:
+
+`Add Day 70 cybersecurity and phishing troubleshooting notes`
+
+If you add screenshots, use fictional training examples and ensure they contain no real passwords, personal information, authentication codes, or confidential company data.
+
+---
+
+# ⭐ Key Takeaways
+
+- The CIA triad means confidentiality, integrity, and availability.
+- Authentication verifies identity; authorization determines access.
+- Phishing is one type of social engineering.
+- Ransomware is a type of malware.
+- MFA requires multiple factors of different types.
+- Least privilege limits permissions to what is necessary.
+- Firewalls control network traffic; endpoint protection helps detect and prevent malicious activity.
+- Unexpected MFA approvals must be treated seriously.
+- Potential account compromise requires prompt reporting and authorized response.
+- Password resets may need to be accompanied by session revocation and investigation.
+- Help Desk staff should document facts, preserve evidence, escalate appropriately, and verify recovery before closing an incident.
+
+---
+
+# 📝 Day 70 Reflection
+
+Today I learned fundamental cybersecurity concepts and how they apply to real IT Support situations. I improved my understanding of authentication, authorization, MFA, least privilege, phishing, and the difference between firewalls and endpoint protection.
+
+The phishing incident scenario reinforced that a Help Desk technician must act carefully when account compromise is possible. Gathering accurate information, escalating promptly, following approved security procedures, documenting actions, and verifying recovery are all essential.
+
+Going forward, I will continue improving both my technical knowledge and my ability to explain security concepts clearly and professionally during interviews.
