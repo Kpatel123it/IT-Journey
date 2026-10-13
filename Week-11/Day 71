@@ -1,0 +1,549 @@
+# Day 71 – IT Service Management, Ticket Management & SLA
+
+## 🎯 Objective
+
+Today's objective was to understand IT Service Management (ITSM), distinguish incidents from service requests, problems, and changes, learn ticket prioritization, and practise professional Help Desk ticket handling.
+
+Key learning goals:
+
+- Understand ITSM and ticket management.
+- Differentiate incidents, service requests, problems, and changes.
+- Understand impact, urgency, priority, and Service Level Agreements (SLAs).
+- Learn the ticket lifecycle.
+- Practise documenting and escalating tickets.
+- Improve technical interview wording and troubleshooting communication.
+
+---
+
+# 1. IT Service Management (ITSM)
+
+## What is ITSM?
+
+IT Service Management (ITSM) is an approach used to deliver, manage, support, and improve IT services to meet business and user needs.
+
+Examples of IT services include:
+
+- Email and Microsoft 365
+- Company laptops and desktops
+- Network and Wi-Fi connectivity
+- Shared folders and file access
+- Business applications
+- User account management
+
+## Why Do Organizations Use ITSM?
+
+- Improve IT service quality.
+- Track incidents and service requests.
+- Assign responsibilities to support teams.
+- Prioritize issues based on business impact.
+- Monitor service targets.
+- Maintain documentation and accountability.
+- Identify recurring issues and opportunities for improvement.
+
+## Common ITSM Tools
+
+Examples include ServiceNow, Jira Service Management, and Freshservice.
+
+These platforms help support teams record, assign, track, and manage tickets.
+
+---
+
+# 2. Incident vs. Service Request vs. Problem vs. Change
+
+These four concepts are important for Help Desk interviews.
+
+## Incident
+
+An incident is an unplanned interruption or reduction in the quality of an IT service.
+
+Examples:
+
+- A user cannot connect to the company network.
+- Outlook stops working.
+- A shared drive becomes unavailable.
+- A printer unexpectedly stops printing.
+
+**Main objective:** Restore normal service as quickly and safely as possible.
+
+## Service Request
+
+A service request is a request for a standard service, information, access, or an approved item.
+
+Examples:
+
+- Requesting an approved software installation.
+- Requesting access to a shared folder.
+- Requesting a new keyboard.
+- Requesting an account for a new employee.
+
+**Main objective:** Fulfil the request according to the organization's procedures and approval requirements.
+
+## Problem
+
+A problem is the underlying cause, or potential cause, of one or more incidents.
+
+Example:
+
+Several users repeatedly lose network connectivity because a network switch may be failing.
+
+**Main objective:** Investigate and manage the underlying cause to reduce the likelihood or impact of recurring incidents.
+
+## Change
+
+A change is an addition, modification, or removal that could affect an IT service.
+
+Examples:
+
+- Updating a production firewall configuration.
+- Upgrading a business application.
+- Changing a server configuration.
+- Modifying a network device.
+
+**Main objective:** Assess, authorize, implement, and review changes according to the organization's change-management process.
+
+## Quick Comparison
+
+| Concept | Main purpose | Example |
+|---|---|---|
+| Incident | Restore disrupted service | Network outage |
+| Service request | Fulfil a standard request | Approved software installation |
+| Problem | Investigate underlying cause | Repeated network failures |
+| Change | Control a modification | Firewall configuration update |
+
+### Memory Trick
+
+- Incident = Something is broken or degraded.
+- Service request = Someone needs a standard service.
+- Problem = Why is the issue happening?
+- Change = What modification needs to be controlled?
+
+One problem can cause multiple incidents. A change can also introduce an incident if something goes wrong.
+
+---
+
+# 3. Impact, Urgency, and Priority
+
+These terms are related but have different meanings.
+
+## Impact
+
+Impact measures how seriously an issue affects users, business operations, or services.
+
+Examples:
+
+- One employee cannot print.
+- An entire department cannot access a shared drive.
+- A company-wide network outage prevents employees from working.
+
+## Urgency
+
+Urgency describes how quickly an issue needs attention.
+
+Examples:
+
+- A minor issue with no immediate deadline may have low urgency.
+- An issue blocking an imminent payroll deadline may have high urgency.
+
+## Priority
+
+Priority determines how quickly an issue should be handled according to the organization's prioritization rules.
+
+Priority is often determined using impact and urgency, along with business criticality and other organizational criteria.
+
+### Example
+
+A network outage affecting an entire department may receive a higher priority than a minor printer issue affecting one employee.
+
+However, the actual priority must follow the organization's ticket-prioritization policy.
+
+## Illustrative Priority Levels
+
+| Priority | Typical meaning |
+|---|---|
+| P1 – Critical | Major business disruption or critical service outage |
+| P2 – High | Significant impact requiring prompt attention |
+| P3 – Medium | Limited impact with a workable alternative |
+| P4 – Low | Minor issue or low-impact request |
+
+These descriptions are illustrative. Organizations may define their priority levels differently.
+
+### Important Principle
+
+Do not assign priority based only on how frustrated the user sounds. Gather facts about business impact and urgency, then apply the organization's policy.
+
+---
+
+# 4. Service Level Agreement (SLA)
+
+## What is an SLA?
+
+A Service Level Agreement (SLA) defines agreed service targets between a service provider and a customer or business.
+
+Depending on the agreement, these targets may cover:
+
+- Response time
+- Resolution targets
+- Service availability
+- Service quality
+- Communication requirements
+
+## Response Time
+
+Response time measures how long it takes to acknowledge or begin responding to an issue, according to the SLA definition.
+
+## Resolution Time
+
+Resolution time measures how long it takes to resolve an issue, according to the applicable service target.
+
+## Example
+
+An organization may require a high-priority incident to receive an initial response within a specified period.
+
+The actual target depends on the organization's SLA and priority rules.
+
+### What Should a Help Desk Technician Do if an SLA Is at Risk?
+
+1. Check the ticket priority and applicable SLA deadline.
+2. Review the information already gathered.
+3. Continue appropriate troubleshooting within your authorization.
+4. Communicate progress and delays to the user.
+5. Escalate early when specialist assistance is needed.
+6. Document the investigation, actions, and escalation.
+
+**Important:** Do not wait until an SLA has already been breached before raising a concern.
+
+---
+
+# 5. Ticket Management Lifecycle
+
+A typical ticket lifecycle includes the following stages.
+
+## Step 1: Create the Ticket
+
+Record the user's issue or request.
+
+Include:
+
+- User and department
+- Date and time reported
+- Symptoms or request details
+- Relevant error messages
+- Business impact
+
+## Step 2: Categorize and Prioritize
+
+Identify the ticket type and appropriate category.
+
+Assess impact and urgency, then assign priority according to company policy.
+
+## Step 3: Assign the Ticket
+
+Assign the ticket to the appropriate technician or support team.
+
+Examples:
+
+- Help Desk
+- Desktop Support
+- Network Team
+- Systems Administration
+- Security Team
+
+## Step 4: Investigate
+
+Gather evidence and perform appropriate troubleshooting.
+
+Examples:
+
+- Check network connectivity.
+- Review account status.
+- Examine error messages.
+- Check relevant service status and logs.
+- Determine whether other users are affected.
+
+Do not guess the cause or make unnecessary changes.
+
+## Step 5: Resolve or Escalate
+
+If the cause is understood and you are authorized to make the required change, apply the appropriate fix.
+
+If the issue exceeds your access, expertise, or authority, escalate it with clear documentation.
+
+## Step 6: Verify
+
+Confirm that the expected service or functionality has been restored.
+
+Where appropriate, ask the user to test the affected service.
+
+## Step 7: Document and Close
+
+Record the findings, actions, outcome, and user verification.
+
+Close the ticket according to the organization's procedure.
+
+---
+
+# 6. Ticket Documentation Best Practices
+
+Good ticket notes should be clear, factual, concise, and useful to the next technician.
+
+## Recommended Ticket Template
+
+```text
+Ticket ID:
+User / Department:
+Issue:
+Date and time reported:
+Business impact:
+Urgency:
+Priority:
+Category:
+
+Information gathered:
+Troubleshooting performed:
+Findings:
+Likely cause:
+Actions taken:
+User verification:
+Next steps / escalation:
+Status:
+```
+
+## Example of Good Documentation
+
+Instead of writing:
+
+"The network is broken."
+
+Write:
+
+"Two Finance users reported that the shared drive became inaccessible at approximately 9:00 AM. Both users can access websites. Further investigation is required to determine whether the issue involves the shared folder, server, authentication, or network path."
+
+The second note records observable facts without prematurely declaring a cause.
+
+---
+
+# 7. Help Desk Practical Scenario – INC-7101
+
+## User Complaint
+
+"I cannot access the company's shared drive. My coworker in the same department has the same problem, but we can still access websites."
+
+**Ticket ID:** INC-7101
+
+**Category:** Network / Shared Folder Connectivity
+
+**Initial classification:** Incident
+
+**Priority:** Determine according to business impact, urgency, and organizational policy.
+
+## Step 1: Gather Information
+
+Ask:
+
+1. When did the issue begin?
+2. What exact error message appears?
+3. Are other users affected?
+4. Can you access other shared folders?
+5. Can you access the server or shared folder using the approved method?
+6. Have there been any recent changes?
+7. Is the affected department blocked from completing essential work?
+
+## Step 2: Assess the Scope
+
+Because two users are affected but web browsing works, do not immediately assume the entire network is down.
+
+Investigate whether the issue is related to:
+
+- The specific shared folder
+- The file server or file-sharing service
+- Authentication
+- Share or NTFS permissions
+- Network connectivity to the server
+- A recent configuration change
+
+These are possible causes, not confirmed findings.
+
+## Step 3: Investigate
+
+1. Record the exact error and affected users.
+2. Check whether the server and shared folder are available using approved troubleshooting methods.
+3. Compare access with a known-working user or device where appropriate.
+4. Review relevant service status or logs if authorized.
+5. Identify the likely cause before making changes.
+
+## Step 4: Resolve or Escalate
+
+If an authorized, verified fix is available, apply it according to procedure.
+
+If the problem appears to be server-wide, affects multiple departments, requires elevated permissions, or exceeds your expertise, escalate it to the appropriate team.
+
+## Step 5: Verify
+
+Ask affected users to test the shared drive.
+
+Confirm that they can access the required files and perform the actions their permissions allow.
+
+## Sample Ticket Note
+
+**Issue:** Two Finance users cannot access the company shared drive. Both report that web browsing remains functional.
+
+**Investigation:** Collected the start time, scope, and available symptoms. Further checks are required to determine whether the cause is server availability, authentication, permissions, or connectivity to the file server.
+
+**Action:** Continue authorized investigation and escalate to the responsible team if the issue exceeds Help Desk scope.
+
+**Verification:** Pending restoration of access and user confirmation.
+
+**Status:** In Progress.
+
+---
+
+# 8. SLA Escalation Scenario
+
+## Situation
+
+A ticket is approaching its SLA deadline, but the cause has not been confirmed.
+
+## Correct Approach
+
+1. Review the ticket's priority and deadline.
+2. Check the troubleshooting already performed.
+3. Gather any missing information that can reasonably be obtained.
+4. Update the user about the current status.
+5. Escalate early if additional expertise or access is required.
+6. Document findings, actions, blockers, and the reason for escalation.
+
+### Interview-Ready Answer
+
+"If a ticket were approaching its SLA deadline, I would review the priority and investigation findings, continue troubleshooting within my authorization, and keep the user informed. If specialist support were required, I would escalate early with clear documentation rather than waiting for the SLA to be breached."
+
+---
+
+# 9. When Should a Help Desk Technician Escalate?
+
+Escalation may be necessary when:
+
+- The issue exceeds the technician's technical expertise.
+- Elevated permissions or additional authorization are required.
+- A security incident is suspected.
+- A critical business service is disrupted.
+- Multiple users or departments are affected.
+- The SLA is at risk.
+- Approved troubleshooting steps have not resolved the issue.
+
+## Information to Include in an Escalation
+
+- Symptoms and error messages
+- Users or services affected
+- Start time and business impact
+- Troubleshooting performed
+- Findings and possible causes
+- Actions already taken
+- Relevant logs or evidence references
+- Outstanding questions and next steps
+
+**Key principle:** Escalation is not failure. It is an appropriate action when the issue requires additional expertise, authority, or resources.
+
+---
+
+# 10. Interview Questions and Model Answers
+
+## Q1. What is ITSM?
+
+IT Service Management is an approach to delivering, managing, supporting, and improving IT services to meet business and user needs.
+
+## Q2. What is the difference between an incident and a service request?
+
+An incident is an unplanned interruption or degradation of an IT service. A service request is a request for a standard service, information, access, or an approved item.
+
+## Q3. What is the difference between an incident and a problem?
+
+An incident is the service interruption, while a problem is the underlying cause or potential cause of one or more incidents.
+
+## Q4. What is a change in ITSM?
+
+A change is an addition, modification, or removal that could affect an IT service. Changes are managed through an appropriate process to assess risk, obtain authorization, implement safely, and review the result.
+
+## Q5. What is the difference between impact and urgency?
+
+Impact measures how seriously an issue affects users or business operations. Urgency describes how quickly the issue needs attention. Together with organizational criteria, they help determine priority.
+
+## Q6. What is an SLA?
+
+A Service Level Agreement defines agreed service targets, which may include response time, resolution targets, availability, and service-quality expectations.
+
+## Q7. What would you do if an SLA were at risk?
+
+I would review the priority and deadline, examine the investigation findings, continue authorized troubleshooting, update the user, and escalate early if additional expertise were required. I would document my actions and findings.
+
+## Q8. When should a Help Desk technician escalate a ticket?
+
+I would escalate when the issue exceeds my authorization or technical expertise, involves significant security or business risk, affects a critical service, or requires additional support to meet the applicable service targets.
+
+## Q9. Why is ticket documentation important?
+
+Ticket documentation provides an accurate history of the issue, troubleshooting performed, actions taken, and outcome. It supports continuity, accountability, efficient escalation, and future troubleshooting.
+
+## Q10. What would you do if multiple users reported the same issue?
+
+I would establish the scope, identify the affected users and services, assess business impact and urgency, check for a common cause, and prioritize according to company policy. If a wider outage were suspected, I would promptly notify or escalate to the appropriate team.
+
+---
+
+# 11. Interview Answer Formula
+
+Use this structure when answering technical or process questions:
+
+**Definition → Purpose → Example**
+
+### Example: SLA
+
+**Definition:** An SLA defines agreed service targets.
+
+**Purpose:** It helps establish expectations for service delivery and support.
+
+**Example:** A high-priority incident may have a defined initial response target that the Help Desk must monitor.
+
+For scenario questions, use:
+
+**Gather → Assess → Investigate → Act or Escalate → Verify → Document**
+
+This demonstrates both technical judgment and professional communication.
+
+---
+
+# 12. GitHub Practice
+
+## Suggested Filename
+
+`Day-71-ITSM-Ticket-Management-and-SLA.md`
+
+## Suggested Commit Message
+
+`Add Day 71 ITSM ticket management and SLA notes`
+
+
+
+---
+
+# ⭐ Key Takeaways
+
+- ITSM helps organizations deliver and improve IT services.
+- An incident is an interruption or degradation of service.
+- A service request asks for a standard service or approved item.
+- Problem management investigates underlying causes.
+- Change management controls modifications that could affect IT services.
+- Impact, urgency, and priority have different meanings.
+- An SLA defines agreed service targets.
+- Ticket notes should contain facts, evidence, actions, and outcomes.
+- Escalate when the issue exceeds your authorization, expertise, or scope.
+- Verify the result and document the outcome before closing a ticket according to policy.
+
+---
+
+# 📝 Day 71 Reflection
+
+Today I learned the fundamentals of IT Service Management and the importance of managing tickets systematically. I practised distinguishing incidents, service requests, problems, and changes, and improved my understanding of impact, urgency, priority, and SLAs.
+
+The practical shared-drive scenario helped me understand why a Help Desk technician should gather evidence, assess the scope, investigate possible causes, and avoid making unnecessary changes. I also learned that escalation is appropriate when an issue requires additional expertise or authorization.
+
+Going forward, I will continue improving my technical accuracy, ticket documentation, user communication, and interview answers so that I can explain not only what I would do but also why I would do it.
