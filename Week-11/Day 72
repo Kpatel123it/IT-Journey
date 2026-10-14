@@ -1,0 +1,386 @@
+# Day 72 – Windows Backup, Recovery & Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to understand Windows backup and recovery options, distinguish between different recovery tools, and practise troubleshooting startup problems while protecting user data.
+
+Key learning goals:
+
+- Understand backups and why they are important.
+- Differentiate Backup, System Restore, and Windows Recovery Environment (WinRE).
+- Understand Startup Repair, Safe Mode, Uninstall Updates, and Reset this PC.
+- Practise inspecting Windows recovery settings.
+- Understand data-protection precautions before recovery.
+- Follow a structured Help Desk troubleshooting workflow.
+- Document and escalate Windows recovery incidents professionally.
+
+---
+
+# 1. Windows Backup
+
+## What Is a Backup?
+
+A backup is a separate copy of files or system data that can be used to recover information if the original data is lost, damaged, or unavailable.
+
+## Why Are Backups Important?
+
+Backups help protect against:
+
+- Accidental file deletion
+- Hardware failure
+- File corruption
+- Malware and ransomware incidents
+- System failures
+- Accidental changes or data loss
+
+## Example
+
+An employee accidentally deletes an important Finance report.
+
+If a suitable backup exists, the authorized support team may be able to restore the report.
+
+## Backup Best Practices
+
+- Follow the organization's approved backup policy.
+- Store backups separately from the original data.
+- Protect backups with appropriate access controls.
+- Check backup status and failures.
+- Test restoration periodically.
+- Consider how long backups must be retained.
+- Ensure backups are protected against unauthorized modification or deletion.
+
+**Important:** A backup is only useful if the required data can be recovered. A successful backup job does not automatically prove that every file can be restored.
+
+---
+
+# 2. Backup vs. System Restore vs. WinRE
+
+These three concepts have different purposes.
+
+## Backup
+
+**Purpose:** Recover backed-up data or systems.
+
+Example: Restoring a deleted document from an available backup.
+
+## System Restore
+
+**Purpose:** Roll back certain Windows system files, settings, drivers, and installed applications to an earlier state.
+
+Example: Troubleshooting instability that began after a driver installation.
+
+System Restore is not a substitute for a separate backup of personal files.
+
+## Windows Recovery Environment (WinRE)
+
+**Purpose:** Provide recovery tools for certain Windows startup and operating-system problems.
+
+Example: Accessing Startup Repair when Windows cannot start normally.
+
+### Quick Comparison
+
+| Feature | Main purpose |
+|---|---|
+| Backup | Recover saved data or system information |
+| System Restore | Roll back certain system changes |
+| WinRE | Access Windows recovery and troubleshooting tools |
+
+### Memory Trick
+
+```text
+Backup
+  ↓
+Recover saved data
+
+System Restore
+  ↓
+Roll back certain system changes
+
+WinRE
+  ↓
+Access recovery tools
+```
+
+---
+
+# 3. Important Windows Recovery Tools
+
+## Startup Repair
+
+Startup Repair attempts to diagnose and fix certain problems that prevent Windows from starting.
+
+Example:
+
+A computer repeatedly fails to boot into Windows.
+
+## System Restore
+
+System Restore returns certain system settings and components to an earlier restore point.
+
+Example:
+
+Windows becomes unstable after a recent driver installation.
+
+## Uninstall Updates
+
+This recovery option can remove certain recent Windows updates when an update is suspected of causing a problem.
+
+Example:
+
+A computer begins experiencing startup problems after a Windows update.
+
+## Safe Mode
+
+Safe Mode starts Windows with a limited set of drivers and services.
+
+It can help troubleshoot problems caused by drivers, applications, or services.
+
+## Reset This PC
+
+Reset this PC reinstalls Windows and offers options affecting personal files and installed applications.
+
+The exact outcome depends on the selected option and Windows configuration.
+
+**Important:** Do not reset or reinstall Windows as your first troubleshooting step. Understand the data risk, check backup availability, and follow organizational authorization procedures.
+
+---
+
+# 4. Practical Lab – Inspect Windows Recovery Settings
+
+## Lab A: Open Recovery Settings
+
+1. Start the Windows 11 learning VM.
+2. Sign in to Windows.
+3. Open Settings.
+4. Navigate to System → Recovery.
+5. Inspect the available recovery options.
+6. Record what each option is intended to do.
+
+Do not start a reset or recovery operation during this inspection exercise.
+
+## Lab B: Explore System Restore
+
+1. Press `Win + R`.
+2. Enter the following command:
+
+```cmd
+rstrui.exe
+```
+
+3. Press Enter.
+4. Observe whether the System Restore wizard opens.
+5. Check whether restore points are available.
+6. If available, inspect the restore-point details and the option to scan for affected programs.
+7. Cancel the wizard without applying a restore point.
+
+### Possible Results
+
+- System Restore opens and restore points are available.
+- System Restore opens but no restore points are listed.
+- System Restore is unavailable or disabled.
+
+Record the actual result in your lab notes. Do not claim that a restore point exists if none is listed.
+
+## Lab C: Test File Copy and Recovery Basics
+
+1. Create a folder called `Day72-Backup-Lab` in Documents.
+2. Create a text file named `TestFile.txt`.
+3. Enter the following text:
+
+```text
+This is my Windows recovery practice file.
+```
+
+4. Create another folder named `Day72-Backup-Copy`.
+5. Copy `TestFile.txt` into the second folder.
+6. Open the copied file.
+7. Verify that its contents match the original.
+
+This exercise demonstrates basic file copying. It is not a complete backup solution because both copies may remain on the same computer and could be lost together.
+
+---
+
+# 5. Windows Recovery Decision-Making
+
+| Situation | Appropriate starting point |
+|---|---|
+| Windows fails to start normally | Investigate the startup failure and consider Startup Repair |
+| Problems begin after a driver installation | Investigate the driver and consider System Restore if appropriate |
+| Startup problems begin after a Windows update | Investigate the update and consider Uninstall Updates |
+| A user accidentally deletes a document | Check the Recycle Bin and available backups |
+| Windows is severely damaged | Assess recovery options, data protection, and escalation before resetting |
+| A disk may be physically failing | Minimize unnecessary disk activity and escalate for appropriate data-recovery handling |
+
+These are starting points, not guaranteed solutions. Choose an action based on the evidence, device condition, data risk, and organizational procedures.
+
+---
+
+# 6. Help Desk Ticket – INC-7201
+
+## User Complaint
+
+"My computer installed a Windows update yesterday. Today, Windows keeps restarting before I can reach the desktop. I have important documents on the computer."
+
+**Ticket ID:** INC-7201
+
+**Category:** Windows / Startup and Recovery
+
+**Initial status:** In Progress
+
+**Priority:** Assess according to business impact, urgency, and organizational policy.
+
+## Step 1: Gather Information
+
+Ask the user:
+
+- When did the issue begin?
+- Did the problem start immediately after the update?
+- Does Windows reach the sign-in screen?
+- Is an error message or recovery screen displayed?
+- Were any hardware or software changes made recently?
+- Are the important documents backed up?
+- Is the device encrypted, and is the required recovery key available through the approved process?
+
+## Step 2: Assess the Risk
+
+The user cannot access Windows and has important documents.
+
+The data must be protected before attempting potentially destructive recovery operations.
+
+Do not assume the Windows update is definitely the cause simply because the issue began afterward.
+
+## Step 3: Investigate
+
+1. Record the exact symptoms and error messages.
+2. Determine how far the computer gets during startup.
+3. Consider Startup Repair if the evidence suggests a startup problem.
+4. Consider Uninstall Updates if the update appears to be related to the failure.
+5. Follow approved procedures for encryption and recovery-key requirements.
+6. Escalate if the disk may be failing, the data is critical, or the required recovery action exceeds Help Desk authorization.
+
+## Step 4: Protect User Data
+
+Before resetting or reinstalling Windows:
+
+- Determine whether a usable backup exists.
+- Understand the potential for data loss.
+- Follow the approved recovery process.
+- Escalate when data recovery requires specialist handling.
+
+Avoid unnecessary disk-repair attempts if physical drive failure is suspected.
+
+## Step 5: Verify
+
+After an approved recovery action:
+
+- Confirm Windows starts successfully.
+- Check that the reported issue no longer occurs.
+- Confirm that important files are available and intact.
+- Ask the user to verify access to the required documents.
+- Document any remaining issues.
+
+## Sample Ticket Documentation
+
+**Issue:** Windows repeatedly restarts before reaching the desktop.
+
+**Reported timeline:** User reports that a Windows update was installed the previous day.
+
+**Business impact:** User cannot access the computer.
+
+**Data risk:** Important documents are present; backup status requires confirmation.
+
+**Investigation:** Gathered startup symptoms and update history. Recovery options require assessment based on the evidence and data-protection requirements.
+
+**Next steps:** Check backup availability, follow approved recovery procedures, and escalate if specialist assistance is needed.
+
+**Verification:** Pending recovery and user confirmation.
+
+**Status:** In Progress.
+
+---
+
+# 7. Structured Windows Troubleshooting Workflow
+
+```text
+Gather Information
+        ↓
+Identify Symptoms and Scope
+        ↓
+Assess Data and Security Risks
+        ↓
+Investigate Possible Causes
+        ↓
+Select an Appropriate Recovery Option
+        ↓
+Obtain Authorization When Required
+        ↓
+Apply the Approved Action
+        ↓
+Verify Windows and Data
+        ↓
+Document the Outcome
+        ↓
+Close or Escalate
+```
+
+### Important Help Desk Principle
+
+Do not immediately reset, reinstall, or make major system changes.
+
+First gather evidence, protect user data, choose an appropriate recovery method, and confirm that the action is authorized.
+
+---
+
+# 8. Interview Questions and Model Answers
+
+## Q1. What is the difference between Backup and System Restore?
+
+A backup is a separate copy of data or system information used for recovery. System Restore rolls back certain Windows system components and settings to an earlier state. System Restore is not a replacement for a separate data backup.
+
+## Q2. What is WinRE?
+
+Windows Recovery Environment is a recovery environment that provides tools for diagnosing and repairing certain Windows startup and operating-system problems.
+
+## Q3. When would you use Startup Repair?
+
+I would consider Startup Repair when Windows cannot start normally. I would first gather the symptoms and check whether the issue is related to startup, an update, a driver, or another underlying problem.
+
+## Q4. What would you investigate if Windows became unstable after a driver update?
+
+I would gather information about the timing and symptoms, check the affected driver and relevant error messages, and consider an appropriate recovery option such as rolling back the driver or using System Restore. I would follow company procedures and verify the outcome.
+
+## Q5. What would you do if a computer could not start and the user had important files that were not backed up?
+
+I would prioritize protecting the data. I would gather the startup symptoms, assess whether disk failure or encryption could be involved, and avoid potentially destructive recovery actions. I would escalate if specialist data-recovery assistance were required.
+
+## Q6. Why should you avoid resetting Windows as the first step?
+
+Resetting can remove applications, settings, or data depending on the selected option and configuration. I would investigate the cause, check backup availability, assess the risk, and select the least disruptive appropriate recovery method.
+
+---
+
+
+---
+
+
+# ⭐ Key Takeaways
+
+- Backups protect data and support recovery.
+- System Restore rolls back certain Windows system changes.
+- WinRE provides access to Windows recovery tools.
+- Startup Repair addresses certain startup problems.
+- Safe Mode helps troubleshoot issues involving drivers, applications, or services.
+- Resetting Windows can affect applications, settings, and data.
+- Always assess data risk and backup availability before potentially destructive recovery actions.
+- Verify the result and document the outcome.
+- Escalate when the issue exceeds your authorization or requires specialist expertise.
+
+---
+
+# 📝 Day 72 Reflection
+
+Today I learned about Windows backup and recovery options and the differences between Backup, System Restore, and Windows Recovery Environment. I explored how Windows recovery tools may help address startup problems, update-related failures, and system instability.
+
+The Help Desk scenario reinforced the importance of protecting user data before attempting recovery. I also practised a structured troubleshooting approach that includes gathering information, assessing risks, selecting an appropriate recovery method, verifying the outcome, documenting actions, and escalating when necessary.
+
+Going forward, I will continue improving my Windows troubleshooting skills and my ability to explain recovery decisions clearly and professionally during IT Support interviews.
