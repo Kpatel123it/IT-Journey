@@ -1,0 +1,547 @@
+# Day 73 – Windows Performance Troubleshooting, Monitoring & System Logs
+
+## 🎯 Objective
+
+Today's objective was to learn how to troubleshoot slow Windows computers using system monitoring tools, review Windows logs, identify resource bottlenecks, and understand Windows system-file repair tools.
+
+The main focus was to develop a structured troubleshooting approach rather than guessing the cause of a performance issue.
+
+By the end of this lesson, I learned how to:
+
+- Investigate CPU, memory, and disk usage.
+- Use Task Manager and Resource Monitor.
+- Review Windows events using Event Viewer.
+- Investigate system reliability using Reliability Monitor.
+- Understand SFC and DISM.
+- Document and troubleshoot a slow-computer Help Desk ticket.
+
+---
+
+# 🪟 1. Windows Performance Troubleshooting
+
+## What Is Performance Troubleshooting?
+
+Performance troubleshooting is the process of identifying why a computer, application, or system is running slowly or becoming unresponsive.
+
+Common symptoms include:
+
+- Slow application startup.
+- Computer freezing.
+- High CPU usage.
+- High memory usage.
+- High disk activity.
+- Applications becoming unresponsive.
+- Slow switching between applications.
+
+The objective is to identify the likely cause using evidence before making changes.
+
+## Common Performance Bottlenecks
+
+### CPU — Central Processing Unit
+
+The CPU executes instructions and performs calculations.
+
+Possible symptoms of a CPU bottleneck:
+
+- Applications respond slowly.
+- The computer becomes sluggish.
+- CPU usage remains unusually high.
+
+Possible causes:
+
+- A resource-intensive application.
+- Background processes.
+- Software updates.
+- A runaway process.
+
+### RAM — Random Access Memory
+
+RAM stores data that running applications need to access quickly.
+
+Possible symptoms of memory pressure:
+
+- Applications become slow.
+- Switching between applications takes longer.
+- The system uses more paging.
+
+Possible causes:
+
+- Too many applications running.
+- Excessive browser tabs.
+- An application consuming excessive memory.
+
+### Disk — Storage
+
+The disk stores Windows, applications, and files.
+
+Possible symptoms:
+
+- Slow application loading.
+- Delays opening or saving files.
+- High disk activity.
+
+Possible causes:
+
+- Background updates.
+- File copying or backups.
+- Storage-related problems.
+- Disk-intensive applications.
+
+### Applications and Background Processes
+
+A particular application or background process may cause performance problems even when other applications work normally.
+
+Example:
+
+If Outlook is slow but other applications work normally, investigate Outlook and its related components before assuming the entire computer has a performance problem.
+
+**Important:** High CPU, memory, or disk usage is evidence to investigate, not automatic proof that hardware is faulty.
+
+---
+
+# 🛠️ 2. Task Manager
+
+## What Is Task Manager?
+
+Task Manager is a Windows utility used to inspect running applications, processes, system resource usage, and startup applications.
+
+## How to Open Task Manager
+
+Press:
+
+```text
+Ctrl + Shift + Esc
+```
+
+Alternatively, right-click Start and select Task Manager.
+
+## Important Sections
+
+### Processes
+
+Displays running applications and processes with resource usage information.
+
+Useful columns include:
+
+- CPU
+- Memory
+- Disk
+- Network
+
+### Performance
+
+Provides an overview of system resource usage, including:
+
+- CPU
+- Memory
+- Disk
+- Ethernet or Wi-Fi
+
+### Startup Apps
+
+Displays applications configured to start when a user signs in.
+
+Unnecessary startup applications can contribute to slow startup, but changes should be made only when appropriate and authorized.
+
+## Practical Lab
+
+1. Open Task Manager.
+2. Select Processes.
+3. Sort by CPU usage.
+4. Identify the process using the most CPU.
+5. Repeat for Memory and Disk.
+6. Open Performance.
+7. Record the current resource usage.
+
+### Lab Notes
+
+- Highest CPU process: Record actual observation.
+- Highest memory process: Record actual observation.
+- Highest disk process: Record actual observation.
+- Is usage consistently high or only temporarily elevated?
+- Does the observed usage match the user's symptoms?
+
+Do not terminate unfamiliar processes simply because they consume resources.
+
+---
+
+# 🔍 3. Resource Monitor
+
+## What Is Resource Monitor?
+
+Resource Monitor provides more detailed information about how processes use CPU, memory, disk, and network resources.
+
+## How to Open It
+
+Press:
+
+```text
+Windows + R
+```
+
+Enter:
+
+```text
+resmon
+```
+
+Press Enter.
+
+## Important Tabs
+
+### CPU
+
+Helps identify processes consuming CPU resources.
+
+### Memory
+
+Displays memory usage and related memory information.
+
+### Disk
+
+Shows disk activity associated with processes and files.
+
+### Network
+
+Displays network activity associated with processes.
+
+## Task Manager vs Resource Monitor
+
+**Task Manager:**
+
+- Provides an overall system performance view.
+- Shows running processes and resource usage.
+- Helps identify which resource may be under pressure.
+
+**Resource Monitor:**
+
+- Provides more detailed resource information.
+- Helps investigate specific processes.
+- Helps narrow down the likely source of a performance problem.
+
+### Memory Trick
+
+Task Manager = Overview.
+
+Resource Monitor = Detailed investigation.
+
+---
+
+# 📋 4. Event Viewer
+
+## What Is Event Viewer?
+
+Event Viewer is a Windows utility that records and displays system, application, and other events.
+
+It can help investigate:
+
+- Application crashes.
+- Service failures.
+- Driver-related problems.
+- System errors.
+- Unexpected shutdowns.
+
+## How to Open Event Viewer
+
+Press:
+
+```text
+Windows + R
+```
+
+Enter:
+
+```text
+eventvwr.msc
+```
+
+Press Enter.
+
+## Important Windows Logs
+
+### Windows Logs → Application
+
+Contains events related to applications and software components.
+
+### Windows Logs → System
+
+Contains events related to Windows components, drivers, services, and other system activity.
+
+### Event Severity Levels
+
+| Level | Meaning |
+|---|---|
+| Information | An event was recorded |
+| Warning | A potential issue may require attention |
+| Error | A failure or problem occurred |
+| Critical | A serious event occurred |
+
+## Practical Investigation
+
+1. Ask the user when the problem started.
+2. Open Event Viewer.
+3. Navigate to the relevant log.
+4. Review events around the reported time.
+5. Open relevant events.
+6. Examine the source, timestamp, event ID, and description.
+7. Correlate the event with the symptoms.
+
+**Important:** An error does not automatically prove the root cause. The event must be relevant to the reported issue.
+
+---
+
+# 📈 5. Reliability Monitor
+
+## What Is Reliability Monitor?
+
+Reliability Monitor displays a timeline of Windows reliability events, including application failures and system problems.
+
+It is useful when investigating recurring crashes or when a user reports that a problem began on a particular day.
+
+## How to Open It
+
+1. Open the Start menu.
+2. Search for `View reliability history`.
+3. Open the result.
+4. Review the timeline.
+5. Select a relevant failure to view its details.
+
+## Example
+
+A user reports that an application started crashing after a recent update.
+
+I would review Reliability Monitor around the date the issue began and compare the recorded failures with the user's symptoms and other diagnostic evidence.
+
+---
+
+# 🧰 6. SFC and DISM
+
+## System File Checker (SFC)
+
+SFC checks protected Windows system files and attempts to repair corrupted files.
+
+Command:
+
+```cmd
+sfc /scannow
+```
+
+Purpose:
+
+- Scan protected Windows system files.
+- Detect certain types of system-file corruption.
+- Attempt repairs using available repair files.
+
+## DISM
+
+DISM stands for Deployment Image Servicing and Management.
+
+It can repair the Windows component store, which supplies files and resources used for Windows servicing and system repair.
+
+Command:
+
+```cmd
+DISM /Online /Cleanup-Image /RestoreHealth
+```
+
+Purpose:
+
+- Check and repair the Windows component store.
+- Help restore the repair source needed by Windows system-file repair.
+
+## Difference Between SFC and DISM
+
+| SFC | DISM |
+|---|---|
+| Checks protected Windows system files | Repairs the Windows component store |
+| Attempts to repair corrupted system files | Restores the component store when repair is needed |
+| Command: `sfc /scannow` | Command: `DISM /Online /Cleanup-Image /RestoreHealth` |
+
+## Common Repair Sequence
+
+When system-file corruption is suspected and repair is appropriate:
+
+```cmd
+DISM /Online /Cleanup-Image /RestoreHealth
+sfc /scannow
+```
+
+Run these commands in an elevated terminal when required and authorized. DISM may need access to Windows Update or an approved repair source.
+
+These commands are not a universal solution for all performance issues.
+
+---
+
+# ⌨️ 7. Useful Windows Commands
+
+| Command | Purpose |
+|---|---|
+| `taskmgr` | Open Task Manager |
+| `resmon` | Open Resource Monitor |
+| `eventvwr.msc` | Open Event Viewer |
+| `perfmon` | Open Performance Monitor |
+| `sfc /scannow` | Scan and attempt to repair protected system files |
+| `DISM /Online /Cleanup-Image /RestoreHealth` | Repair the Windows component store |
+
+---
+
+# 🎫 8. Help Desk Ticket — Slow Windows Computer
+
+## Ticket ID
+
+INC-7301
+
+## User Complaint
+
+"My computer has been very slow since this morning. Outlook takes a long time to open, and switching between applications causes delays."
+
+## Step 1: Gather Information
+
+Ask the user:
+
+- When did the issue begin?
+- Is the entire computer slow or only Outlook?
+- Is the problem continuous or intermittent?
+- Are other users affected?
+- Were any updates or applications installed recently?
+- Does the problem occur after restarting?
+
+## Step 2: Investigate
+
+1. Open Task Manager.
+2. Review CPU, memory, and disk usage.
+3. Identify processes consuming excessive resources.
+4. Use Resource Monitor for more detailed investigation.
+5. Check whether the problem affects one application or the entire system.
+6. Review relevant events in Event Viewer.
+7. Check Reliability Monitor for related failures.
+8. Consider recent updates or application changes.
+
+## Step 3: Identify the Likely Cause
+
+Possible causes include:
+
+- Resource-intensive application.
+- Excessive memory usage.
+- Background update or disk activity.
+- Application-specific issue.
+- Driver or system-file problem.
+
+These are possibilities, not confirmed findings. The actual cause must be supported by evidence.
+
+## Step 4: Resolve
+
+Choose an appropriate, authorized action based on the findings.
+
+Examples:
+
+- Close or restart an unresponsive application when appropriate.
+- Investigate unnecessary startup applications.
+- Follow approved application troubleshooting procedures.
+- Use SFC or DISM if system-file corruption is suspected.
+
+Avoid disabling security software, terminating critical processes, or reinstalling Windows without proper justification and authorization.
+
+## Step 5: Verify
+
+Ask the user to:
+
+- Open Outlook.
+- Switch between applications.
+- Confirm whether the slowdown remains.
+- Report any recurring symptoms.
+
+## Step 6: Document
+
+Record:
+
+- User-reported symptoms.
+- Scope and impact.
+- Diagnostic findings.
+- Actions performed.
+- Verification results.
+- Final status or escalation details.
+
+### Ticket Documentation Template
+
+```text
+Ticket ID: INC-7301
+
+Issue:
+Windows computer is slow and Outlook opens slowly.
+
+Impact:
+Record the number of users and business services affected.
+
+Investigation:
+- Gathered information about the issue.
+- Checked Task Manager.
+- Reviewed Resource Monitor.
+- Examined relevant Windows logs.
+
+Findings:
+Record actual evidence and the likely cause.
+
+Action:
+Record the approved troubleshooting action taken.
+
+Verification:
+Record the user's test results.
+
+Status:
+Resolved or escalated, depending on the outcome.
+```
+
+---
+
+# 🎤 9. Interview Questions and Model Answers
+
+## Q1. How would you troubleshoot a slow Windows computer?
+
+I would ask when the problem started, whether other users are affected, and whether any recent changes were made. I would then use Task Manager to check CPU, memory, and disk usage. Based on the evidence, I would investigate further, apply an authorized fix, verify the result with the user, and document the ticket.
+
+## Q2. Does high CPU usage mean the processor is faulty?
+
+No. High CPU usage can result from an application, background process, update, or other software activity. I would identify the process consuming CPU and investigate whether the usage is persistent before determining the next step.
+
+## Q3. What is the difference between Task Manager and Resource Monitor?
+
+Task Manager provides an overview of running processes and system resource usage. Resource Monitor provides more detailed information about CPU, memory, disk, and network activity to help investigate a suspected bottleneck.
+
+## Q4. What is Event Viewer?
+
+Event Viewer is a Windows utility that records system and application events. I use it to examine relevant errors and warnings around the time a problem occurred and correlate those events with the user's symptoms.
+
+## Q5. What is the difference between SFC and DISM?
+
+SFC checks protected Windows system files and attempts to repair corruption. DISM can repair the Windows component store, which provides resources used for Windows servicing and repair.
+
+## Q6. How would you troubleshoot Outlook if other applications work normally?
+
+I would confirm that the issue is limited to Outlook, ask when it began, and check Task Manager for unusual resource usage. I would then investigate relevant application events and possible Outlook-specific causes, such as add-ins or connectivity. After applying an authorized fix, I would verify the result with the user.
+
+
+
+# 🧠 Key Takeaways
+
+- Task Manager provides a quick overview of system performance.
+- Resource Monitor helps investigate resource usage in more detail.
+- Event Viewer records system and application events.
+- Reliability Monitor helps identify patterns in crashes and failures.
+- High resource usage is evidence to investigate, not proof of faulty hardware.
+- SFC checks and attempts to repair protected Windows system files.
+- DISM can repair the Windows component store.
+- Troubleshooting should be evidence-based and changes should be authorized.
+- Always verify the outcome and document the ticket.
+
+---
+
+# 📝 Day 73 Reflection
+
+Today I learned how to investigate Windows performance problems using Task Manager, Resource Monitor, Event Viewer, and Reliability Monitor. I also learned the difference between SFC and DISM and how to use these tools when system-file corruption is suspected.
+
+Through the Help Desk scenario, I practiced gathering information, identifying possible causes, investigating system resources and logs, choosing an appropriate resolution, and verifying the outcome with the user.
+
+My main improvement area is to explain technical concepts with precise terminology and include verification in my troubleshooting answers.
+
+My key lesson is that effective IT Support requires more than knowing commands. It requires collecting evidence, understanding the findings, making authorized changes, and communicating clearly with users.
