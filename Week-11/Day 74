@@ -1,0 +1,547 @@
+# Day 74 – Advanced Active Directory: Kerberos, DNS & Group Policy Troubleshooting
+
+## 🎯 Objective
+
+Today's objective was to deepen my understanding of Active Directory authentication and troubleshooting, focusing on:
+
+- Kerberos authentication
+- Ticket Granting Tickets (TGTs) and service tickets
+- Domain Controller discovery through DNS
+- Active Directory DNS SRV records
+- Group Policy processing and troubleshooting
+- Troubleshooting access to domain resources
+- Applying a structured Help Desk troubleshooting process
+
+The main lesson was learning to distinguish **authentication, service-ticket acquisition, and authorization** instead of treating them as the same process.
+
+---
+
+# 1. Active Directory Authentication
+
+## What Is Authentication?
+
+Authentication is the process of verifying the identity of a user, computer, or service.
+
+For example, when an employee signs in to a domain-joined Windows computer, the system must verify the user's identity.
+
+## What Is Authorization?
+
+Authorization determines what an authenticated user is allowed to access or modify.
+
+For example, an employee might successfully sign in to Windows but still be denied access to a Finance shared folder.
+
+### Authentication vs. Authorization
+
+| Authentication | Authorization |
+|---|---|
+| Verifies identity | Determines permissions |
+| Answers: Who are you? | Answers: What can you access? |
+| Example: Domain sign-in | Example: Reading a shared file |
+
+**Key takeaway:** Successful authentication does not automatically grant permission to access every company resource.
+
+---
+
+# 2. Kerberos Authentication
+
+## What Is Kerberos?
+
+Kerberos is a network authentication protocol commonly used by Active Directory domains to authenticate users and services.
+
+It uses tickets to help establish identity without requiring the user's password to be sent to each service.
+
+## Important Kerberos Components
+
+### Key Distribution Center (KDC)
+
+The Key Distribution Center is the Kerberos service that helps issue authentication and service tickets.
+
+In a typical Active Directory domain, the KDC runs on a Domain Controller.
+
+### Ticket Granting Ticket (TGT)
+
+A Ticket Granting Ticket is obtained during the initial Kerberos authentication process.
+
+The client uses the TGT to request tickets for specific network services.
+
+### Service Ticket
+
+A service ticket is requested for a particular service, such as a file server.
+
+The client presents the service ticket to that service when accessing it.
+
+## Kerberos File-Access Flow
+
+```text
+User signs in to the domain
+          |
+          v
+Client obtains a TGT
+          |
+          v
+Client requests a service ticket
+          |
+          v
+KDC issues the service ticket
+          |
+          v
+Client presents ticket to file server
+          |
+          v
+File server validates authentication
+          |
+          v
+Share and NTFS permissions are evaluated
+          |
+          v
+Access is allowed or denied
+```
+
+### Example
+
+A user signs in successfully and attempts to access:
+
+```text
+\\SERVER01\Finance
+```
+
+The client may need to request a Kerberos service ticket for the file service on `SERVER01`. After authentication is established, the file server evaluates the user's permissions.
+
+Access can still be denied if the user lacks the necessary share or NTFS permissions.
+
+---
+
+# 3. Kerberos vs. NTLM
+
+| Kerberos | NTLM |
+|---|---|
+| Ticket-based authentication | Challenge-response authentication |
+| Commonly used in Active Directory domains | May be used in certain legacy or fallback scenarios |
+| Supports mutual authentication in appropriate configurations | Does not provide the same standard mutual-authentication model |
+| Often uses service principal names (SPNs) to identify services | Does not use the same Kerberos ticket and SPN process |
+
+Kerberos is generally preferred for domain authentication when the environment and service support it.
+
+**Troubleshooting note:** A domain sign-in can succeed while a particular network service still fails because of DNS, time synchronization, SPN, connectivity, or permission problems.
+
+---
+
+# 4. Active Directory DNS
+
+## Why Is DNS Important?
+
+Active Directory depends on DNS to help domain-joined computers locate Domain Controllers and other domain services.
+
+A client generally needs to use the organization's internal DNS service to discover Active Directory resources.
+
+An external DNS server might resolve public websites but fail to resolve the internal records required for domain operations.
+
+## DNS SRV Records
+
+Service (SRV) records identify the location of services such as LDAP and Kerberos.
+
+For example, Active Directory uses SRV records to help clients discover Domain Controllers.
+
+### Check Network Configuration
+
+```cmd
+ipconfig /all
+```
+
+Review:
+
+- IPv4 address
+- Subnet mask
+- Default gateway
+- DNS server addresses
+- DHCP status
+
+For a domain-joined client, verify that the configured DNS server can resolve the organization's Active Directory records.
+
+### Test Active Directory LDAP SRV Records
+
+```cmd
+nslookup -type=SRV _ldap._tcp.dc._msdcs.kpatel.test
+```
+
+Replace `kpatel.test` with the actual Active Directory domain name if it differs.
+
+This command queries DNS for LDAP service records associated with Domain Controller discovery.
+
+### Discover a Domain Controller
+
+```cmd
+nltest /dsgetdc:kpatel.test
+```
+
+This requests information about a Domain Controller for the specified domain.
+
+### Clear the Local DNS Cache
+
+```cmd
+ipconfig /flushdns
+```
+
+This clears the local DNS resolver cache. It does not repair an incorrect DNS server configuration or missing DNS records.
+
+## DNS Troubleshooting Example
+
+**Problem:** A domain-joined computer cannot locate a Domain Controller.
+
+1. Run `ipconfig /all`.
+2. Verify the DNS server address.
+3. Test the Active Directory SRV records with `nslookup`.
+4. Check connectivity to the intended DNS server.
+5. Run `nltest /dsgetdc:kpatel.test`.
+6. Review relevant DNS or domain-join errors.
+7. Correct the identified issue only if authorized.
+8. Retest Domain Controller discovery and domain operations.
+
+---
+
+# 5. Group Policy Processing
+
+## What Is Group Policy?
+
+Group Policy allows administrators to centrally configure settings for users and computers in an Active Directory environment.
+
+Examples include:
+
+- Password and security settings
+- Desktop configuration
+- Windows restrictions
+- Script deployment
+- Drive mappings
+- Administrative settings
+
+## Group Policy Object (GPO)
+
+A Group Policy Object is a collection of configuration settings that can be linked to an Active Directory site, domain, or Organizational Unit.
+
+A GPO link does not guarantee that every user or computer will receive every setting. Scope, filtering, inheritance, and the relevant user or computer configuration all matter.
+
+## LSDOU Processing Order
+
+The standard Group Policy processing order is:
+
+```text
+L – Local
+     |
+     v
+S – Site
+     |
+     v
+D – Domain
+     |
+     v
+OU – Organizational Unit
+```
+
+In general, later-applied settings can take precedence when settings conflict. However, inheritance blocking, enforced links, security filtering, and other processing rules can affect the final result.
+
+## Important GPO Troubleshooting Commands
+
+### Refresh Group Policy
+
+```cmd
+gpupdate /force
+```
+
+Requests that Windows refresh applicable Group Policy settings.
+
+Some settings may require a sign-out, sign-in, or restart.
+
+### View Applied Group Policy
+
+```cmd
+gpresult /r
+```
+
+Displays a summary of Resultant Set of Policy information for the current user and computer.
+
+### Generate a Detailed HTML Report
+
+```cmd
+gpresult /h "%USERPROFILE%\Desktop\gpresult.html"
+```
+
+Creates an HTML report on the user's desktop, where it can be opened and reviewed.
+
+## GPO Troubleshooting Checklist
+
+If a user does not receive an expected setting:
+
+1. Confirm whether the setting is intended for the user or computer.
+2. Verify the user or computer is in the correct OU.
+3. Confirm that the GPO is linked to the correct site, domain, or OU.
+4. Check security filtering and any WMI filtering.
+5. Review inheritance and enforced links.
+6. Run `gpresult /r` or generate an HTML report.
+7. Check whether the expected GPO appears in the report.
+8. Run `gpupdate /force` if appropriate.
+9. Sign out, sign in, or restart if required by the setting.
+10. Verify the result and document the outcome.
+
+---
+
+# 6. Practical Home Lab
+
+## Lab Environment
+
+The existing lab uses:
+
+- Windows Server: `SERVER01`
+- Windows client: `WIN11-CLIENT01`
+- Active Directory domain: `kpatel.test`
+- Server IP address: `192.168.50.10`
+- Finance shared folder: `\\SERVER01\Finance`
+
+These values describe the existing lab environment. Do not reinstall Active Directory Domain Services just to complete this exercise.
+
+## Lab A: Verify DNS Configuration
+
+On the Windows client, open Command Prompt and run:
+
+```cmd
+ipconfig /all
+```
+
+Confirm that the client is configured to use the internal DNS server for the lab.
+
+If the client is using DHCP, verify the DNS server supplied by the lab network. Do not change a working network configuration without first recording the current settings.
+
+## Lab B: Check Domain Controller Discovery
+
+Run:
+
+```cmd
+nslookup -type=SRV _ldap._tcp.dc._msdcs.kpatel.test
+```
+
+Then run:
+
+```cmd
+nltest /dsgetdc:kpatel.test
+```
+
+Record whether the SRV query returns appropriate records and whether the client discovers a Domain Controller.
+
+If either command fails, investigate DNS configuration, connectivity, domain information, and relevant logs before changing settings.
+
+## Lab C: Inspect Group Policy
+
+Run:
+
+```cmd
+gpresult /r
+```
+
+Review the applied user and computer policies.
+
+For a more detailed report, run:
+
+```cmd
+gpresult /h "%USERPROFILE%\Desktop\gpresult.html"
+```
+
+Open the generated report and look for the policies that apply to the current user and computer.
+
+### Lab Documentation Table
+
+| Test | Expected observation | Actual result |
+|---|---|---|
+| `ipconfig /all` | Correct DNS configuration for the lab | Record result |
+| LDAP SRV lookup | Relevant Active Directory DNS records | Record result |
+| `nltest /dsgetdc:kpatel.test` | A suitable Domain Controller is discovered | Record result |
+| `gpresult /r` | Applicable Group Policy information is displayed | Record result |
+| HTML report | Detailed policy report is generated | Record result |
+
+Do not claim a test passed unless you actually performed it and observed the expected result.
+
+---
+
+# 7. Help Desk Ticket – Domain Resource Access
+
+## Ticket ID
+
+`INC-7401`
+
+### User Complaint
+
+> I can sign in to my Windows computer, but I cannot access the Finance shared folder.
+
+### Affected Resource
+
+```text
+\\SERVER01\Finance
+```
+
+### Information Gathering
+
+Ask the user:
+
+- When did the problem begin?
+- Could you access the folder previously?
+- Is anyone else affected?
+- Can you access other shared folders?
+- Did your account, computer, or permissions recently change?
+- What exact error message appears?
+
+### Investigation
+
+Check the problem systematically:
+
+1. Confirm the correct shared-folder path.
+2. Check network connectivity and name resolution for `SERVER01`.
+3. Verify the user can reach the file server.
+4. Determine whether the user is authorized for Finance resources.
+5. Check the user's security-group membership.
+6. Review the folder's share permissions.
+7. Review its NTFS permissions.
+8. Check relevant authentication, DNS, or server errors if indicated by the evidence.
+
+### Important Permission Principle
+
+Access to a Windows shared folder can depend on both share permissions and NTFS permissions. Effective access is constrained by the applicable permissions, including group membership and any explicit restrictions.
+
+Do not add a user to a group or change permissions merely to make the error disappear. Confirm the user's authorization and follow the organization's approval process first.
+
+### Resolution
+
+Apply only the approved fix supported by the investigation. This might involve correcting the path, resolving a connectivity or name-resolution issue, or requesting an authorized permission change.
+
+### Verification
+
+- Ask the user to retry the shared-folder path.
+- Confirm the user can perform the authorized action.
+- Check that unrelated access has not been broadened unnecessarily.
+
+### Documentation
+
+**Issue:** User could sign in to Windows but could not access the Finance shared folder.
+
+**Investigation:** Checked the resource path, connectivity, name resolution, group membership, and relevant share and NTFS permissions.
+
+**Resolution:** Record the actual approved corrective action taken.
+
+**Verification:** Record whether the user successfully accessed the resource.
+
+**Status:** Resolved only after verification; otherwise keep the ticket open or escalate according to procedure.
+
+---
+
+# 8. Interview Questions and Model Answers
+
+## Q1. What is Kerberos?
+
+Kerberos is a ticket-based network authentication protocol commonly used in Active Directory environments to authenticate users and services.
+
+## Q2. What is a TGT?
+
+A Ticket Granting Ticket is obtained during initial Kerberos authentication and is used to request tickets for particular network services.
+
+## Q3. What is a service ticket?
+
+A service ticket is issued for a specific service and presented by the client when it accesses that service.
+
+## Q4. Can a user authenticate successfully but still be denied access to a shared folder?
+
+Yes. Authentication verifies the user's identity, while authorization determines access. The file server can deny access if the user does not have the required effective permissions.
+
+## Q5. Why is internal DNS important for Active Directory?
+
+Internal DNS allows domain-joined computers to locate Domain Controllers and discover services through Active Directory DNS records, including SRV records.
+
+## Q6. What does `nltest /dsgetdc:kpatel.test` do?
+
+It requests information about a Domain Controller for the specified domain and helps troubleshoot Domain Controller discovery.
+
+## Q7. What is the difference between `gpupdate /force` and `gpresult /r`?
+
+`gpupdate /force` requests a refresh of applicable Group Policy settings. `gpresult /r` reports Resultant Set of Policy information for the current user and computer.
+
+## Q8. What would you check if a user does not receive a GPO setting?
+
+I would confirm the correct user or computer scope, OU placement, GPO link, security and WMI filtering, inheritance, and the applied-policy report. I would then refresh policy if appropriate and verify the result.
+
+---
+
+# 9. Important Concept Separation
+
+```text
+Authentication
+      |
+      v
+Verifies identity
+
+Kerberos TGT
+      |
+      v
+Used to request service tickets
+
+Kerberos Service Ticket
+      |
+      v
+Presented to the target service
+
+Authorization
+      |
+      v
+Determines permitted access
+```
+
+Remember:
+
+- A TGT is not the same as a service ticket.
+- A successful sign-in does not guarantee access to a file share.
+- DNS resolution and Domain Controller discovery are related but distinct checks.
+- A GPO link does not guarantee that a particular setting applies.
+- `gpupdate` refreshes policy; `gpresult` reports applied policy information.
+- Share and NTFS permissions must be considered together.
+
+---
+
+# 10. Troubleshooting Method
+
+Use this structured approach during real Help Desk scenarios:
+
+1. Gather information from the user.
+2. Establish the scope and impact.
+3. Confirm the exact error and resource.
+4. Check basic connectivity and name resolution.
+5. Investigate authentication, service discovery, or permissions as indicated by the evidence.
+6. Make only authorized changes.
+7. Retest the original issue.
+8. Verify the result with the user.
+9. Document findings, actions, and outcomes.
+10. Escalate when the issue requires additional access or expertise.
+
+**Core principle:** Investigate first, make evidence-based changes, and verify before closing the ticket.
+
+---
+
+# 11. Day 74 Reflection
+
+Today I deepened my understanding of Active Directory by studying Kerberos authentication, TGTs, service tickets, DNS SRV records, Domain Controller discovery, and Group Policy troubleshooting.
+
+I learned that authentication and authorization are separate processes. A user can successfully sign in to a domain but still be denied access to a shared folder because the necessary permissions are missing.
+
+I also practiced using `ipconfig /all`, `nslookup`, `nltest`, `gpupdate`, and `gpresult` to investigate domain and Group Policy problems.
+
+My next improvement area is explaining the Kerberos ticket sequence accurately and using troubleshooting evidence to distinguish authentication failures from DNS, policy, and permission problems.
+
+---
+
+# Skills Practiced
+
+- Kerberos fundamentals
+- TGT and service-ticket concepts
+- Authentication vs. authorization
+- Active Directory DNS SRV records
+- Domain Controller discovery
+- Group Policy processing and troubleshooting
+- Share and NTFS permission investigation
+- Structured Help Desk ticket documentation
+
+
+
